@@ -173,6 +173,10 @@ a.card:hover{transform:translateY(-3px);border-color:var(--gold-500)}
 .xs li::before{width:10px;height:10px;border:0;top:.500em;background:linear-gradient(45deg,transparent 44%,#B4483C 44% 56%,transparent 56%),linear-gradient(-45deg,transparent 44%,#B4483C 44% 56%,transparent 56%);transform:none}
 .soon{border:1px dashed #B9C6DC;border-radius:var(--r);padding:18px 20px;background:#F8FAFD;display:flex;gap:14px;align-items:flex-start}
 .soon p{font-size:14.500px;color:var(--muted);line-height:1.65}
+.record .rec-item{margin-top:16px;padding-top:14px;border-top:1px solid rgba(128,140,160,.4)}
+.record .rec-item p{margin:5px 0;font-size:14.500px;line-height:1.6}
+.record .rec-item b{display:inline-block;min-width:92px}
+.record .rec-item a{color:inherit;text-decoration:underline;text-underline-offset:3px}
 .tag-date{flex:none;font-size:12px;font-weight:700;color:var(--navy-700);border:1px solid var(--line);border-radius:999px;padding:2px 10px;white-space:nowrap;margin-top:1px;background:var(--sky-50)}
 .hist.wide li{grid-template-columns:96px minmax(0,1fr)}
 .tag-soon{flex:none;font-size:12px;font-weight:700;color:var(--gold-600);border:1px solid var(--gold-500);border-radius:999px;padding:2px 10px;white-space:nowrap;margin-top:1px;background:#FFF9EC}

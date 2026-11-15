@@ -174,11 +174,18 @@ def record_box(light=False):
     chips = [L("기준일", "As-of date", "基准日"), L("판단 내용", "Judgment", "判断内容"), L("근거", "Evidence", "依据"),
              L("무효화 조건", "Invalidation conditions", "失效条件"), L("후속 평가", "Follow-up review", "后续评估")]
     return f'''<div class="record{" light" if light else ""}">
-  <h3>{L("판단 기록 · 공개 성적표", "Judgment record · public scorecard", "判断记录 · 公开成绩单")} <span class="tag-soon">{L("준비 중", "Coming soon", "筹备中")}</span></h3>
+  <h3>{L("판단 기록 · 공개 성적표", "Judgment record · public scorecard", "判断记录 · 公开成绩单")}</h3>
   <ol>{"".join(f"<li>{c}</li>" for c in chips)}</ol>
-  <p>{L("판단을 내린 날짜와 근거, 틀렸다고 볼 조건을 함께 남기고 나중에 평가합니다. 첫 기록을 준비하고 있습니다.",
-        "Each judgment is logged with its date, its evidence and the conditions that would prove it wrong, then reviewed later. The first entries are in preparation.",
-        "每一次判断都记录日期、依据和失效条件，并在事后进行评估。首批记录正在准备中。")} {L("시나리오에는 확률을 함께 적을 예정입니다.", "Scenarios will carry probabilities.", "情景将附上概率。")}</p>
+  <p>{L("판단을 내린 날짜와 근거, 틀렸다고 볼 조건을 함께 남기고 나중에 평가합니다.",
+        "Each judgment is logged with its date, its evidence and the conditions that would prove it wrong, then reviewed later.",
+        "每一次判断都记录日期、依据和失效条件，并在事后进行评估。")} {L("시나리오에는 확률을 함께 적을 예정입니다.", "Scenarios will carry probabilities.", "情景将附上概率。")}</p>
+  <div class="rec-item">
+    <p><b>{chips[0]}</b> {L("2026년 11월 15일", "15 November 2026", "2026年11月15日")}</p>
+    <p><b>{chips[1]}</b> {L("11월 초 대중 수출 급증은 중국 내수 회복이 아니라 반도체 가격 효과가 이끈 것이다.", "The surge in Korea's exports to China in early November was driven by chip prices, not by a recovery in Chinese domestic demand.", "11月初韩国对华出口激增，是半导体价格效应带动的，而不是中国内需回暖。")}</p>
+    <p><b>{chips[2]}</b> {L("11월 1~10일 반도체 수출 증가율(331.2%)이 대중 수출 증가율(148%)을 크게 웃돈다.", "In 1–10 November, chip export growth (331.2%) far exceeded growth in exports to China (148%).", "11月1至10日，半导体出口增速（331.2%）远高于对华出口增速（148%）。")}</p>
+    <p><b>{chips[3]}</b> {L("12월 1일 월간 통계에서 반도체를 뺀 대중 수출이 반도체를 뺀 전체 수출보다 빠르게 늘면 이 판단을 거둔다.", "We withdraw this judgment if the monthly data on 1 December show exports to China excluding chips growing faster than total exports excluding chips.", "若12月1日的月度统计显示剔除半导体的对华出口增速快于剔除半导体的整体出口，则撤回这一判断。")}</p>
+    <p><b>{chips[4]}</b> {L("2026년 12월 1일 통계 발표 뒤", "After the data release on 1 December 2026", "2026年12月1日统计发布之后")} · <a href="{P("focus", "flash-2026-11")}">{L("근거 글 보기", "Read the note", "查看依据")}</a></p>
+  </div>
 </div>'''
 
 
