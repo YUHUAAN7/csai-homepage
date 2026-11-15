@@ -31,7 +31,10 @@ def about():
         ("2016.09", L("연합뉴스, 안유화 박사를 ‘중국 금융 스페셜리스트’로 소개", "Yonhap News profiles Dr An Yuhua as a “China finance specialist”", "韩联社以“中国金融专家”介绍安玉花博士"), "https://www.yna.co.kr/view/AKR20160913157700371"),
         ("2024.08", L("전기신문 보도: 중국의 친환경 기술 선점과 한·중 협력", "Electimes: China's lead in green technology and Korea–China cooperation", "《电气新闻》报道：中国抢占绿色技术与韩中合作"), "https://www.electimes.com/news/articleView.html?idxno=341779"),
         ("2025.04", L("전기신문 보도: 미·중 패권 경쟁과 한국의 ‘삼중 트랙’ 대응", "Electimes: US–China rivalry and Korea's “three-track” response", "《电气新闻》报道：美中霸权竞争与韩国的“三轨”应对"), "https://www.electimes.com/news/articleView.html?idxno=353203"),
+        ("2025.06", L("의정부시 인공지능 포럼 기조강연", "Keynote at the Uijeongbu City AI Forum", "在议政府市人工智能论坛作主旨演讲"), "https://www.wikitree.co.kr/articles/1060824"),
         ("2025.09", L("아시아투데이 보도: AI·디지털자산과 한국 기업의 기회", "Asia Today: AI, digital assets and the opportunity for Korean companies", "《今日亚洲》报道：AI·数字资产与韩国企业的机会"), "https://www.asiatoday.co.kr/kn/view.php?key=20250907002221015"),
+        ("2025.09", L("한국일보 한국아카데미 14기 강의", "Lecture at the Hankook Ilbo Korea Academy, 14th class", "在《韩国日报》韩国学院第14期授课"), "https://www.hankookilbo.com/news/article/A2025091710450002426"),
+        ("2026.03", L("매일경제와 「디지털자산·AI 융합 최고위과정」 2기 공동 주관", "Co-organised the 2nd “Digital Assets and AI” executive programme with Maeil Business Newspaper", "与《每日经济》共同主办第2期“数字资产·AI融合高层课程”"), "https://m.mk.co.kr/amp/11979976"),
         ("2026.09", L("뉴시스·매일경제 보도: “한국의 골든타임은 3~5년”", "Newsis and Maeil Business: “Korea's golden time is three to five years”", "纽西斯·《每日经济》报道：“韩国的黄金时间是3至5年”"), "https://www.newsis.com/view/NISX20260910_0003783819"),
     ]
     hist = ('<h3 style="font-size:20px;margin:30px 0 4px">' + L("연혁", "History", "沿革") + '</h3><ul class="hist">'
@@ -125,7 +128,7 @@ def about():
     b += sec("contact", "CONTACT", L("연락처", "Contact", "联系方式"), "", kv([
         (L("이메일", "Email", "邮箱"), f'<a class="mailto" href="mailto:{MAIL}">{MAIL}</a>'),
         (L("문의 접수", "Inquiries", "咨询受理"), L("기업 자문 · 교육 · 국제협력 · 일반 문의를 목적별로 받습니다.", "Business advisory, education, international cooperation and general inquiries, each with its own form.", "企业咨询、教育、国际合作与一般咨询，按类别受理。")),
-        (L("주소·전화", "Address & phone", "地址与电话"), f'<span class="tag-soon">{SOON()}</span>'),
+        (L("대표 전화", "Phone", "电话"), '<a href="tel:+8225170866">02-517-0866</a>'),
     ]) + f'<div class="sec-foot">{btn(L("문의하기", "Contact CSAI", "联系我们"), P("contact"), "navy")}</div>')
     return page("about", title, lede, b, "about")
 
@@ -441,7 +444,7 @@ def contact():
     side = f'''<div class="contact-side">
   <div class="card"><h3>{icon("mail", 20)}{L("이메일", "Email", "邮箱")}</h3><p><a class="mailto" href="mailto:{MAIL}">{MAIL}</a></p><p>{L("양식 없이 직접 메일을 보내셔도 됩니다.", "You can also email us directly without the form.", "也可不填表单，直接发送邮件。")}</p></div>
   <div class="card"><h3>{icon("shield", 20)}{L("개인정보 원칙", "Privacy", "隐私原则")}</h3><p>{L("문의 단계에서는 필요한 최소 정보만 받습니다. 입력한 내용은 이 사이트에 저장되지 않고, 보내시는 메일로만 전달됩니다.", "At the inquiry stage we ask only for the minimum. What you type is not stored on this site; it travels only in the email you send.", "咨询阶段仅收集必要的最少信息。您填写的内容不会保存在本网站，只会通过您发送的邮件传达。")}</p>{more(L("자세히", "Details", "详情"), P("policy", "privacy"))}</div>
-  <div class="card"><h3>{icon("pin", 20)}{L("주소·전화", "Address & phone", "地址与电话")}</h3><p><span class="tag-soon">{SOON()}</span></p></div>
+  <div class="card"><h3>{icon("pin", 20)}{L("대표 전화", "Phone", "电话")}</h3><p><a href="tel:+8225170866">02-517-0866</a></p></div>
 </div>'''
     b += sec("form", "INQUIRY", L("문의 양식", "Inquiry form", "咨询表单"), L("문의 유형을 고른 뒤 내용을 적어 주세요.", "Choose the type of inquiry, then fill in the details.", "请先选择咨询类型，再填写内容。"),
              f'<div class="contact-grid"><div><div class="tabs" role="tablist">{tabs}</div>{fhtml}</div>{side}</div>')
