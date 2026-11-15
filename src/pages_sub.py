@@ -372,13 +372,16 @@ def academy():
     pc = "".join(f'<div class="card"><div class="badge-ico">{icon(ic, 26)}</div><h3>{t}</h3><p>{d}</p></div>' for ic, t, d, a in progs)
     for ic, t, d, a in progs:
         reg(t, d, P("academy", a), "Academy")
-    wait = L("과정 구성·일정·강사진·신청 방법은 확정되는 대로 안내합니다.", "Curriculum, dates, faculty and how to apply will be announced once confirmed.", "课程设置、日程、师资与报名方式将在确认后公布。")
-    b += sec("programs", "PROGRAMS", L("프로그램", "Programs", "课程项目"), "", f'<h3 style="font-size:20px;margin:0 0 16px">{L("운영 중인 과정", "Programmes now running", "正在开设的课程")}</h3><div class="g3">{pc_run}</div><h3 style="font-size:20px;margin:40px 0 16px">{L("기업·기관 맞춤 과정", "Tailored programmes for companies and institutions", "面向企业与机构的定制课程")}</h3><div class="g4">{pc}</div><div style="margin-top:24px">{soon(wait)}</div>'
+    wait = (L("신청과 문의는 ", "To apply or ask a question, use the ", "报名与咨询请通过") + '<a href="' + P("contact") + '">' + L("문의 페이지", "contact page", "咨询页面") + "</a>"
+            + L(" 또는 대표 전화 ", " or call ", "或致电") + '<a href="tel:+8225170866">02-517-0866</a>'
+            + L("으로 받습니다. 대상과 인원, 희망 주제와 시기를 알려 주시면 과정 구성을 상담해 드립니다.", ". Tell us the audience, headcount, topics and timing you have in mind and we will discuss the format.", "。请告知对象、人数、希望的主题与时间，我们将就课程方案进行沟通。"))
+    wait_box = '<p class="note" style="font-size:15px">' + wait + "</p>"
+    b += sec("programs", "PROGRAMS", L("프로그램", "Programs", "课程项目"), "", f'<h3 style="font-size:20px;margin:0 0 16px">{L("운영 중인 과정", "Programmes now running", "正在开设的课程")}</h3><div class="g3">{pc_run}</div><h3 style="font-size:20px;margin:40px 0 16px">{L("기업·기관 맞춤 과정", "Tailored programmes for companies and institutions", "面向企业与机构的定制课程")}</h3><div class="g4">{pc}</div><div style="margin-top:24px">{wait_box}</div>'
              f'<p class="note" style="margin-top:14px">{L("안유화독서투자클럽, 유튜브 채널과 연결해 운영합니다.", "Run in connection with the An Yuhua Reading & Investment Club and the YouTube channel.", "与安玉花读书投资俱乐部及YouTube频道联动运营。")}</p>')
     b += sec("executive", "EXECUTIVE EDUCATION", L("임원 과정", "Executive education", "高管课程"),
-             L("경영진이 중국의 정책과 시장을 읽는 기준을 갖추도록 돕는 과정입니다.", "A programme that gives executives a framework for reading China's policy and markets.", "帮助企业高管建立解读中国政策与市场的框架。"), soon(wait), "alt")
+             L("경영진이 중국의 정책과 시장을 읽는 기준을 갖추도록 돕는 과정입니다.", "A programme that gives executives a framework for reading China's policy and markets.", "帮助企业高管建立解读中国政策与市场的框架。"), wait_box, "alt")
     b += sec("corporate", "CORPORATE TRAINING", L("기업 맞춤 교육", "Corporate training", "企业定制培训"),
-             L("교육 대상과 인원, 희망 주제와 시기를 알려 주시면 맞춤 구성을 상담합니다.", "Tell us the audience and headcount, the topics and the timing you have in mind, and we will discuss a tailored format.", "请告知培训对象与人数、希望的主题与时间，我们将就定制方案进行沟通。"), soon(wait))
+             L("교육 대상과 인원, 희망 주제와 시기를 알려 주시면 맞춤 구성을 상담합니다.", "Tell us the audience and headcount, the topics and the timing you have in mind, and we will discuss a tailored format.", "请告知培训对象与人数、希望的主题与时间，我们将就定制方案进行沟通。"), wait_box)
     b += f'<section class="sec alt" id="inquiry"><div class="wrap"><div class="sec-head"><div class="eyebrow">INQUIRY</div><h2>{L("교육 문의", "Training inquiry", "培训咨询")}</h2></div>{cta_band(L("교육 상담을 신청하세요", "Ask about training", "预约培训咨询"), L("교육 문의 양식으로 연결됩니다.", "Opens the training inquiry form.", "将进入培训咨询表单。"), L("교육 문의하기", "Training Inquiry", "提交培训咨询"), P("contact", "academy"), flush=True)}</div></section>'
     return page("academy", title, lede, b, "academy")
 
