@@ -335,6 +335,10 @@ a.type:hover{border-color:var(--gold-500)}
 .bio p{font-size:16.500px;color:var(--ink-2)}
 .bio h3{font-size:26px;margin-bottom:4px}
 .bio .role{color:var(--gold-600);font-weight:700;font-size:15px;margin-bottom:18px}
+.greeting{margin:4px 0 28px;padding:26px 28px;background:var(--sky-50);border-left:3px solid var(--gold-500);border-radius:0 var(--r) var(--r) 0}
+.greeting .g-label{font-size:12.500px;font-weight:700;letter-spacing:.14em;color:var(--gold-600);margin-bottom:10px}
+.greeting .g-title{font-family:var(--f-display);font-size:clamp(20px,2.200vw,26px);font-weight:600;line-height:1.45;color:var(--ink);margin-bottom:12px}
+.greeting .g-sign{margin-top:16px;font-size:15px;color:var(--ink);text-align:right}
 .timeline{border-left:1px solid var(--line);margin-top:8px}
 .timeline li{padding:0 0 18px 22px;position:relative;font-size:15.500px}
 .timeline li::before{content:"";position:absolute;left:-5px;top:9px;width:9px;height:9px;border-radius:50%;background:#fff;border:2px solid var(--gold-500)}

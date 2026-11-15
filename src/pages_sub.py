@@ -73,8 +73,14 @@ def about():
     b += sec("leadership", "LEADERSHIP", L("리더십", "Leadership", "领导层"), "", f'''<div class="leader">
   <figure class="portrait"><img src="{A("profile.jpg")}" alt="{L("안유화 원장 프로필 사진", "Portrait of Professor An Yuhua", "安玉花院长照片")}" width="720" height="900"></figure>
   <div class="bio"><h3>{message()["name"]}</h3><p class="role">{L("중국증권행정연구원(CSAI) 원장 · 중국 경제·금융 전문가 · 경영학 박사", "President, CSAI · China economy & finance · Ph.D. in Business", "CSAI院长 · 中国经济与金融专家 · 管理学博士")}</p>
+    <div class="greeting" id="greeting">
+      <div class="g-label">{L("원장 인사말", "FROM THE PRESIDENT", "院长致辞")}</div>
+      <p class="g-title">{L("중국을 묻는 것은 결국 한국을 묻는 일입니다", "To ask about China is, in the end, to ask about Korea.", "问中国，归根结底是问韩国。")}</p>
+      <p>{L("“중국은 어떻게 됩니까?”라는 질문 뒤에는 늘 “그러면 우리는 어떻게 해야 합니까?”가 있습니다. 저희 연구는 그 두 번째 질문에 답하려고 있습니다.", "Behind the question “What will happen to China?” there is always another: “Then what should we do?” Our research exists to answer that second question.", "“中国会怎样？”这个问题背后，总有另一个问题：“那么我们该怎么办？”我们的研究，正是为了回答这第二个问题。")}</p>
+      <p>{L("중국을 정확히 읽는 것이 세계 경제를 읽는 일이고, 그 끝은 언제나 한국의 결정이어야 합니다.", "Reading China accurately is reading the world economy, and where it ends must always be a decision for Korea.", "准确读懂中国，就是读懂世界经济；而它的终点，始终应当是韩国的决策。")}</p>
+      <p class="g-sign">{L("중국증권행정연구원 원장 <strong>안유화</strong>", "<strong>An Yuhua</strong>, President, China Securities Administration Institute", "中国证券行政研究院 院长 <strong>安玉花</strong>")}</p>
+    </div>
     {bio}{channels()}
-    <div style="margin-top:24px">{soon(L("원장 인사말은 확정 문안을 받는 대로 올립니다.", "The President's greeting will be posted once the official text is confirmed.", "院长致辞将在正式文稿确认后发布。"))}</div>
     <h3 style="font-size:20px;margin:36px 0 14px">{L("약력", "Career", "履历")}</h3>{timeline()}</div>
 </div>''')
 
