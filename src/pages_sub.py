@@ -396,8 +396,13 @@ def global_():
              ("users", L("전문가 교류·기고", "Expert exchange & contributions", "专家交流与撰稿"), L("중국 학자 특별기고 등 전문가의 글과 대담을 싣습니다.", "Contributed articles and conversations with experts, including special contributions from Chinese scholars.", "刊载中国学者特约撰稿等专家文章与对谈。")),
              ("cal", L("포럼·세미나", "Forums & seminars", "论坛与研讨会"), L("공동 포럼과 세미나를 기획합니다.", "Planning joint forums and seminars.", "策划联合论坛与研讨会。"))]
     kc = "".join(f'<div class="card"><div class="badge-ico">{icon(ic, 26)}</div><h3>{t}</h3><p>{d}</p></div>' for ic, t, d in kinds)
+    coop_types = ('<div class="card"><h3>' + L("협력의 유형", "Types of cooperation", "合作类型") + "</h3>"
+                  + ticks(L(["언론사와 교육과정 공동 주관", "중국 1등 기업 현지 탐방", "지방자치단체·언론사가 여는 포럼과 아카데미 강연", "한국과 중국 기업의 상호 투자 자문"],
+                            ["Co-organising education programmes with media companies", "On-site visits to leading Chinese companies", "Lectures at forums and academies hosted by local governments and media", "Advisory on cross-border investment between Korean and Chinese companies"],
+                            ["与媒体共同主办教育课程", "实地走访中国龙头企业", "在地方政府与媒体主办的论坛和学院演讲", "为韩中企业的相互投资提供咨询"]))
+                  + '<p style="font-size:13.500px;color:var(--muted)">' + L("협력기관의 이름은 해당 기관의 동의를 받은 경우에만 공개합니다.", "Partner names are published only with the partner's consent.", "合作机构名称仅在获得对方同意后公开。") + "</p></div>")
     b += sec("partners", "PARTNERS", L("협력기관", "Partners", "合作机构"), "",
-             soon(L("협력기관은 해당 기관의 공개 동의를 받은 뒤 게시합니다. 확정된 협력 사실만 올립니다.", "Partner institutions are listed only after they agree to be named. Only confirmed cooperation is posted.", "合作机构在获得对方同意后公布，仅发布已确认的合作事实。"))
+             coop_types
              + f'<h3 style="font-size:20px;margin:36px 0 16px">{L("협력 유형", "Ways to cooperate", "合作形式")}</h3><div class="g3">{kc}</div>'
              + f'<div class="card" style="margin-top:24px"><div class="type-h"><h3>{L("영문 분기 노트 「Korea Sensor」", "Korea Sensor — English quarterly note", "英文季度简报 Korea Sensor")}</h3><span class="tag-soon">{SOON()}</span></div><p>{L("중국 정책의 신호가 한국의 숫자에 먼저 나타나는 지점을, 해외 독자를 위해 영문으로 정리하는 분기 노트입니다. 해외 리서치 기관과의 파트너 유통을 준비합니다.", "A quarterly note in English, for overseas readers, on where the signal of China policy shows up first in Korean numbers. Distribution through overseas research partners is in preparation.", "面向海外读者的英文季度简报，梳理中国政策信号最先体现在韩国数字上的环节。正在筹备通过海外研究机构合作发行。")}</p></div>')
     b += sec("experts", "EXPERTS", L("전문가", "Experts", "专家"), "", soon(L("중국 학자 특별기고를 분기에 1편씩 실을 예정입니다(공개 분석만). 전문가 네트워크와 기고문은 준비되는 대로 소개합니다.", "We plan to carry one contribution a quarter from a Chinese scholar (public analysis only). The expert network and contributed articles will be introduced as they are ready.", "计划每季度刊载一篇中国学者特约文章（仅限公开分析）。专家网络与特约文章将在准备就绪后陆续介绍。")), "alt")
