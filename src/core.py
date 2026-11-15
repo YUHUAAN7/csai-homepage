@@ -15,6 +15,18 @@ PODCAST = "https://www.podbbang.com/channels/1791158"
 FACEBOOK = "https://www.facebook.com/yuhua.an.1"
 
 
+def _asset_ver():
+    import hashlib, os
+    h = hashlib.md5()
+    for n in ("site.css", "site.js"):
+        with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets", n), "rb") as f:
+            h.update(f.read())
+    return h.hexdigest()[:8]
+
+
+ASSET_VER = _asset_ver()
+
+
 class Ctx:
     lang = "ko"
     slug = "index"
@@ -255,7 +267,7 @@ def page(slug, title, desc, body, active=""):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;600;700&family=Noto+Sans+KR:wght@400;500;700{zh_font}&display=swap">
-<link rel="stylesheet" href="{A("assets/site.css")}">
+<link rel="stylesheet" href="{A("assets/site.css")}?v={ASSET_VER}">
 </head>
 <body class="p-{slug}">
 {header(active)}
@@ -263,7 +275,7 @@ def page(slug, title, desc, body, active=""):
 {body}
 </main>
 {footer()}
-<script src="{A("assets/site.js")}" defer></script>
+<script src="{A("assets/site.js")}?v={ASSET_VER}" defer></script>
 </body>
 </html>
 '''

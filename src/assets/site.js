@@ -27,17 +27,12 @@
       if (no) no.textContent = ("0" + (cur + 1)).slice(-2) + " / " + ("0" + slides.length).slice(-2);
       if (bar) { bar.style.width = (100 / slides.length) + "%"; bar.style.left = (100 / slides.length * cur) + "%"; }
     };
-    /* 6초마다 자동으로 넘긴다. 마우스를 올리거나 다른 탭을 볼 때는 멈추고, '동작 줄이기' 설정이면 넘기지 않는다 */
-    var hero = $(".hero"), timer = null, still = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
-    var stop = function () { if (timer) { clearInterval(timer); timer = null; } };
-    var play = function () { stop(); if (!still) timer = setInterval(function () { if (!document.hidden) show(cur + 1); }, 6000); };
+    /* 6초마다 자동으로 넘긴다. 화살표를 누르면 그 자리에서 다시 6초를 센다. 다른 탭을 보는 동안에는 넘기지 않는다 */
+    var timer = null;
+    var play = function () { if (timer) clearInterval(timer); timer = setInterval(function () { if (!document.hidden) show(cur + 1); }, 6000); };
     $$("[data-slide]").forEach(function (b) {
       b.addEventListener("click", function () { show(cur + (b.dataset.slide === "next" ? 1 : -1)); play(); });
     });
-    if (hero) {
-      hero.addEventListener("mouseenter", stop); hero.addEventListener("mouseleave", play);
-      hero.addEventListener("focusin", stop); hero.addEventListener("focusout", play);
-    }
     show(0); play();
   }
 
