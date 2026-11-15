@@ -1,0 +1,600 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>안유화 경제원칙</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="canonical" href="https://www.csai.re.kr/">
+<meta name="description" content="안유화 교수 — 중국 경제·금융·자본시장 연구. 원칙, 연구, 월간 중국경제포커스, 강연과 저서.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: 한 장의 긴 원고. 좌측 좁은 여백 칼럼에 섹션 표기(§), 우측 본문. 먹색 표지 → 종이 본문 → 먹색 말미 */
+:root{
+  --paper:#F5F7F6;      /* 약간 푸른 기가 도는 종이 */
+  --paper-2:#E9EEEC;
+  --ink:#121A19;        /* 먹 */
+  --ink-2:#3C4846;
+  --muted:#6A7774;
+  --line:#CDD6D3;
+  --jade:#1E5A4C;       /* 강조: 옥색 */
+  --jade-soft:#D5E6E0;
+  --night:#0E1615;      /* 표지·말미 배경 */
+  --night-fg:#E8EEEC;
+  --night-muted:#93A39F;
+  --sig-red:#B23A2E; --sig-amber:#C08A1E; --sig-green:#2E7D57;
+  --f-display:"Noto Serif KR","Noto Serif SC","Songti SC",Georgia,serif;
+  --f-body:"Noto Sans KR","Noto Sans SC","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  --gutter-l:max(16px, env(safe-area-inset-left,0px));
+  --gutter-r:max(16px, env(safe-area-inset-right,0px));
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#131B1A;--paper-2:#1A2422;--ink:#E6ECEA;--ink-2:#B9C4C1;--muted:#8E9C99;--line:#2C3936;
+  --jade:#7CC4AE;--jade-soft:#1F3631;--night:#0A100F;--night-fg:#E8EEEC;--night-muted:#8E9C99;
+  --sig-red:#E0705F;--sig-amber:#E2B04E;--sig-green:#5DBB8A;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#131B1A;--paper-2:#1A2422;--ink:#E6ECEA;--ink-2:#B9C4C1;--muted:#8E9C99;--line:#2C3936;
+  --jade:#7CC4AE;--jade-soft:#1F3631;--night:#0A100F;--night-fg:#E8EEEC;--night-muted:#8E9C99;
+  --sig-red:#E0705F;--sig-amber:#E2B04E;--sig-green:#5DBB8A;color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased;word-break:keep-all;overflow-wrap:break-word}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--night)}
+a{color:inherit}
+a:focus-visible,button:focus-visible{outline:2px solid var(--jade);outline-offset:3px;border-radius:2px}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;font-weight:600;letter-spacing:-.01em}
+p{margin:0}
+.wrap{max-width:1160px;margin:0 auto;padding-left:var(--gutter-l);padding-right:var(--gutter-r)}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.ph{display:inline-block;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.06em;padding:1px 6px;border:1px dashed currentColor;border-radius:3px;color:var(--sig-amber);vertical-align:2px;margin-left:6px;white-space:nowrap}
+
+/* ── 상단 바 */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--night);color:var(--night-fg);border-bottom:1px solid #ffffff14}
+.top .wrap{display:flex;align-items:center;gap:24px;height:60px}
+.brand{display:flex;align-items:baseline;gap:10px;text-decoration:none;white-space:nowrap}
+.brand b{font-family:var(--f-display);font-size:19px;font-weight:700;letter-spacing:.02em}
+.brand span{font-family:var(--f-mono);font-size:11px;color:var(--night-muted);letter-spacing:.1em}
+.nav{display:flex;gap:22px;margin-left:auto;font-size:14px}
+.nav a{text-decoration:none;color:var(--night-muted);transition:color .15s}
+.nav a:hover{color:var(--night-fg)}
+.lang{display:flex;border:1px solid #ffffff2a;border-radius:999px;overflow:hidden;flex:none}
+.lang button{background:none;border:0;color:var(--night-muted);font:500 12px var(--f-mono);padding:6px 10px;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--night-fg);color:var(--night)}
+.menu-btn{display:none;background:none;border:1px solid #ffffff2a;color:var(--night-fg);border-radius:6px;padding:6px 10px;font:500 13px var(--f-body);cursor:pointer}
+@media (max-width:900px){
+  .nav{display:none;position:absolute;left:0;right:0;top:60px;background:var(--night);flex-direction:column;gap:0;padding:8px var(--gutter-r) 16px var(--gutter-l);border-bottom:1px solid #ffffff14}
+  .nav.open{display:flex}.nav a{padding:10px 0;font-size:16px}
+  .menu-btn{display:block;margin-left:auto}
+}
+
+/* ── 표지 */
+.hero{background:var(--night);color:var(--night-fg);padding-block:72px 88px;position:relative;overflow:hidden}
+.hero canvas{position:absolute;inset:0;width:100%;height:100%;opacity:.55;pointer-events:none}
+.hero .wrap{position:relative;display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,.65fr);gap:56px;align-items:end}
+.hero .eyebrow{color:var(--night-muted)}
+.hero h1{font-size:clamp(36px,6vw,74px);line-height:1.12;margin-top:22px;font-weight:600}
+.hero h1 em{font-style:normal;color:#9FD6C4}
+.hero .lede{margin-top:28px;max-width:34em;font-size:clamp(16px,1.6vw,18.5px);color:#C9D4D1;line-height:1.8}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:4px;font-weight:500;font-size:15px;text-decoration:none;border:1px solid transparent;cursor:pointer}
+.btn-solid{background:#9FD6C4;color:#0E1615}
+.btn-solid:hover{background:#B8E3D5}
+.btn-line{border-color:#ffffff40;color:var(--night-fg)}
+.btn-line:hover{border-color:#ffffff90}
+.portrait{margin:0;max-width:100%;display:flex;flex-direction:column;gap:14px}
+.portrait img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 20%;background:#E9EDEC;border:1px solid #ffffff24}
+.portrait figcaption{font-family:var(--f-display);font-size:20px;line-height:1.3}
+.portrait figcaption span{display:block;font-family:var(--f-body);font-size:13px;color:var(--night-muted);margin-top:4px}
+.socials{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:28px;font-size:13.5px}
+.socials a{color:var(--night-muted);text-decoration:none;border-bottom:1px solid #ffffff30;padding-bottom:1px}
+.socials a:hover{color:var(--night-fg)}
+@media (max-width:820px){.hero .wrap{grid-template-columns:1fr;gap:40px}.portrait{max-width:320px}}
+
+/* ── 섹션 공통 */
+section.s{padding-block:96px;border-top:1px solid var(--line)}
+.s-head{display:grid;grid-template-columns:180px minmax(0,1fr);gap:32px;margin-bottom:48px}
+.s-mark{font-family:var(--f-mono);font-size:12px;color:var(--jade);letter-spacing:.1em;padding-top:10px}
+.s-head h2{font-size:clamp(28px,3.6vw,44px);line-height:1.25}
+.s-head p{margin-top:16px;color:var(--ink-2);max-width:40em;font-size:17px}
+.s-body{margin-left:212px}
+@media (max-width:820px){section.s{padding-block:64px}.s-head{grid-template-columns:1fr;gap:8px;margin-bottom:32px}.s-body{margin-left:0}}
+
+/* ── 기계 도식 */
+.machine{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:40px;align-items:start}
+.diagram{border:1px solid var(--line);background:var(--paper-2);padding:20px;overflow-x:auto}
+.diagram svg{display:block;width:100%;min-width:520px;height:auto}
+.diagram svg text{font-family:var(--f-body)}
+.flow-note{display:flex;flex-direction:column;gap:22px}
+.flow-note div{border-top:1px solid var(--line);padding-top:14px}
+.flow-note h3{font-size:18px}
+.flow-note p{font-size:15px;color:var(--ink-2);margin-top:6px}
+.video-strip{margin-top:28px;display:flex;align-items:center;gap:16px;padding:16px 18px;border:1px solid var(--line);text-decoration:none}
+.video-strip:hover{border-color:var(--jade)}
+.play{flex:none;width:44px;height:44px;border-radius:50%;background:var(--jade);display:grid;place-items:center}
+.play svg{fill:var(--paper)}
+.video-strip b{display:block;font-weight:500}
+.video-strip span{font-size:13px;color:var(--muted)}
+@media (max-width:900px){.machine{grid-template-columns:1fr}}
+
+/* ── 원칙 */
+.principles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 56px;counter-reset:p}
+.pr{border-top:1px solid var(--line);padding-block:26px;display:grid;grid-template-columns:52px minmax(0,1fr);gap:4px 12px}
+.pr .no{font-family:var(--f-mono);font-size:13px;color:var(--jade);padding-top:5px}
+.pr h3{font-size:21px;line-height:1.45}
+.pr p{grid-column:2;color:var(--ink-2);font-size:15.5px;margin-top:6px}
+.draft-note{margin-top:28px;font-size:13.5px;color:var(--muted)}
+@media (max-width:760px){.principles{grid-template-columns:1fr}}
+
+/* ── 뉴스레터 */
+.focus{background:var(--jade-soft);border-top:0}
+.focus-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:48px;align-items:start}
+.issue{background:var(--paper);border:1px solid var(--line);padding:28px;display:flex;flex-direction:column;gap:18px}
+.issue-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;border-bottom:2px solid var(--ink);padding-bottom:12px}
+.issue-top b{font-family:var(--f-display);font-size:24px}
+.issue-top span{font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+.toc{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.toc li{display:grid;grid-template-columns:96px minmax(0,1fr);gap:12px;padding:10px 0;border-bottom:1px solid var(--line);font-size:15px}
+.toc li span{font-family:var(--f-mono);font-size:12px;color:var(--jade);padding-top:3px;letter-spacing:.04em}
+.pillars{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:28px}
+.pillars div{border-top:2px solid var(--jade);padding-top:12px}
+.pillars b{font-family:var(--f-display);font-size:18px;display:block}
+.pillars span{font-size:13.5px;color:var(--ink-2)}
+.signal{margin-top:28px;border:1px solid var(--line);background:var(--paper);padding:18px}
+.signal .eyebrow{margin-bottom:10px}
+.sig-row{display:flex;flex-wrap:wrap;gap:8px 20px;font-size:13.5px}
+.sig-row i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:0}
+.sub{display:flex;flex-wrap:wrap;gap:12px;margin-top:4px}
+.btn-jade{background:var(--jade);color:var(--paper)}
+.btn-jade:hover{filter:brightness(1.08)}
+.btn-ghost{border-color:var(--ink-2);color:var(--ink)}
+.fine{font-size:12.5px;color:var(--muted);line-height:1.6}
+@media (max-width:900px){.focus-grid{grid-template-columns:1fr}.pillars{grid-template-columns:1fr}}
+
+/* ── 연구 목록 */
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+.filters button{font:500 13px var(--f-body);padding:6px 14px;border-radius:999px;border:1px solid var(--line);background:none;color:var(--ink-2);cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.articles{list-style:none;margin:0;padding:0}
+.articles li{display:grid;grid-template-columns:110px minmax(0,1fr) 120px;gap:20px;padding:20px 0;border-top:1px solid var(--line);align-items:baseline}
+.articles time{font-family:var(--f-mono);font-size:12.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+.articles h3{font-size:19px;line-height:1.5}
+.articles h3 a{text-decoration:none}.articles h3 a:hover{color:var(--jade);text-decoration:underline}
+.articles p{font-size:14.5px;color:var(--ink-2);margin-top:4px}
+.tag{font-family:var(--f-mono);font-size:11.5px;color:var(--jade);text-align:right;letter-spacing:.04em}
+@media (max-width:700px){.articles li{grid-template-columns:1fr;gap:4px}.tag{text-align:left}}
+
+/* ── 영상 */
+.videos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.vid{text-decoration:none;display:flex;flex-direction:column;gap:12px}
+.thumb{aspect-ratio:16/9;max-width:100%;background:var(--night);color:var(--night-fg);position:relative;display:flex;align-items:flex-end;padding:14px;overflow:hidden}
+.thumb::after{content:"";position:absolute;right:14px;top:14px;width:36px;height:36px;border-radius:50%;border:1px solid #ffffff55;background:radial-gradient(circle at 55% 50%,#fff 0 0) center/0 0 no-repeat}
+.thumb .len{position:absolute;right:14px;bottom:12px;font:500 11px var(--f-mono);color:var(--night-muted)}
+.thumb b{font-family:var(--f-display);font-size:17px;line-height:1.35;max-width:80%;position:relative}
+.vid h3{font-size:16.5px;font-family:var(--f-body);font-weight:500;line-height:1.5}
+.vid span{font-size:13px;color:var(--muted)}
+.vid:hover .thumb{outline:2px solid var(--jade);outline-offset:2px}
+@media (max-width:900px){.videos{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.videos{grid-template-columns:1fr}}
+
+/* ── 저서 */
+.books{display:grid;grid-template-columns:repeat(2,minmax(0,240px));gap:40px}
+.book{display:flex;flex-direction:column;gap:12px}
+.cover{aspect-ratio:2/3;max-width:100%;padding:18px 16px;display:flex;flex-direction:column;justify-content:space-between;color:#F2F5F4;box-shadow:inset 6px 0 0 #00000030}
+.cover b{font-family:var(--f-display);font-size:18px;line-height:1.4}
+.cover em{font-style:normal;font-size:11.5px;opacity:.8;line-height:1.4;display:block;margin-top:8px}
+.cover small{font-family:var(--f-mono);font-size:10.5px;opacity:.75;letter-spacing:.08em}
+.c1{background:#1E5A4C}.c2{background:#2B2F3A}.c3{background:#6B3B2E}.c4{background:#3F5367}.c5{background:#4E4632}.c6{background:#5A2E3E}.c7{background:#2F4A44}.c8{background:#36404F}
+.book a{text-decoration:none}.book a:hover .cover{outline:2px solid var(--jade);outline-offset:2px}
+.book h3{font-family:var(--f-body);font-size:15.5px;font-weight:500}
+.book span{font-size:13px;color:var(--muted)}
+@media (max-width:560px){.books{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}}
+
+/* ── 소개 */
+.about{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:56px}
+.about .bio p+p{margin-top:16px}
+.about .bio p{font-size:17px;color:var(--ink-2)}
+.timeline{list-style:none;margin:0;padding:0;border-left:1px solid var(--line)}
+.timeline li{padding:0 0 20px 22px;position:relative}
+.timeline li::before{content:"";position:absolute;left:-5px;top:9px;width:9px;height:9px;border-radius:50%;background:var(--paper);border:2px solid var(--jade)}
+.timeline time{font-family:var(--f-mono);font-size:12px;color:var(--muted);display:block}
+.timeline b{font-weight:500}
+.press{margin-top:28px;display:flex;flex-wrap:wrap;gap:8px 18px;font-size:14px;color:var(--muted)}
+@media (max-width:900px){.about{grid-template-columns:1fr}}
+
+/* ── 말미 */
+.foot{background:var(--night);color:var(--night-fg);padding-block:64px 40px}
+.foot-grid{display:grid;grid-template-columns:minmax(0,1.4fr) repeat(3,minmax(0,1fr));gap:32px}
+.foot h2{font-size:26px;line-height:1.4}
+.foot h4{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.12em;color:var(--night-muted);margin:0 0 12px;font-weight:500;text-transform:uppercase}
+.foot ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px;font-size:14px}
+.foot a{color:#C9D4D1;text-decoration:none}.foot a:hover{color:#fff}
+.copy-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.copy-row code{font-family:var(--f-mono);font-size:13px;user-select:all}
+.copy-row button{background:none;border:1px solid #ffffff30;color:var(--night-muted);font:500 11px var(--f-mono);padding:3px 8px;border-radius:3px;cursor:pointer}
+.legal{margin-top:48px;padding-top:20px;border-top:1px solid #ffffff18;font-size:12px;color:var(--night-muted);display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+@media (max-width:820px){.foot-grid{grid-template-columns:1fr 1fr}.foot-grid>div:first-child{grid-column:1/-1}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top"><b data-i="brand">안유화</b><span>AN YUHUA</span></a>
+    <nav class="nav" id="nav" aria-label="주 메뉴">
+      <a href="#machine" data-i="n1">중국 경제의 작동 원리</a>
+      <a href="#principles" data-i="n2">원칙</a>
+      <a href="#focus" data-i="n3">중국경제포커스</a>
+      <a href="#research" data-i="n4">연구·칼럼</a>
+      <a href="#videos" data-i="n5">영상</a>
+      <a href="#books" data-i="n6">저서</a>
+      <a href="#about" data-i="n7">소개</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="nav" data-i="menu">메뉴</button>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" data-lang="ko" aria-pressed="true">한</button>
+      <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      <button type="button" data-lang="zh" aria-pressed="false">中</button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <canvas id="grid" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div>
+      <div class="eyebrow" data-i="h_eye">경제학자 · 중국증권행정연구원 원장</div>
+      <h1 data-i="h_title" data-html>중국을 정확히 읽는 것이<br><em>세계 경제를 읽는 일</em>입니다.</h1>
+      <p class="lede" data-i="h_lede">중국 경제는 시장과 정책이 함께 움직이는 기계입니다. 그 작동 원리를 데이터와 원칙으로 풀어, 한국의 투자자·기업·정책 결정자가 더 나은 판단을 내리도록 돕습니다.</p>
+      <div class="cta">
+        <a class="btn btn-solid" href="#principles" data-i="h_cta1">원칙 읽기</a>
+        <a class="btn btn-line" href="#focus" data-i="h_cta2">중국경제포커스 구독</a>
+      </div>
+      <div class="socials">
+        <a href="https://www.youtube.com/@anyuhuatv" target="_blank" rel="noopener">YouTube · 안유화경제투자론</a>
+        <a href="https://blog.naver.com/anyuhuatv" target="_blank" rel="noopener">네이버 블로그</a>
+        <a href="https://www.podbbang.com/channels/1791150" target="_blank" rel="noopener">팟캐스트 · 안경투</a>
+        <a href="https://www.facebook.com/yuhua.an.1" target="_blank" rel="noopener">Facebook</a>
+      </div>
+    </div>
+    <figure class="portrait">
+      <img src="profile.jpg" alt="안유화 교수 프로필 사진" width="720" height="900">
+      <figcaption><span data-i="who_name" style="font-family:var(--f-display);font-size:20px;color:var(--night-fg);margin:0">안유화 교수</span><span data-i="who_role">중국 경제·금융 전문가 · 경영학 박사</span></figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="s" id="machine">
+  <div class="wrap">
+    <div class="s-head">
+      <div class="s-mark">§ 01</div>
+      <div>
+        <h2 data-i="m_title">중국 경제는 어떻게 작동하는가</h2>
+        <p data-i="m_lede">정책 신호가 금융을 거쳐 지방정부와 산업으로 내려가고, 그 결과가 무역과 위안화를 통해 세계로 퍼집니다. 다섯 개의 톱니를 함께 봐야 중국이 보입니다.</p>
+      </div>
+    </div>
+    <div class="s-body machine">
+      <div class="diagram">
+        <svg viewBox="0 0 560 360" role="img" aria-label="중국 경제의 다섯 톱니: 정책, 금융, 지방재정, 산업과 공급망, 대외부문">
+          <defs>
+            <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="var(--jade)"/></marker>
+          </defs>
+          <g fill="none" stroke="var(--jade)" stroke-width="1.6" marker-end="url(#ar)">
+            <path d="M200 62 L330 62"/>
+            <path d="M420 92 L420 150"/>
+            <path d="M380 196 L250 196"/>
+            <path d="M150 226 L150 272"/>
+            <path d="M240 302 L330 302"/>
+          </g>
+          <path d="M100 272 C 40 220, 40 110, 92 90" fill="none" stroke="var(--muted)" stroke-width="1.2" stroke-dasharray="4 4" marker-end="url(#ar)"/>
+          <g font-size="11" fill="var(--muted)">
+            <text x="226" y="52">정책금리·대출 지도</text>
+            <text x="430" y="126">신용·채권</text>
+            <text x="270" y="186">토지재정·LGFV</text>
+            <text x="160" y="254">투자·보조금</text>
+            <text x="252" y="292">수출·위안화</text>
+            <text x="12" y="186" transform="rotate(-90 22 186)">피드백</text>
+          </g>
+          <g>
+            <rect x="60" y="32" width="140" height="60" fill="var(--paper)" stroke="var(--ink)"/>
+            <text x="130" y="58" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">정책</text>
+            <text x="130" y="78" text-anchor="middle" font-size="11" fill="var(--ink-2)">당중앙·국무원·발개위</text>
+
+            <rect x="340" y="32" width="160" height="60" fill="var(--paper)" stroke="var(--ink)"/>
+            <text x="420" y="58" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">금융</text>
+            <text x="420" y="78" text-anchor="middle" font-size="11" fill="var(--ink-2)">인민은행·국유은행·증권시장</text>
+
+            <rect x="340" y="160" width="160" height="60" fill="var(--paper)" stroke="var(--ink)"/>
+            <text x="420" y="186" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">지방재정</text>
+            <text x="420" y="206" text-anchor="middle" font-size="11" fill="var(--ink-2)">성·시 정부, 융자플랫폼</text>
+
+            <rect x="60" y="166" width="180" height="60" fill="var(--paper)" stroke="var(--ink)"/>
+            <text x="150" y="192" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">산업·공급망</text>
+            <text x="150" y="212" text-anchor="middle" font-size="11" fill="var(--ink-2)">제조·신에너지·반도체</text>
+
+            <rect x="60" y="276" width="180" height="56" fill="var(--paper)" stroke="var(--ink)"/>
+            <text x="150" y="300" text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">가계·소비</text>
+            <text x="150" y="319" text-anchor="middle" font-size="11" fill="var(--ink-2)">고용·소득·부동산</text>
+
+            <rect x="340" y="276" width="160" height="56" fill="var(--jade)" stroke="var(--jade)"/>
+            <text x="420" y="300" text-anchor="middle" font-size="15" font-weight="700" fill="var(--paper)">대외부문</text>
+            <text x="420" y="319" text-anchor="middle" font-size="11" fill="var(--paper)">무역·자본흐름·위안화</text>
+          </g>
+        </svg>
+      </div>
+      <div class="flow-note">
+        <div><h3>정책이 먼저 움직입니다</h3><p>중국에서는 가격보다 정책 신호가 먼저 나옵니다. 중앙경제공작회의와 양회의 문장 하나가 1년의 신용 방향을 정합니다.</p></div>
+        <div><h3>돈은 은행과 지방정부를 거쳐 흐릅니다</h3><p>국유은행의 대출과 지방정부의 토지재정이 투자의 대부분을 만듭니다. 부채의 위치를 알면 위험의 위치가 보입니다.</p></div>
+        <div><h3>한국은 공급망으로 연결됩니다</h3><p>중국의 산업정책 변화는 한국 수출 품목과 공급망에 곧바로 전달됩니다. 모든 분석은 '한국 시사점'으로 끝맺습니다.</p></div>
+      </div>
+    </div>
+    <div class="s-body">
+      <a class="video-strip" href="https://www.youtube.com/@anyuhuatv" target="_blank" rel="noopener">
+        <span class="play"><svg width="14" height="16" viewBox="0 0 14 16" aria-hidden="true"><path d="M0 0L14 8L0 16z"/></svg></span>
+        <span><b data-i="m_vid">30분 영상 강의: 중국 경제는 어떻게 작동하는가</b><span data-i="m_vid2">대표 강의 제작 예정 · 지금은 유튜브 「안유화경제투자론」에서 해설을 볼 수 있습니다</span></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="s" id="principles">
+  <div class="wrap">
+    <div class="s-head">
+      <div class="s-mark">§ 02</div>
+      <div>
+        <h2 data-i="p_title">중국을 읽는 원칙</h2>
+        <p data-i="p_lede">수십 년간 중국 시장을 관찰하며 정리한 판단의 기준입니다. 원칙은 결론이 아니라, 매번 같은 실수를 하지 않기 위한 체크리스트입니다.</p>
+      </div>
+    </div>
+    <div class="s-body">
+      <div class="principles">
+        <article class="pr"><span class="no">1.1</span><h3>정책 문서를 시장 데이터보다 먼저 읽는다</h3><p>중국에서 정책은 가격의 선행지표다. 문장의 변화, 특히 수식어의 강도 변화를 추적한다.</p></article>
+        <article class="pr"><span class="no">1.2</span><h3>숫자는 반드시 출처와 함께 말한다</h3><p>국가통계국, 인민은행, 해관총서의 원자료를 기준으로 하고, 추정은 추정이라고 밝힌다.</p></article>
+        <article class="pr"><span class="no">1.3</span><h3>부채는 총량보다 위치를 본다</h3><p>같은 부채라도 중앙·지방·기업·가계 중 어디에 있느냐에 따라 위험의 성격이 달라진다.</p></article>
+        <article class="pr"><span class="no">1.4</span><h3>중국을 하나의 시장으로 보지 않는다</h3><p>31개 성은 각기 다른 경제다. 지역별 재정 체력과 산업 구조를 따로 읽는다.</p></article>
+        <article class="pr"><span class="no">1.5</span><h3>낙관과 비관 모두 검증 대상이다</h3><p>'중국 붕괴론'과 '중국 필승론'은 같은 오류다. 데이터가 말하는 만큼만 말한다.</p></article>
+        <article class="pr"><span class="no">1.6</span><h3>모든 분석은 한국의 질문으로 돌아온다</h3><p>중국의 변화가 한국의 기업·투자자·정책에 무엇을 뜻하는지 답하지 못하면 분석은 끝나지 않은 것이다.</p></article>
+      </div>
+      <p class="draft-note" data-i="p_note">※ 위 원칙은 사이트 구조를 보여주기 위한 초안입니다. 교수님 감수 후 확정되며, 원칙마다 상세 해설 페이지로 확장합니다.</p>
+    </div>
+  </div>
+</section>
+
+<section class="s focus" id="focus">
+  <div class="wrap">
+    <div class="s-head">
+      <div class="s-mark">§ 03</div>
+      <div>
+        <h2 data-i="f_title">월간 「중국경제포커스」</h2>
+        <p data-i="f_lede">매월 둘째 주 화요일 아침, 중국 거시·산업·공급망의 한 달을 한 권으로 정리해 보내드립니다. 기사마다 한국 시사점을 붙입니다.</p>
+      </div>
+    </div>
+    <div class="s-body focus-grid">
+      <div>
+        <div class="issue">
+          <div class="issue-top"><b data-i="f_latest">최신호</b><span>2026-11 · <span class="ph" style="margin:0">호수·제목 연동 예정</span></span></div>
+          <ol class="toc">
+            <li><span>OPINION</span>편집장 칼럼</li>
+            <li><span>HOT ISSUE</span>이달의 핵심 이슈</li>
+            <li><span>MACRO</span>성장·물가·신용·정책</li>
+            <li><span>INDUSTRY</span>산업분석</li>
+            <li><span>SUPPLY</span>공급망과 한국 수출</li>
+            <li><span>Q&amp;A</span>독자 질문에 답합니다</li>
+          </ol>
+          <div class="sub">
+            <a class="btn btn-jade" href="https://page.stibee.com/subscriptions/522211" target="_blank" rel="noopener" data-i="f_sub">무료 구독하기</a>
+            <a class="btn btn-ghost" href="https://chinamacro.kr" target="_blank" rel="noopener" data-i="f_arch">지난 호 보기</a>
+          </div>
+          <p class="fine">발행: 거시경제연구실 · 본 자료는 정보 제공 목적이며 특정 종목·상품의 매수·매도 권유가 아닙니다.</p>
+        </div>
+      </div>
+      <div>
+        <div class="pillars">
+          <div><b>거시</b><span>성장률, 물가, 사회융자총량, 통화·재정 정책</span></div>
+          <div><b>산업분석</b><span>신에너지, 반도체, 플랫폼, 부동산</span></div>
+          <div><b>공급망</b><span>한중 교역, 핵심 소재, 수출통제</span></div>
+        </div>
+        <div class="signal">
+          <div class="eyebrow">고유 지표 · 지방정부 부채 스트레스 지수</div>
+          <p style="font-size:14.5px;color:var(--ink-2);margin-bottom:12px">성(省)별 신용스프레드·토지수입·그림자금융·차환 부담을 0~3점으로 평가해 매호 신호등으로 공개합니다.</p>
+          <div class="sig-row">
+            <span><i style="background:var(--sig-red)"></i>경고 · 2.2 이상</span>
+            <span><i style="background:var(--sig-amber)"></i>주의 · 1.6~2.2</span>
+            <span><i style="background:var(--sig-green)"></i>안정 · 1.6 미만</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="s" id="research">
+  <div class="wrap">
+    <div class="s-head">
+      <div class="s-mark">§ 04</div>
+      <div>
+        <h2 data-i="r_title">연구·칼럼</h2>
+        <p data-i="r_lede">자본시장연구원 시절의 보고서부터 언론 기고까지, 중국 금융을 기록해 온 글을 모읍니다.</p>
+      </div>
+    </div>
+    <div class="s-body">
+      <div class="filters" role="group" aria-label="주제">
+        <button type="button" aria-pressed="true" data-f="all">전체</button>
+        <button type="button" aria-pressed="false" data-f="col">칼럼</button>
+        <button type="button" aria-pressed="false" data-f="rep">연구보고서</button>
+        <button type="button" aria-pressed="false" data-f="pub">정기간행물</button>
+      </div>
+      <ul class="articles" id="articles">
+        <li data-t="col"><time>2020-09</time><div><h3><a href="https://www.ajunews.com/view/20200923095335019" target="_blank" rel="noopener">미·중 충돌 격화 속에 속도 내는 위안화 국제화</a></h3><p>아주경제 「안유화 칼럼」</p></div><span class="tag">칼럼</span></li>
+        <li data-t="col"><time>2020-02</time><div><h3><a href="https://www.ajunews.com/view/20200213143112344" target="_blank" rel="noopener">코로나19 확산 사태가 세계경제에 미치는 영향</a></h3><p>아주경제 「안유화 칼럼」</p></div><span class="tag">칼럼</span></li>
+        <li data-t="col"><time>2019-12</time><div><h3><a href="https://www.ajunews.com/view/20191210100650279" target="_blank" rel="noopener">中 인민은행이 금융안정보고서를 통해 시장에 경보를 울린 이유</a></h3><p>아주경제 「안유화 칼럼」</p></div><span class="tag">칼럼</span></li>
+        <li data-t="col"><time>2016-04</time><div><h3><a href="https://m.seoul.co.kr/news/2016/04/28/20160428030007" target="_blank" rel="noopener">중국 부채위기를 어떻게 봐야 하나</a></h3><p>서울신문 「열린세상」</p></div><span class="tag">칼럼</span></li>
+        <li data-t="rep"><time>2012</time><div><h3>위안화의 역외 사용 확대와 한국의 대응</h3><p>자본시장연구원 연구보고서</p></div><span class="tag">연구보고서</span></li>
+        <li data-t="pub"><time>2008–2015</time><div><h3>중국금융시장포커스</h3><p>자본시장연구원 정기간행물 · 창간 및 책임편집</p></div><span class="tag">정기간행물</span></li>
+      </ul>
+      <p class="draft-note">전체 칼럼 목록은 <a href="https://search.naver.com/search.naver?where=news&amp;query=%EC%95%88%EC%9C%A0%ED%99%94+%EC%B9%BC%EB%9F%BC" target="_blank" rel="noopener">언론 기고 검색</a>에서 볼 수 있습니다. 사이트 오픈 시 연도별 아카이브로 정리합니다.</p>
+    </div>
+  </div>
+</section>
+
+<section class="s" id="videos">
+  <div class="wrap">
+    <div class="s-head">
+      <div class="s-mark">§ 05</div>
+      <div>
+        <h2 data-i="v_title">영상·강연</h2>
+        <p data-i="v_lede">방송 출연, 강연, 유튜브 해설을 모았습니다. 각 영상은 원래 채널에서 재생됩니다.</p>
+      </div>
+    </div>
+    <div class="s-body videos">
+      <a class="vid" href="https://www.youtube.com/@anyuhuatv" target="_blank" rel="noopener"><div class="thumb"><b>안유화경제투자론</b><span class="len">YouTube</span></div><h3>유튜브 채널</h3><span>중국·세계 경제와 투자 해설</span></a>
+      <a class="vid" href="https://www.podbbang.com/channels/1791150" target="_blank" rel="noopener"><div class="thumb"><b>안유화의 경제투자론 (안경투)</b><span class="len">Podcast</span></div><h3>팟캐스트</h3><span>팟빵에서 듣기</span></a>
+      <a class="vid" href="https://www.youtube.com/results?search_query=%EC%95%88%EC%9C%A0%ED%99%94+%EC%87%BC+%EC%97%B0%ED%95%A9%EC%9D%B8%ED%8F%AC%EB%A7%A5%EC%8A%A4" target="_blank" rel="noopener"><div class="thumb"><b>안유화 쇼</b><span class="len">연합인포맥스</span></div><h3>경제 방송 진행</h3><span>연합인포맥스 「안유화 쇼」</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="s" id="books">
+  <div class="wrap">
+    <div class="s-head">
+      <div class="s-mark">§ 06</div>
+      <div>
+        <h2 data-i="b_title">저서</h2>
+        <p data-i="b_lede">돈과 부가 흐르는 원리를 개인의 언어로 풀어낸 책입니다. 표지를 누르면 서점에서 볼 수 있습니다.</p>
+      </div>
+    </div>
+    <div class="s-body books">
+      <div class="book"><a href="https://search.kyobobook.co.kr/search?keyword=%EB%B6%80%EC%9D%98%20%EA%B3%A1%EC%84%A0%20%EC%95%88%EC%9C%A0%ED%99%94" target="_blank" rel="noopener"><div class="cover c1"><div><b>부의 곡선</b><em>인생의 손익분기점을 넘어야 돈이 나를 위해 일한다</em></div><small>안유화 지음</small></div></a><h3>부의 곡선</h3><span>경이로움 · 2026 · 최신작</span></div>
+      <div class="book"><a href="https://search.kyobobook.co.kr/search?keyword=%EB%8D%94%20%ED%94%8C%EB%A1%9C%20%EC%95%88%EC%9C%A0%ED%99%94" target="_blank" rel="noopener"><div class="cover c3"><div><b>더 플로</b></div><small>안유화 지음</small></div></a><h3>더 플로</h3><span>경이로움 · 2023 · 첫 단독 저서 · 베스트셀러</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="s" id="about">
+  <div class="wrap">
+    <div class="s-head">
+      <div class="s-mark">§ 07</div>
+      <div><h2 data-i="a_title">안유화 교수</h2></div>
+    </div>
+    <div class="s-body about">
+      <div class="bio">
+        <p>안유화 교수는 중국 금융·자본시장을 연구하는 경제학자입니다. 중국 지린성 옌지에서 태어나 중국화공대학교에서 화학공정을 전공했고, 연변대학교에서 법학 석사, 고려대학교에서 경영학 박사 학위를 받았습니다. 연변대학교에서 10년간 학생을 가르쳤습니다.</p>
+        <p>2008년부터 2015년까지 자본시장연구원 국제금융실에서 중국 담당 연구위원으로 일하며 「중국금융시장포커스」를 창간해 이끌었습니다. 이후 한국예탁결제원 객원연구원, 성균관대학교 중국대학원 금융학과 교수(2016~2023)를 지냈고, 외교부 정책자문위원과 국가지식재산위원회 전문위원으로 정책 자문을, 법무법인 율촌 중국팀 비상임고문으로 법률·투자 자문을 맡았습니다.</p>
+        <p>현재 중국증권행정연구원 원장으로 한국 기업의 중국 투자 자문을 하고 있으며, 연세대학교 디지털금융·가상자산 최고위과정 교육원장, 삼성글로벌경영포럼 자문위원으로 활동합니다. 유튜브 「안유화경제투자론」과 연합인포맥스 「안유화 쇼」로 중국과 세계 경제를 대중에게 설명해 왔습니다.</p>
+      </div>
+      <ol class="timeline">
+        <li><time>현재</time><b>중국증권행정연구원 원장</b></li>
+        <li><time>현재</time><b>연세대 디지털금융·가상자산 최고위과정 교육원장</b></li>
+        <li><time>2026</time><b>월간 「중국경제포커스」 창간 · 편집장</b></li>
+        <li><time>2016–2023</time><b>성균관대학교 중국대학원 금융학과 교수</b></li>
+        <li><time>2016.01–2017.01</time><b>법무법인 율촌 중국팀 비상임고문</b></li>
+        <li><time>2016–2020</time><b>국가지식재산위원회 전문위원</b></li>
+        <li><time>2015–</time><b>외교부 정책자문위원 (경제·재외동포 분과)</b></li>
+        <li><time>2015–2017</time><b>한국예탁결제원 객원연구원</b></li>
+        <li><time>2008–2015</time><b>자본시장연구원 연구위원 · 「중국금융시장포커스」 책임편집</b></li>
+        <li><time>2013</time><b>고려대학교 경영학 박사</b></li>
+        <li><time>1998–2001</time><b>연변대학교 경제학과 법학 석사</b></li>
+        <li><time>1993–2003</time><b>연변대학교 교수</b></li>
+        <li><time>1989–1993</time><b>중국화공대학교 화학공정 공학사</b></li>
+      </ol>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div><h2 data-i="ft_line">중국을 데이터와 원칙으로 읽습니다.</h2></div>
+      <div><h4>Explore</h4><ul><li><a href="#principles" data-i="n2">원칙</a></li><li><a href="#research" data-i="n4">연구·칼럼</a></li><li><a href="#videos" data-i="n5">영상</a></li><li><a href="#books" data-i="n6">저서</a></li></ul></div>
+      <div><h4>Newsletter</h4><ul><li><a href="https://page.stibee.com/subscriptions/522211" target="_blank" rel="noopener" data-i="f_sub">무료 구독하기</a></li><li><a href="https://chinamacro.kr" target="_blank" rel="noopener">chinamacro.kr</a></li><li><a href="https://www.youtube.com/@anyuhuatv" target="_blank" rel="noopener">YouTube</a></li><li><a href="https://blog.naver.com/anyuhuatv" target="_blank" rel="noopener">네이버 블로그</a></li></ul></div>
+      <div><h4>Contact</h4><div class="copy-row"><code id="mail">contact@chinamacro.kr</code><button type="button" id="copyBtn">복사</button></div><p class="fine" style="color:var(--night-muted);margin-top:10px">강연·자문·인터뷰 요청</p></div>
+    </div>
+    <div class="legal">
+      <span>© 2026 안유화 · 주식회사 중국증권행정연구원 (사업자 425-81-00149) · www.csai.re.kr</span>
+      <span>본 사이트의 내용은 투자 권유가 아닙니다.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // 언어 사전: 메뉴·표지·섹션 제목. 본문 번역은 확정 원고를 받은 뒤 추가.
+  var T={
+    en:{brand:"An Yuhua",n1:"How China's Economy Works",n2:"Principles",n3:"China Focus",n4:"Research",n5:"Videos",n6:"Books",n7:"About",menu:"Menu",
+      h_eye:"Economist · President, China Securities Administration Institute",h_title:"Reading China accurately<br>is <em>reading the world economy</em>.",
+      h_lede:"China's economy is a machine driven by markets and policy together. I explain how it works through data and principles, so investors, companies and policymakers can decide better.",
+      h_cta1:"Read the principles",h_cta2:"Subscribe to China Focus",who_name:"Prof. An Yuhua",who_role:"China economy & finance · Ph.D. in Business",
+      m_title:"How China's economy works",m_lede:"Policy signals travel through finance into local governments and industry, then out to the world through trade and the renminbi. Watch all five gears together.",
+      m_vid:"30-minute lecture: How China's economy works",m_vid2:"Flagship lecture in production · watch commentary on YouTube now",
+      p_title:"Principles for reading China",p_lede:"Rules of judgment distilled from decades of watching Chinese markets. A checklist to avoid repeating the same mistakes.",
+      p_note:"Draft principles for layout only, pending the professor's review.",
+      f_title:"Monthly China Focus",f_lede:"Every second Tuesday: China's macro, industry and supply chains in one issue, each article ending with what it means for Korea.",
+      f_latest:"Latest issue",f_sub:"Subscribe free",f_arch:"Past issues",r_title:"Research & Commentary",r_lede:"Papers, reports and columns in one place.",
+      v_title:"Videos & Talks",v_lede:"Broadcasts, lectures and explainers. Each plays on its original channel.",b_title:"Books",b_lede:"Covers, bibliographic details and where to buy.",
+      a_title:"Prof. An Yuhua",ft_line:"Reading China through data and principles."},
+    zh:{brand:"安玉花",n1:"中国经济如何运行",n2:"原则",n3:"中国经济聚焦",n4:"研究与评论",n5:"视频",n6:"著作",n7:"简介",menu:"菜单",
+      h_eye:"经济学家 · 中国证券行政研究院 院长",h_title:"准确读懂中国，<br>就是<em>读懂世界经济</em>。",
+      h_lede:"中国经济是市场与政策共同驱动的机器。以数据和原则解读其运行机制，帮助投资者、企业与决策者做出更好的判断。",
+      h_cta1:"阅读原则",h_cta2:"订阅《中国经济聚焦》",who_name:"安玉花 教授",who_role:"中国经济与金融专家 · 管理学博士",
+      m_title:"中国经济如何运行",m_lede:"政策信号经由金融体系传导至地方政府与产业，再通过贸易和人民币影响世界。五个齿轮必须一起看。",
+      m_vid:"30分钟讲座：中国经济如何运行",m_vid2:"代表讲座制作中 · 现可在YouTube观看解读",
+      p_title:"解读中国的原则",p_lede:"多年观察中国市场所总结的判断标准，是避免重复同样错误的清单。",p_note:"以上原则为展示结构的草稿，待教授审定。",
+      f_title:"月刊《中国经济聚焦》",f_lede:"每月第二个星期二，汇总中国宏观、产业与供应链动态，每篇附韩国启示。",
+      f_latest:"最新一期",f_sub:"免费订阅",f_arch:"往期回顾",r_title:"研究与评论",r_lede:"论文、报告与媒体专栏汇总。",
+      v_title:"视频与演讲",v_lede:"电视节目、演讲与解读视频。",b_title:"著作",b_lede:"封面、书目信息及购买链接。",a_title:"安玉花 教授",ft_line:"以数据与原则解读中国。"}
+  };
+  var nodes=[].slice.call(document.querySelectorAll("[data-i]"));
+  nodes.forEach(function(n){n._ko=n.innerHTML});
+  function setLang(l){
+    nodes.forEach(function(n){var d=T[l];var v=d&&d[n.getAttribute("data-i")];n.innerHTML=(l==="ko"||!v)?n._ko:v});
+    document.documentElement.lang=l==="zh"?"zh-Hans":l;
+    [].forEach.call(document.querySelectorAll("[data-lang]"),function(b){b.setAttribute("aria-pressed",b.dataset.lang===l)});
+    try{localStorage.setItem("ayh-lang",l)}catch(e){}
+  }
+  [].forEach.call(document.querySelectorAll("[data-lang]"),function(b){b.addEventListener("click",function(){setLang(b.dataset.lang)})});
+  try{var s=localStorage.getItem("ayh-lang");if(s&&s!=="ko")setLang(s)}catch(e){}
+
+  var nav=document.getElementById("nav"),mb=document.getElementById("menuBtn");
+  mb.addEventListener("click",function(){var o=nav.classList.toggle("open");mb.setAttribute("aria-expanded",o)});
+  nav.addEventListener("click",function(e){if(e.target.tagName==="A"){nav.classList.remove("open");mb.setAttribute("aria-expanded","false")}});
+
+  [].forEach.call(document.querySelectorAll("[data-f]"),function(b,_,all){
+    b.addEventListener("click",function(){
+      var f=b.dataset.f;[].forEach.call(document.querySelectorAll("[data-f]"),function(x){x.setAttribute("aria-pressed",x===b)});
+      [].forEach.call(document.querySelectorAll("#articles li"),function(li){li.hidden=!(f==="all"||li.dataset.t===f)});
+    });
+  });
+
+  var cb=document.getElementById("copyBtn");
+  cb.addEventListener("click",function(){
+    var t=document.getElementById("mail").textContent;
+    function sel(){var r=document.createRange();r.selectNodeContents(document.getElementById("mail"));var s=getSelection();s.removeAllRanges();s.addRange(r)}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){cb.textContent="복사됨"},sel)}else sel();
+  });
+
+  // 표지 배경: 수익률 곡선처럼 흐르는 가는 선들
+  var c=document.getElementById("grid"),x=c.getContext("2d"),still=matchMedia("(prefers-reduced-motion: reduce)").matches,t0=0;
+  function size(){var r=c.getBoundingClientRect(),d=devicePixelRatio||1;c.width=r.width*d;c.height=r.height*d;x.setTransform(d,0,0,d,0,0)}
+  function draw(t){
+    var w=c.clientWidth,h=c.clientHeight;x.clearRect(0,0,w,h);
+    for(var i=0;i<14;i++){
+      x.beginPath();x.strokeStyle="rgba(159,214,196,"+(0.05+i*0.012)+")";x.lineWidth=1;
+      for(var px=0;px<=w;px+=8){
+        var k=px/w,y=h*(0.92-i*0.045)-Math.log(1+k*6)*h*0.12*(1+i*0.05)+Math.sin(k*5+i*0.6+t*0.0003)*10;
+        px?x.lineTo(px,y):x.moveTo(px,y);
+      }
+      x.stroke();
+    }
+    if(!still)requestAnimationFrame(draw);
+  }
+  size();addEventListener("resize",size);requestAnimationFrame(draw);
+})();
+</script>
+</body>
+</html>
