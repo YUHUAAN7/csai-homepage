@@ -533,7 +533,7 @@ def data_items():
          L("설문 시작", "Survey under way", "调查已启动"), True),
         (L("한국 수출로 읽는 중국", "Reading China through Korean exports", "从韩国出口读中国"),
          L("관세청·산업부 통계로 매월 1일에 내는 1쪽 Flash", "A one-page Flash on the 1st of each month, from Korea Customs Service and trade-ministry statistics", "基于韩国关税厅与产业部统计、每月1日发布的一页快讯"),
-         L("준비 중", "Coming soon", "筹备中"), False),
+         L("11월 중순호 발행", "Mid-November issue out", "11月中旬期已发布"), True),
         (L("「연구실 데이터」 코너", "“Lab Data” column", "“研究室数据”栏目"),
          L("월간지에 싣는 자체 분석. 예: 반도체 수입 증가의 88%는 가격 효과", "Our own analysis in the monthly. Example: 88% of the rise in semiconductor imports was a price effect.", "月刊中的自主分析。例：半导体进口增长的88%来自价格效应。"),
          L("발행 중", "Publishing", "发行中"), True),
