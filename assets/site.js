@@ -46,7 +46,16 @@
         if (en.isIntersecting) {
           tabs.forEach(function (a) { a.classList.remove("on"); });
           var a = byId[en.target.id];
-          if (a) { a.classList.add("on"); if (a.scrollIntoView) a.scrollIntoView({ block: "nearest", inline: "nearest" }); }
+          if (a) {
+            a.classList.add("on");
+            /* 탭 줄만 가로로 움직인다. scrollIntoView 는 페이지 전체를 위로 끌어올려 스크롤을 막으므로 쓰지 않는다. */
+            var box = a.parentNode;
+            while (box && box.id !== "subnav" && box.scrollWidth <= box.clientWidth) box = box.parentNode;
+            if (box && box.scrollWidth > box.clientWidth) {
+              var r = a.getBoundingClientRect(), bx = box.getBoundingClientRect();
+              box.scrollLeft += (r.left + r.width / 2) - (bx.left + bx.width / 2);
+            }
+          }
         }
       });
     }, { rootMargin: "-30% 0px -60% 0px" });
