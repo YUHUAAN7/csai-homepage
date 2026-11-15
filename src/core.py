@@ -213,7 +213,7 @@ def footer():
         <p class="ftr-line">{L("중국의 정책을 한국의 결정으로 번역한다.", "Translating China into Korean decisions.", "把中国的政策，翻译成韩国的决策。")}</p>
         <p class="ftr-line">{L("중국을 데이터와 원칙으로 읽습니다.", "Reading China through data and principles.", "以数据与原则解读中国。")}</p>
         <div class="ftr-mail"><code id="mail">{MAIL}</code><button type="button" class="copy" data-copy="#mail" data-done="{L("복사됨", "Copied", "已复制")}">{L("복사", "Copy", "复制")}</button></div>
-        <p class="ftr-note">{L("강연·자문·인터뷰 요청", "Speaking, advisory and interview requests", "演讲·咨询·采访邀请")} · {L("주소·대표전화는 확정 후 게시합니다.", "Address and phone number will be posted once confirmed.", "地址和电话确认后公布。")}</p>
+        <p class="ftr-note">{L("강연·자문·인터뷰 요청", "Speaking, advisory and interview requests", "演讲·咨询·采访邀请")}</p>
       </div>
       <nav class="ftr-map" aria-label="{L("사이트맵", "Sitemap", "网站地图")}">{"".join(cols)}</nav>
     </div>

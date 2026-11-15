@@ -34,7 +34,7 @@ def about():
         ("2025.06", L("의정부시 인공지능 포럼 기조강연", "Keynote at the Uijeongbu City AI Forum", "在议政府市人工智能论坛作主旨演讲"), "https://www.wikitree.co.kr/articles/1060824"),
         ("2025.09", L("아시아투데이 보도: AI·디지털자산과 한국 기업의 기회", "Asia Today: AI, digital assets and the opportunity for Korean companies", "《今日亚洲》报道：AI·数字资产与韩国企业的机会"), "https://www.asiatoday.co.kr/kn/view.php?key=20250907002221015"),
         ("2025.09", L("한국일보 한국아카데미 14기 강의", "Lecture at the Hankook Ilbo Korea Academy, 14th class", "在《韩国日报》韩国学院第14期授课"), "https://www.hankookilbo.com/news/article/A2025091710450002426"),
-        ("2026.03", L("매일경제와 「디지털자산·AI 융합 최고위과정」 2기 공동 주관", "Co-organised the 2nd “Digital Assets and AI” executive programme with Maeil Business Newspaper", "与《每日经济》共同主办第2期“数字资产·AI融合高层课程”"), "https://m.mk.co.kr/amp/11979976"),
+        ("2026.03", L("매일경제와 「디지털자산·AI 융합 최고위과정」 공동 주관 (1·2기 운영, 3기 준비 중)", "Co-organising the “Digital Assets and AI” executive programme with Maeil Business Newspaper (1st and 2nd classes run, 3rd in preparation)", "与《每日经济》共同主办“数字资产·AI融合高层课程”（已办第1、2期，第3期筹备中）"), "https://m.mk.co.kr/amp/11979976"),
         ("2026.09", L("뉴시스·매일경제 보도: “한국의 골든타임은 3~5년”", "Newsis and Maeil Business: “Korea's golden time is three to five years”", "纽西斯·《每日经济》报道：“韩国的黄金时间是3至5年”"), "https://www.newsis.com/view/NISX20260910_0003783819"),
     ]
     hist = ('<h3 style="font-size:20px;margin:30px 0 4px">' + L("연혁", "History", "沿革") + '</h3><ul class="hist">'
