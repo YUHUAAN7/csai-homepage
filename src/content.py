@@ -560,7 +560,7 @@ def process_lede():
 def events_list(full=True):
     """확정된 일정 목록. full=False 이면 포럼·브리핑만."""
     rows = [("2026.12.15", L("영문 분기 노트 「Korea Sensor」 첫 호", "First issue of the English quarterly note Korea Sensor", "英文季度简报 Korea Sensor 首期")),
-            ("2026.12.24", L("연례 중국 전망 포럼", "Annual China outlook forum", "年度中国展望论坛")),
+            ("2026.12.24", L("연례 중국 전망 포럼: 2027년 중국 경제 전망, 정책 문장으로 읽는 방향", "Annual China outlook forum: the 2027 outlook for China's economy, read through policy language", "年度中国展望论坛：2027年中国经济展望——从政策措辞读方向")),
             ("2027.01.15", L("분기 경영진 브리핑", "Quarterly executive briefing", "季度管理层简报")),
             ("2027 1Q", L("중국 학자 특별기고 첫 편", "First special contribution from a Chinese scholar", "中国学者特约稿首篇"))]
     if not full:
