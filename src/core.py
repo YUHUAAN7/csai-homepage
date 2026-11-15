@@ -51,6 +51,8 @@ def sub_href(slug, anchor):
     """하위 메뉴 링크. 뉴스·자료의 '연구소장's Insight'는 전용 페이지의 메시지 화면으로 보낸다."""
     if slug == "news" and anchor == "insight":
         return P("insight", "insight")
+    if slug == "focus" and anchor == "notes":
+        return P("videos")
     return P(slug, anchor)
 
 
@@ -133,7 +135,8 @@ def nav():
             ("latest", L("최신", "Latest", "最新")), ("flash", "Flash"),
             ("monthly", L("월간 중국경제포커스", "Monthly", "月刊《中国经济聚焦》")),
             ("deepdive", L("심층보고", "Deep Dive", "深度报告")),
-            ("video", L("영상·뉴스레터", "Video & Newsletter", "视频与通讯"))]),
+            ("video", L("영상·뉴스레터", "Video & Newsletter", "视频与通讯")),
+            ("notes", L("영상 해설", "Video notes", "视频解读"))]),
         ("advisory", L("기업 자문", "Advisory", "企业咨询"), L("기업 자문·컨설팅", "Business Advisory & Consulting", "企业咨询与顾问"), [
             ("services", L("서비스 분야", "Service Areas", "服务领域")), ("process", L("수행 프로세스", "Process", "工作流程")),
             ("themes", L("자문 주제", "Case Themes", "咨询主题")), ("inquiry", L("기업 문의", "Inquiry", "企业咨询联系"))]),
@@ -292,7 +295,7 @@ def sec(sid, eyebrow, title, lede, body, cls=""):
 def page_hero(slug, eyebrow, title, lede, subs=None):
     if subs is None:
         subs = next((s[3] for s in nav() if s[0] == slug), [])
-    tabs = "".join(f'<a href="{sub_href(slug, a) if (slug, a) == ("news", "insight") else "#" + a}">{e(t)}</a>' for a, t in subs)
+    tabs = "".join(f'<a href="{sub_href(slug, a) if (slug, a) in (("news", "insight"), ("focus", "notes")) else "#" + a}">{e(t)}</a>' for a, t in subs)
     sub = f'<div class="subnav" id="subnav"><div class="wrap"><div class="subnav-in">{tabs}</div></div></div>' if tabs else ""
     reg(title, lede, P(slug), "CSAI")
     return f'''<section class="phero">

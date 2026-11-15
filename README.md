@@ -15,7 +15,7 @@ https://www.csai.re.kr 의 소스입니다. GitHub Pages로 배포됩니다.
 | `sitemap.xml`, `robots.txt`, `404.html`, `CNAME` | 검색 노출·오류 페이지·도메인 설정 |
 
 페이지: `index`(메인) · `about`(연구원 소개) · `research`(연구·분석) · `focus`(거시경제연구소) · `advisory`(기업 자문) ·
-`academy`(교육·아카데미) · `global`(글로벌 협력) · `news`(뉴스·자료) · `insight`(연구소장's Insight) · `contact`(문의) · `policy`(개인정보·이용 안내)
+`academy`(교육·아카데미) · `global`(글로벌 협력) · `news`(뉴스·자료) · `insight`(연구소장's Insight) · `videos`(영상 해설) · `contact`(문의) · `policy`(개인정보·이용 안내)
 
 기존 안유화 교수 홈페이지의 내용(대표 문구, 작동 원리, 원칙, 중국경제포커스, 연구·칼럼, 영상·강연, 저서, 약력)은
 원문 그대로 `src/content.py`에 모아 두었고, 메인 페이지와 해당 하위 페이지에 함께 실립니다.
@@ -36,6 +36,12 @@ https://www.csai.re.kr 의 소스입니다. GitHub Pages로 배포됩니다.
 - 디자인(색·글꼴·간격): `src/assets/site.css`
 - 메뉴 구조: `src/core.py`의 `nav()`
 - 메인 비주얼 그림: `src/hero_art.py` (사진으로 바꾸려면 `assets/hero.svg` 대신 사진 파일을 두고 `site.css`의 `.hero-art`, `.phero` 배경을 고칩니다)
+
+## 영상 해설 (매주)
+
+유튜브 「안유화경제투자론」 한 편마다 `src/episodes.py`의 `EPISODES` 맨 위에 한 항목을 추가하고 빌드하면
+`videos.html`(영상 해설)에 쌓입니다. 무료 공개분(핵심 요지·요약·한국 시사점·판단·출처)만 넣습니다.
+**대본 전문과 근거 자료 묶음은 유료 제공분이므로 이 공개 저장소에 넣지 않습니다.**
 
 ## ‘준비 중’으로 열어 둔 곳
 

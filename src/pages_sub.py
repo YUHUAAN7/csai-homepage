@@ -165,6 +165,7 @@ def focus():
              L("유튜브 채널 「안유화의 경제투자론」의 최신 영상을 바로 볼 수 있습니다. 매주 화요일 새 영상이 올라옵니다.", "Watch the latest from the YouTube channel right here. A new video goes up every Tuesday.", "可在此直接观看YouTube频道的最新视频，每周二更新。"),
              f'''<div class="player"><a href="{YOUTUBE}/videos" target="_blank" rel="noopener">{L("안유화의 경제투자론 최신 영상", "Latest videos on YouTube", "YouTube 最新视频")}<span>YOUTUBE</span></a>
 <iframe src="https://www.youtube-nocookie.com/embed/videoseries?list=UUThwDMeuhkjOONCAIUiu4xg" title="{L("안유화의 경제투자론 최신 영상", "Latest videos", "最新视频")}" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>{media_cards()}'''
+             + f'<div class="sec-foot">{btn(L("영상 해설 읽기", "Read the video notes", "阅读视频解读"), P("videos"), "navy")}</div>'
              + cta_band(L("뉴스레터로 받아 보기", "Get it by email", "通过邮件接收"), L("월간 「중국경제포커스」를 이메일로 보내드립니다. 무료입니다.", "The monthly China Economy Focus, delivered free by email.", "月刊《中国经济聚焦》通过邮件免费发送。"), L("무료 구독하기", "Subscribe free", "免费订阅"), SUBSCRIBE, ext=True))
     b += f'<section class="sec tight"><div class="wrap"><p class="note">{L("본 채널의 자료는 정보 제공을 위한 것이며, 특정 종목·상품의 매수·매도 권유가 아닙니다.", "Material on this channel is for information only and is not a recommendation to buy or sell any security or product.", "本频道资料仅供参考，不构成任何证券或产品的买卖建议。")}</p></div></section>'
     return page("focus", title, lede, b, "focus")
@@ -288,6 +289,58 @@ def insight():
     return page("insight", title, lede, b, "news")
 
 
+# ── 영상 해설(요약 무료 · 전문 유료) ────────────────────────────
+def paid_box():
+    return f'''<div class="lock"><div><h4>{icon("shield", 18)}{L("대본 전문 · 근거 자료 묶음", "Full script and evidence pack", "完整文稿与资料包")} <span class="tag-soon">{L("유료", "Paid", "付费")}</span></h4>
+<p>{L("요약은 누구나 볼 수 있습니다. 대본 전문과 원문 근거·숫자 출처를 묶은 자료는 유료로 제공합니다.", "The summary is open to all. The full script, with the source documents and data behind it, is a paid service.", "摘要面向所有人开放；完整文稿及其背后的原文依据与数据来源为付费内容。")}</p></div>
+{btn(L("유료 구독 문의", "Ask about paid access", "咨询付费订阅"), P("contact", "general"), "navy")}</div>'''
+
+
+def episode_html(ep):
+    import re as _re
+    m = _re.search(r"(?:v=|youtu\.be/|embed/)([\w-]{6,})", ep.get("youtube", ""))
+    vid = m.group(1) if m else ""
+    thumb = (f'<a class="ep-thumb" href="{e(ep["youtube"])}" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/{vid}/hqdefault.jpg" alt="" loading="lazy" onerror="this.remove()">'
+             f'<span>{icon("play", 30)}{L("영상 보기", "Watch", "观看视频")}</span></a>') if ep.get("youtube") else ""
+    pts = "".join(f"<li>{e(x)}</li>" for x in ep.get("points", []))
+    paras = "".join(f"<p>{e(x.strip())}</p>" for x in ep.get("summary", "").split("\n\n") if x.strip())
+    imp = f'<div class="ep-box"><b>{L("한국 시사점", "Implications for Korea", "对韩国的启示")}</b><p>{e(ep["implication"])}</p></div>' if ep.get("implication") else ""
+    j = ep.get("judgment")
+    jud = (f'<div class="ep-box gold"><b>{L("판단", "Judgment", "判断")} · {L("기준일", "as of", "基准日")} {e(j["asof"])}</b><p>{e(j["text"])}</p>'
+           f'<p class="note">{L("무효화 조건", "Invalidation conditions", "失效条件")}: {e(j["invalid"])}</p></div>') if j else ""
+    src = ""
+    if ep.get("sources"):
+        src = f'<p class="note">{L("출처", "Sources", "来源")}: ' + " · ".join(f'<a href="{e(u)}" target="_blank" rel="noopener">{e(t)}</a>' if u else e(t) for t, u in ep["sources"]) + "</p>"
+    reg(ep["title"], " ".join(ep.get("points", [])), P("videos", "ep-" + ep["date"]), L("영상 해설", "Video notes", "视频解读"))
+    return f'''<article class="ep card" id="ep-{e(ep["date"])}" lang="ko"><div class="ep-head"><div><time>{e(ep["date"])}</time><h3>{e(ep["title"])}</h3></div>{thumb}</div>
+<ul class="ticks">{pts}</ul><div class="ep-sum">{paras}</div>{imp}{jud}{src}{paid_box()}</article>'''
+
+
+def videos():
+    from episodes import EPISODES
+    C.slug = "videos"
+    title = L("영상 해설", "Video notes", "视频解读")
+    lede = L("유튜브 「안유화경제투자론」의 매주 영상을 글로 정리합니다. 핵심 요지와 요약, 한국 시사점, 판단을 무료로 싣습니다.",
+             "Each week's video from the YouTube channel, written up: key points, a summary, implications for Korea and the judgment — free to read.",
+             "将YouTube频道每周的视频整理成文：核心要点、摘要、对韩国的启示与判断，均可免费阅读。")
+    b = page_hero("videos", "VIDEO NOTES", title, lede, [])
+    how = [(L("핵심 요지 3줄", "Three key points", "三条核心要点"), L("영상을 보지 않아도 결론을 알 수 있게", "The conclusion, even without watching", "不看视频也能了解结论")),
+           (L("대본 요약", "Script summary", "文稿摘要"), L("주장과 근거의 흐름을 글로", "The line of argument and evidence, in writing", "以文字呈现论点与依据的脉络")),
+           (L("한국 시사점", "Implications for Korea", "对韩国的启示"), L("한국 기업·기관의 결정에 주는 뜻", "What it means for decisions in Korea", "对韩国企业与机构决策的意义")),
+           (L("판단과 무효화 조건", "Judgment and invalidation", "判断与失效条件"), L("기준일과 함께 남기고 나중에 채점", "Logged with a date and graded later", "连同基准日记录，日后评分"))]
+    how_html = '<ol class="steps">' + "".join(f"<li><b>{t}</b><span>{d}</span></li>" for t, d in how) + "</ol>"
+    if EPISODES:
+        note = "" if C.lang == "ko" else f'<p class="note" style="margin-bottom:18px">{L("", "Episode notes are in Korean.", "各期内容为韩文。")}</p>'
+        body = note + '<div class="eps">' + "".join(episode_html(x) for x in EPISODES) + "</div>"
+    else:
+        body = soon(L("첫 영상 해설을 준비하고 있습니다. 매주 영상이 공개되면 이곳에 한 편씩 쌓입니다.", "The first video note is in preparation. One will be added here each week as the video is published.", "首期视频解读正在准备中，此后每周随视频发布在此更新一篇。")) + f'<div style="margin-top:20px">{paid_box()}</div>'
+    b += sec("list", "EPISODES", L("회차별 해설", "Notes by episode", "各期解读"), "", body)
+    b += sec("how", "FORMAT", L("한 편에 담는 것", "What each note contains", "每期包含的内容"), "", how_html
+             + f'<div class="sec-foot">{btn(L("유튜브 채널 보기", "YouTube channel", "YouTube 频道"), YOUTUBE, "ghost", ext=True)}{more(L("판단 기록 보기", "Judgment record", "查看判断记录"), P("insight", "record"))}</div>', "alt")
+    b += f'<section class="sec tight"><div class="wrap"><p class="note">{L("영상과 해설은 정보 제공을 위한 것이며, 특정 종목·상품의 매수·매도 권유가 아닙니다.", "Videos and notes are for information only and are not a recommendation to buy or sell any security or product.", "视频与解读仅供参考，不构成任何证券或产品的买卖建议。")}</p></div></section>'
+    return page("videos", title, lede, b, "focus")
+
+
 # ── 문의 ───────────────────────────────────────────────────────
 def field(name, label, kind="text", req=False, opt=False, full=False, options=None, ph=""):
     r = " required" if req else ""
@@ -343,7 +396,7 @@ def contact():
             F("name", person, req=True), F("email", email, "email", req=True), F("area", L("협력 희망 분야", "Field of cooperation", "希望合作的领域")),
             F("msg", L("제안 내용", "Your proposal", "合作提案"), "textarea", req=True, full=True)]),
         "general": (L("일반 문의", "General", "一般咨询"), L("CSAI 일반 문의", "CSAI general inquiry", "CSAI 一般咨询"), [
-            F("kind", L("문의 유형", "Type of inquiry", "咨询类型"), "select", options=[L("강연·인터뷰 요청", "Speaking / interview request", "演讲·采访邀请"), L("콘텐츠·구독", "Content / subscription", "内容·订阅"), L("사이트 이용", "Using this site", "网站使用"), L("기타", "Other", "其他")]),
+            F("kind", L("문의 유형", "Type of inquiry", "咨询类型"), "select", options=[L("강연·인터뷰 요청", "Speaking / interview request", "演讲·采访邀请"), L("영상 해설 유료 구독", "Paid access to video notes", "视频解读付费订阅"), L("콘텐츠·구독", "Content / subscription", "内容·订阅"), L("사이트 이용", "Using this site", "网站使用"), L("기타", "Other", "其他")]),
             F("name", L("이름 또는 담당자", "Name", "姓名或联系人"), req=True), F("email", email, "email", req=True),
             F("subject", L("제목", "Subject", "标题"), req=True), F("msg", L("내용", "Message", "内容"), "textarea", req=True, full=True)]),
     }

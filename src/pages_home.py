@@ -188,7 +188,7 @@ def home():
   <div class="newscol"><h3>{icon("cal", 20)}{L("행사 일정", "Events", "活动日程")}</h3>{soon(L("포럼·세미나 일정이 확정되면 안내합니다.", "Forum and seminar dates will be announced once confirmed.", "论坛与研讨会日程确定后公布。"))}</div>
 </div>
 <h3 class="sub-h" id="videos">{L("영상·강연", "Videos & Talks", "视频与演讲")}</h3><p class="sub-p">{videos_lede()}</p>{player()}{media_cards()}
-<div class="sec-foot">{more(L("전체 보기", "View all news", "查看全部"), P("news"))}</div>''')
+<div class="sec-foot">{btn(L("영상 해설 읽기", "Read the video notes", "阅读视频解读"), P("videos"), "navy")}{more(L("전체 보기", "View all news", "查看全部"), P("news"))}</div>''')
 
     band = f'''<section class="band" id="subscribe"><div class="wrap">
   <div class="col"><h2>{L("뉴스레터 구독", "Subscribe to the newsletter", "订阅通讯")}</h2>
