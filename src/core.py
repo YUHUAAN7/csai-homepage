@@ -47,6 +47,13 @@ def P(slug, anchor=""):
     return f"{slug}.html" + (f"#{anchor}" if anchor else "")
 
 
+def sub_href(slug, anchor):
+    """하위 메뉴 링크. 뉴스·자료의 '연구소장's Insight'는 전용 페이지의 메시지 화면으로 보낸다."""
+    if slug == "news" and anchor == "insight":
+        return P("insight", "insight")
+    return P(slug, anchor)
+
+
 def lang_href(target, slug):
     f = f"{slug}.html"
     if C.lang == "ko":
@@ -149,7 +156,7 @@ def header(active):
     items, mob = [], []
     for slug, short, full, subs in nav():
         cur = ' aria-current="page"' if slug == active else ""
-        drop = "".join(f'<a href="{P(slug, a)}">{e(t)}</a>' for a, t in subs)
+        drop = "".join(f'<a href="{sub_href(slug, a)}">{e(t)}</a>' for a, t in subs)
         items.append(f'<div class="nav-item"><a class="nav-top" href="{P(slug)}"{cur}>{e(short)}{icon("chev", 14)}</a>'
                      f'<div class="drop">{drop}</div></div>')
         mob.append(f'<div class="mnav-group"><a class="mnav-top" href="{P(slug)}">{e(full)}</a><div class="mnav-sub">{drop}</div></div>')
@@ -180,7 +187,7 @@ def header(active):
 def footer():
     cols = []
     for slug, short, full, subs in nav():
-        links = "".join(f'<li><a href="{P(slug, a)}">{e(t)}</a></li>' for a, t in subs)
+        links = "".join(f'<li><a href="{sub_href(slug, a)}">{e(t)}</a></li>' for a, t in subs)
         cols.append(f'<div><h3><a href="{P(slug)}">{e(full)}</a></h3><ul>{links}</ul></div>')
     return f'''<footer class="ftr">
   <div class="wrap">
@@ -285,7 +292,7 @@ def sec(sid, eyebrow, title, lede, body, cls=""):
 def page_hero(slug, eyebrow, title, lede, subs=None):
     if subs is None:
         subs = next((s[3] for s in nav() if s[0] == slug), [])
-    tabs = "".join(f'<a href="#{a}">{e(t)}</a>' for a, t in subs)
+    tabs = "".join(f'<a href="{sub_href(slug, a) if (slug, a) == ("news", "insight") else "#" + a}">{e(t)}</a>' for a, t in subs)
     sub = f'<div class="subnav" id="subnav"><div class="wrap"><div class="subnav-in">{tabs}</div></div></div>' if tabs else ""
     reg(title, lede, P(slug), "CSAI")
     return f'''<section class="phero">
