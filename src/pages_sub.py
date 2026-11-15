@@ -335,9 +335,14 @@ def advisory():
     themes = [L("중국의 정책 변화가 우리 산업에 주는 영향", "What a change in China's policy means for our industry", "中国政策变化对本行业的影响"),
               L("공급망에서 중국 의존이 큰 품목과 대안", "Items in our supply chain that depend heavily on China, and the alternatives", "供应链中高度依赖中国的品类及替代方案"),
               L("중국 시장의 리스크와 기회", "Risks and opportunities in the China market", "中国市场的风险与机遇")]
+    adv_cases = ('<div class="card"><h3>' + L("수행한 자문", "Advisory work we have done", "已开展的咨询") + "</h3>"
+                 + ticks(L(["한국 최대 식품그룹의 중국 투자 자문", "중국 1등 기업의 한국 투자와 자금조달 자문", "한국 해운회사의 글로벌 시장 분석", "한국 대기업의 중국 법인 정리 컨설팅"],
+                           ["Advising Korea's largest food group on its investment in China", "Advising an industry-leading Chinese company on investing and raising capital in Korea", "Global market analysis for a Korean shipping company", "Consulting for a major Korean conglomerate on winding down its China subsidiary"],
+                           ["为韩国最大的食品集团提供对华投资咨询", "为中国行业龙头企业提供在韩投资与融资咨询", "为韩国航运公司提供全球市场分析", "为韩国大企业提供在华法人清理咨询"]))
+                 + '<p style="font-size:13.500px;color:var(--muted)">' + L("고객사 이름은 공개하지 않습니다.", "Client names are not disclosed.", "不公开客户名称。") + "</p></div>")
     b += sec("themes", "CASE THEMES", L("자문 주제", "Case themes", "咨询主题"),
-             L("기업이 자주 마주하는 질문을 중심으로 주제를 정리해 공개할 예정입니다.", "We will publish themes organised around the questions companies most often face.", "我们将围绕企业最常面对的问题整理并公布主题。"),
-             f'<div class="g2"><div class="card"><h3>{L("자주 받는 질문의 유형", "Typical questions", "常见问题类型")}</h3>{ticks(themes)}</div><div>{soon(L("주제별 사례 정리는 공개할 범위가 확정되는 대로 올립니다.", "Case write-ups by theme will be posted once the scope for publication is confirmed.", "各主题的案例整理将在可公开范围确认后发布。"))}</div></div>')
+             L("기업이 자주 마주하는 질문과 실제로 수행한 자문을 정리했습니다.", "The questions companies most often face, and advisory work we have carried out.", "这里整理了企业最常面对的问题以及我们实际开展的咨询。"),
+             f'<div class="g2"><div class="card"><h3>{L("자주 받는 질문의 유형", "Typical questions", "常见问题类型")}</h3>{ticks(themes)}</div><div>{adv_cases}</div></div>')
     b += f'<section class="sec alt" id="inquiry"><div class="wrap"><div class="sec-head"><div class="eyebrow">INQUIRY</div><h2>{L("기업 문의", "Business inquiry", "企业咨询联系")}</h2><p>{L("회사명, 담당자, 관심 분야와 문의 내용을 알려 주세요.", "Tell us your company, contact person, area of interest and what you need.", "请告知公司名称、联系人、关注领域与咨询内容。")}</p></div>{cta_band(L("중국 관련 의사결정, 함께 검토합니다", "Let's review your China-related decision together", "涉华决策，我们一同研判"), L("기업 자문 문의 양식으로 연결됩니다.", "Opens the business advisory inquiry form.", "将进入企业咨询表单。"), L("기업 문의하기", "Business Inquiry", "提交企业咨询"), P("contact", "advisory"), flush=True)}</div></section>'
     return page("advisory", title, lede, b, "advisory")
 
