@@ -171,6 +171,10 @@ section.s{padding-block:96px;border-top:1px solid var(--line)}
 
 /* ── 영상 */
 .videos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.player{position:relative;aspect-ratio:16/9;max-width:100%;background:var(--night);margin-bottom:28px;overflow:hidden}
+.player iframe{position:absolute;inset:0;z-index:1;width:100%;height:100%;border:0}
+.player a{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:var(--night-fg);text-decoration:none;font-family:var(--f-display);font-size:20px;text-align:center;padding:16px}
+.player a span{font:500 12px var(--f-mono);color:var(--night-muted);letter-spacing:.06em}
 .vid{text-decoration:none;display:flex;flex-direction:column;gap:12px}
 .thumb{aspect-ratio:16/9;max-width:100%;background:var(--night);color:var(--night-fg);position:relative;display:flex;align-items:flex-end;padding:14px;overflow:hidden}
 .thumb::after{content:"";position:absolute;right:14px;top:14px;width:36px;height:36px;border-radius:50%;border:1px solid #ffffff55;background:radial-gradient(circle at 55% 50%,#fff 0 0) center/0 0 no-repeat}
@@ -453,7 +457,13 @@ section.s{padding-block:96px;border-top:1px solid var(--line)}
       <div class="s-mark">§ 05</div>
       <div>
         <h2 data-i="v_title">영상·강연</h2>
-        <p data-i="v_lede">방송 출연, 강연, 유튜브 해설을 모았습니다. 각 영상은 원래 채널에서 재생됩니다.</p>
+        <p data-i="v_lede">유튜브 채널 「안유화의 경제투자론」의 최신 영상을 바로 볼 수 있습니다. 매주 화요일 새 영상이 올라옵니다.</p>
+      </div>
+    </div>
+    <div class="s-body">
+      <div class="player">
+        <a href="https://www.youtube.com/@anyuhuatv/videos" target="_blank" rel="noopener">안유화의 경제투자론 최신 영상<span>YOUTUBE · 매주 화요일 업로드</span></a>
+        <iframe src="https://www.youtube-nocookie.com/embed/videoseries?list=UUThwDMeuhkjOONCAIUiu4xg" title="안유화의 경제투자론 최신 영상" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
       </div>
     </div>
     <div class="s-body videos">
