@@ -225,8 +225,66 @@ def focus():
     pc = "".join(f'<div class="card"><h3>{t}</h3><p>{d}</p></div>' for t, d in pillars)
     b += sec("latest", "LATEST", L("최신", "Latest", "最新"), "",
              f'<div class="split"><div>{issue_card()}</div><div>{content_types()}<p class="note" style="margin-top:16px">{L("모든 콘텐츠는 ‘한국 시사점’으로 끝맺습니다. 중국의 변화가 한국 기업·기관의 가격·조달·투자·고용 결정에 주는 영향을 정리합니다.", "Every piece closes with “implications for Korea”: what the change in China means for pricing, sourcing, investment and hiring decisions.", "所有内容都以“对韩国的启示”收尾：中国的变化对韩国企业和机构在定价、采购、投资与用工决策上的影响。")}</p></div></div>')
+    fh = lambda t: '<h4 style="font-size:15px;margin:14px 0 2px;color:var(--gold-600);letter-spacing:.04em">' + t + "</h4>"
+    f_pts = L(["11월 1~10일 대중 수출은 91.6억 달러로 1년 전보다 148% 늘었습니다.",
+               "같은 기간 반도체 수출이 331.2% 늘어 전체 수출의 49.7%를 차지했습니다. 대중 수출 급증도 반도체가 끌었을 가능성이 큽니다.",
+               "그래서 이 숫자를 ‘중국 내수가 살아났다’는 신호로 읽기는 이릅니다. 가격이 오른 것인지 물량이 늘어난 것인지를 갈라 봐야 합니다."],
+              ["Korea's exports to China in 1–10 November were $9.16bn, up 148% from a year earlier.",
+               "Chip exports rose 331.2% in the same period and made up 49.7% of all exports, so chips probably drove the jump in shipments to China as well.",
+               "It is too early to read this as a recovery in Chinese domestic demand. Price and volume have to be separated first."],
+              ["11月1日至10日，韩国对华出口为91.6亿美元，同比增长148%。",
+               "同期半导体出口增长331.2%，占全部出口的49.7%，对华出口的激增很可能同样由半导体带动。",
+               "因此，把这一数字解读为“中国内需回暖”为时尚早，必须先区分价格与数量。"])
+    f_nums = L(["전체 수출 335억 달러(+111.9%). 11월 1~10일 기준 역대 최대",
+                "반도체 166억 달러(+331.2%). 비중 49.7%, 1년 전보다 25.3%포인트 상승",
+                "대중 수출 91.6억 달러(+148%), 대미 수출 67.9억 달러(+163.6%)",
+                "수입 247억 달러, 무역수지 88억 달러 흑자. 올해 누계 수출 9,636억 달러",
+                "CSAI 계산: 대중 비중 약 27%, 대미 약 20%. 반도체를 뺀 수출은 약 169억 달러로 1년 전보다 40% 남짓 증가(반올림된 공표치로 계산한 어림값)"],
+               ["Total exports $33.5bn (+111.9%), a record for 1–10 November",
+                "Chips $16.6bn (+331.2%), 49.7% of exports, up 25.3 points from a year earlier",
+                "To China $9.16bn (+148%); to the US $6.79bn (+163.6%)",
+                "Imports $24.7bn, trade surplus $8.8bn; exports for the year to date $963.6bn",
+                "CSAI arithmetic: China about 27% of exports, the US about 20%; exports excluding chips about $16.9bn, up a little over 40% (an approximation from rounded published figures)"],
+               ["出口总额335亿美元（+111.9%），创11月1至10日历史新高",
+                "半导体166亿美元（+331.2%），占比49.7%，同比上升25.3个百分点",
+                "对华出口91.6亿美元（+148%），对美出口67.9亿美元（+163.6%）",
+                "进口247亿美元，贸易顺差88亿美元；今年累计出口9,636亿美元",
+                "CSAI测算：对华占比约27%，对美约20%；剔除半导体的出口约169亿美元，同比增长40%出头（依据四舍五入后的公布数据估算）"])
+    f_read = L(["대중 수출 증가율(148%)은 전체(111.9%)보다 높지만 반도체(331.2%)보다는 한참 낮습니다. 반도체를 빼면 전체 수출 증가율은 40% 안팎으로 내려옵니다. 대중 수출도 같은 구조일 가능성이 큽니다.",
+                "메모리 가격이 오르면 같은 물량을 팔아도 수출액은 늘어납니다. 금액이 늘었다고 중국이 더 많이 사 갔다고 읽을 수는 없습니다.",
+                "10일 통계에는 나라별 품목 내역과 물량이 없습니다. 조업일수 차이도 걸러지지 않았습니다. 가격 효과와 물량 효과는 월간 확정치에서 갈라 보겠습니다."],
+               ["Growth to China (148%) is above the total (111.9%) but far below chips (331.2%). Excluding chips, total export growth falls to around 40%, and shipments to China probably have the same structure.",
+                "When memory prices rise, export value rises even on the same volume. A higher value does not mean China bought more.",
+                "The ten-day release has no product breakdown by country, no volumes and no working-day adjustment. We will separate price and volume effects in the monthly data."],
+               ["对华出口增速（148%）高于整体（111.9%），但远低于半导体（331.2%）。剔除半导体后，整体出口增速降至40%左右，对华出口很可能是同样的结构。",
+                "存储芯片价格上涨时，即使数量不变，出口额也会增加。金额增加不等于中国买得更多。",
+                "十日统计没有分国别的品类明细和数量，也未剔除工作日差异。价格效应与数量效应将在月度确定值中拆分。"])
+    f_kor = L(["대중 수출이 좋아 보이는 것은 ‘반도체가 좋다’는 뜻에 가깝습니다. 석유화학, 철강, 일반기계처럼 중국 수요에 기대는 업종은 이 숫자를 회복의 근거로 삼기 어렵습니다.",
+               "수출의 절반이 한 품목에서 나옵니다. 메모리 가격이 꺾이면 대중 수출과 무역수지가 함께 흔들립니다. 가격·조달·투자 계획에서 반도체 경기와 중국 수요를 따로 놓고 봐야 합니다."],
+              ["Strong exports to China mostly mean strong chips. Sectors that depend on Chinese demand, such as petrochemicals, steel and general machinery, cannot take this figure as evidence of recovery.",
+               "Half of all exports now come from one product. If memory prices turn, exports to China and the trade balance move together. Plans for pricing, sourcing and investment should treat the chip cycle and Chinese demand separately."],
+              ["对华出口看起来强劲，更接近“半导体强劲”的意思。石化、钢铁、一般机械等依赖中国需求的行业，难以把这一数字当作回暖的依据。",
+               "一半的出口来自单一品类。存储价格一旦回落，对华出口与贸易收支将同时波动。在定价、采购和投资计划中，应把半导体景气与中国需求分开看。"])
+    f_next = L(["11월 1~20일 통계에서 대중 수출 증가율이 이어지는지",
+                "12월 1일 월간 수출입 동향에서 반도체를 뺀 대중 수출이 얼마나 늘었는지. 이 숫자가 반도체를 뺀 전체 수출보다 빠르게 늘면 ‘중국 수요 회복’ 해석에 힘이 실립니다.",
+                "연간 수출 1조 달러를 넘는 시점과 그때의 반도체 비중"],
+               ["Whether growth to China holds in the 1–20 November release",
+                "How much exports to China excluding chips grew in the monthly data due on 1 December. If they grow faster than total exports excluding chips, the case for a recovery in Chinese demand strengthens.",
+                "When annual exports pass $1 trillion, and the chip share at that point"],
+               ["11月1至20日统计中对华出口增速能否延续",
+                "12月1日月度进出口动向中，剔除半导体的对华出口增长多少。若其增速快于剔除半导体的整体出口，“中国需求回暖”的解读将更有说服力。",
+                "年度出口突破1万亿美元的时点及届时的半导体占比"])
+    flash_card = ('<article class="card" id="flash-2026-11"><div class="num">FLASH · ' + L("한국 수출로 읽는 중국", "China through Korean Exports", "从韩国出口看中国") + " · " + L("2026년 11월 중순호", "Mid-November 2026", "2026年11月中旬")
+                  + "</div><h3>" + L("반도체가 끌어올린 대중 수출, 중국 수요로 읽으면 안 되는 이유", "Chips lifted exports to China. Why that is not Chinese demand", "半导体拉高了对华出口：为什么不能把它读成中国需求") + "</h3>"
+                  + '<p style="font-size:13.500px;color:var(--muted)">' + L("기준일 2026년 11월 15일 · 관세청 11월 1~10일 수출입 현황(11월 11일 발표)", "As of 15 November 2026 · Korea Customs Service release for 1–10 November (published 11 November)", "基准日：2026年11月15日 · 韩国关税厅11月1至10日进出口现况（11月11日发布）") + "</p>"
+                  + fh(L("핵심 요지", "Key points", "核心要点")) + ticks(f_pts) + fh(L("숫자", "The numbers", "数字")) + ticks(f_nums) + fh(L("읽는 법", "How to read it", "如何解读")) + ticks(f_read)
+                  + fh(L("한국 시사점", "Implications for Korea", "对韩国的启示")) + ticks(f_kor) + fh(L("다음에 확인할 것", "What we will check next", "接下来要验证的")) + ticks(f_next)
+                  + '<p style="font-size:13px;color:var(--muted);margin-top:12px">' + L("출처: 관세청 발표를 전한 ", "Sources: Korea Customs Service figures as reported by ", "来源：转引韩国关税厅数据的")
+                  + '<a href="https://www.koreatimes.co.kr/economy/others/20261111/exports-more-than-double-in-1st-10-days-of-november" target="_blank" rel="noopener">The Korea Times</a>, '
+                  + '<a href="https://www.koreajoongangdaily.com/business/exports-more-than-double-in-1st-10-days-of-november/12966595" target="_blank" rel="noopener">Korea JoongAng Daily</a>'
+                  + L(" 보도(2026.11.11). 비중과 반도체 제외 수치는 CSAI 계산입니다. 이 글은 투자 권유가 아닙니다.", " (11 Nov 2026). Shares and ex-chip figures are CSAI arithmetic. This note is not investment advice.", "报道（2026.11.11）。占比与剔除半导体的数值为CSAI测算。本文不构成投资建议。") + "</p></article>")
     b += sec("flash", "FLASH", "Flash", L("정책·통계·산업 변화에 대한 짧은 시의성 분석입니다. 무료 공개를 원칙으로 합니다.", "Short, timely notes on policy, data and industry shifts, open to all.", "针对政策、数据与产业变化的简短时评，以免费公开为原则。"),
-             soon(L("첫 Flash를 준비하고 있습니다. 첫 시리즈는 「한국 수출로 읽는 중국」(관세청·산업부 통계, 매월 1일 1쪽)입니다. 발행일·분야·요약과 함께 이곳에 쌓입니다.", "The first Flash notes are in preparation. The first series is “Reading China through Korean exports” — one page on the 1st of each month, from Korean customs and trade statistics. They will be archived here with date, field and summary.", "首批快讯正在准备中。首个系列为“从韩国出口读中国”（基于韩国关税厅与产业部统计，每月1日一页），将按发布日期、领域与摘要在此归档。")), "alt")
+             flash_card, "alt")
     b += sec("monthly", "MONTHLY", L("월간 「중국경제포커스」", "Monthly China Economy Focus", "月刊《中国经济聚焦》"),
              L("매월 둘째 주 화요일 아침, 중국 거시·산업·공급망의 한 달을 한 권으로 정리해 보내드립니다. 기사마다 한국 시사점을 붙입니다.",
                "Every second Tuesday morning: a month of China's macro economy, industries and supply chains in one issue, each article ending with what it means for Korea.",
