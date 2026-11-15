@@ -26,6 +26,16 @@ def about():
     title = L("연구원 소개", "About CSAI", "关于CSAI")
     b = page_hero("about", "ABOUT CSAI", title, lede)
 
+    H = [
+        ("2015.07", L("주식회사 중국증권행정연구원 설립", "China Securities Administration Institute Co., Ltd. founded", "中国证券行政研究院株式会社成立"), ""),
+        ("2016.09", L("연합뉴스, 안유화 박사를 ‘중국 금융 스페셜리스트’로 소개", "Yonhap News profiles Dr An Yuhua as a “China finance specialist”", "韩联社以“中国金融专家”介绍安玉花博士"), "https://www.yna.co.kr/view/AKR20160913157700371"),
+        ("2024.08", L("전기신문 보도: 중국의 친환경 기술 선점과 한·중 협력", "Electimes: China's lead in green technology and Korea–China cooperation", "《电气新闻》报道：中国抢占绿色技术与韩中合作"), "https://www.electimes.com/news/articleView.html?idxno=341779"),
+        ("2025.04", L("전기신문 보도: 미·중 패권 경쟁과 한국의 ‘삼중 트랙’ 대응", "Electimes: US–China rivalry and Korea's “three-track” response", "《电气新闻》报道：美中霸权竞争与韩国的“三轨”应对"), "https://www.electimes.com/news/articleView.html?idxno=353203"),
+        ("2025.09", L("아시아투데이 보도: AI·디지털자산과 한국 기업의 기회", "Asia Today: AI, digital assets and the opportunity for Korean companies", "《今日亚洲》报道：AI·数字资产与韩国企业的机会"), "https://www.asiatoday.co.kr/kn/view.php?key=20250907002221015"),
+        ("2026.09", L("뉴시스·매일경제 보도: “한국의 골든타임은 3~5년”", "Newsis and Maeil Business: “Korea's golden time is three to five years”", "纽西斯·《每日经济》报道：“韩国的黄金时间是3至5年”"), "https://www.newsis.com/view/NISX20260910_0003783819"),
+    ]
+    hist = ('<h3 style="font-size:20px;margin:30px 0 4px">' + L("연혁", "History", "沿革") + '</h3><ul class="hist">'
+            + "".join("<li><b>" + d + "</b><span>" + (('<a href="' + u + '" target="_blank" rel="noopener">' + t + "</a>") if u else t) + "</span></li>" for d, t, u in H) + "</ul>")
     b += sec("overview", "OVERVIEW", L("기관 개요", "Overview", "机构概况"), "", f'''<div class="split">
   <div class="bio"><p>{L("중국증권행정연구원(CSAI)은 중국의 정책과 시장을 원문과 데이터로 읽어, 한국의 기업과 기관이 더 나은 결정을 내리도록 돕는 독립 거시경제 싱크탱크입니다. 연구·분석, 월간 「중국경제포커스」, 기업 자문, 교육, 국제협력을 한 흐름으로 운영합니다.",
         "The China Securities Administration Institute (CSAI) is an independent macroeconomic think tank that reads China's policies and markets through original documents and data, helping companies and institutions in Korea make better decisions. Research and analysis, the monthly China Economy Focus, business advisory, education and international cooperation run as one flow.",
@@ -33,7 +43,7 @@ def about():
     <p>{L("쌓인 기록으로 판단을 검증하고, 검증된 판단으로 한국 기업과 기관의 결정을 돕습니다.",
           "We test our judgments against the record we accumulate, and use the tested judgments to support the decisions of Korean companies and institutions.",
           "我们用积累的记录检验判断，再以经过检验的判断支持韩国企业和机构的决策。")}</p>
-    <div style="margin-top:22px">{soon(L("설립 연혁은 확정 문안을 받는 대로 올립니다.", "The founding history will be posted once the official text is confirmed.", "成立沿革将在正式文稿确认后发布。"))}</div></div>
+    {hist}</div>
   <div>{kv([
         (L("대외 표기", "Name", "对外名称"), "CSAI"),
         (L("하는 일", "What we do", "业务范围"), L("중국 거시·정책·산업 연구, 콘텐츠 발행, 기업 자문, 교육, 국제협력", "China macro, policy and industry research; publishing; business advisory; education; international cooperation", "中国宏观、政策与产业研究，内容发行，企业咨询，教育，国际合作")),

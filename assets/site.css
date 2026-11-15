@@ -342,6 +342,10 @@ a.type:hover{border-color:var(--gold-500)}
 .org-top{width:min(300px,100%);margin:0 auto;background:var(--navy-900);color:#fff;border-radius:var(--r);padding:16px 18px;text-align:center}
 .org-top small{display:block;color:var(--gold-400);font-weight:700;letter-spacing:.12em;font-size:12px;margin-bottom:4px}
 .org-top b{font-family:var(--f-display);font-size:21px}
+.hist{list-style:none;margin:10px 0 0;padding:0;border-top:1px solid var(--line)}
+.hist li{display:grid;grid-template-columns:78px minmax(0,1fr);gap:14px;padding:11px 0;border-bottom:1px solid var(--line);font-size:15px;line-height:1.6}
+.hist b{color:var(--gold-600);font-weight:700}
+.hist a{color:inherit;text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--line)}
 .org-stem{width:2px;height:26px;background:var(--gold-500);margin:0 auto}
 .org-cols{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;border-top:2px solid var(--gold-500)}
 .org-col:before{content:"";display:block;width:2px;height:20px;background:var(--gold-500);margin:0 auto}
