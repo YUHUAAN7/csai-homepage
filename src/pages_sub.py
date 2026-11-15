@@ -584,12 +584,54 @@ def policy():
     subs = [("privacy", L("개인정보", "Privacy", "隐私")), ("terms", L("이용약관", "Terms", "使用条款")), ("disclaimer", L("면책·저작권", "Disclaimer & copyright", "免责与版权"))]
     b = page_hero("policy", "POLICY", title, lede, subs)
     li = lambda xs: "<ul>" + "".join(f"<li>{x}</li>" for x in xs) + "</ul>"
-    b += sec("privacy", "PRIVACY", L("개인정보 안내", "Privacy notice", "隐私说明"), "", '<div class="prose">' + soon(L("정식 개인정보 처리방침(보유기간·파기 절차·위탁 처리 여부 포함)은 검토 후 게시합니다.", "The formal privacy policy — including retention period, destruction procedure and any outsourcing — will be posted after review.", "正式的隐私政策（包括保存期限、销毁程序及是否委托处理）将在审核后发布。")) + f'<h3>{L("현재 적용되는 원칙", "Principles that apply now", "目前适用的原则")}</h3>' + li([
+    eff = '<p style="font-size:13.500px;color:var(--muted)">' + L("시행일: 2026년 11월 15일 · 문의: 중국증권행정연구원, ", "Effective 15 November 2026 · Contact: China Securities Administration Institute, ", "生效日期：2026年11月15日 · 联系：中国证券行政研究院，") + '<a href="mailto:' + MAIL + '">' + MAIL + '</a>, <a href="tel:+8225170866">02-517-0866</a></p>'
+    privacy_full = ticks(L(
+        ["수집하는 정보: 문의하실 때 직접 적어 보내시는 이름, 소속, 이메일, 문의 내용입니다. 문의 양식은 방문자의 메일 프로그램으로 연결되며, 홈페이지 서버에는 저장하지 않습니다.",
+         "이용 목적: 문의에 답하고 상담하며, 요청하신 자료와 일정을 안내하는 데에만 씁니다.",
+         "보유 기간: 문의 처리를 마친 뒤 3년 동안 보관하고, 기간이 지나면 지체 없이 삭제합니다.",
+         "제3자 제공: 법령이 정한 경우를 빼고는 다른 곳에 제공하지 않습니다.",
+         "외부 서비스: 뉴스레터 구독은 스티비(Stibee)에서 신청하고 관리하며, 그 과정의 개인정보는 스티비의 처리방침을 따릅니다. 홈페이지에 넣은 유튜브 영상과 외부 링크에는 해당 서비스의 정책이 적용됩니다.",
+         "쿠키: 연구원이 직접 설치하는 광고·분석용 쿠키는 없습니다.",
+         "이용자의 권리: 본인 정보의 열람, 정정, 삭제, 처리 정지를 언제든 요청하실 수 있습니다. 아래 대표 연락처로 알려 주시면 지체 없이 처리합니다."],
+        ["What we collect: the name, organisation, email address and message you choose to send when you contact us. The inquiry form opens your own mail program; nothing is stored on the website's server.",
+         "Why: only to answer your inquiry and to send the materials or schedules you asked for.",
+         "How long: three years after the inquiry is closed, then deleted without delay.",
+         "Sharing: we do not provide your information to others except where the law requires it.",
+         "Outside services: newsletter subscriptions are handled by Stibee under its own privacy policy. Embedded YouTube videos and outside links follow those services' policies.",
+         "Cookies: the institute sets no advertising or analytics cookies of its own.",
+         "Your rights: you may ask at any time to see, correct, delete or stop the use of your information through the contact below."],
+        ["收集的信息：您联系我们时自行填写并发送的姓名、单位、电子邮箱和咨询内容。咨询表单会打开您自己的邮件程序，网站服务器不保存任何内容。",
+         "使用目的：仅用于回复咨询，以及发送您索取的资料和日程。",
+         "保存期限：咨询处理完毕后保存3年，期满后立即删除。",
+         "向第三方提供：除法律规定的情形外，不向他人提供。",
+         "外部服务：通讯订阅由Stibee办理并适用其隐私政策。嵌入的YouTube视频和外部链接适用相应服务的政策。",
+         "Cookie：研究院自身不设置广告或分析类Cookie。",
+         "您的权利：您可随时通过下方联系方式要求查阅、更正、删除或停止处理本人信息。"])) + eff
+    terms_full = ticks(L(
+        ["이 약관은 중국증권행정연구원이 운영하는 홈페이지(csai.re.kr)의 이용 조건을 정합니다.",
+         "콘텐츠의 성격: 홈페이지의 글, 자료, 지표는 정보 제공과 교육을 위한 것이며 투자 권유나 법률·세무 자문이 아닙니다. 이를 바탕으로 한 판단과 그 결과는 이용자의 책임입니다.",
+         "저작권: 콘텐츠의 저작권은 연구원 또는 원저작자에게 있습니다. 출처를 밝힌 인용은 할 수 있고, 전재하거나 상업적으로 쓰려면 미리 동의를 받아야 합니다.",
+         "유료 자료: 유료로 제공하는 전문과 자료의 이용 조건은 신청하실 때 따로 안내합니다.",
+         "외부 링크: 연결된 외부 사이트의 내용은 연구원이 책임지지 않습니다.",
+         "변경: 약관과 홈페이지의 내용은 바뀔 수 있으며, 바뀐 약관은 이 페이지에 게시합니다."],
+        ["These terms set the conditions for using the website (csai.re.kr) run by the China Securities Administration Institute.",
+         "Nature of the content: articles, materials and indicators are for information and education. They are not investment advice or legal or tax advice. Decisions based on them are the user's responsibility.",
+         "Copyright: content belongs to the institute or the original authors. Quotation with attribution is allowed; reproduction or commercial use needs prior consent.",
+         "Paid materials: conditions for paid full texts and materials are given separately when you apply.",
+         "Outside links: the institute is not responsible for the content of linked sites.",
+         "Changes: these terms and the site's content may change; revised terms are posted on this page."],
+        ["本条款规定由中国证券行政研究院运营的网站（csai.re.kr）的使用条件。",
+         "内容性质：网站上的文章、资料和指标仅用于提供信息与教育，不构成投资建议或法律、税务意见。据此作出的判断及其结果由用户自行负责。",
+         "著作权：内容的著作权归研究院或原作者所有。注明出处的引用是允许的，转载或商业使用须事先征得同意。",
+         "付费资料：付费提供的全文与资料的使用条件，在申请时另行说明。",
+         "外部链接：研究院不对所链接外部网站的内容负责。",
+         "变更：本条款及网站内容可能变更，变更后的条款将在本页公布。"])) + eff
+    b += sec("privacy", "PRIVACY", L("개인정보 안내", "Privacy notice", "隐私说明"), "", '<div class="prose">' + privacy_full + f'<h3>{L("현재 적용되는 원칙", "Principles that apply now", "目前适用的原则")}</h3>' + li([
         L("문의 단계에서는 응대에 필요한 최소한의 정보만 받습니다.", "At the inquiry stage we collect only the minimum needed to respond.", "咨询阶段仅收集回复所需的最少信息。"),
         L("문의 양식에 입력한 내용은 이 사이트에 저장되지 않습니다. 방문자가 직접 보내는 이메일로만 전달됩니다.", "What you type in the inquiry form is not stored on this site. It is delivered only in the email you send yourself.", "咨询表单中填写的内容不会保存在本网站，只会通过您亲自发送的邮件传达。"),
         L("뉴스레터 구독은 외부 구독 페이지(스티비)에서 이루어집니다.", "Newsletter subscription takes place on an external subscription page (Stibee).", "通讯订阅在外部订阅页面（Stibee）进行。"),
         f'{L("개인정보 관련 문의:", "Privacy questions:", "隐私相关咨询：")} <span class="mailto">{MAIL}</span>']) + "</div>")
-    b += sec("terms", "TERMS", L("이용약관", "Terms of use", "使用条款"), "", '<div class="prose">' + soon(L("이용약관은 검토 후 게시합니다.", "Terms of use will be posted after review.", "使用条款将在审核后发布。")) + "</div>", "alt")
+    b += sec("terms", "TERMS", L("이용약관", "Terms of use", "使用条款"), "", '<div class="prose">' + terms_full + "</div>", "alt")
     b += sec("disclaimer", "DISCLAIMER", L("면책·저작권", "Disclaimer & copyright", "免责与版权"), "", '<div class="prose">' + li([
         L("본 사이트의 내용은 정보 제공을 위한 것이며, 특정 종목·상품의 매수·매도 권유나 투자 자문이 아닙니다.", "Content on this site is for information only. It is not investment advice or a recommendation to buy or sell any security or product.", "本网站内容仅供参考，不构成任何证券或产品的买卖建议或投资咨询。"),
         L("CSAI는 거시경제·산업·정책·공급망 분석과 기업의 전략적 의사결정 지원을 하며, 자산 운용·투자일임·투자중개를 하지 않습니다.", "CSAI provides macro, industry, policy and supply-chain analysis and supports companies' strategic decisions. It does not manage assets, exercise investment discretion or broker investments.", "CSAI提供宏观、产业、政策与供应链分析，并支持企业的战略决策；不从事资产管理、全权委托投资或投资中介。"),
