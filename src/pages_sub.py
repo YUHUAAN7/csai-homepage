@@ -357,7 +357,7 @@ def academy():
              ("factory", L("기업 맞춤 교육", "Corporate training", "企业定制培训"), L("기업의 산업과 과제에 맞춰 구성하는 교육", "Training tailored to a company's industry and agenda", "根据企业所在行业与课题定制的培训"), "corporate"),
              ("scale", L("금융기관 중국 리스크 과정", "China-risk programme for financial institutions", "金融机构中国风险课程"), L("금융기관을 위한 중국 리스크 이해 과정", "Understanding China risk, for financial institutions", "面向金融机构的中国风险课程"), "programs"),
              ("layers", L("디지털 금융 교육", "Digital finance training", "数字金融培训"), L("AI·디지털 금융 전문 교육", "Specialist training in AI and digital finance", "AI与数字金融专业培训"), "programs")]
-    progs = [
+    run_progs = [
         ("cap", L("디지털자산·AI 융합 최고위과정", "Digital Assets and AI Executive Programme", "数字资产·AI融合高层课程"),
          "<p>" + L("매일경제와 공동 주관합니다. 1·2기를 운영했고, 3기는 2027년 3월에 개강합니다.", "Co-organised with Maeil Business Newspaper. The 1st and 2nd classes have run; the 3rd opens in March 2027.", "与《每日经济》共同主办。已举办第1、2期，第3期将于2027年3月开课。") + "</p>", ""),
         ("users", L("강좌", "Courses", "讲座"),
@@ -368,11 +368,12 @@ def academy():
         ("globe", L("중국 탐방", "China study tours", "中国考察"),
          "<p>" + L("상해·항주, 심천·베이징, 북경 등 지역의 1등 기업을 탐방합니다.", "Visits to leading companies in Shanghai and Hangzhou, Shenzhen and Beijing, and other regions.", "走访上海·杭州、深圳·北京等地区的龙头企业。") + "</p>", ""),
     ]
-    pc = "".join(f'<div class="card"><div class="badge-ico">{icon(ic, 26)}</div><h3>{t}</h3>{d}</div>' for ic, t, d, a in progs)
+    pc_run = "".join(f'<div class="card"><div class="badge-ico">{icon(ic, 26)}</div><h3>{t}</h3>{d}</div>' for ic, t, d, a in run_progs)
+    pc = "".join(f'<div class="card"><div class="badge-ico">{icon(ic, 26)}</div><h3>{t}</h3><p>{d}</p></div>' for ic, t, d, a in progs)
     for ic, t, d, a in progs:
         reg(t, d, P("academy", a), "Academy")
     wait = L("과정 구성·일정·강사진·신청 방법은 확정되는 대로 안내합니다.", "Curriculum, dates, faculty and how to apply will be announced once confirmed.", "课程设置、日程、师资与报名方式将在确认后公布。")
-    b += sec("programs", "PROGRAMS", L("프로그램", "Programs", "课程项目"), "", f'<div class="g4">{pc}</div><div style="margin-top:24px">{soon(wait)}</div>'
+    b += sec("programs", "PROGRAMS", L("프로그램", "Programs", "课程项目"), "", f'<h3 style="font-size:20px;margin:0 0 16px">{L("운영 중인 과정", "Programmes now running", "正在开设的课程")}</h3><div class="g3">{pc_run}</div><h3 style="font-size:20px;margin:40px 0 16px">{L("기업·기관 맞춤 과정", "Tailored programmes for companies and institutions", "面向企业与机构的定制课程")}</h3><div class="g4">{pc}</div><div style="margin-top:24px">{soon(wait)}</div>'
              f'<p class="note" style="margin-top:14px">{L("안유화독서투자클럽, 유튜브 채널과 연결해 운영합니다.", "Run in connection with the An Yuhua Reading & Investment Club and the YouTube channel.", "与安玉花读书投资俱乐部及YouTube频道联动运营。")}</p>')
     b += sec("executive", "EXECUTIVE EDUCATION", L("임원 과정", "Executive education", "高管课程"),
              L("경영진이 중국의 정책과 시장을 읽는 기준을 갖추도록 돕는 과정입니다.", "A programme that gives executives a framework for reading China's policy and markets.", "帮助企业高管建立解读中国政策与市场的框架。"), soon(wait), "alt")
