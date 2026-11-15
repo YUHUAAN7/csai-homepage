@@ -17,7 +17,7 @@
     });
   }
 
-  /* 메인 비주얼 슬라이드: 자동 재생 없이 화살표로만 넘긴다 */
+  /* 메인 비주얼 슬라이드: 자동으로 넘어가고, 화살표로도 넘길 수 있다 */
   var slides = $$(".slide");
   if (slides.length > 1) {
     var cur = 0, no = $("#slideNo"), bar = $(".hero-bar i");
@@ -27,10 +27,18 @@
       if (no) no.textContent = ("0" + (cur + 1)).slice(-2) + " / " + ("0" + slides.length).slice(-2);
       if (bar) { bar.style.width = (100 / slides.length) + "%"; bar.style.left = (100 / slides.length * cur) + "%"; }
     };
+    /* 6초마다 자동으로 넘긴다. 마우스를 올리거나 다른 탭을 볼 때는 멈추고, '동작 줄이기' 설정이면 넘기지 않는다 */
+    var hero = $(".hero"), timer = null, still = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var stop = function () { if (timer) { clearInterval(timer); timer = null; } };
+    var play = function () { stop(); if (!still) timer = setInterval(function () { if (!document.hidden) show(cur + 1); }, 6000); };
     $$("[data-slide]").forEach(function (b) {
-      b.addEventListener("click", function () { show(cur + (b.dataset.slide === "next" ? 1 : -1)); });
+      b.addEventListener("click", function () { show(cur + (b.dataset.slide === "next" ? 1 : -1)); play(); });
     });
-    show(0);
+    if (hero) {
+      hero.addEventListener("mouseenter", stop); hero.addEventListener("mouseleave", play);
+      hero.addEventListener("focusin", stop); hero.addEventListener("focusout", play);
+    }
+    show(0); play();
   }
 
   /* 하위 메뉴 탭: 현재 보고 있는 구역 표시 */
