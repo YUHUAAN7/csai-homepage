@@ -401,12 +401,17 @@ def global_():
                             ["Co-organising education programmes with media companies", "On-site visits to leading Chinese companies", "Lectures at forums and academies hosted by local governments and media", "Advisory on cross-border investment between Korean and Chinese companies"],
                             ["与媒体共同主办教育课程", "实地走访中国龙头企业", "在地方政府与媒体主办的论坛和学院演讲", "为韩中企业的相互投资提供咨询"]))
                   + '<p style="font-size:13.500px;color:var(--muted)">' + L("협력기관의 이름은 해당 기관의 동의를 받은 경우에만 공개합니다.", "Partner names are published only with the partner's consent.", "合作机构名称仅在获得对方同意后公开。") + "</p></div>")
+    ks_to = MAIL + "?subject=Subscribe%20to%20Korea%20Sensor"
     ks_sub = ('<p style="font-size:14px;color:var(--ink-2);margin-top:10px">'
               + L("분기 노트와 판단 기록은 무료로 공개합니다. 월간 업데이트와 지표 자료, 기관 브리핑은 2027년 하반기에 유료로 시작합니다.",
                   "The quarterly note and our judgment record are free. Monthly updates, indicator data and institutional briefings will start as paid services in the second half of 2027.",
-                  "季度简报与判断记录免费公开。月度更新、指标数据和机构简报将于2027年下半年作为付费服务推出。")
-              + ' <a href="mailto:' + MAIL + '?subject=Subscribe%20to%20Korea%20Sensor" style="font-weight:700;color:var(--navy-700)">'
-              + L("무료 구독 신청", "Subscribe free", "免费订阅") + " →</a></p>")
+                  "季度简报与判断记录免费公开。月度更新、指标数据和机构简报将于2027年下半年作为付费服务推出。") + "</p>"
+              + '<details class="sub-box"><summary>' + L("무료 구독 신청", "Subscribe free", "免费订阅") + '</summary><div class="sub-in"><p>'
+              + L("편한 방법으로 신청 메일을 보내 주세요. 발행할 때마다 보내 드립니다.", "Send us a subscription email in whichever way suits you. We will send each issue when it is published.", "请用方便的方式发送订阅邮件，每期发布时我们会寄送给您。")
+              + '</p><p><a class="sub-a" href="https://mail.google.com/mail/?view=cm&fs=1&to=' + MAIL + '&su=Subscribe%20to%20Korea%20Sensor" target="_blank" rel="noopener">'
+              + L("Gmail에서 쓰기", "Write in Gmail", "用Gmail发送") + '</a><a class="sub-a" href="mailto:' + ks_to + '">' + L("메일 프로그램으로 쓰기", "Use my mail app", "用邮件程序发送") + "</a></p><p>"
+              + L("또는 아래 주소로 제목에 “Subscribe to Korea Sensor”라고 적어 보내 주세요.", "Or email the address below with the subject “Subscribe to Korea Sensor”.", "或向以下地址发送邮件，主题请写“Subscribe to Korea Sensor”。")
+              + '</p><p><b id="ks-mail">' + MAIL + '</b> <button type="button" class="sub-copy" data-copy="#ks-mail">' + L("주소 복사", "Copy address", "复制地址") + "</button></p></div></details>")
     b += sec("partners", "PARTNERS", L("협력기관", "Partners", "合作机构"), "",
              coop_types
              + f'<h3 style="font-size:20px;margin:36px 0 16px">{L("협력 유형", "Ways to cooperate", "合作形式")}</h3><div class="g3">{kc}</div>'
