@@ -156,6 +156,17 @@ def research():
              L("세 분야를 따로 보지 않고 서로의 원인과 결과로 함께 읽습니다.", "We read the three areas together, as each other's causes and effects.", "三个领域不分开看，而是作为彼此的因果一并解读。"),
              f'<div class="g3">{cards}</div>{future_finance()}', "alt")
 
+    rep_card = ('<div class="card" id="report-supply-chain-01"><div class="num">CSAI GLOBAL SUPPLY CHAIN FOCUS · No. 01 · 2026.11</div><h3>'
+                + L("반도체 공급망 대전환 2026", "The Great Semiconductor Supply-chain Shift 2026", "半导体供应链大转变 2026") + "</h3><p><b>"
+                + L("미중 갈등이 다시 그리는 반도체 지도와 한국의 선택", "The chip map redrawn by US–China rivalry, and Korea's choices", "美中博弈重绘的半导体版图与韩国的选择") + "</b></p><p>"
+                + L("반도체 공급망은 하나의 세계 사슬에서 관리된 두 개의 사슬로 갈라지고 있습니다. 한국은 가장 대체하기 어려운 메모리를 쥐고 있지만 설계 소프트웨어, 장비, 소재는 남에게 기대고 있습니다. 누가 병목을 쥐고 누가 밀려나는지, 한국은 무엇을 해야 하는지를 공개 자료 16건으로 정리했습니다.",
+                    "The semiconductor supply chain is splitting from one global chain into two managed chains. Korea holds memory, the hardest link to replace, but relies on others for design software, equipment and materials. Drawing on 16 public sources, the report sets out who holds the chokepoints, who is pushed aside, and what Korea should do.",
+                    "半导体供应链正从一条全球链条分裂为两条受管理的链条。韩国握有最难替代的存储芯片，但在设计软件、设备和材料上依赖他人。报告依据16份公开资料，梳理谁掌握瓶颈、谁被挤出，以及韩国该怎么做。") + '</p><p style="font-size:14px;color:var(--ink-2)">'
+                + L("차례: 공급망 지도 · 병목과 집중도 · 단계별 경쟁력 · 미중 갈등이 바꾸는 사슬 · 승자와 패자 · 2027~2030 시나리오 · 한국의 위기와 기회 · 지켜볼 신호",
+                    "Contents: supply-chain map · chokepoints and concentration · competitiveness by stage · how US–China rivalry changes the chain · winners and losers · 2027–2030 scenarios · risks and opportunities for Korea · signals to watch",
+                    "目录：供应链地图 · 瓶颈与集中度 · 各环节竞争力 · 美中博弈如何改变链条 · 赢家与输家 · 2027~2030情景 · 韩国的危机与机遇 · 值得关注的信号") + '</p><p style="font-size:13.500px;color:var(--muted)">'
+                + L("작성 기준일 2026년 11월 3일 · 15쪽", "As of 3 November 2026 · 15 pages", "编写基准日：2026年11月3日 · 15页") + ' · <a href="' + P("contact") + '" style="font-weight:700;color:var(--navy-700)">'
+                + L("전문 문의", "Request the full report", "索取全文") + " →</a></p></div>")
     IND = [
         (L("정책 문장 강도 지수", "Policy Language Index", "政策措辞强度指数"),
          L("정치국 회의, 중앙경제공작회의, 인민은행 통화정책 보고서의 수식어 변화를 회의마다 비교해 완화와 긴축의 방향과 세기를 점수로 매깁니다.", "Compares the modifiers in Politburo, Central Economic Work Conference and PBOC policy texts from one meeting to the next, and scores the direction and strength of easing or tightening.", "逐次比较政治局会议、中央经济工作会议和央行货币政策报告中的措辞变化，为宽松或收紧的方向与力度打分。"),
@@ -179,7 +190,7 @@ def research():
          L("한국이 중국에서 들여오는 핵심 품목(희토류, 흑연, 요소, 배터리 소재 등)의 대중 수입 의존도와 중국의 수출통제 조치를 품목별로 함께 봅니다.", "Tracks, item by item, Korea's import dependence on China for key inputs such as rare earths, graphite, urea and battery materials, alongside China's export controls.", "逐项观察韩国对中国关键品类（稀土、石墨、尿素、电池材料等）的进口依存度以及中国的出口管制措施。"),
          L("자료: 관세청 수출입 통계, 중국 상무부·해관총서 공고 · 주기: 월", "Source: Korea Customs Service trade data, MOFCOM and GACC notices · Monthly", "资料：韩国关税厅进出口统计、中国商务部与海关总署公告 · 周期：月")),
         (L("첨단산업 선두 지표", "Frontier Industry Leadership", "尖端产业领先指标"),
-         L("전기차, 배터리, 태양광, 조선, 로봇처럼 중국이 세계 선두권에 있는 산업의 세계 점유율과 한국과의 격차를 봅니다.", "Tracks global shares in industries where China is among the world leaders, such as EVs, batteries, solar, shipbuilding and robots, and the gap with Korea.", "观察电动车、电池、光伏、造船、机器人等中国处于世界前列的产业的全球份额及其与韩国的差距。"),
+         L("전기차, 배터리, 태양광, 조선, AI, 로봇처럼 중국이 세계 선두권에 있는 산업의 세계 점유율과 한국과의 격차를 봅니다.", "Tracks global shares in industries where China is among the world leaders, such as EVs, batteries, solar, shipbuilding, AI and robots, and the gap with Korea.", "观察电动车、电池、光伏、造船、AI、机器人等中国处于世界前列的产业的全球份额及其与韩国的差距。"),
          L("자료: 해관총서, 산업별 협회, 국제기구 통계 · 주기: 분기", "Source: GACC, industry associations, international agencies · Quarterly", "资料：海关总署、各行业协会、国际机构统计 · 周期：季度")),
     ]
     ind_lede = L("CSAI는 ‘중국을 읽는 원칙’에서 나온 여덟 가지 고유 지표를 쌓아 갑니다. 아래에 지표마다 무엇을 보는지, 자료와 주기를 적었습니다. 수치는 쌓이는 대로 이곳에 공개합니다.",
@@ -195,7 +206,7 @@ def research():
              L("원장의 자본시장연구원 시절 보고서부터 언론 기고까지, 중국 금융을 기록해 온 글입니다. CSAI의 새 보고서는 발간되는 대로 이곳에 올립니다.",
                "From the President's reports at the Korea Capital Market Institute to her newspaper columns: a record of writing on Chinese finance. New CSAI reports will be posted here as they are published.",
                "从院长在韩国资本市场研究院时期的报告到媒体专栏，这里汇集了记录中国金融的文字。CSAI的新报告将在发布后陆续上线。"),
-             articles() + f'<div style="margin-top:24px">{soon(L("CSAI 신규 연구보고서 — 발간 준비 중. 보고서별 초록과 파일 내려받기 또는 문의 연결을 제공합니다.", "New CSAI research reports are in preparation. Each will come with an abstract and a download or inquiry link.", "CSAI新研究报告正在准备中，届时将提供摘要以及下载或咨询链接。"))}</div>'
+             articles() + f'<div style="margin-top:24px">{rep_card}</div>'
              + columns_note(), "alt")
     return page("research", title, lede, b, "research")
 
