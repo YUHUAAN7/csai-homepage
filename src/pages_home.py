@@ -185,7 +185,7 @@ def home():
     news = sec("news", "NEWS & EVENTS", L("소식과 미디어", "News & media", "动态与媒体"), "", f'''<div class="g3">
   <div class="newscol"><h3>{icon("news", 20)}{L("기관 소식", "News", "机构动态")}</h3>{soon(L("공지와 활동 소식은 확정되는 대로 올립니다.", "Announcements and activity news will be posted as they are confirmed.", "公告与活动动态确认后发布。"))}</div>
   <div class="newscol"><h3>{icon("play", 20)}{L("언론·미디어", "Media", "媒体")}</h3><ul>{mlist}</ul></div>
-  <div class="newscol"><h3>{icon("cal", 20)}{L("행사 일정", "Events", "活动日程")}</h3>{soon(L("포럼·세미나 일정이 확정되면 안내합니다.", "Forum and seminar dates will be announced once confirmed.", "论坛与研讨会日程确定后公布。"))}</div>
+  <div class="newscol"><h3>{icon("cal", 20)}{L("행사 일정", "Events", "活动日程")}</h3>{events_list(False)}</div>
 </div>
 <h3 class="sub-h" id="videos">{L("영상·강연", "Videos & Talks", "视频与演讲")}</h3><p class="sub-p">{videos_lede()}</p>{player()}{media_cards()}
 <div class="sec-foot">{btn(L("영상 해설 읽기", "Read the video notes", "阅读视频解读"), P("videos"), "navy")}{more(L("전체 보기", "View all news", "查看全部"), P("news"))}</div>''')

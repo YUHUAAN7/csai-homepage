@@ -548,3 +548,18 @@ def process_steps():
 
 def process_lede():
     return L("자문은 결정 한 건 단위로 합니다. 진단에서 시작해 8주 유료 파일럿을 거쳐 연간 계약으로 이어집니다.", "Advisory is done one decision at a time. It starts with a review, moves through an eight-week paid pilot, and continues as an annual contract.", "咨询以单项决策为单位进行：从诊断开始，经过8周付费试点，再延续为年度合同。")
+
+
+def events_list(full=True):
+    """확정된 일정 목록. full=False 이면 포럼·브리핑만."""
+    rows = [("2026.12.15", L("영문 분기 노트 「Korea Sensor」 첫 호", "First issue of the English quarterly note Korea Sensor", "英文季度简报 Korea Sensor 首期")),
+            ("2026.12.24", L("연례 중국 전망 포럼", "Annual China outlook forum", "年度中国展望论坛")),
+            ("2027.01.15", L("분기 경영진 브리핑", "Quarterly executive briefing", "季度管理层简报")),
+            ("2027 1Q", L("중국 학자 특별기고 첫 편", "First special contribution from a Chinese scholar", "中国学者特约稿首篇"))]
+    if not full:
+        rows = rows[1:3]
+    return '<ul class="hist wide">' + "".join("<li><b>" + d + "</b><span>" + x + "</span></li>" for d, x in rows) + "</ul>"
+
+
+def tag_date(ko, en, zh):
+    return '<span class="tag-date">' + L(ko, en, zh) + "</span>"
