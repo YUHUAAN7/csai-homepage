@@ -156,9 +156,40 @@ def research():
              L("세 분야를 따로 보지 않고 서로의 원인과 결과로 함께 읽습니다.", "We read the three areas together, as each other's causes and effects.", "三个领域不分开看，而是作为彼此的因果一并解读。"),
              f'<div class="g3">{cards}</div>{future_finance()}', "alt")
 
+    IND = [
+        (L("정책 문장 강도 지수", "Policy Language Index", "政策措辞强度指数"),
+         L("정치국 회의, 중앙경제공작회의, 인민은행 통화정책 보고서의 수식어 변화를 회의마다 비교해 완화와 긴축의 방향과 세기를 점수로 매깁니다.", "Compares the modifiers in Politburo, Central Economic Work Conference and PBOC policy texts from one meeting to the next, and scores the direction and strength of easing or tightening.", "逐次比较政治局会议、中央经济工作会议和央行货币政策报告中的措辞变化，为宽松或收紧的方向与力度打分。"),
+         L("자료: 회의 발표문·보고서 원문 · 주기: 회의마다", "Source: original meeting statements and reports · Each meeting", "资料：会议公报与报告原文 · 周期：每次会议")),
+        (L("부채 위치 지도", "Debt Location Map", "债务位置图"),
+         L("중국 부채를 중앙정부, 지방정부, 기업, 가계로 나눠 어디에서 늘고 줄었는지를 봅니다. 총량보다 위치를 봅니다.", "Splits China's debt among central government, local governments, companies and households to see where it rises and falls. Location before totals.", "把中国债务分为中央政府、地方政府、企业和家庭，观察增减发生在哪里。看位置，而不只看总量。"),
+         L("자료: 인민은행, 재정부, 국제결제은행(BIS) · 주기: 분기", "Source: PBOC, Ministry of Finance, BIS · Quarterly", "资料：中国人民银行、财政部、国际清算银行 · 周期：季度")),
+        (L("한국 수출로 읽는 중국", "China through Korean Exports", "从韩国出口看中国"),
+         L("한국의 대중 수출을 품목별로 가격 효과와 물량 효과로 나눠, 중국 수요의 실제 변화를 읽습니다.", "Breaks Korea's exports to China into price and volume effects by product, to read the real change in Chinese demand.", "按品类把韩国对华出口分解为价格效应与数量效应，读出中国需求的实际变化。"),
+         L("자료: 관세청·산업부 통계 · 주기: 월", "Source: Korea Customs Service and trade ministry statistics · Monthly", "资料：韩国关税厅与产业部统计 · 周期：月")),
+        (L("성(省)별 체력 지표", "Provincial Strength Indicators", "省级实力指标"),
+         L("31개 성의 재정 자립도, 토지 수입 의존도, 부채 부담을 묶어 지역 사이의 격차를 봅니다.", "Combines fiscal self-sufficiency, reliance on land revenue and debt burden across 31 provinces to see the gaps between regions.", "综合31个省份的财政自给率、土地收入依赖度与债务负担，观察地区之间的差距。"),
+         L("자료: 각 성 재정청, 국가통계국 · 주기: 반기", "Source: provincial finance departments, NBS · Half-yearly", "资料：各省财政厅、国家统计局 · 周期：半年")),
+        (L("순풍·역풍 지수", "Tailwind–Headwind Index", "顺风·逆风指数"),
+         L("매주 쌓는 정책 신호를 한국 산업별(반도체, 배터리, 자동차, 해운 등)로 순풍과 역풍으로 나눠 세고 그 차이를 봅니다.", "Counts each week's policy signals as tailwinds or headwinds for Korean industries such as semiconductors, batteries, autos and shipping, and tracks the difference.", "把每周积累的政策信号按韩国产业（半导体、电池、汽车、航运等）分为顺风与逆风并统计其差值。"),
+         L("자료: CSAI 정책 신호 기록 · 주기: 주", "Source: CSAI policy signal log · Weekly", "资料：CSAI政策信号记录 · 周期：周")),
+        (L("CSAI 판단 기록", "CSAI Judgment Record", "CSAI判断记录"),
+         L("기준일과 무효화 조건을 붙여 공개한 판단이 맞았는지 빗나갔는지를 기록하고 공개합니다.", "Records and publishes whether each judgment we issued, with its as-of date and invalidation condition, proved right or wrong.", "记录并公布每一项附有基准日与失效条件的判断是否应验。"),
+         L("자료: CSAI 판단 기록 · 주기: 판단의 점검일마다", "Source: CSAI judgment log · At each review date", "资料：CSAI判断记录 · 周期：每个检验日")),
+        (L("공급망 의존 지도", "Supply-chain Dependence Map", "供应链依存图"),
+         L("한국이 중국에서 들여오는 핵심 품목(희토류, 흑연, 요소, 배터리 소재 등)의 대중 수입 의존도와 중국의 수출통제 조치를 품목별로 함께 봅니다.", "Tracks, item by item, Korea's import dependence on China for key inputs such as rare earths, graphite, urea and battery materials, alongside China's export controls.", "逐项观察韩国对中国关键品类（稀土、石墨、尿素、电池材料等）的进口依存度以及中国的出口管制措施。"),
+         L("자료: 관세청 수출입 통계, 중국 상무부·해관총서 공고 · 주기: 월", "Source: Korea Customs Service trade data, MOFCOM and GACC notices · Monthly", "资料：韩国关税厅进出口统计、中国商务部与海关总署公告 · 周期：月")),
+        (L("첨단산업 선두 지표", "Frontier Industry Leadership", "尖端产业领先指标"),
+         L("전기차, 배터리, 태양광, 조선, 로봇처럼 중국이 세계 선두권에 있는 산업의 세계 점유율과 한국과의 격차를 봅니다.", "Tracks global shares in industries where China is among the world leaders, such as EVs, batteries, solar, shipbuilding and robots, and the gap with Korea.", "观察电动车、电池、光伏、造船、机器人等中国处于世界前列的产业的全球份额及其与韩国的差距。"),
+         L("자료: 해관총서, 산업별 협회, 국제기구 통계 · 주기: 분기", "Source: GACC, industry associations, international agencies · Quarterly", "资料：海关总署、各行业协会、国际机构统计 · 周期：季度")),
+    ]
+    ind_lede = L("CSAI는 ‘중국을 읽는 원칙’에서 나온 여덟 가지 고유 지표를 쌓아 갑니다. 아래에 지표마다 무엇을 보는지, 자료와 주기를 적었습니다. 수치는 쌓이는 대로 이곳에 공개합니다.",
+                 "CSAI builds eight indicators of its own, each derived from our principles for reading China. Below is what each one looks at, with its sources and frequency. Figures will be published here as they accumulate.",
+                 "CSAI持续积累源自“读懂中国的原则”的八项自有指标。下面列出每项指标观察什么、资料来源与周期。数据将随积累在此公布。")
+    ind_cards = ('<h3 style="font-size:20px;margin:40px 0 16px">' + L("CSAI 고유 지표", "CSAI indicators", "CSAI自有指标") + '</h3><div class="g2">'
+                 + "".join('<div class="card"><div class="num">' + ("%02d" % (k + 1)) + "</div><h3>" + t + "</h3><p>" + d + '</p><p style="font-size:13.500px;color:var(--muted)">' + m + "</p></div>" for k, (t, d, m) in enumerate(IND)) + "</div>")
     b += sec("data", "RESEARCH DATA", L("고유 데이터", "Our data", "自有数据"),
              L("공개 통계를 바탕으로 직접 가공한 지표를 시계열로 쌓아 갑니다.", "Indicators we build from public statistics, accumulated as time series.", "基于公开统计自行加工的指标，以时间序列持续积累。"),
-             f'<div class="split"><div>{signal_box()}</div><div>{soon(L("지표별 설명 페이지를 준비하고 있습니다. 지표명·기준기간·단위·출처·업데이트일·주의사항을 함께 공개합니다.", "Indicator pages are in preparation, each with its name, reference period, unit, source, update date and caveats.", "各项指标的说明页面正在准备中，将一并公布指标名称、基准期间、单位、来源、更新日期与注意事项。"))}</div></div>' + data_items())
+             f'<div class="split"><div>{signal_box()}</div><div class="bio"><p>{ind_lede}</p></div></div>' + data_items() + ind_cards)
 
     b += sec("reports", "RESEARCH REPORTS", L("연구보고서·기고", "Research reports & commentary", "研究报告与评论"),
              L("원장의 자본시장연구원 시절 보고서부터 언론 기고까지, 중국 금융을 기록해 온 글입니다. CSAI의 새 보고서는 발간되는 대로 이곳에 올립니다.",
