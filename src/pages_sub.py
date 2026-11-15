@@ -34,7 +34,7 @@ def about():
         ("2025.06", L("의정부시 인공지능 포럼 기조강연", "Keynote at the Uijeongbu City AI Forum", "在议政府市人工智能论坛作主旨演讲"), "https://www.wikitree.co.kr/articles/1060824"),
         ("2025.09", L("아시아투데이 보도: AI·디지털자산과 한국 기업의 기회", "Asia Today: AI, digital assets and the opportunity for Korean companies", "《今日亚洲》报道：AI·数字资产与韩国企业的机会"), "https://www.asiatoday.co.kr/kn/view.php?key=20250907002221015"),
         ("2025.09", L("한국일보 한국아카데미 14기 강의", "Lecture at the Hankook Ilbo Korea Academy, 14th class", "在《韩国日报》韩国学院第14期授课"), "https://www.hankookilbo.com/news/article/A2025091710450002426"),
-        ("2026.03", L("매일경제와 「디지털자산·AI 융합 최고위과정」 공동 주관 (1·2기 운영, 3기 준비 중)", "Co-organising the “Digital Assets and AI” executive programme with Maeil Business Newspaper (1st and 2nd classes run, 3rd in preparation)", "与《每日经济》共同主办“数字资产·AI融合高层课程”（已办第1、2期，第3期筹备中）"), "https://m.mk.co.kr/amp/11979976"),
+        ("2026.03", L("매일경제와 「디지털자산·AI 융합 최고위과정」 공동 주관 (1·2기 운영, 3기 2027년 3월 개강)", "Co-organising the “Digital Assets and AI” executive programme with Maeil Business Newspaper (1st and 2nd classes run; 3rd opens March 2027)", "与《每日经济》共同主办“数字资产·AI融合高层课程”（已办第1、2期，第3期2027年3月开课）"), "https://m.mk.co.kr/amp/11979976"),
         ("2026.09", L("뉴시스·매일경제 보도: “한국의 골든타임은 3~5년”", "Newsis and Maeil Business: “Korea's golden time is three to five years”", "纽西斯·《每日经济》报道：“韩国的黄金时间是3至5年”"), "https://www.newsis.com/view/NISX20260910_0003783819"),
     ]
     hist = ('<h3 style="font-size:20px;margin:30px 0 4px">' + L("연혁", "History", "沿革") + '</h3><ul class="hist">'
@@ -351,13 +351,24 @@ def advisory():
 def academy():
     C.slug = "academy"
     title = L("교육·아카데미", "Academy", "教育学院")
-    lede = L("중국 경제와 정책, 디지털 금융을 주제로 한 교육 프로그램을 준비하고 있습니다.", "Programmes on China's economy and policy, and on digital finance, are in preparation.", "以中国经济与政策、数字金融为主题的教育项目正在筹备中。")
+    lede = L("중국 경제와 정책, 디지털 금융을 주제로 한 교육 프로그램을 운영합니다.", "We run education programmes on China's economy and policy and on digital finance.", "我们开设以中国经济与政策、数字金融为主题的教育课程。")
     b = page_hero("academy", "ACADEMY", title, lede)
     progs = [("users", L("임원 과정", "Executive education", "高管课程"), L("경영진을 위한 중국 경제·정책 이해 과정", "Understanding China's economy and policy, for executives", "面向企业高管的中国经济与政策课程"), "executive"),
              ("factory", L("기업 맞춤 교육", "Corporate training", "企业定制培训"), L("기업의 산업과 과제에 맞춰 구성하는 교육", "Training tailored to a company's industry and agenda", "根据企业所在行业与课题定制的培训"), "corporate"),
              ("scale", L("금융기관 중국 리스크 과정", "China-risk programme for financial institutions", "金融机构中国风险课程"), L("금융기관을 위한 중국 리스크 이해 과정", "Understanding China risk, for financial institutions", "面向金融机构的中国风险课程"), "programs"),
              ("layers", L("디지털 금융 교육", "Digital finance training", "数字金融培训"), L("AI·디지털 금융 전문 교육", "Specialist training in AI and digital finance", "AI与数字金融专业培训"), "programs")]
-    pc = "".join(f'<div class="card"><div class="badge-ico">{icon(ic, 26)}</div><h3>{t} <span class="tag-soon">{SOON()}</span></h3><p>{d}</p></div>' for ic, t, d, a in progs)
+    progs = [
+        ("cap", L("디지털자산·AI 융합 최고위과정", "Digital Assets and AI Executive Programme", "数字资产·AI融合高层课程"),
+         "<p>" + L("매일경제와 공동 주관합니다. 1·2기를 운영했고, 3기는 2027년 3월에 개강합니다.", "Co-organised with Maeil Business Newspaper. The 1st and 2nd classes have run; the 3rd opens in March 2027.", "与《每日经济》共同主办。已举办第1、2期，第3期将于2027年3月开课。") + "</p>", ""),
+        ("users", L("강좌", "Courses", "讲座"),
+         ticks(L(["알트코인 미래 설계반", "비트코인 30일 완전정복반", "안유화 LEP 100일 챌린지 모임반", "부의 곡선 AI에이전트 스쿨"],
+                 ["Altcoin Future Design class", "Bitcoin 30-Day Mastery class", "An Yuhua LEP 100-Day Challenge group", "Wealth Curve AI Agent School"],
+                 ["山寨币未来设计班", "比特币30天完全掌握班", "安玉花LEP 100天挑战班", "《财富曲线》AI智能体学院"]))
+         + '<p style="font-size:13px;color:var(--muted)">' + L("강좌는 교육을 위한 것이며 투자 권유가 아닙니다.", "Courses are for education and are not investment advice.", "课程以教育为目的，不构成投资建议。") + "</p>", ""),
+        ("globe", L("중국 탐방", "China study tours", "中国考察"),
+         "<p>" + L("상해·항주, 심천·베이징, 북경 등 지역의 1등 기업을 탐방합니다.", "Visits to leading companies in Shanghai and Hangzhou, Shenzhen and Beijing, and other regions.", "走访上海·杭州、深圳·北京等地区的龙头企业。") + "</p>", ""),
+    ]
+    pc = "".join(f'<div class="card"><div class="badge-ico">{icon(ic, 26)}</div><h3>{t}</h3>{d}</div>' for ic, t, d, a in progs)
     for ic, t, d, a in progs:
         reg(t, d, P("academy", a), "Academy")
     wait = L("과정 구성·일정·강사진·신청 방법은 확정되는 대로 안내합니다.", "Curriculum, dates, faculty and how to apply will be announced once confirmed.", "课程设置、日程、师资与报名方式将在确认后公布。")
