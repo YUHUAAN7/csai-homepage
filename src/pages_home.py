@@ -183,7 +183,7 @@ def home():
              (L("팟캐스트 「안경투」", "Podcast — An Yuhua's Economy & Investment", "播客《安玉花的经济投资论》"), L("팟빵", "Podbbang", "Podbbang"), PODCAST)]
     mlist = "".join(f'<li><a href="{u}" target="_blank" rel="noopener"><span>{t}<small>{s}</small></span>{icon("ext", 16)}</a></li>' for t, s, u in media)
     news = sec("news", "NEWS & EVENTS", L("소식과 미디어", "News & media", "动态与媒体"), "", f'''<div class="g3">
-  <div class="newscol"><h3>{icon("news", 20)}{L("기관 소식", "News", "机构动态")}</h3>{soon(L("공지와 활동 소식은 확정되는 대로 올립니다.", "Announcements and activity news will be posted as they are confirmed.", "公告与活动动态确认后发布。"))}</div>
+  <div class="newscol"><h3>{icon("news", 20)}{L("기관 소식", "News", "机构动态")}</h3>{notices()}</div>
   <div class="newscol"><h3>{icon("play", 20)}{L("언론·미디어", "Media", "媒体")}</h3><ul>{mlist}</ul></div>
   <div class="newscol"><h3>{icon("cal", 20)}{L("행사 일정", "Events", "活动日程")}</h3>{events_list(False)}</div>
 </div>

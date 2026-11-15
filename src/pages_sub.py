@@ -421,7 +421,7 @@ def news():
     title = L("뉴스·자료", "News & Insights", "新闻与资料")
     lede = L("기관 소식, 언론·영상, 연구소장의 판단과 자료를 한곳에 모읍니다.", "Institute news, media, the Director's judgments and publications in one place.", "机构动态、媒体与视频、所长观点及资料汇集于此。")
     b = page_hero("news", "NEWS & INSIGHTS", title, lede)
-    b += sec("news", "NEWS", L("기관 소식", "News", "机构动态"), "", soon(L("공지와 활동 소식은 확정되는 대로 올립니다.", "Announcements and activity news will be posted as they are confirmed.", "公告与活动动态确认后发布。")))
+    b += sec("news", "NEWS", L("기관 소식", "News", "机构动态"), "", notices())
     b += sec("media", "MEDIA", L("언론·미디어", "Media", "媒体"), L("방송과 영상, 팟캐스트로 중국과 세계 경제를 설명합니다.", "Explaining China and the world economy on air, on video and in podcast.", "通过电视节目、视频与播客解读中国与世界经济。"), media_cards() + channels()
              + f'<p class="note" style="margin-top:18px">{L("칼럼은 내일신문 「금요진단」에 연재하고 있습니다.", "Her current newspaper column runs in Naeil Shinmun on Fridays.", "目前在《明日新闻》周五专栏连载。")} <a href="{NAEIL_SEARCH}" target="_blank" rel="noopener">{L("최근 글 보기", "Latest pieces", "查看最新文章")}</a> · <a href="{P("research", "reports")}">{L("연구·칼럼 목록", "Research & commentary", "研究与评论")}</a></p>', "alt")
     reg(L("연구소장's Insight", "Director's Insight", "所长观点"), L("중국을 읽는 원칙과 판단 기록", "Principles for reading China and the judgment record", "解读中国的原则与判断记录"), P("insight"), "Insight")

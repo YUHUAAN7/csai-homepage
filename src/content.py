@@ -158,7 +158,7 @@ def content_types(link=True):
     live1, live2 = L("발행 중", "Publishing", "发行中"), L("운영 중", "Live", "运营中")
     soon_t = L("준비 중", "Coming soon", "筹备中")
     data = [
-        ("flash", "bolt", "Flash", L("정책·통계·산업 변화에 대한 짧은 시의성 분석", "Short, timely notes on policy, data and industry shifts", "针对政策、数据与产业变化的简短时评"), soon_t, False),
+        ("flash", "bolt", "Flash", L("정책·통계·산업 변화에 대한 짧은 시의성 분석", "Short, timely notes on policy, data and industry shifts", "针对政策、数据与产业变化的简短时评"), L("11월 중순호", "Mid-November issue", "11月中旬期"), True),
         ("monthly", "cal", L("월간 중국경제포커스", "Monthly", "月刊《中国经济聚焦》"), L("중국 거시·산업·공급망 월간 분석", "Monthly analysis of macro, industry and supply chains", "中国宏观、产业与供应链月度分析"), live1, True),
         ("deepdive", "layers", L("심층보고", "Deep Dive", "深度报告"), L("특정 산업·정책·공급망의 심층보고", "In-depth reports on one industry, policy or supply chain", "针对特定产业、政策或供应链的深度报告"), L("분기 발행", "Quarterly", "季度发行"), True),
         ("video", "play", L("영상", "Video", "视频"), L("유튜브·팟캐스트로 보는 해설", "Commentary on YouTube and podcast", "YouTube与播客解读"), live2, True),
@@ -563,3 +563,12 @@ def events_list(full=True):
 
 def tag_date(ko, en, zh):
     return '<span class="tag-date">' + L(ko, en, zh) + "</span>"
+
+
+def notices():
+    """기관 소식: 날짜가 늦은 것부터."""
+    rows = [("2026.12.24", L("연례 중국 전망 포럼 개최 예정", "Annual China outlook forum to be held", "年度中国展望论坛即将举行"), P("global", "events")),
+            ("2026.11.15", L("홈페이지 개편, 원장 인사말과 조직도 공개", "Website relaunched; President's greeting and organisation chart published", "网站改版，发布院长致辞与组织架构图"), P("about", "greeting")),
+            ("2026.11.15", L("Flash 「한국 수출로 읽는 중국」 첫 호 발행", "First Flash note published: China through Korean Exports", "Flash《从韩国出口看中国》首期发布"), P("focus", "flash-2026-11")),
+            ("2026.11", L("연구보고서 「반도체 공급망 대전환 2026」 발간", "Research report published: The Great Semiconductor Supply-chain Shift 2026", "研究报告《半导体供应链大转变 2026》发布"), P("research", "report-supply-chain-01"))]
+    return '<ul class="hist wide">' + "".join("<li><b>" + d + '</b><span><a href="' + u + '">' + x + "</a></span></li>" for d, x, u in rows) + "</ul>"
