@@ -144,7 +144,7 @@ def nav():
             ("reports", L("연구보고서", "Research Reports", "研究报告"))]),
         ("focus", L("거시경제연구소", "China Economy Focus", "宏观经济研究所"),
          L("거시경제연구소", "China Economy Focus", "宏观经济研究所"), [
-            ("latest", L("최신", "Latest", "最新")), ("flash", "Flash"),
+            ("latest", L("최신", "Latest", "最新")), ("flash", L("Flash · 열흘 노트", "Flash · Ten-Day Note", "Flash · 旬报")),
             ("monthly", L("월간 중국경제포커스", "Monthly", "月刊《中国经济聚焦》")),
             ("deepdive", L("심층보고", "Deep Dive", "深度报告")),
             ("video", L("영상·뉴스레터", "Video & Newsletter", "视频与通讯")),

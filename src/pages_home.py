@@ -139,9 +139,9 @@ def home():
 
     focus = sec("focus", L("거시경제연구소", "China Economy Focus", "宏观经济研究所"),
                 L("중국경제를 꾸준히 읽는 콘텐츠 채널", "A steady channel for reading China's economy", "持续解读中国经济的内容频道"),
-                L("거시경제연구소는 CSAI의 콘텐츠 채널입니다. 월간 「중국경제포커스」를 중심으로 Flash·심층보고·영상을 차례로 넓혀 갑니다.",
-                  "China Economy Focus is the content channel of CSAI's Macroeconomic Institute. It is built around the monthly issue and is expanding into Flash notes, deep dives and video.",
-                  "宏观经济研究所是CSAI的内容频道，以月刊《中国经济聚焦》为核心，逐步拓展快讯、深度报告与视频。"),
+                L("거시경제연구소는 CSAI의 콘텐츠 채널입니다. 월간 「중국경제포커스」를 중심으로 열흘 노트·심층보고·영상을 차례로 넓혀 갑니다.",
+                  "China Economy Focus is the content channel of CSAI's Macroeconomic Institute. It is built around the monthly issue and is expanding into the Ten-Day Note, deep dives and video.",
+                  "宏观经济研究所是CSAI的内容频道，以月刊《中国经济聚焦》为核心，逐步拓展旬报、深度报告与视频。"),
                 f'<div class="split"><div>{issue_card()}</div><div>{content_types()}{pillars()}{signal_box()}</div></div>'
                 f'<div class="sec-foot">{more(L("거시경제연구소 전체 보기", "Explore China Economy Focus", "进入宏观经济研究所"), P("focus"))}</div>')
 

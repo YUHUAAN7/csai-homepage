@@ -176,7 +176,7 @@ def research():
          L("자료: 인민은행, 재정부, 국제결제은행(BIS) · 주기: 분기", "Source: PBOC, Ministry of Finance, BIS · Quarterly", "资料：中国人民银行、财政部、国际清算银行 · 周期：季度")),
         (L("한국 수출로 읽는 중국", "China through Korean Exports", "从韩国出口看中国"),
          L("한국의 대중 수출을 품목별로 가격 효과와 물량 효과로 나눠, 중국 수요의 실제 변화를 읽습니다.", "Breaks Korea's exports to China into price and volume effects by product, to read the real change in Chinese demand.", "按品类把韩国对华出口分解为价格效应与数量效应，读出中国需求的实际变化。"),
-         L("자료: 관세청·산업부 통계 · 주기: 월", "Source: Korea Customs Service and trade ministry statistics · Monthly", "资料：韩国关税厅与产业部统计 · 周期：月")),
+         L("자료: 관세청·산업부 통계 · 주기: 열흘마다 「열흘 노트」, 가격·물량 분해는 월", "Source: Korea Customs Service and trade ministry statistics · Ten-Day Note every ten days; price and volume split monthly", "资料：韩国关税厅与产业部统计 · 周期：每十天发布《旬报》，价格与数量分解按月")),
         (L("성(省)별 체력 지표", "Provincial Strength Indicators", "省级实力指标"),
          L("31개 성의 재정 자립도, 토지 수입 의존도, 부채 부담을 묶어 지역 사이의 격차를 봅니다.", "Combines fiscal self-sufficiency, reliance on land revenue and debt burden across 31 provinces to see the gaps between regions.", "综合31个省份的财政自给率、土地收入依赖度与债务负担，观察地区之间的差距。"),
          L("자료: 각 성 재정청, 국가통계국 · 주기: 반기", "Source: provincial finance departments, NBS · Half-yearly", "资料：各省财政厅、国家统计局 · 周期：半年")),
@@ -215,9 +215,9 @@ def research():
 def focus():
     C.slug = "focus"
     title = L("거시경제연구소", "China Economy Focus", "宏观经济研究所")
-    lede = L("거시경제연구소는 CSAI의 콘텐츠 채널입니다. 월간 「중국경제포커스」와 영상으로 중국 경제의 흐름을 전하고, Flash와 심층보고를 준비하고 있습니다.",
-             "China Economy Focus is the content channel of CSAI's Macroeconomic Institute (거시경제연구소). It covers China's economy through a monthly issue and video, with Flash notes and deep dives in preparation.",
-             "宏观经济研究所是CSAI的内容频道，通过月刊《中国经济聚焦》与视频传递中国经济动向，快讯与深度报告正在筹备中。")
+    lede = L("거시경제연구소는 CSAI의 콘텐츠 채널입니다. 월간 「중국경제포커스」와 영상으로 중국 경제의 흐름을 전하고, 한국 무역 통계가 나오는 매월 1일·11일·21일에는 「열흘 노트」를 냅니다. 심층보고는 준비하고 있습니다.",
+             "China Economy Focus is the content channel of CSAI's Macroeconomic Institute (거시경제연구소). It covers China's economy through a monthly issue and video, and publishes the Ten-Day Note on the 1st, 11th and 21st of each month, when Korea's trade data come out. Deep dives are in preparation.",
+             "宏观经济研究所是CSAI的内容频道，通过月刊《中国经济聚焦》与视频传递中国经济动向，并在每月1日、11日、21日韩国贸易统计发布之际推出《旬报》。深度报告正在筹备中。")
     b = page_hero("focus", "CHINA ECONOMY FOCUS", title, lede)
     pillars = [(L("거시", "Macro", "宏观"), L("성장률, 물가, 사회융자총량, 통화·재정 정책", "Growth, prices, total social financing, monetary and fiscal policy", "增长、物价、社会融资规模、货币与财政政策")),
                (L("산업분석", "Industry", "产业分析"), L("신에너지, 반도체, 플랫폼, 부동산", "New energy, semiconductors, platforms, property", "新能源、半导体、平台经济、房地产")),
@@ -274,7 +274,7 @@ def focus():
                ["11月1至20日统计中对华出口增速能否延续",
                 "12月1日月度进出口动向中，剔除半导体的对华出口增长多少。若其增速快于剔除半导体的整体出口，“中国需求回暖”的解读将更有说服力。",
                 "年度出口突破1万亿美元的时点及届时的半导体占比"])
-    flash_card = ('<article class="card" id="flash-2026-11"><div class="num">FLASH · ' + L("한국 수출로 읽는 중국", "China through Korean Exports", "从韩国出口看中国") + " · " + L("2026년 11월 중순호", "Mid-November 2026", "2026年11月中旬")
+    flash_card = ('<article class="card" id="flash-2026-11"><div class="num">' + L("열흘 노트", "TEN-DAY NOTE", "旬报") + " · " + L("한국 수출로 읽는 중국", "China through Korean Exports", "从韩国出口看中国") + " · " + L("2026년 11월 1~10일 통계", "1–10 November 2026", "2026年11月1至10日")
                   + "</div><h3>" + L("반도체가 끌어올린 대중 수출, 중국 수요로 읽으면 안 되는 이유", "Chips lifted exports to China. Why that is not Chinese demand", "半导体拉高了对华出口：为什么不能把它读成中国需求") + "</h3>"
                   + '<p style="font-size:13.500px;color:var(--muted)">' + L("기준일 2026년 11월 15일 · 관세청 11월 1~10일 수출입 현황(11월 11일 발표)", "As of 15 November 2026 · Korea Customs Service release for 1–10 November (published 11 November)", "基准日：2026年11月15日 · 韩国关税厅11月1至10日进出口现况（11月11日发布）") + "</p>"
                   + fh(L("핵심 요지", "Key points", "核心要点")) + ticks(f_pts) + fh(L("숫자", "The numbers", "数字")) + ticks(f_nums) + fh(L("읽는 법", "How to read it", "如何解读")) + ticks(f_read)
@@ -283,8 +283,19 @@ def focus():
                   + '<a href="https://www.koreatimes.co.kr/economy/others/20261111/exports-more-than-double-in-1st-10-days-of-november" target="_blank" rel="noopener">The Korea Times</a>, '
                   + '<a href="https://www.koreajoongangdaily.com/business/exports-more-than-double-in-1st-10-days-of-november/12966595" target="_blank" rel="noopener">Korea JoongAng Daily</a>'
                   + L(" 보도(2026.11.11). 비중과 반도체 제외 수치는 CSAI 계산입니다. 이 글은 투자 권유가 아닙니다.", " (11 Nov 2026). Shares and ex-chip figures are CSAI arithmetic. This note is not investment advice.", "报道（2026.11.11）。占比与剔除半导体的数值为CSAI测算。本文不构成投资建议。") + "</p></article>")
-    b += sec("flash", "FLASH", "Flash", L("정책·통계·산업 변화에 대한 짧은 시의성 분석입니다. 무료 공개를 원칙으로 합니다.", "Short, timely notes on policy, data and industry shifts, open to all.", "针对政策、数据与产业变化的简短时评，以免费公开为原则。"),
-             flash_card, "alt")
+    tenday_box = ('<div class="card" id="ten-day-note" style="margin-bottom:18px"><h3>' + L("「열흘 노트」 안내", "About the Ten-Day Note", "关于《旬报》") + "</h3>" + kv([
+        (L("발행", "Schedule", "发布"), L("매월 1일·11일·21일. 통계 발표가 밀리면 발표일에 냅니다.", "The 1st, 11th and 21st of each month. If a data release moves, we publish on the release day.", "每月1日、11日、21日。统计发布顺延时，在发布当日推出。")),
+        (L("자료", "Data", "资料"), L("11일 관세청 1~10일 수출입 현황<br>21일 관세청 1~20일 수출입 현황<br>1일 산업통상부 월간 수출입 동향", "11th: Korea Customs Service, trade for days 1–10<br>21st: Korea Customs Service, trade for days 1–20<br>1st: the trade ministry's monthly trade figures", "11日：韩国关税厅1至10日进出口现况<br>21日：韩国关税厅1至20日进出口现况<br>1日：产业通商部月度进出口动向")),
+        (L("담는 것", "What is in it", "内容"), L("숫자 세 개(전체 수출, 반도체를 뺀 수출, 대중 수출), 한 줄 판단, 무효화 조건, 다음에 볼 것", "Three numbers (total exports, exports excluding chips, exports to China), a one-line judgment, its invalidation condition and what to watch next", "三个数字（出口总额、剔除半导体的出口、对华出口）、一句话判断、失效条件及接下来的看点")),
+        (L("읽는 법", "How to read it", "如何解读"), L("열흘 통계에는 나라별 품목 내역이 없습니다. 가격 효과와 물량 효과는 월간 확정치에서 가릅니다.", "The ten-day releases have no product breakdown by country. Price and volume effects are separated in the monthly data.", "十日统计没有分国别的品类明细，价格效应与数量效应在月度确定值中拆分。")),
+        (L("분량", "Length", "篇幅"), L("한 쪽 · 무료 공개", "One page · open to all", "一页 · 免费公开")),
+        (L("다음 호", "Next issue", "下一期"), L("2026년 11월 1~20일 통계가 발표되는 날", "The day the figures for 1–20 November 2026 are released", "2026年11月1至20日统计发布之日")),
+    ]) + "</div>")
+    b += sec("flash", "FLASH", L("Flash · 열흘 노트", "Flash · Ten-Day Note", "Flash · 旬报"),
+             L("정책·통계·산업 변화에 대한 짧은 시의성 분석입니다. 정기 간행물은 「열흘 노트」로, 한국 무역 통계가 나오는 매월 1일·11일·21일에 한 쪽으로 냅니다. 무료 공개를 원칙으로 합니다.",
+               "Short, timely notes on policy, data and industry shifts. The regular series is the Ten-Day Note, one page on the 1st, 11th and 21st of each month, when Korea's trade data come out. Open to all.",
+               "针对政策、数据与产业变化的简短时评。定期刊物为《旬报》，在每月1日、11日、21日韩国贸易统计发布之际推出，每期一页。以免费公开为原则。"),
+             tenday_box + flash_card, "alt")
     b += sec("monthly", "MONTHLY", L("월간 「중국경제포커스」", "Monthly China Economy Focus", "月刊《中国经济聚焦》"),
              L("매월 둘째 주 화요일 아침, 중국 거시·산업·공급망의 한 달을 한 권으로 정리해 보내드립니다. 기사마다 한국 시사점을 붙입니다.",
                "Every second Tuesday morning: a month of China's macro economy, industries and supply chains in one issue, each article ending with what it means for Korea.",

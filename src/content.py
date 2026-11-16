@@ -158,7 +158,7 @@ def content_types(link=True):
     live1, live2 = L("발행 중", "Publishing", "发行中"), L("운영 중", "Live", "运营中")
     soon_t = L("준비 중", "Coming soon", "筹备中")
     data = [
-        ("flash", "bolt", "Flash", L("정책·통계·산업 변화에 대한 짧은 시의성 분석", "Short, timely notes on policy, data and industry shifts", "针对政策、数据与产业变化的简短时评"), L("11월 중순호", "Mid-November issue", "11月中旬期"), True),
+        ("flash", "bolt", L("Flash · 열흘 노트", "Flash · Ten-Day Note", "Flash · 旬报"), L("정책·통계·산업 변화를 짧게 읽습니다. 「열흘 노트」는 매월 1일·11일·21일", "Short, timely notes on policy, data and industry shifts. The Ten-Day Note comes out on the 1st, 11th and 21st", "针对政策、数据与产业变化的简短时评。《旬报》每月1日、11日、21日发布"), live1, True),
         ("monthly", "cal", L("월간 중국경제포커스", "Monthly", "月刊《中国经济聚焦》"), L("중국 거시·산업·공급망 월간 분석", "Monthly analysis of macro, industry and supply chains", "中国宏观、产业与供应链月度分析"), live1, True),
         ("deepdive", "layers", L("심층보고", "Deep Dive", "深度报告"), L("특정 산업·정책·공급망의 심층보고", "In-depth reports on one industry, policy or supply chain", "针对特定产业、政策或供应链的深度报告"), L("분기 발행", "Quarterly", "季度发行"), True),
         ("video", "play", L("영상", "Video", "视频"), L("유튜브·팟캐스트로 보는 해설", "Commentary on YouTube and podcast", "YouTube与播客解读"), live2, True),
@@ -437,7 +437,7 @@ def asset_lists():
           L("「한국 기업 중국 체감지수」 설문 시작", "Korea Corporate China Sentiment Index — survey under way", "“韩国企业对华景气指数”调查已启动")],
          [L("체감지수: 매월 · 5문항 · 업종별 · 결정 단위(가격·투자·고용)", "Sentiment index: monthly, five questions, by industry, at the level of decisions (pricing, investment, hiring)", "景气指数：每月、5个问题、分行业、以决策为单位（定价·投资·用工）"),
           L("지방정부 부채(LGFV) 성별 스트레스 지수", "Province-level local government debt (LGFV) stress index", "分省地方政府债务（融资平台）压力指数"),
-          L("「한국 수출로 읽는 중국」 매월 1일 1쪽", "“Reading China through Korean exports”: one page on the 1st of each month", "“从韩国出口读中国”：每月1日一页")]),
+          L("「열흘 노트」 매월 1일·11일·21일 1쪽 (한국 수출로 읽는 중국)", "Ten-Day Note: one page on the 1st, 11th and 21st of each month (reading China through Korean exports)", "《旬报》：每月1日、11日、21日各一页（从韩国出口读中国）")]),
         ([L("원장의 중국 학계·금융계 네트워크", "The President's network in Chinese academia and finance", "院长在中国学界与金融界的人脉"),
           L("연합인포맥스 「안유화 쇼」 · 유튜브 독자층", "“The An Yuhua Show” on Yonhap Infomax · YouTube audience", "韩联社 Infomax《安玉花秀》· YouTube 观众群")],
          [L("중국 학자 특별기고 분기 1편 (공개 분석만)", "One contribution a quarter from a Chinese scholar (public analysis only)", "每季度一篇中国学者特约文章（仅限公开分析）"),
@@ -469,7 +469,7 @@ def boundary_title():
 def boundary_block(full=True):
     steps = [
         ("", L("중국의 정책", "China's policy", "中国的政策"), L("15차 5개년 계획 · 수출통제 · 보조금 · 규제 · 통화·재정", "15th Five-Year Plan · export controls · subsidies · regulation · monetary and fiscal policy", "“十五五”规划 · 出口管制 · 补贴 · 监管 · 货币与财政")),
-        ("", L("한국 기업의 숫자", "Korean companies' numbers", "韩国企业的数字"), L("수출 · 조달 · 가격 · 투자 — 매월 1일, 가장 빠른 통계", "Exports · sourcing · prices · investment — the earliest statistics, on the 1st of each month", "出口 · 采购 · 价格 · 投资——每月1日，最快的统计")),
+        ("", L("한국 기업의 숫자", "Korean companies' numbers", "韩国企业的数字"), L("수출 · 조달 · 가격 · 투자 — 열흘마다, 가장 빠른 통계", "Exports · sourcing · prices · investment — the earliest statistics, every ten days", "出口 · 采购 · 价格 · 投资——每十天一次，最快的统计")),
         (" end", L("한국의 결정", "Korean decisions", "韩国的决策"), L("조달 · 투자 · 가격 · 인력 — 경영진의 중국 판단", "Sourcing · investment · pricing · people — management's China call", "采购 · 投资 · 定价 · 人力——管理层的对华判断")),
     ]
     arrows = [L("경계선<br>1~2분기 먼저", "The boundary<br>1–2 quarters earlier", "边界线<br>提前1–2个季度"), L("번역", "Translation", "翻译")]
@@ -496,7 +496,7 @@ def boundary_block(full=True):
 def strategy_cards():
     data = [
         ("chart", L("중국 거시·정책 리서치", "China macro and policy research", "中国宏观与政策研究"),
-         L("월간 「중국경제포커스」(거시·산업·공급망), Flash, 분기 심층보고와 자체 데이터", "The monthly China Economy Focus (macro, industry, supply chains), Flash notes, quarterly deep dives and our own data", "月刊《中国经济聚焦》（宏观·产业·供应链）、快讯、季度深度报告与自有数据"), P("focus")),
+         L("월간 「중국경제포커스」(거시·산업·공급망), 열흘 노트, 분기 심층보고와 자체 데이터", "The monthly China Economy Focus (macro, industry, supply chains), the Ten-Day Note, quarterly deep dives and our own data", "月刊《中国经济聚焦》（宏观·产业·供应链）、旬报、季度深度报告与自有数据"), P("focus")),
         ("users", L("기업 자문 · 크로스보더 전략", "Business advisory and cross-border strategy", "企业咨询与跨境战略"),
          L("중국 노출 진단, 경영진 자문 세션, 공급망·진출·철수 전략", "China exposure review, executive sessions, supply-chain, entry and exit strategy", "涉华敞口诊断、管理层咨询会议、供应链及进入与退出战略"), P("advisory")),
         ("cap", L("교육 · 리더십과 인재 육성", "Education: leadership and talent", "教育：领导力与人才培养"),
@@ -532,9 +532,9 @@ def data_items():
         (L("한국 기업 중국 체감지수", "Korea Corporate China Sentiment Index", "韩国企业对华景气指数"),
          L("매월 · 5문항 · 업종별로, 가격·투자·고용 결정 단위로 묻습니다.", "Monthly, five questions, by industry, asked at the level of pricing, investment and hiring decisions.", "每月、5个问题、分行业，以定价、投资与用工决策为单位进行调查。"),
          L("설문 시작", "Survey under way", "调查已启动"), True),
-        (L("한국 수출로 읽는 중국", "Reading China through Korean exports", "从韩国出口读中国"),
-         L("관세청·산업부 통계로 매월 1일에 내는 1쪽 Flash", "A one-page Flash on the 1st of each month, from Korea Customs Service and trade-ministry statistics", "基于韩国关税厅与产业部统计、每月1日发布的一页快讯"),
-         L("11월 중순호 발행", "Mid-November issue out", "11月中旬期已发布"), True),
+        (L("열흘 노트 · 한국 수출로 읽는 중국", "Ten-Day Note · Reading China through Korean exports", "旬报 · 从韩国出口读中国"),
+         L("관세청·산업부 통계가 나오는 매월 1일·11일·21일에 내는 한 쪽 노트", "A one-page note on the 1st, 11th and 21st of each month, when Korea Customs Service and trade-ministry statistics come out", "每月1日、11日、21日韩国关税厅与产业部统计发布之际推出的一页简报"),
+         L("발행 중", "Publishing", "发行中"), True),
         (L("「연구실 데이터」 코너", "“Lab Data” column", "“研究室数据”栏目"),
          L("월간지에 싣는 자체 분석. 예: 반도체 수입 증가의 88%는 가격 효과", "Our own analysis in the monthly. Example: 88% of the rise in semiconductor imports was a price effect.", "月刊中的自主分析。例：半导体进口增长的88%来自价格效应。"),
          L("발행 중", "Publishing", "发行中"), True),
@@ -577,6 +577,6 @@ def notices():
     """기관 소식: 날짜가 늦은 것부터."""
     rows = [("2026.12.24", L("연례 중국 전망 포럼 개최 예정", "Annual China outlook forum to be held", "年度中国展望论坛即将举行"), P("global", "events")),
             ("2026.11.15", L("홈페이지 개편, 원장 인사말과 조직도 공개", "Website relaunched; President's greeting and organisation chart published", "网站改版，发布院长致辞与组织架构图"), P("about", "greeting")),
-            ("2026.11.15", L("Flash 「한국 수출로 읽는 중국」 첫 호 발행", "First Flash note published: China through Korean Exports", "Flash《从韩国出口看中国》首期发布"), P("focus", "flash-2026-11")),
+            ("2026.11.15", L("「열흘 노트」 첫 호 발행 (한국 수출로 읽는 중국)", "First Ten-Day Note published: China through Korean Exports", "《旬报》首期发布（从韩国出口看中国）"), P("focus", "flash-2026-11")),
             ("2026.11", L("연구보고서 「반도체 공급망 대전환 2026」 발간", "Research report published: The Great Semiconductor Supply-chain Shift 2026", "研究报告《半导体供应链大转变 2026》发布"), P("research", "report-supply-chain-01"))]
     return '<ul class="hist wide">' + "".join("<li><b>" + d + '</b><span><a href="' + u + '">' + x + "</a></span></li>" for d, x, u in rows) + "</ul>"
