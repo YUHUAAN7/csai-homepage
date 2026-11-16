@@ -119,7 +119,13 @@ def about():
         + (f'<div class="org-k">{L("구성원", "Members", "成员")}</div><div class="org-v">{ppl(ms, "span")}</div>' if ms else "")
         + f'<div class="org-k">{L("하는 일", "Work", "职能")}</div><div class="org-w">{"<br>".join(ws)}</div></div></div></div>'
         for t, hl, hs, ms, ws in org)
-    orgchart = (f'<div class="org"><div class="org-top"><small>{L("원장", "President", "院长")}</small><b>{L("안유화", "An Yuhua", "安玉花")}</b></div>'
+    adv_roles = L(["연구 방향과 고유 지표의 방법론 검토", "판단 기록의 채점 검증", "국내외 연구기관·학계 협력 연결"],
+                  ["Reviews research direction and the methods behind our indicators", "Checks the scoring of our judgment record", "Connects us with research institutes and scholars at home and abroad"],
+                  ["审议研究方向与自有指标的方法", "核验判断记录的评分", "对接国内外研究机构与学界合作"])
+    adv_box = ('<div class="org-adv"><h3>' + L("외부 전문가 자문위원회", "External Advisory Board", "外部专家咨询委员会") + '</h3><div class="org-in">'
+               + '<div class="org-k">' + L("하는 일", "Role", "职责") + '</div>' + "".join('<div class="org-w">· ' + r + '</div>' for r in adv_roles)
+               + '<div class="org-k">' + L("위원", "Members", "委员") + '</div><div class="org-w">' + L("위촉 중 · 확정되는 대로 공개합니다", "Being appointed · names will be posted once confirmed", "正在聘任 · 确定后公布") + '</div></div></div>')
+    orgchart = (f'<div class="org"><div class="org-head"><div></div><div class="org-top"><small>{L("원장", "President", "院长")}</small><b>{L("안유화", "An Yuhua", "安玉花")}</b></div><div class="org-advw">{adv_box}</div></div>'
                 f'<div class="org-stem"></div><div class="org-cols">{ocols}</div></div>')
     b += sec("organization", "ORGANIZATION", L("조직", "Organization", "组织架构"), "",
              orgchart + '<div style="margin-top:22px">' + soon(L("전문가 프로필은 확정되는 대로 올립니다.", "Expert profiles will be posted once confirmed.", "专家简介将在确认后发布。")) + "</div>"
