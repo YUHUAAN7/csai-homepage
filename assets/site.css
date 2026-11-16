@@ -186,6 +186,15 @@ a.card:hover{transform:translateY(-3px);border-color:var(--gold-500)}
 .sub-in p{margin:6px 0}
 .sub-a{display:inline-block;margin:2px 8px 2px 0;padding:8px 14px;border-radius:999px;background:var(--navy-700);color:#fff!important;text-decoration:none;font-weight:700;font-size:14px}
 .sub-copy{border:1px solid var(--line);background:#fff;border-radius:999px;padding:4px 12px;font-size:13px;cursor:pointer;font-family:inherit}
+.note-j{font-size:16.500px!important;font-weight:700;color:var(--navy-800)!important;line-height:1.65}
+.note-past{font-size:18px;margin:26px 0 0}
+.note-old{margin-top:12px;padding:20px 24px}
+.note-old summary{cursor:pointer;list-style:none;display:flex;flex-direction:column;gap:4px;position:relative;padding-right:28px}
+.note-old summary::-webkit-details-marker{display:none}
+.note-old summary b{font-size:17px;line-height:1.5;color:var(--ink)}
+.note-old summary:after{content:"+";position:absolute;right:0;top:2px;font-size:22px;line-height:1;color:var(--gold-600)}
+.note-old[open] summary:after{content:"−"}
+.note-old[open] summary{margin-bottom:6px}
 .tag-date{flex:none;font-size:12px;font-weight:700;color:var(--navy-700);border:1px solid var(--line);border-radius:999px;padding:2px 10px;white-space:nowrap;margin-top:1px;background:var(--sky-50)}
 .hist.wide li{grid-template-columns:96px minmax(0,1fr)}
 .tag-soon{flex:none;font-size:12px;font-weight:700;color:var(--gold-600);border:1px solid var(--gold-500);border-radius:999px;padding:2px 10px;white-space:nowrap;margin-top:1px;background:#FFF9EC}

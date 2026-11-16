@@ -154,4 +154,13 @@
       a.href = "mailto:" + f.dataset.to + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
     });
   });
+  /* 접힌 글(details)로 바로 가는 주소면 펼쳐서 보여 준다. */
+  function openHashTarget() {
+    var id = decodeURIComponent(location.hash.slice(1));
+    if (!id) return;
+    var el = document.getElementById(id);
+    if (el && el.tagName === "DETAILS") el.open = true;
+  }
+  window.addEventListener("hashchange", openHashTarget);
+  openHashTarget();
 })();
