@@ -105,9 +105,9 @@ def about():
     org = [
         (L("교육본부", "Education Division", "教育本部"), L("본부장", "Heads", "本部长"), [("김장호",) + HEAD, ("문정진",) + HEAD], [("문지은", "과장", "Manager", "科长"), ("홍명기", "PD", "PD", "PD"), ("이영현", "PD", "PD", "PD")],
          [L("최고위과정", "Executive programme", "高层课程"), L("강좌·독서모임", "Courses and reading group", "讲座·读书会"), L("중국 탐방", "China study tours", "中国考察")]),
-        (L("산업전략본부", "Industry Strategy Division", "产业战略本部"), L("본부장", "Head", "本部长"), [("김장호",) + HEAD], [("홍명기", "PD", "PD", "PD")],
+        (L("산업전략본부", "Industry Strategy Division", "产业战略本部"), L("본부장", "Head", "本部长"), [("김장호",) + HEAD], [("이영현", "PD", "PD", "PD")],
          [L("한·중 기업 투자, 상장·M&amp;A", "Korea–China corporate investment, listings and M&amp;A", "韩中企业投资、上市与并购"), L("유튜브 영상 제작", "YouTube video production", "YouTube视频制作"), L("방송·인터뷰", "Broadcast and interviews", "广播与采访")]),
-        (L("리서치&amp;컨설팅본부", "Research &amp; Consulting Division", "研究与咨询本部"), L("본부장", "Head", "本部长"), [("문정진",) + HEAD], [("이영현", "PD", "PD", "PD")],
+        (L("리서치&amp;컨설팅본부", "Research &amp; Consulting Division", "研究与咨询本部"), L("본부장", "Head", "本部长"), [("문정진",) + HEAD], [("홍명기", "PD", "PD", "PD")],
          [L("뉴스레터 구독 상품", "Newsletter subscriptions", "订阅通讯产品"), L("기업 회원·컨설팅", "Corporate membership and consulting", "企业会员·咨询"), L("국제협력, 외부 강연", "International cooperation and outside lectures", "国际合作、对外演讲"),
           L("기획·운영관리", "Planning and operations", "企划·运营管理"), L("홈페이지·홍보", "Website and communications", "网站·宣传")]),
         (L("세무&amp;재무본부", "Tax &amp; Finance Division", "税务与财务本部"), L("담당", "Lead", "负责人"), [("문지은", "과장", "Manager", "科长")], [("김광용", "대표", "CEO", "代表")],
