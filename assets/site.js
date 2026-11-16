@@ -63,11 +63,16 @@
   }
 
   /* 목록 필터 */
-  $$("[data-f]").forEach(function (b) {
-    b.addEventListener("click", function () {
-      var f = b.dataset.f;
-      $$("[data-f]").forEach(function (x) { x.setAttribute("aria-pressed", String(x === b)); });
-      $$("#articles li").forEach(function (li) { li.hidden = !(f === "all" || li.dataset.t === f); });
+  $$(".filters").forEach(function (g) {
+    var box = document.getElementById(g.getAttribute("data-for") || "articles");
+    if (!box) return;
+    $$("[data-f]", g).forEach(function (b) {
+      b.addEventListener("click", function () {
+        var f = b.dataset.f;
+        $$("[data-f]", g).forEach(function (x) { x.setAttribute("aria-pressed", String(x === b)); });
+        $$("li[data-t]", box).forEach(function (li) { li.hidden = !(f === "all" || li.dataset.t === f); });
+        $$(".yr-group", box).forEach(function (y) { y.hidden = !$$("li[data-t]", y).some(function (li) { return !li.hidden; }); });
+      });
     });
   });
 

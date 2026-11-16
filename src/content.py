@@ -121,6 +121,9 @@ def scope_note():
 
 
 def issue_card():
+    import archive_view
+    m = archive_view.monthly_latest()
+    latest_id = m["id"] if m else ""
     toc = [
         ("OPINION", L("편집장 칼럼", "Editor's column", "主编专栏")),
         ("HOT ISSUE", L("이달의 핵심 이슈", "Issue of the month", "本月焦点")),
@@ -131,9 +134,9 @@ def issue_card():
     ]
     rows = "".join(f"<li><span>{k}</span>{v}</li>" for k, v in toc)
     return f'''<div class="issue">
-  <div class="issue-top"><b>{L("월간 「중국경제포커스」 최신호", "China Economy Focus — latest issue", "月刊《中国经济聚焦》最新一期")}</b><span>2026-11</span></div>
+  <div class="issue-top"><b>{L("월간 「중국경제포커스」 최신호", "China Economy Focus — latest issue", "月刊《中国经济聚焦》最新一期")}</b><span>{latest_id}</span></div>
   <ol class="toc">{rows}</ol>
-  <div class="row-btns">{btn(L("무료 구독하기", "Subscribe free", "免费订阅"), SUBSCRIBE, "navy", ext=True)}{btn(L("지난 호 보기", "Past issues", "往期回顾"), ARCHIVE, "ghost", ext=True)}</div>
+  <div class="row-btns">{btn(L("무료 구독하기", "Subscribe free", "免费订阅"), SUBSCRIBE, "navy", ext=True)}{btn(L("최신호 PDF", "Latest issue (PDF)", "最新一期 PDF"), archive_view.monthly_pdf(m), "ghost", ext=True) if m else ""}{btn(L("지난 호 목록", "All issues", "往期目录"), P("focus", "monthly-archive"), "ghost")}</div>
   <p class="note">{L("발행: 거시경제연구소 · 본 자료는 정보 제공 목적이며 특정 종목·상품의 매수·매도 권유가 아닙니다.",
                     "Published by the Macroeconomic Institute (거시경제연구소). For information only; not a recommendation to buy or sell any security or product.",
                     "发行：宏观经济研究所。本资料仅供参考，不构成任何证券或产品的买卖建议。")}</p>
@@ -170,7 +173,9 @@ def content_types(link=True):
     return f'<div class="types">{"".join(out)}</div>'
 
 
-def record_box(light=False):
+def record_box(light=False, show_all=False):
+    """판단 기록. 자료는 src/archive.py 의 JUDGMENTS. show_all=True 면 지난 판단까지 모두 보인다."""
+    import archive_view
     chips = [L("기준일", "As-of date", "基准日"), L("판단 내용", "Judgment", "判断内容"), L("근거", "Evidence", "依据"),
              L("무효화 조건", "Invalidation conditions", "失效条件"), L("후속 평가", "Follow-up review", "后续评估")]
     return f'''<div class="record{" light" if light else ""}">
@@ -179,13 +184,7 @@ def record_box(light=False):
   <p>{L("판단을 내린 날짜와 근거, 틀렸다고 볼 조건을 함께 남기고 나중에 평가합니다.",
         "Each judgment is logged with its date, its evidence and the conditions that would prove it wrong, then reviewed later.",
         "每一次判断都记录日期、依据和失效条件，并在事后进行评估。")} {L("시나리오에는 확률을 함께 적을 예정입니다.", "Scenarios will carry probabilities.", "情景将附上概率。")}</p>
-  <div class="rec-item">
-    <p><b>{chips[0]}</b> {L("2026년 11월 15일", "15 November 2026", "2026年11月15日")}</p>
-    <p><b>{chips[1]}</b> {L("11월 초 대중 수출 급증은 중국 내수 회복이 아니라 반도체 가격 효과가 이끈 것이다.", "The surge in Korea's exports to China in early November was driven by chip prices, not by a recovery in Chinese domestic demand.", "11月初韩国对华出口激增，是半导体价格效应带动的，而不是中国内需回暖。")}</p>
-    <p><b>{chips[2]}</b> {L("11월 1~10일 반도체 수출 증가율(331.2%)이 대중 수출 증가율(148%)을 크게 웃돈다.", "In 1–10 November, chip export growth (331.2%) far exceeded growth in exports to China (148%).", "11月1至10日，半导体出口增速（331.2%）远高于对华出口增速（148%）。")}</p>
-    <p><b>{chips[3]}</b> {L("12월 1일 월간 통계에서 반도체를 뺀 대중 수출이 반도체를 뺀 전체 수출보다 빠르게 늘면 이 판단을 거둔다.", "We withdraw this judgment if the monthly data on 1 December show exports to China excluding chips growing faster than total exports excluding chips.", "若12月1日的月度统计显示剔除半导体的对华出口增速快于剔除半导体的整体出口，则撤回这一判断。")}</p>
-    <p><b>{chips[4]}</b> {L("2026년 12월 1일 통계 발표 뒤", "After the data release on 1 December 2026", "2026年12月1日统计发布之后")} · <a href="{P("focus", "flash-2026-11")}">{L("근거 글 보기", "Read the note", "查看依据")}</a></p>
-  </div>
+  {archive_view.judgments_html(chips, show_all)}
 </div>'''
 
 
@@ -262,31 +261,10 @@ def machine_svg():
   </g></svg>'''
 
 
-def articles():
-    kc, kr, kp = L("칼럼", "Column", "专栏"), L("연구보고서", "Report", "研究报告"), L("정기간행물", "Periodical", "期刊")
-    ko = "" if C.lang == "ko" else L("", " · in Korean", " · 韩文")
-    naeil = L("내일신문 「금요진단」", "Naeil Shinmun, Friday column", "《明日新闻》周五专栏")
-    rows = [
-        ("col", L("연재 중", "Ongoing", "连载中"), NAEIL_SEARCH, "내일신문 「금요진단」", L("현재 연재하고 있는 칼럼입니다. 제목을 누르면 최근 글을 모아 볼 수 있습니다.", "The column currently running. The title opens a search of the latest pieces.", "目前正在连载的专栏，点击标题可查看最新文章。"), kc),
-        ("col", "2024-09", "https://m.naeil.com/news/read/522358", "중국이 대만문제에 그토록 민감해하는 이유", naeil, kc),
-        ("col", "2024-05", "https://m.naeil.com/news/read/511341", "미국이 금리를 내리지 않는 진짜 이유", naeil, kc),
-        ("col", "2020-09", "https://www.ajunews.com/view/20200923095335019", "미·중 충돌 격화 속에 속도 내는 위안화 국제화", L("아주경제 「안유화 칼럼」", "Aju Business Daily", "亚洲经济"), kc),
-        ("col", "2020-02", "https://www.ajunews.com/view/20200213143112344", "코로나19 확산 사태가 세계경제에 미치는 영향", L("아주경제 「안유화 칼럼」", "Aju Business Daily", "亚洲经济"), kc),
-        ("col", "2019-12", "https://www.ajunews.com/view/20191210100650279", "中 인민은행이 금융안정보고서를 통해 시장에 경보를 울린 이유", L("아주경제 「안유화 칼럼」", "Aju Business Daily", "亚洲经济"), kc),
-        ("col", "2016-04", "https://m.seoul.co.kr/news/2016/04/28/20160428030007", "중국 부채위기를 어떻게 봐야 하나", L("서울신문 「열린세상」", "Seoul Shinmun", "首尔新闻"), kc),
-        ("rep", "2012-11", "https://www.kcmi.re.kr/report/report_view?report_no=259", "위안화의 역외 사용 확대와 한국의 대응", L("자본시장연구원 이슈&amp;정책 12-05", "Korea Capital Market Institute, Issue &amp; Policy 12-05", "韩国资本市场研究院 Issue &amp; Policy 12-05"), kr),
-        ("rep", "2011-12", "https://www.kcmi.re.kr/report/report_view?report_no=248", "중국 주식시장 특성과 외국기업의 활용방안", L("자본시장연구원 연구보고서", "Korea Capital Market Institute research report", "韩国资本市场研究院研究报告"), kr),
-        ("pub", "2008–2015", "https://www.kcmi.re.kr/publications/pub_end2_view?syear=2013&amp;zcd=002001006&amp;zno=860&amp;cno=2845", "중국금융시장포커스", L("자본시장연구원 정기간행물 · 창간 및 책임편집 · 예: 2013 여름호 「중국의 그림자금융에 따른 위기와 기회」", "Korea Capital Market Institute periodical · founder and editor · e.g. Summer 2013, on the risks and opportunities of China's shadow banking", "韩国资本市场研究院期刊 · 创办并任责任编辑 · 例：2013年夏季号《中国影子银行带来的危机与机遇》") + f' · <a href="https://www.kcmi.re.kr/community/search_basic?topkey=%EC%95%88%EC%9C%A0%ED%99%94" target="_blank" rel="noopener">{L("자본시장연구원에서 안유화 발간물 전체 보기", "All of An Yuhua's KCMI publications", "查看安玉花在该研究院的全部出版物")}</a>', kp),
-    ]
-    lis = []
-    for t, d, u, title, src, kind in rows:
-        reg(title, src, P("research", "reports"), kind)
-        lis.append(f'<li data-t="{t}"><time>{d}</time><div><h3><a href="{u}" target="_blank" rel="noopener" lang="ko">{title}</a></h3><p>{src}{ko}</p></div><span class="kind">{kind}</span></li>')
-    filt = (f'<div class="filters" role="group" aria-label="{L("유형", "Type", "类型")}">'
-            f'<button type="button" aria-pressed="true" data-f="all">{L("전체", "All", "全部")}</button>'
-            f'<button type="button" aria-pressed="false" data-f="col">{kc}</button><button type="button" aria-pressed="false" data-f="rep">{kr}</button>'
-            f'<button type="button" aria-pressed="false" data-f="pub">{kp}</button></div>')
-    return filt + f'<ul class="articles" id="articles">{"".join(lis)}</ul>'
+def articles(limit=None):
+    """칼럼·기고·외부 보고서 목록. 자료는 src/archive.py 의 WRITINGS."""
+    import archive_view
+    return archive_view.writings(limit)
 
 
 def books_html():
@@ -559,24 +537,16 @@ def process_lede():
 
 
 def events_list(full=True):
-    """확정된 일정 목록. full=False 이면 포럼·브리핑만."""
-    rows = [("2026.12.15", L("영문 분기 노트 「Korea Sensor」 첫 호", "First issue of the English quarterly note Korea Sensor", "英文季度简报 Korea Sensor 首期")),
-            ("2026.12.24", L("연례 중국 전망 포럼: 2027년 중국 경제 전망, 정책 문장으로 읽는 방향", "Annual China outlook forum: the 2027 outlook for China's economy, read through policy language", "年度中国展望论坛：2027年中国经济展望——从政策措辞读方向")),
-            ("2027.01.15", L("분기 경영진 브리핑", "Quarterly executive briefing", "季度管理层简报")),
-            ("2027 1Q", L("중국 학자 특별기고 첫 편", "First special contribution from a Chinese scholar", "中国学者特约稿首篇"))]
-    if not full:
-        rows = rows[1:3]
-    return '<ul class="hist wide">' + "".join("<li><b>" + d + "</b><span>" + x + "</span></li>" for d, x in rows) + "</ul>"
+    """행사 일정. 자료는 src/archive.py 의 EVENTS. 지난 행사는 자동으로 '지난 행사'로 접힌다. full=False 이면 첫 화면용 2건."""
+    import archive_view
+    return archive_view.events_html(full)
 
 
 def tag_date(ko, en, zh):
     return '<span class="tag-date">' + L(ko, en, zh) + "</span>"
 
 
-def notices():
-    """기관 소식: 날짜가 늦은 것부터."""
-    rows = [("2026.12.24", L("연례 중국 전망 포럼 개최 예정", "Annual China outlook forum to be held", "年度中国展望论坛即将举行"), P("global", "events")),
-            ("2026.11.15", L("홈페이지 개편, 원장 인사말과 조직도 공개", "Website relaunched; President's greeting and organisation chart published", "网站改版，发布院长致辞与组织架构图"), P("about", "greeting")),
-            ("2026.11.15", L("「열흘 노트」 첫 호 발행 (한국 수출로 읽는 중국)", "First Ten-Day Note published: China through Korean Exports", "《旬报》首期发布（从韩国出口看中国）"), P("focus", "flash-2026-11")),
-            ("2026.11", L("연구보고서 「반도체 공급망 대전환 2026」 발간", "Research report published: The Great Semiconductor Supply-chain Shift 2026", "研究报告《半导体供应链大转变 2026》发布"), P("research", "report-supply-chain-01"))]
-    return '<ul class="hist wide">' + "".join("<li><b>" + d + '</b><span><a href="' + u + '">' + x + "</a></span></li>" for d, x, u in rows) + "</ul>"
+def notices(limit=None):
+    """기관 소식: 날짜가 늦은 것부터. 자료는 src/archive.py 의 NOTICES."""
+    import archive_view
+    return archive_view.notices_html(limit)

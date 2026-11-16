@@ -65,6 +65,8 @@ def sub_href(slug, anchor):
         return P("insight", "insight")
     if slug == "focus" and anchor == "notes":
         return P("videos")
+    if slug == "news" and anchor == "archive":
+        return P("archive")
     return P(slug, anchor)
 
 
@@ -163,7 +165,8 @@ def nav():
         ("news", L("뉴스·자료", "News & Insights", "新闻与资料"), L("뉴스·자료", "News & Insights", "新闻与资料"), [
             ("news", L("기관 소식", "News", "机构动态")), ("media", L("언론·미디어", "Media", "媒体")),
             ("insight", L("연구소장's Insight", "Director's Insight", "所长观点")),
-            ("publications", L("자료실", "Publications", "资料室"))]),
+            ("publications", L("자료실", "Publications", "资料室")),
+            ("archive", L("전체 아카이브", "Archive", "全部档案"))]),
     ]
 
 
@@ -307,7 +310,7 @@ def sec(sid, eyebrow, title, lede, body, cls=""):
 def page_hero(slug, eyebrow, title, lede, subs=None):
     if subs is None:
         subs = next((s[3] for s in nav() if s[0] == slug), [])
-    tabs = "".join(f'<a href="{sub_href(slug, a) if (slug, a) in (("news", "insight"), ("focus", "notes")) else "#" + a}">{e(t)}</a>' for a, t in subs)
+    tabs = "".join(f'<a href="{sub_href(slug, a) if (slug, a) in (("news", "insight"), ("focus", "notes"), ("news", "archive")) else "#" + a}">{e(t)}</a>' for a, t in subs)
     sub = f'<div class="subnav" id="subnav"><div class="wrap"><div class="subnav-in">{tabs}</div></div></div>' if tabs else ""
     reg(title, lede, P(slug), "CSAI")
     return f'''<section class="phero">

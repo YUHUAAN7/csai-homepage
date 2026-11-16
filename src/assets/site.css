@@ -581,3 +581,19 @@ a.type:hover{border-color:var(--gold-500)}
   .mission-globe{width:320px;left:-140px}
   .mission .sig strong{font-size:28px}
 }
+
+/* 누적 목록(아카이브) */
+.more-list{margin-top:14px}
+.more-list>summary{cursor:pointer;display:inline-block;font-size:14px;font-weight:700;color:var(--navy-700);padding:8px 16px;border:1px solid var(--line);border-radius:999px;background:#fff;list-style:none}
+.more-list>summary::-webkit-details-marker{display:none}
+.more-list>summary:after{content:" +";color:var(--gold-600)}
+.more-list[open]>summary:after{content:" −"}
+.more-list[open]>summary{margin-bottom:6px}
+.yr-group{margin-top:28px}.yr-group:first-child{margin-top:0}
+.yr-group .yr{font-family:var(--f-display);font-size:22px;margin:0 0 6px;color:var(--navy-800)}
+.st{display:inline-block;font-size:12px;font-weight:700;padding:2px 9px;border-radius:999px;margin-left:6px;vertical-align:1px}
+.st-open{background:#EEF2F8;color:#33507E}.st-hit{background:#E3F3EA;color:#1F6E47}.st-miss{background:#F8E6E3;color:#97392E}.st-part{background:#FBF1DC;color:#8A6417}
+.rec-past{font-size:15px;margin:20px 0 6px}
+.rec-old{border-top:1px solid rgba(128,140,160,.4);padding:10px 0}
+.rec-old summary{cursor:pointer;font-size:14.500px;line-height:1.6}
+.rec-score{margin-top:14px;font-size:13px;opacity:.8}

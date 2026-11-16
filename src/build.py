@@ -24,7 +24,7 @@ import pages_sub  # noqa: E402
 PAGES = [
     ("index", pages_home.home), ("about", pages_sub.about), ("research", pages_sub.research), ("focus", pages_sub.focus),
     ("advisory", pages_sub.advisory), ("academy", pages_sub.academy), ("global", pages_sub.global_), ("news", pages_sub.news),
-    ("insight", pages_sub.insight), ("videos", pages_sub.videos), ("contact", pages_sub.contact), ("policy", pages_sub.policy),
+    ("insight", pages_sub.insight), ("archive", pages_sub.archive_page), ("videos", pages_sub.videos), ("contact", pages_sub.contact), ("policy", pages_sub.policy),
 ]
 
 FAVICON = '''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><linearGradient id="g" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#B8862A"/><stop offset=".55" stop-color="#F6D896"/><stop offset="1" stop-color="#D9A441"/></linearGradient></defs><rect width="64" height="64" rx="12" fill="#071A3A"/><path d="M8 50C12 26 30 10 54 9 36 15 22 28 16 51z" fill="url(#g)"/><text x="36" y="48" text-anchor="middle" font-family="Georgia,serif" font-size="34" font-weight="700" fill="#fff">C</text></svg>'''

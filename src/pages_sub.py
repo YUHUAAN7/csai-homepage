@@ -3,6 +3,8 @@
 연구소장's Insight, 문의, 정책."""
 from core import *
 from content import *
+import archive_view
+from archive import DEEPDIVE_NEXT
 
 
 
@@ -162,17 +164,6 @@ def research():
              L("세 분야를 따로 보지 않고 서로의 원인과 결과로 함께 읽습니다.", "We read the three areas together, as each other's causes and effects.", "三个领域不分开看，而是作为彼此的因果一并解读。"),
              f'<div class="g3">{cards}</div>{future_finance()}', "alt")
 
-    rep_card = ('<div class="card" id="report-supply-chain-01"><div class="num">CSAI GLOBAL SUPPLY CHAIN FOCUS · No. 01 · 2026.11</div><h3>'
-                + L("반도체 공급망 대전환 2026", "The Great Semiconductor Supply-chain Shift 2026", "半导体供应链大转变 2026") + "</h3><p><b>"
-                + L("미중 갈등이 다시 그리는 반도체 지도와 한국의 선택", "The chip map redrawn by US–China rivalry, and Korea's choices", "美中博弈重绘的半导体版图与韩国的选择") + "</b></p><p>"
-                + L("반도체 공급망은 하나의 세계 사슬에서 관리된 두 개의 사슬로 갈라지고 있습니다. 한국은 가장 대체하기 어려운 메모리를 쥐고 있지만 설계 소프트웨어, 장비, 소재는 남에게 기대고 있습니다. 누가 병목을 쥐고 누가 밀려나는지, 한국은 무엇을 해야 하는지를 공개 자료 16건으로 정리했습니다.",
-                    "The semiconductor supply chain is splitting from one global chain into two managed chains. Korea holds memory, the hardest link to replace, but relies on others for design software, equipment and materials. Drawing on 16 public sources, the report sets out who holds the chokepoints, who is pushed aside, and what Korea should do.",
-                    "半导体供应链正从一条全球链条分裂为两条受管理的链条。韩国握有最难替代的存储芯片，但在设计软件、设备和材料上依赖他人。报告依据16份公开资料，梳理谁掌握瓶颈、谁被挤出，以及韩国该怎么做。") + '</p><p style="font-size:14px;color:var(--ink-2)">'
-                + L("차례: 공급망 지도 · 병목과 집중도 · 단계별 경쟁력 · 미중 갈등이 바꾸는 사슬 · 승자와 패자 · 2027~2030 시나리오 · 한국의 위기와 기회 · 지켜볼 신호",
-                    "Contents: supply-chain map · chokepoints and concentration · competitiveness by stage · how US–China rivalry changes the chain · winners and losers · 2027–2030 scenarios · risks and opportunities for Korea · signals to watch",
-                    "目录：供应链地图 · 瓶颈与集中度 · 各环节竞争力 · 美中博弈如何改变链条 · 赢家与输家 · 2027~2030情景 · 韩国的危机与机遇 · 值得关注的信号") + '</p><p style="font-size:13.500px;color:var(--muted)">'
-                + L("작성 기준일 2026년 11월 3일 · 15쪽", "As of 3 November 2026 · 15 pages", "编写基准日：2026年11月3日 · 15页") + ' · <a href="' + P("contact") + '" style="font-weight:700;color:var(--navy-700)">'
-                + L("전문 문의", "Request the full report", "索取全文") + " →</a></p></div>")
     IND = [
         (L("정책 문장 강도 지수", "Policy Language Index", "政策措辞强度指数"),
          L("정치국 회의, 중앙경제공작회의, 인민은행 통화정책 보고서의 수식어 변화를 회의마다 비교해 완화와 긴축의 방향과 세기를 점수로 매깁니다.", "Compares the modifiers in Politburo, Central Economic Work Conference and PBOC policy texts from one meeting to the next, and scores the direction and strength of easing or tightening.", "逐次比较政治局会议、中央经济工作会议和央行货币政策报告中的措辞变化，为宽松或收紧的方向与力度打分。"),
@@ -212,7 +203,7 @@ def research():
              L("원장의 자본시장연구원 시절 보고서부터 언론 기고까지, 중국 금융을 기록해 온 글입니다. CSAI의 새 보고서는 발간되는 대로 이곳에 올립니다.",
                "From the President's reports at the Korea Capital Market Institute to her newspaper columns: a record of writing on Chinese finance. New CSAI reports will be posted here as they are published.",
                "从院长在韩国资本市场研究院时期的报告到媒体专栏，这里汇集了记录中国金融的文字。CSAI的新报告将在发布后陆续上线。"),
-             articles() + f'<div style="margin-top:24px">{rep_card}</div>'
+             f'<h3 style="font-size:20px;margin:0 0 16px">{L("CSAI 연구보고서", "CSAI reports", "CSAI研究报告")}</h3>' + archive_view.reports_block() + f'<h3 style="font-size:20px;margin:36px 0 16px">{L("칼럼·기고·외부 보고서", "Columns, commentary and earlier reports", "专栏、评论与过往报告")}</h3>' + articles()
              + columns_note(), "alt")
     return page("research", title, lede, b, "research")
 
@@ -294,13 +285,12 @@ def focus():
                  (L("발행", "Schedule", "发行"), L("매월 둘째 주 화요일 아침", "Second Tuesday of each month, morning", "每月第二个星期二早晨")),
                  (L("구성", "Sections", "栏目"), "OPINION · HOT ISSUE · MACRO · INDUSTRY · SUPPLY · Q&amp;A"),
                  (L("받아 보기", "How to get it", "获取方式"), f'<a href="{SUBSCRIBE}" target="_blank" rel="noopener">{L("이메일 무료 구독", "Free email subscription", "邮件免费订阅")}</a>'),
-                 (L("지난 호", "Past issues", "往期"), f'<a href="{ARCHIVE}" target="_blank" rel="noopener">chinamacro.kr</a>'),
+                 (L("지난 호", "Past issues", "往期"), f'<a href="#monthly-archive">{L("아래 발행 목록", "Issue list below", "见下方目录")}</a> · <a href="{ARCHIVE}" target="_blank" rel="noopener">chinamacro.kr</a>'),
                  (L("발행 주체", "Publisher", "发行方"), L("거시경제연구소", "Macroeconomic Institute (거시경제연구소), CSAI", "宏观经济研究所")),
-             ]) + f'</div><div>{signal_box()}</div></div><div class="sec-foot">{btn(L("무료 구독하기", "Subscribe free", "免费订阅"), SUBSCRIBE, "navy", ext=True)}{btn(L("지난 호 보기", "Past issues", "往期回顾"), ARCHIVE, "ghost", ext=True)}</div>')
-    reg(L("심층보고 No.1 — 반도체·DRAM 공급망", "Deep Dive No. 1 — semiconductor and DRAM supply chain", "深度报告第1号——半导体与DRAM供应链"), "", P("focus", "deepdive"), "Deep Dive")
+             ]) + f'</div><div>{signal_box()}</div></div><div class="sec-foot">{btn(L("무료 구독하기", "Subscribe free", "免费订阅"), SUBSCRIBE, "navy", ext=True)}{btn(L("chinamacro.kr에서 보기", "View on chinamacro.kr", "在 chinamacro.kr 查看"), ARCHIVE, "ghost", ext=True)}</div>'
+             + f'<h3 id="monthly-archive" style="font-size:20px;margin:40px 0 16px;scroll-margin-top:140px">{L("발행 목록", "All issues", "往期目录")}</h3>' + archive_view.monthly_list())
     b += sec("deepdive", "DEEP DIVE", L("심층보고", "Deep Dive", "深度报告"), L("특정 산업·정책·공급망을 깊이 다루는 보고서입니다. 분기마다 냅니다.", "In-depth reports on a single industry, policy or supply chain, published quarterly.", "针对单一产业、政策或供应链的深度报告，每季度发布。"),
-             f'''<ul class="articles"><li><time>No. 1</time><div><h3>{L("반도체·DRAM 공급망", "Semiconductor and DRAM supply chain", "半导体与DRAM供应链")}</h3><p>{L("전문은 문의로 제공합니다.", "Full report available on inquiry.", "全文可通过咨询获取。")} <a href="{P("contact", "general")}">{L("문의하기", "Inquire", "咨询")}</a></p></div><span class="kind">{L("심층보고", "Deep Dive", "深度报告")}</span></li></ul>
-<div style="margin-top:20px">{soon(L("다음 심층보고는 2026년 12월 첫 주에 발행합니다. 주제는 ‘반도체 호황을 걷어낸 한국 수출의 진짜 모습’입니다. 미래 금융(디지털 위안화·토큰증권·탄소시장)도 심층보고 주제로 다룹니다.", "The next in-depth report will be published in the first week of December 2026, on what Korea's exports look like once the chip boom is stripped out. Future finance (the digital yuan, tokenised securities and carbon markets) is also among our in-depth topics.", "下一期深度报告将于2026年12月第一周发布，主题是“剔除半导体热潮后韩国出口的真实面貌”。未来金融（数字人民币、代币化证券、碳市场）也是深度报告的主题。"))}</div>''', "alt")
+             archive_view.deepdive_list() + (f'<div style="margin-top:20px">{soon(e(archive_view.T(DEEPDIVE_NEXT)))}</div>' if DEEPDIVE_NEXT else ""), "alt")
     b += sec("video", "VIDEO & NEWSLETTER", L("영상·뉴스레터", "Video & Newsletter", "视频与通讯"),
              L("유튜브 채널 「안유화의 경제투자론」의 최신 영상을 바로 볼 수 있습니다. 매주 화요일 새 영상이 올라옵니다.", "Watch the latest from the YouTube channel right here. A new video goes up every Tuesday.", "可在此直接观看YouTube频道的最新视频，每周二更新。"),
              f'''<div class="player"><a href="{YOUTUBE}/videos" target="_blank" rel="noopener">{L("안유화의 경제투자론 최신 영상", "Latest videos on YouTube", "YouTube 最新视频")}<span>YOUTUBE</span></a>
@@ -441,11 +431,24 @@ def news():
 <h2>{L("판단의 기준과 기록", "Standards and record of judgment", "判断的标准与记录")}</h2><p>{L("중국을 읽는 원칙, 판단 기록, 대표저서를 모았습니다.", "Principles for reading China, the judgment record, and selected books.", "汇集解读中国的原则、判断记录与代表著作。")}</p></div>
 {record_box()}<div class="sec-foot">{btn(L("Insight 읽기", "Read Insight", "阅读观点"), P("insight"))}</div></div></section>'''
     pubs = [("doc", L("연구보고서·기고", "Research reports & commentary", "研究报告与评论"), L("보고서와 언론 기고 목록", "Reports and newspaper columns", "报告与媒体专栏"), P("research", "reports"), False),
-            ("cal", L("월간 「중국경제포커스」 지난 호", "China Economy Focus — past issues", "月刊《中国经济聚焦》往期"), "chinamacro.kr", ARCHIVE, True),
+            ("cal", L("월간 「중국경제포커스」 지난 호", "China Economy Focus — past issues", "月刊《中国经济聚焦》往期"), L("발행 목록과 PDF", "Issue list and PDFs", "往期目录与PDF"), P("focus", "monthly-archive"), False),
+            ("news", L("전체 아카이브", "Full archive", "全部档案"), L("모든 메뉴의 글과 자료를 날짜순으로", "Everything we have published, by date", "按日期查看全部内容"), P("archive"), False),
             ("layers", L("대표저서", "Selected books", "代表著作"), L("『부의 곡선』, 『더 플로』", "Two books in Korean", "两部韩文著作"), P("insight", "books"), False)]
     pc = "".join(f'<a class="card" href="{h}"{" target=\"_blank\" rel=\"noopener\"" if x else ""}><div class="badge-ico">{icon(ic, 26)}</div><h3>{t}</h3><p>{d}</p></a>' for ic, t, d, h, x in pubs)
-    b += sec("publications", "PUBLICATIONS", L("자료실", "Publications", "资料室"), "", f'<div class="g3">{pc}</div>')
+    b += sec("publications", "PUBLICATIONS", L("자료실", "Publications", "资料室"), "", f'<div class="g2">{pc}</div>')
     return page("news", title, lede, b, "news")
+
+
+# ── 전체 아카이브 ───────────────────────────────────────────────
+def archive_page():
+    C.slug = "archive"
+    title = L("전체 아카이브", "Archive", "全部档案")
+    lede = L("CSAI가 낸 모든 글과 자료를 메뉴와 관계없이 날짜순으로 모았습니다. 새 글이 나와도 지난 글은 지우지 않고 이곳에 쌓입니다.",
+             "Everything CSAI has published, across all sections, in date order. New pieces are added; nothing earlier is removed.",
+             "按日期汇集CSAI发布的全部文章与资料，不分栏目。新内容不断累积，往期内容不会删除。")
+    b = page_hero("news", "ARCHIVE", title, lede, [])
+    b += sec("all", "ARCHIVE", L("날짜순 목록", "By date", "按日期"), L("종류를 눌러 골라 볼 수 있습니다.", "Choose a type to filter.", "可按类型筛选。"), archive_view.archive_page_body())
+    return page("archive", title, lede, b, "news")
 
 
 # ── 연구소장's Insight ─────────────────────────────────────────
@@ -460,7 +463,7 @@ def insight():
              principles_grid() + f'<div class="sec-foot">{more(L("분석 프레임: 중국 경제는 어떻게 작동하는가", "Framework: how China\'s economy works", "分析框架：中国经济如何运行"), P("research", "framework"))}</div>', "alt")
     b += sec("record", "JUDGMENT", L("판단·한마디", "Judgments", "判断与短评"),
              L("판단은 기록될 때 검증할 수 있습니다. 기준일과 근거, 무효화 조건을 함께 남기고 결과를 공개 성적표로 쌓아 갑니다.", "A judgment can be tested only if it is recorded. Each is logged with its date, evidence and invalidation conditions, and the results build into a public scorecard.", "判断只有被记录下来才能被检验。每一次判断都记录基准日、依据与失效条件，并将结果累积为公开成绩单。"),
-             record_box(light=True))
+             record_box(light=True, show_all=True))
     b += sec("books", "BOOKS", L("대표저서", "Selected books", "代表著作"), books_lede(), books_html(), "alt")
     return page("insight", title, lede, b, "news")
 

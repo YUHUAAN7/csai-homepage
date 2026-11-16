@@ -14,7 +14,7 @@ https://www.csai.re.kr 의 소스입니다. GitHub Pages로 배포됩니다.
 | `profile.jpg`, `podcast.jpg` | 원장 프로필 사진, 팟캐스트 표지 |
 | `sitemap.xml`, `robots.txt`, `404.html`, `CNAME` | 검색 노출·오류 페이지·도메인 설정 |
 
-페이지: `index`(메인) · `about`(연구원 소개) · `research`(연구·분석) · `focus`(거시경제연구소) · `advisory`(기업 자문) ·
+페이지: `archive`(전체 아카이브) · `index`(메인) · `about`(연구원 소개) · `research`(연구·분석) · `focus`(거시경제연구소) · `advisory`(기업 자문) ·
 `academy`(교육·아카데미) · `global`(글로벌 협력) · `news`(뉴스·자료) · `insight`(연구소장's Insight) · `videos`(영상 해설) · `contact`(문의) · `policy`(개인정보·이용 안내)
 
 기존 안유화 교수 홈페이지의 내용(대표 문구, 작동 원리, 원칙, 중국경제포커스, 연구·칼럼, 영상·강연, 저서, 약력)은
@@ -28,7 +28,7 @@ https://www.csai.re.kr 의 소스입니다. GitHub Pages로 배포됩니다.
 
 1. `src/content.py`(여러 페이지가 함께 쓰는 내용), `src/pages_home.py`(메인), `src/pages_sub.py`(하위 페이지)에서 문구를 고칩니다.
    모든 문구는 `L("한국어", "English", "中文")` 형태입니다. 영어·중국어를 비우면 한국어가 그대로 나옵니다.
-2. `python3 src/build.py` 를 실행하면 33개 페이지와 검색 색인, 사이트맵이 다시 만들어집니다. (추가 설치 없음)
+2. `python3 src/build.py` 를 실행하면 39개 페이지와 검색 색인, 사이트맵이 다시 만들어집니다. (추가 설치 없음)
 3. 바뀐 파일을 커밋해 `main`에 올리면 사이트에 반영됩니다.
 
 루트·`en/`·`zh/`의 HTML은 빌드 결과물이므로 직접 고치지 않습니다.
@@ -36,6 +36,25 @@ https://www.csai.re.kr 의 소스입니다. GitHub Pages로 배포됩니다.
 - 디자인(색·글꼴·간격): `src/assets/site.css`
 - 메뉴 구조: `src/core.py`의 `nav()`
 - 메인 비주얼 그림: `src/hero_art.py` (사진으로 바꾸려면 `assets/hero.svg` 대신 사진 파일을 두고 `site.css`의 `.hero-art`, `.phero` 배경을 고칩니다)
+
+## 누적 자료 (덮어쓰지 않고 쌓기)
+
+사이트의 모든 발행물은 **추가만 하고 지우거나 덮어쓰지 않습니다.** 메뉴마다 날짜가 늦은 것부터 나오고,
+길어지면 최근 항목만 펼치고 나머지는 「이전 항목 더 보기」로 접힙니다. 모든 항목은 뉴스·자료 > 전체 아카이브
+(`archive.html`)에도 연도별로 함께 쌓이며, 종류별로 골라 볼 수 있습니다.
+
+| 메뉴 | 자료 파일 · 목록 |
+| --- | --- |
+| 거시경제연구소 > 월간 「중국경제포커스」 | `src/archive.py`의 `MONTHLY` (PDF는 `https://chinamacro.kr/issues/YYYY-MM.pdf` 고정 규칙) |
+| 거시경제연구소 > 심층보고 | `src/archive.py`의 `DEEPDIVE`, 다음 호 안내 `DEEPDIVE_NEXT` |
+| 거시경제연구소 > Flash · 열흘 노트 | `src/tenday.py`의 `TENDAY` |
+| 영상 해설 | `src/episodes.py`의 `EPISODES` |
+| 연구·분석 > 연구보고서 | `src/archive.py`의 `REPORTS`(CSAI 보고서), `WRITINGS`(칼럼·기고·외부 보고서) |
+| 연구소장's Insight > 판단 기록 | `src/archive.py`의 `JUDGMENTS` (점검 뒤에는 `status`·`result`만 채움) |
+| 뉴스·자료 > 기관 소식 | `src/archive.py`의 `NOTICES` |
+| 글로벌 협력 > 포럼·행사 | `src/archive.py`의 `EVENTS` (지난 행사는 빌드할 때 자동으로 「지난 행사」로 이동) |
+
+항목 형식은 각 파일 머리말에 있습니다. 목록 안 순서는 상관없고, 빌드할 때 날짜순으로 정렬됩니다.
 
 ## 영상 해설 (매주)
 
