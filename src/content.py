@@ -482,6 +482,7 @@ def boundary_block(full=True):
     hypo = L("<b>검증할 가설</b> — 중국 정책은 중국 통계보다 1~2분기 먼저 한국 숫자에 나타난다. 이 가설을 매호 검증합니다.",
              "<b>The hypothesis we test</b> — China's policy shows up in Korean numbers one to two quarters before it shows up in Chinese statistics. We test it in every issue.",
              "<b>待检验的假设</b>——中国的政策会比中国的统计数据提前一到两个季度体现在韩国的数字上。我们每期都对此进行检验。")
+    hypo += ' <a href="' + P("global", "korea-sensor") + '" style="font-weight:700;white-space:nowrap">KOREA SENSOR →</a>'
     pos = ""
     if full:
         pos = "<p class=\"sub-p\" style=\"margin:18px 0 0\">" + L("CSAI는 중국 정책이 한국 기업의 손익이 되는 경계선에 섭니다. 한국어로, 기업의 의사결정을 위해, 판단을 공개 채점하고, 중국 학자의 기고가 실리는 중립 플랫폼을 지향합니다.",
