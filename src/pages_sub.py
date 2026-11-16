@@ -111,7 +111,7 @@ def about():
          [L("뉴스레터 구독 상품", "Newsletter subscriptions", "订阅通讯产品"), L("기업 회원·컨설팅", "Corporate membership and consulting", "企业会员·咨询"), L("국제협력, 외부 강연", "International cooperation and outside lectures", "国际合作、对外演讲"),
           L("기획·운영관리", "Planning and operations", "企划·运营管理"), L("홈페이지·홍보", "Website and communications", "网站·宣传")]),
         (L("세무&amp;재무본부", "Tax &amp; Finance Division", "税务与财务本部"), L("담당", "Lead", "负责人"), [("문지은", "과장", "Manager", "科长")], [("김광용", "대표", "CEO", "代表")],
-         [L("세금계산서 발행·수취", "Tax invoices issued and received", "税务发票开具与收取"), L("비용 처리와 증빙", "Expenses and supporting records", "费用处理与凭证")]),
+         [L("세금계산서 발행·수취", "Tax invoices issued and received", "税务发票开具与收取"), L("비용 처리와 증빙", "Expenses and supporting records", "费用处理与凭证"), L("투자 집행 예산", "Investment execution budget", "投资执行预算")]),
     ]
     ppl = lambda ps, tag: "<br>".join(f"<{tag}>{n}</{tag}> {L(ko, en, zh)}" for n, ko, en, zh in ps)
     ocols = "".join(
