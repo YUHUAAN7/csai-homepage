@@ -8,7 +8,7 @@ LANGS = ["ko", "en", "zh"]
 HTML_LANG = {"ko": "ko", "en": "en", "zh": "zh-Hans"}
 MAIL = "contact@chinamacro.kr"
 # 방문 통계(Cloudflare Web Analytics, 쿠키 없음). 원장이 가입해 받은 토큰을 넣으면 모든 페이지에 켜진다. 비어 있으면 꺼짐.
-ANALYTICS_TOKEN = ""
+ANALYTICS_TOKEN = "e774c0e87a9d471b81018d67e21732a6"
 SUBSCRIBE = "https://page.stibee.com/subscriptions/522211"
 ARCHIVE = "https://chinamacro.kr"
 YOUTUBE = "https://www.youtube.com/@anyuhuatv"
