@@ -197,6 +197,8 @@ def home():
   <div class="col"><h2>{L("문의·협력 제안", "Inquiries & partnership", "咨询与合作")}</h2>
     <p>{L("기업 자문, 교육, 국제협력, 강연·인터뷰 요청을 목적별로 접수합니다.", "Business advisory, training, international cooperation, and speaking or interview requests — each has its own form.", "企业咨询、培训、国际合作及演讲采访邀请，按类别受理。")}</p>
     {btn("Contact CSAI", P("contact"), "line")}</div>
+  <div class="col qr-col"><img src="{A("assets/qr.svg")}" width="132" height="132" alt="{L("csai.re.kr 홈페이지 QR 코드", "QR code for csai.re.kr", "csai.re.kr 网站二维码")}" loading="lazy">
+    <p>{L("휴대폰 카메라로 찍으면<br>홈페이지가 열립니다.", "Scan with your phone<br>to open this site.", "用手机扫码<br>即可打开本网站。")}<br><b>www.csai.re.kr</b></p></div>
 </div></section>'''
 
     body = hero + quick + mission + about + research + machine + columns + focus + insight + princ + books + director + advisory + academy + news + band

@@ -49,7 +49,7 @@ def write(path, text):
 
 def main():
     os.makedirs(os.path.join(ROOT, "assets"), exist_ok=True)
-    for name in ("site.css", "site.js"):
+    for name in ("site.css", "site.js", "qr.svg"):
         shutil.copyfile(os.path.join(HERE, "assets", name), os.path.join(ROOT, "assets", name))
     write("assets/hero.svg", hero_art.build())
     write("assets/favicon.svg", FAVICON)
