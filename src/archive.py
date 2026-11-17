@@ -118,6 +118,6 @@ NOTICES = [
 EVENTS = [
     {"date": "2026-12-15", "title": {"ko": "영문 분기 노트 「Korea Sensor」 첫 호", "en": "First issue of the English quarterly note Korea Sensor", "zh": "英文季度简报 Korea Sensor 首期"}},
     {"date": "2026-12-24", "home": True, "title": {"ko": "연례 중국 전망 포럼: 2027년 중국 경제 전망, 정책 문장으로 읽는 방향", "en": "Annual China outlook forum: the 2027 outlook for China's economy, read through policy language", "zh": "年度中国展望论坛：2027年中国经济展望——从政策措辞读方向"}},
-    {"date": "2027-01-15", "home": True, "title": {"ko": "분기 경영진 브리핑", "en": "Quarterly executive briefing", "zh": "季度管理层简报"}},
+    {"date": "2027-01-15", "home": True, "title": {"ko": "CEO China Roundtable 첫 회 (분기 1회, 초청형)", "en": "CEO China Roundtable: first session (quarterly, by invitation)", "zh": "CEO China Roundtable 首期（每季度一次，邀请制）"}},
     {"date": "2027-03-31", "label": "2027 1Q", "title": {"ko": "중국 학자 특별기고 첫 편", "en": "First special contribution from a Chinese scholar", "zh": "中国学者特约稿首篇"}},
 ]

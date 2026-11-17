@@ -351,8 +351,7 @@ def principles_grid():
     pr = "".join(f'<article class="pr"><span class="no">{n}</span><h3>{t}</h3><p>{d}</p></article>' for n, t, d in principles())
     for n, t, d in principles():
         reg(t, d, P("insight", "principles"), L("원칙", "Principle", "原则"))
-    note = L("※ 위 원칙은 초안입니다. 교수님 감수 후 확정되며, 원칙마다 상세 해설 페이지로 확장합니다.", "※ Draft principles, pending the professor's review; each will be expanded into a detailed commentary page.", "※ 以上原则为草稿，待教授审定后确定，并将逐条扩展为详细解读页面。")
-    return f'<div class="principles">{pr}</div><p class="note" style="margin-top:24px">{note}</p>'
+    return f'<div class="principles">{pr}</div>'
 
 
 def player():
@@ -419,7 +418,7 @@ def asset_lists():
         ([L("원장의 중국 학계·금융계 네트워크", "The President's network in Chinese academia and finance", "院长在中国学界与金融界的人脉"),
           L("연합인포맥스 「안유화 쇼」 · 유튜브 독자층", "“The An Yuhua Show” on Yonhap Infomax · YouTube audience", "韩联社 Infomax《安玉花秀》· YouTube 观众群")],
          [L("중국 학자 특별기고 분기 1편 (공개 분석만)", "One contribution a quarter from a Chinese scholar (public analysis only)", "每季度一篇中国学者特约文章（仅限公开分析）"),
-          L("분기 경영진 브리핑(비공개) · 연례 중국 전망 포럼", "Quarterly closed-door executive briefing · annual China outlook forum", "季度管理层闭门简报 · 年度中国展望论坛")]),
+          L("CEO China Roundtable(분기, 초청형) · 연례 중국 전망 포럼", "CEO China Roundtable (quarterly, by invitation) · annual China outlook forum", "CEO China Roundtable（每季度，邀请制）· 年度中国展望论坛")]),
     ]
 
 
