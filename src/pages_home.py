@@ -160,7 +160,8 @@ def home():
                    L("중국의 정책·시장·공급망 변화 앞에서 기업이 내려야 하는 전략적 결정을, 거시·산업·정책 분석으로 뒷받침합니다.",
                      "We back the strategic decisions companies face amid shifts in China's policy, markets and supply chains with macro, industry and policy analysis.",
                      "面对中国政策、市场与供应链的变化，以宏观、产业与政策分析支持企业的战略决策。"),
-                   f'<div class="g3">{sv}</div><p class="note" style="margin-top:18px">{scope_note()}</p>'
+                   cta_band("CEO China Brief", L("CSAI의 대표 프로그램. 경영진이 한 달에 두 번, 중국의 변화가 우리 회사에 무엇을 뜻하는지 원장에게 직접 듣는 초청형 브리핑입니다.", "Our flagship: twice a month, executives hear directly from the President what changes in China mean for their company. By invitation.", "CSAI旗舰项目：高管每月两次直接聆听院长解读中国变化对本企业的意义。邀请制。"), L("자세히 보기", "Learn more", "了解详情"), P("advisory", "brief"), flush=True)
+                   + f'<div class="g3" style="margin-top:24px">{sv}</div><p class="note" style="margin-top:18px">{scope_note()}</p>'
                    f'<div class="sec-foot">{btn(L("기업 문의", "Business Inquiry", "企业咨询"), P("contact", "advisory"), "navy")}{more(L("자문 분야 자세히", "About our advisory", "了解咨询服务"), P("advisory"))}</div>')
 
     def tick(items):
@@ -168,7 +169,7 @@ def home():
     duo = f'''<div class="g2">
   <div class="card"><div class="badge-ico">{icon("cap", 26)}</div><h3>{L("교육·아카데미", "Academy", "教育学院")}</h3>
     <p>{L("중국 경제와 정책, 디지털 금융을 주제로 한 교육 프로그램을 준비하고 있습니다.", "Programmes on China's economy and policy, and on digital finance, are in preparation.", "以中国经济与政策、数字金融为主题的教育项目正在筹备中。")}</p>
-    {tick([L("임원 과정", "Executive education", "高管课程"), L("금융기관 중국 리스크 과정", "China-risk programme for financial institutions", "金融机构中国风险课程"), L("기업 맞춤 교육", "Corporate training", "企业定制培训"), L("디지털 금융 교육", "Digital finance training", "数字金融培训")])}
+    {tick([L("CEO 중국경제 전략 과정", "CEO programme on China's economy and strategy", "CEO中国经济战略课程"), L("공급망 리스크 과정", "Supply-chain risk programme", "供应链风险课程"), L("금융기관 중국 리스크 과정", "China-risk programme for financial institutions", "金融机构中国风险课程"), L("기업 맞춤 교육", "Corporate training", "企业定制培训"), L("디지털 금융 교육", "Digital finance training", "数字金融培训")])}
     {more(L("프로그램 보기", "Explore Programs", "查看课程"), P("academy"))}</div>
   <div class="card"><div class="badge-ico">{icon("globe", 26)}</div><h3>{L("글로벌 협력", "Global Network", "全球合作")}</h3>
     <p>{L("해외 연구기관·전문가와의 공동연구, 포럼, 특별기고 등 협력의 창구를 엽니다.", "A window for cooperation with overseas institutes and experts: joint research, forums and contributed articles.", "面向海外研究机构与专家，开放联合研究、论坛与特约撰稿等合作渠道。")}</p>

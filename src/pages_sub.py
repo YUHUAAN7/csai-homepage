@@ -314,6 +314,35 @@ def advisory():
              "We back the strategic decisions companies face amid shifts in China's policy, markets and supply chains with macro, industry and policy analysis.",
              "面对中国政策、市场与供应链的变化，以宏观、产业与政策分析支持企业的战略决策。")
     b = page_hero("advisory", "BUSINESS ADVISORY", title, lede)
+
+    # ── CEO China Brief (대표 프로그램, 월 2회) ──
+    brief_topics = L(["중국 거시경제와 경기 흐름: 우리 사업에 미치는 영향은?", "산업정책과 제조업 변화: 경쟁 구도는 어떻게 바뀌는가?", "중국 공급망 재편: 조달·생산에서 점검할 위험은?",
+                      "금융·디지털 금융 환경: 금융환경 변화에 어떻게 대비할까?", "시장·정책 리스크: 우선 관리할 리스크는 무엇인가?", "차년도 중국 경제·산업 전망: 다음 사업연도에 무엇을 준비할까?"],
+                     ["China's macro economy and cycle: what it means for your business", "Industrial policy and manufacturing: how competition is shifting", "Supply-chain realignment in China: risks to check in sourcing and production",
+                      "Finance and digital finance: preparing for a changing financial environment", "Market and policy risk: which risks to manage first", "Next year's outlook for China's economy and industries: what to prepare"],
+                     ["中国宏观经济与景气：对业务的影响", "产业政策与制造业变化：竞争格局如何演变", "中国供应链重构：采购与生产需检查的风险",
+                      "金融与数字金融环境：如何应对金融环境变化", "市场与政策风险：应优先管理哪些风险", "明年中国经济与产业展望：下一个经营年度要准备什么"])
+    brief_steps = [(L("경영진 요약자료", "Executive summary", "管理层摘要"), L("회차 전에 받아 보는 한 장 요약", "A one-page brief sent before each session", "会前送达的一页摘要")),
+                   (L("CSAI 분석 발표", "CSAI analysis", "CSAI分析报告"), L("원장이 판단과 근거를 직접 설명", "The President presents her judgments and the evidence", "院长亲自说明判断与依据")),
+                   (L("질의·토론", "Q&A and discussion", "问答与讨论"), L("참석 경영진의 질문을 중심으로", "Built around participants' questions", "以与会高管的问题为中心")),
+                   (L("기업별 후속 상담", "Follow-up by company", "按企业后续咨询"), L("필요한 기업은 따로 이어서 상담", "One-to-one follow-up for companies that want it", "有需要的企业可单独跟进"))]
+    brief_html = ('<div class="split"><div class="card"><h3>' + L("다루는 주제", "Topics", "主题") + "</h3>" + ticks(brief_topics) + "</div><div>"
+                  + kv([(L("주기", "Frequency", "频率"), L("월 2회", "Twice a month", "每月两次")),
+                        (L("대상", "For", "对象"), L("CEO·임원 (초청형)", "CEOs and senior executives (by invitation)", "CEO及高管（邀请制）")),
+                        (L("진행", "Led by", "主讲"), L("안유화 원장", "Professor An Yuhua, President", "安玉花院长")),
+                        (L("일정", "Schedule", "日程"), L("첫 회 일정은 확정되는 대로 기관 소식에 알립니다.", "The first session will be announced in our news once confirmed.", "首期日程确定后将在机构动态中公布。"))])
+                  + "</div></div>"
+                  + '<h3 style="font-size:20px;margin:36px 0 16px">' + L("회차 구성", "How each session runs", "每期流程") + "</h3>"
+                  + '<ol class="steps">' + "".join(f"<li><b>{t}</b><span>{d}</span></li>" for t, d in brief_steps) + "</ol>"
+                  + cta_band(L("CEO China Brief 참가 문의", "Ask about CEO China Brief", "咨询参加CEO China Brief"),
+                             L("회사명과 직책, 관심 주제를 알려 주시면 초청 일정을 안내해 드립니다.", "Tell us your company, title and topics of interest, and we will send you the schedule.", "请告知公司名称、职务与关注主题，我们将寄送邀请日程。"),
+                             L("참가 문의", "Ask to join", "咨询参加"), P("contact", "advisory")))
+    reg("CEO China Brief", L("경영진이 한 달에 두 번 CSAI의 중국 판단을 직접 듣는 초청형 브리핑", "An invitation-only briefing, twice a month, where executives hear CSAI's China judgments first-hand", "高管每月两次直接聆听CSAI对华判断的邀请制简报"), P("advisory", "brief"), "Advisory")
+    b += sec("brief", "FLAGSHIP PROGRAM", "CEO China Brief",
+             L("CSAI의 대표 프로그램입니다. 경영진이 한 달에 두 번, 중국의 변화가 우리 회사에 무엇을 뜻하는지 원장에게 직접 듣고 묻는 초청형 브리핑입니다.",
+               "Our flagship programme. Twice a month, executives hear directly from the President what changes in China mean for their company, and put their own questions to her. By invitation.",
+               "CSAI的旗舰项目。高管每月两次直接聆听院长解读中国变化对本企业的意义并当面提问的邀请制简报。"),
+             brief_html)
     sv = "".join(f'<div class="card"><div class="badge-ico">{icon(ic, 26)}</div><h3>{t}</h3><p>{d}</p></div>' for ic, t, d in services())
     for ic, t, d in services():
         reg(t, d, P("advisory", "services"), "Advisory")
@@ -324,10 +353,54 @@ def advisory():
             L("자산 운용, 투자일임, 투자중개·주선", "Asset management, discretionary investment, brokerage", "资产管理、全权委托投资、投资中介"),
             L("M&A 중개·주선", "Brokering or arranging M&A transactions", "并购中介或撮合"),
             L("실사·전문가 네트워크형 조사, 비공개 데이터 수집", "Due-diligence or expert-network style investigation, or collecting non-public data", "尽职调查或专家网络式调查，以及收集非公开数据")]
-    b += sec("services", "SERVICE AREAS", L("서비스 분야", "Service areas", "服务领域"), scope_note(),
+    b += sec("services", "BUSINESS ADVISORY", L("기업 자문", "Business advisory", "企业咨询"), scope_note(),
              f'<div class="g3">{sv}</div><div class="g2" style="margin-top:24px"><div class="card"><h3>{L("자문 범위", "In scope", "服务范围")}</h3>{ticks(do)}</div>'
              f'<div class="card"><h3>{L("하지 않는 일", "Out of scope", "不提供的服务")}</h3>{ticks(dont, "ticks xs")}</div></div>')
-    b += sec("process", "PROCESS", L("수행 프로세스", "Process", "工作流程"), process_lede(), process_steps(), "alt")
+    b += sec("process", "ADVISORY PROCESS", L("자문 수행 방식", "How advisory works", "咨询流程"), process_lede(), process_steps(), "alt")
+    # ── 기업 컨설팅 (자문과 분리: 실행 지원·성과 관리까지) ──
+    cons_areas = [("compass", L("중국 시장 진출·성장 전략", "China market entry and growth", "中国市场进入与增长战略"),
+                   L("시장 구조, 정책 환경, 경쟁 구도와 진출 여건을 분석합니다.", "Market structure, policy environment, competition and entry conditions.", "分析市场结构、政策环境、竞争格局与进入条件。"),
+                   L("시장 기회 평가 · 진출 시나리오 · 성장 과제", "Opportunity assessment · entry scenarios · growth agenda", "市场机会评估 · 进入情景 · 增长课题")),
+                  ("link", L("공급망·생산 전략", "Supply chain and production", "供应链与生产战略"),
+                   L("조달선, 생산거점, 중국 의존도와 공급망 취약성을 진단합니다.", "Suppliers, production sites, dependence on China and supply-chain weak points.", "诊断采购来源、生产基地、对华依赖度与供应链脆弱环节。"),
+                   L("공급망 대안 · 조달 다변화 · 전환 로드맵", "Supply-chain options · diversified sourcing · transition roadmap", "供应链替代方案 · 采购多元化 · 转型路线图")),
+                  ("shield", L("정책·사업 리스크 대응", "Policy and business risk", "政策与经营风险应对"),
+                   L("중국의 정책, 규제, 통상, 산업 변화가 기업에 주는 영향을 분석합니다.", "How changes in China's policy, regulation, trade and industry affect the company.", "分析中国政策、监管、通商与产业变化对企业的影响。"),
+                   L("리스크 맵 · 시나리오 · 대응 체계", "Risk map · scenarios · response plan", "风险地图 · 情景 · 应对体系")),
+                  ("factory", L("산업·경쟁 전략", "Industry and competitive strategy", "产业与竞争战略"),
+                   L("산업 생태계, 중국 기업, 기술과 경쟁 환경을 분석합니다.", "Industry ecosystems, Chinese competitors, technology and the competitive landscape.", "分析产业生态、中国企业、技术与竞争环境。"),
+                   L("경쟁 포지셔닝 · 전략 대안 · 우선 과제", "Competitive positioning · strategic options · priorities", "竞争定位 · 战略选项 · 优先课题"))]
+    cons_cards = "".join(f'<div class="card"><div class="badge-ico">{icon(ic, 26)}</div><h3>{t}</h3><p>{d}</p><p style="font-size:13.500px;color:var(--gold-600);font-weight:700">{o}</p></div>' for ic, t, d, o in cons_areas)
+    for ic, t, d, o in cons_areas:
+        reg(t, d, P("advisory", "consulting"), "Consulting")
+    cons_steps = [(L("착수·범위 확정", "Kick-off and scope", "启动与范围确定"), L("경영 현안과 목표, 범위·일정·자료를 합의합니다. 산출물: 프로젝트 계획", "Agree the issue, goals, scope, timetable and data. Output: project plan", "确定经营课题与目标、范围、日程与资料。成果：项目计划")),
+                  (L("현황·환경 분석", "Diagnosis", "现状与环境分析"), L("기업 현황과 시장·정책·산업·경쟁 데이터를 분석합니다. 산출물: 현황 진단 보고서", "Company situation plus market, policy, industry and competitor data. Output: diagnostic report", "分析企业现状及市场、政策、产业、竞争数据。成果：现状诊断报告")),
+                  (L("전략 대안 설계", "Strategic options", "战略方案设计"), L("핵심 이슈와 시나리오, 대안별 영향과 우선순위를 비교합니다. 산출물: 시나리오·대안 비교", "Key issues, scenarios, and the impact and priority of each option. Output: options paper", "比较核心议题、情景及各方案的影响与优先次序。成果：情景与方案比较")),
+                  (L("실행 로드맵", "Implementation roadmap", "实施路线图"), L("과제, 일정, 조직과 책임, 핵심 지표(KPI)를 정합니다. 산출물: 실행 계획·관리 체계", "Tasks, timetable, owners and KPIs. Output: implementation plan and management system", "确定课题、日程、组织与责任、关键指标。成果：实施计划与管理体系")),
+                  (L("이행 지원·성과 점검", "Implementation support and review", "实施支持与成效检查"), L("실행 진척과 지표를 함께 점검하고 보완 과제를 냅니다. 산출물: 성과 리뷰", "Track progress and KPIs together and set follow-up tasks. Output: performance review", "共同检查实施进度与指标，提出改进课题。成果：成效评估"))]
+    perf = L(["핵심 과제 이행률", "일정·예산 편차", "목표 지표 변화", "후속 개선 과제"],
+             ["Completion rate of key tasks", "Schedule and budget variance", "Movement in target indicators", "Follow-up improvements"],
+             ["核心课题完成率", "日程与预算偏差", "目标指标变化", "后续改进课题"])
+    vs = ('<div class="g2" style="margin-top:24px"><div class="card"><h3>' + L("기업 자문 (Advisory)", "Advisory", "企业咨询（Advisory）") + "</h3><p>"
+          + L("전문 분석과 판단, 선택지를 드려 경영진의 의사결정을 돕습니다. 결정 한 건 단위로 진행합니다.", "We give expert analysis, judgment and options to support management's decisions, one decision at a time.", "提供专业分析、判断与选项，支持管理层决策，以单项决策为单位进行。")
+          + '</p></div><div class="card"><h3>' + L("기업 컨설팅 (Consulting)", "Consulting", "企业顾问项目（Consulting）") + "</h3><p>"
+          + L("현황 진단부터 대안 설계, 실행 로드맵, 이행 지원과 성과 점검까지 프로젝트 단위로 함께합니다.", "From diagnosis to options, roadmap, implementation support and performance review, delivered as a project.", "从现状诊断到方案设计、实施路线图、实施支持与成效检查，以项目为单位全程参与。")
+          + "</p></div></div>")
+    cons_html = (vs + '<h3 style="font-size:20px;margin:36px 0 16px">' + L("컨설팅 분야", "Areas", "顾问领域") + '</h3><div class="g2">' + cons_cards + "</div>"
+                 + '<h3 style="font-size:20px;margin:36px 0 16px">' + L("수행 단계와 산출물", "Stages and deliverables", "实施阶段与成果") + "</h3>"
+                 + '<ol class="steps steps5">' + "".join(f"<li><b>{t}</b><span>{d}</span></li>" for t, d in cons_steps) + "</ol>"
+                 + '<div class="g2" style="margin-top:24px"><div class="card"><h3>' + L("성과 관리", "Performance management", "成效管理") + "</h3>" + ticks(perf) + "</div>"
+                 + '<div class="card"><h3>' + L("프로젝트 형태", "Project types", "项目形式") + "</h3>"
+                 + ticks(L(["진단형: 현황과 리스크를 진단", "전략수립형: 대안과 실행 로드맵까지", "실행지원형: 이행 지원과 성과 점검까지"],
+                           ["Diagnostic: assessing the situation and risks", "Strategy: through to options and a roadmap", "Implementation support: through to execution and performance review"],
+                           ["诊断型：诊断现状与风险", "战略制定型：直至方案与路线图", "实施支持型：直至实施支持与成效检查"]))
+                 + '<p style="font-size:13.500px;color:var(--muted)">' + L("과업 범위, 기간, 투입 인력, 비용은 계약마다 따로 정합니다. 「하지 않는 일」은 컨설팅에도 똑같이 적용됩니다.", "Scope, duration, staffing and fees are agreed for each contract. Everything listed under 'Out of scope' applies to consulting too.", "工作范围、期限、投入人员与费用按合同另行约定。“不提供的服务”同样适用于顾问项目。") + "</p></div></div>")
+    b += sec("consulting", "BUSINESS CONSULTING", L("기업 컨설팅", "Business consulting", "企业顾问项目"),
+             L("자문이 판단을 드린다면, 컨설팅은 기업의 현안을 진단하고 실행할 수 있는 과제로 설계해 이행과 성과 점검까지 함께합니다.",
+               "Advisory gives you a judgment. Consulting diagnoses the issue, turns it into tasks you can carry out, and stays with you through implementation and review.",
+               "咨询提供判断；顾问项目则诊断企业课题，设计可执行的任务，并全程参与实施与成效检查。"),
+             cons_html)
+
     themes = [L("중국의 정책 변화가 우리 산업에 주는 영향", "What a change in China's policy means for our industry", "中国政策变化对本行业的影响"),
               L("공급망에서 중국 의존이 큰 품목과 대안", "Items in our supply chain that depend heavily on China, and the alternatives", "供应链中高度依赖中国的品类及替代方案"),
               L("중국 시장의 리스크와 기회", "Risks and opportunities in the China market", "中国市场的风险与机遇")]
@@ -349,7 +422,8 @@ def academy():
     title = L("교육·아카데미", "Academy", "教育学院")
     lede = L("중국 경제와 정책, 디지털 금융을 주제로 한 교육 프로그램을 운영합니다.", "We run education programmes on China's economy and policy and on digital finance.", "我们开设以中国经济与政策、数字金融为主题的教育课程。")
     b = page_hero("academy", "ACADEMY", title, lede)
-    progs = [("users", L("임원 과정", "Executive education", "高管课程"), L("경영진을 위한 중국 경제·정책 이해 과정", "Understanding China's economy and policy, for executives", "面向企业高管的中国经济与政策课程"), "executive"),
+    progs = [("users", L("CEO 중국경제 전략 과정", "CEO programme on China's economy and strategy", "CEO中国经济战略课程"), L("경영진을 위한 중국 경제·정책 이해와 전략 과정", "Understanding China's economy and policy, and what it means for strategy, for CEOs and executives", "面向企业高管的中国经济、政策与战略课程"), "executive"),
+             ("link", L("공급망 리스크 과정", "Supply-chain risk programme", "供应链风险课程"), L("조달·생산 임원을 위한 중국 공급망 재편과 리스크 점검 과정", "China's supply-chain realignment and risk checks, for sourcing and production executives", "面向采购与生产高管的中国供应链重构与风险检查课程"), "executive"),
              ("factory", L("기업 맞춤 교육", "Corporate training", "企业定制培训"), L("기업의 산업과 과제에 맞춰 구성하는 교육", "Training tailored to a company's industry and agenda", "根据企业所在行业与课题定制的培训"), "corporate"),
              ("scale", L("금융기관 중국 리스크 과정", "China-risk programme for financial institutions", "金融机构中国风险课程"), L("금융기관을 위한 중국 리스크 이해 과정", "Understanding China risk, for financial institutions", "面向金融机构的中国风险课程"), "programs"),
              ("layers", L("디지털 금융 교육", "Digital finance training", "数字金融培训"), L("AI·디지털 금융 전문 교육", "Specialist training in AI and digital finance", "AI与数字金融专业培训"), "programs")]
@@ -375,7 +449,7 @@ def academy():
     b += sec("programs", "PROGRAMS", L("프로그램", "Programs", "课程项目"), "", f'<h3 style="font-size:20px;margin:0 0 16px">{L("운영 중인 과정", "Programmes now running", "正在开设的课程")}</h3><div class="g3">{pc_run}</div><h3 style="font-size:20px;margin:40px 0 16px">{L("기업·기관 맞춤 과정", "Tailored programmes for companies and institutions", "面向企业与机构的定制课程")}</h3><div class="g4">{pc}</div><div style="margin-top:24px">{wait_box}</div>'
              f'<p class="note" style="margin-top:14px">{L("안유화독서투자클럽, 유튜브 채널과 연결해 운영합니다.", "Run in connection with the An Yuhua Reading & Investment Club and the YouTube channel.", "与安玉花读书投资俱乐部及YouTube频道联动运营。")}</p>')
     b += sec("executive", "EXECUTIVE EDUCATION", L("임원 과정", "Executive education", "高管课程"),
-             L("경영진이 중국의 정책과 시장을 읽는 기준을 갖추도록 돕는 과정입니다.", "A programme that gives executives a framework for reading China's policy and markets.", "帮助企业高管建立解读中国政策与市场的框架。"), wait_box, "alt")
+             L("「CEO 중국경제 전략 과정」과 「공급망 리스크 과정」으로, 경영진이 중국의 정책과 시장을 읽는 기준을 갖추도록 돕습니다.", "The CEO programme on China's economy and strategy and the supply-chain risk programme give executives a framework for reading China's policy and markets.", "通过“CEO中国经济战略课程”和“供应链风险课程”，帮助企业高管建立解读中国政策与市场的框架。"), wait_box, "alt")
     b += sec("corporate", "CORPORATE TRAINING", L("기업 맞춤 교육", "Corporate training", "企业定制培训"),
              L("교육 대상과 인원, 희망 주제와 시기를 알려 주시면 맞춤 구성을 상담합니다.", "Tell us the audience and headcount, the topics and the timing you have in mind, and we will discuss a tailored format.", "请告知培训对象与人数、希望的主题与时间，我们将就定制方案进行沟通。"), wait_box)
     b += f'<section class="sec alt" id="inquiry"><div class="wrap"><div class="sec-head"><div class="eyebrow">INQUIRY</div><h2>{L("교육 문의", "Training inquiry", "培训咨询")}</h2></div>{cta_band(L("교육 상담을 신청하세요", "Ask about training", "预约培训咨询"), L("교육 문의 양식으로 연결됩니다.", "Opens the training inquiry form.", "将进入培训咨询表单。"), L("교육 문의하기", "Training Inquiry", "提交培训咨询"), P("contact", "academy"), flush=True)}</div></section>'
@@ -414,7 +488,8 @@ def global_():
              + f'<div class="card" id="korea-sensor" style="margin-top:24px;scroll-margin-top:140px"><div class="type-h"><h3>{L("영문 분기 노트 「Korea Sensor」", "Korea Sensor — English quarterly note", "英文季度简报 Korea Sensor")}</h3>{tag_date("2026년 12월 15일 첫 호", "First issue 15 Dec 2026", "2026年12月15日首期")}</div><p>{L("중국 정책의 신호가 한국의 숫자에 먼저 나타나는 지점을, 해외 독자를 위해 영문으로 정리하는 분기 노트입니다. 해외 리서치 기관과의 파트너 유통을 준비합니다.", "A quarterly note in English, for overseas readers, on where the signal of China policy shows up first in Korean numbers. Distribution through overseas research partners is in preparation.", "面向海外读者的英文季度简报，梳理中国政策信号最先体现在韩国数字上的环节。正在筹备通过海外研究机构合作发行。")}</p>{ks_sub}</div>')
     b += sec("experts", "EXPERTS", L("전문가", "Experts", "专家"), "", ('<p class="note" style="font-size:15px">' + L("중국 학자 특별기고를 2027년 1분기부터 분기에 1편씩 싣습니다(공개 분석만).", "From the first quarter of 2027 we will carry one special contribution a quarter from Chinese scholars (public analysis only).", "自2027年第一季度起，每季度刊登一篇中国学者特约稿（仅限公开分析）。") + "</p>"), "alt")
     b += sec("events", "EVENTS & FORUMS", L("포럼·행사", "Events & forums", "论坛与活动"), "", f'''<div class="types"><div class="type"><div class="type-h"><h3>{icon("cal", 20)}{L("연례 중국 전망 포럼", "Annual China outlook forum", "年度中国展望论坛")}</h3>{tag_date("2026년 12월 24일", "24 Dec 2026", "2026年12月24日")}</div><p>{L("한 해의 중국 전망을 나누는 연례 포럼", "An annual forum on the year's outlook for China", "分享年度中国展望的年度论坛")}</p></div>
-<div class="type"><div class="type-h"><h3>{icon("users", 20)}{L("분기 경영진 브리핑", "Quarterly executive briefing", "季度管理层简报")}</h3>{tag_date("2027년 1월 15일", "15 Jan 2027", "2027年1月15日")}</div><p>{L("경영진을 위한 비공개 분기 브리핑", "A closed-door quarterly briefing for management", "面向管理层的季度闭门简报")}</p></div></div>
+<div class="type"><div class="type-h"><h3>{icon("users", 20)}{L("분기 경영진 브리핑", "Quarterly executive briefing", "季度管理层简报")}</h3>{tag_date("2027년 1월 15일", "15 Jan 2027", "2027年1月15日")}</div><p>{L("경영진을 위한 비공개 분기 브리핑", "A closed-door quarterly briefing for management", "面向管理层的季度闭门简报")}</p></div>
+<div class="type" id="roundtable"><div class="type-h"><h3>{icon("users", 20)}CEO China Roundtable</h3>{tag_date("분기 1회", "Quarterly", "每季度一次")}</div><p>{L("소수 경영진을 초청하는 라운드테이블입니다. 산업별·직무별로 참석자를 꾸려 CSAI 연구를 발표하고 현안을 함께 토론하며, 끝난 뒤에는 관련 자료와 상담으로 이어 갑니다. 첫 회 일정은 확정되는 대로 알립니다.", "A small, invitation-only roundtable for executives, grouped by industry or role. CSAI presents its research, participants discuss current issues, and follow-up material and consultation come afterwards. The first date will be announced once confirmed.", "邀请少数高管参加的圆桌会议。按产业或职能组织与会者，由CSAI发布研究并共同讨论当前议题，会后提供相关资料与咨询。首期日程确定后公布。")} <a href="{P("contact", "advisory")}" style="font-weight:700">{L("참가 문의 →", "Ask to join →", "咨询参加 →")}</a></p></div></div>
 <div style="margin-top:14px">''' + events_list() + "</div>")
     b += f'<section class="sec alt" id="inquiry"><div class="wrap"><div class="sec-head"><div class="eyebrow">COOPERATION</div><h2>{L("협력 문의", "Cooperation inquiry", "合作咨询")}</h2><p>{L("영어·중국어 문의도 받습니다.", "Inquiries in English and Chinese are welcome.", "欢迎以英文或中文联系。")}</p></div>{cta_band(L("협력을 제안해 주세요", "Propose a partnership", "欢迎提出合作意向"), L("국제협력 문의 양식으로 연결됩니다.", "Opens the cooperation inquiry form.", "将进入合作咨询表单。"), L("협력 제안하기", "Partnership", "提交合作意向"), P("contact", "global"), flush=True)}</div></section>'
     return page("global", title, lede, b, "global")
@@ -574,7 +649,7 @@ def contact():
         "advisory": (L("기업 자문", "Business advisory", "企业咨询"), L("CSAI 기업 자문 문의", "CSAI business advisory inquiry", "CSAI 企业咨询"), [
             F("org", L("회사명", "Company", "公司名称"), req=True), F("industry", L("업종", "Industry", "行业")), F("dept", L("부서·직책", "Department / title", "部门·职务")),
             F("name", person, req=True), F("email", email, "email", req=True), F("tel", L("연락처", "Phone", "电话"), "tel", opt=True),
-            F("area", L("관심 분야", "Area of interest", "关注领域"), "select", options=[s[1] for s in services()] + [L("경영진 브리핑", "Executive briefing", "高管简报"), L("컨설팅 프로젝트", "Consulting project", "咨询项目"), L("기타", "Other", "其他")]),
+            F("area", L("관심 분야", "Area of interest", "关注领域"), "select", options=[s[1] for s in services()] + ["CEO China Brief", "CEO China Roundtable", L("컨설팅 프로젝트", "Consulting project", "顾问项目"), L("기타", "Other", "其他")]),
             F("src", HOW, "select", opt=True, options=HOW_OPTS),
             F("msg", msg, "textarea", req=True, full=True)]),
         "academy": (L("교육", "Training", "培训"), L("CSAI 교육 문의", "CSAI training inquiry", "CSAI 培训咨询"), [

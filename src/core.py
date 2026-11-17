@@ -154,7 +154,8 @@ def nav():
             ("video", L("영상·뉴스레터", "Video & Newsletter", "视频与通讯")),
             ("notes", L("영상 해설", "Video notes", "视频解读"))]),
         ("advisory", L("기업 자문", "Advisory", "企业咨询"), L("기업 자문·컨설팅", "Business Advisory & Consulting", "企业咨询与顾问"), [
-            ("services", L("서비스 분야", "Service Areas", "服务领域")), ("process", L("수행 프로세스", "Process", "工作流程")),
+            ("brief", L("CEO China Brief", "CEO China Brief", "CEO China Brief")),
+            ("services", L("기업 자문", "Advisory", "企业咨询")), ("consulting", L("기업 컨설팅", "Consulting", "企业顾问项目")),
             ("themes", L("자문 주제", "Case Themes", "咨询主题")), ("inquiry", L("기업 문의", "Inquiry", "企业咨询联系"))]),
         ("academy", L("교육·아카데미", "Academy", "教育学院"), L("교육·아카데미", "Academy", "教育学院"), [
             ("programs", L("프로그램", "Programs", "课程项目")), ("executive", L("임원 과정", "Executive Education", "高管课程")),
