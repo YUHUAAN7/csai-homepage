@@ -7,6 +7,8 @@ SITE = "https://www.csai.re.kr"
 LANGS = ["ko", "en", "zh"]
 HTML_LANG = {"ko": "ko", "en": "en", "zh": "zh-Hans"}
 MAIL = "contact@chinamacro.kr"
+# 방문 통계(Cloudflare Web Analytics, 쿠키 없음). 원장이 가입해 받은 토큰을 넣으면 모든 페이지에 켜진다. 비어 있으면 꺼짐.
+ANALYTICS_TOKEN = ""
 SUBSCRIBE = "https://page.stibee.com/subscriptions/522211"
 ARCHIVE = "https://chinamacro.kr"
 YOUTUBE = "https://www.youtube.com/@anyuhuatv"
@@ -278,7 +280,7 @@ def page(slug, title, desc, body, active=""):
 {body}
 </main>
 {footer()}
-<script src="{A("assets/site.js")}?v={ASSET_VER}" defer></script>
+<script src="{A("assets/site.js")}?v={ASSET_VER}" defer></script>{analytics_tag()}
 </body>
 </html>
 '''
@@ -321,6 +323,12 @@ def page_hero(slug, eyebrow, title, lede, subs=None):
     <p class="phero-lede">{lede}</p>
   </div>
 </section>{sub}'''
+
+
+def analytics_tag():
+    if not ANALYTICS_TOKEN:
+        return ""
+    return ('\n<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon=\'{"token": "' + ANALYTICS_TOKEN + '"}\'></script>')
 
 
 def cta_band(title, text, label, href, flush=False, ext=False):

@@ -204,7 +204,9 @@ def research():
                "From the President's reports at the Korea Capital Market Institute to her newspaper columns: a record of writing on Chinese finance. New CSAI reports will be posted here as they are published.",
                "从院长在韩国资本市场研究院时期的报告到媒体专栏，这里汇集了记录中国金融的文字。CSAI的新报告将在发布后陆续上线。"),
              f'<h3 style="font-size:20px;margin:0 0 16px">{L("CSAI 연구보고서", "CSAI reports", "CSAI研究报告")}</h3>' + archive_view.reports_block() + f'<h3 style="font-size:20px;margin:36px 0 16px">{L("칼럼·기고·외부 보고서", "Columns, commentary and earlier reports", "专栏、评论与过往报告")}</h3>' + articles()
-             + columns_note(), "alt")
+             + columns_note() + cta_band(L("이 분석이 우리 회사에는 어떤 뜻일까요?", "What does this mean for your company?", "这些分析对贵公司意味着什么？"),
+                                         L("업종과 관심 분야를 알려 주시면 관련 연구를 바탕으로 상담해 드립니다.", "Tell us your industry and area of interest, and we will discuss it with you based on our research.", "请告诉我们贵公司的行业和关注领域，我们将基于相关研究为您提供咨询。"),
+                                         L("관련 분야 문의", "Ask about your field", "相关领域咨询"), P("contact", "advisory")), "alt")
     return page("research", title, lede, b, "research")
 
 
@@ -234,6 +236,9 @@ def tenday_notes():
         if j:
             body += (fh(L("판단", "Judgment", "判断")) + '<p class="note-j">' + e(_lt(j["text"])) + "</p>"
                      + '<p class="note"><b>' + L("무효화 조건", "Invalidation condition", "失效条件") + "</b> " + e(_lt(j["invalid"])) + "</p>")
+        if n.get("exec_q"):
+            body += (fh(L("경영진 점검 질문", "Questions for your leadership team", "管理层自查问题")) + ticks([e(x) for x in _lt(n["exec_q"])])
+                     + '<p style="font-size:14px;margin-top:6px"><a href="' + P("contact", "advisory") + '" style="font-weight:700">' + L("우리 회사에 맞춰 함께 점검하기 →", "Review this with us for your company →", "结合贵公司情况一起检查 →") + "</a></p>")
         if n.get("next"):
             body += fh(L("다음에 확인할 것", "What we will check next", "接下来要验证的")) + ticks([e(x) for x in _lt(n["next"])])
         links = ", ".join('<a href="' + e(u) + '" target="_blank" rel="noopener">' + e(t) + "</a>" for t, u in n.get("sources", []))
@@ -463,7 +468,9 @@ def insight():
              principles_grid() + f'<div class="sec-foot">{more(L("분석 프레임: 중국 경제는 어떻게 작동하는가", "Framework: how China\'s economy works", "分析框架：中国经济如何运行"), P("research", "framework"))}</div>', "alt")
     b += sec("record", "JUDGMENT", L("판단·한마디", "Judgments", "判断与短评"),
              L("판단은 기록될 때 검증할 수 있습니다. 기준일과 근거, 무효화 조건을 함께 남기고 결과를 공개 성적표로 쌓아 갑니다.", "A judgment can be tested only if it is recorded. Each is logged with its date, evidence and invalidation conditions, and the results build into a public scorecard.", "判断只有被记录下来才能被检验。每一次判断都记录基准日、依据与失效条件，并将结果累积为公开成绩单。"),
-             record_box(light=True, show_all=True))
+             record_box(light=True, show_all=True) + cta_band(L("경영진 브리핑", "Executive briefing", "高管简报"),
+                 L("원장이 경영진에게 중국 판단과 그 근거를 직접 설명합니다. 회사와 관심 주제를 알려 주세요.", "The President briefs your leadership team directly on her China judgments and the evidence behind them. Tell us your company and topics.", "院长将直接向贵公司管理层说明对中国的判断及其依据。请告知公司与关注主题。"),
+                 L("경영진 브리핑 문의", "Request a briefing", "咨询高管简报"), P("contact", "advisory")))
     b += sec("books", "BOOKS", L("대표저서", "Selected books", "代表著作"), books_lede(), books_html(), "alt")
     return page("insight", title, lede, b, "news")
 
@@ -560,16 +567,20 @@ def contact():
     msg = L("문의 내용", "Your inquiry", "咨询内容")
     email = L("이메일", "Email", "邮箱")
     person = L("담당자", "Contact person", "联系人")
+    HOW = L("CSAI를 알게 된 경로", "How did you hear about CSAI?", "您如何了解到CSAI")
+    HOW_OPTS = ["-", L("검색", "Search", "搜索"), L("유튜브·방송", "YouTube / TV", "YouTube·电视"), L("뉴스레터·보고서", "Newsletter / report", "通讯·报告"),
+                L("강연·행사", "Talk / event", "演讲·活动"), L("지인 소개", "Referral", "熟人介绍"), L("기타", "Other", "其他")]
     forms = {
         "advisory": (L("기업 자문", "Business advisory", "企业咨询"), L("CSAI 기업 자문 문의", "CSAI business advisory inquiry", "CSAI 企业咨询"), [
-            F("org", L("회사명", "Company", "公司名称"), req=True), F("dept", L("부서·직책", "Department / title", "部门·职务")),
+            F("org", L("회사명", "Company", "公司名称"), req=True), F("industry", L("업종", "Industry", "行业")), F("dept", L("부서·직책", "Department / title", "部门·职务")),
             F("name", person, req=True), F("email", email, "email", req=True), F("tel", L("연락처", "Phone", "电话"), "tel", opt=True),
-            F("area", L("관심 분야", "Area of interest", "关注领域"), "select", options=[s[1] for s in services()] + [L("기타", "Other", "其他")]),
+            F("area", L("관심 분야", "Area of interest", "关注领域"), "select", options=[s[1] for s in services()] + [L("경영진 브리핑", "Executive briefing", "高管简报"), L("컨설팅 프로젝트", "Consulting project", "咨询项目"), L("기타", "Other", "其他")]),
+            F("src", HOW, "select", opt=True, options=HOW_OPTS),
             F("msg", msg, "textarea", req=True, full=True)]),
         "academy": (L("교육", "Training", "培训"), L("CSAI 교육 문의", "CSAI training inquiry", "CSAI 培训咨询"), [
             F("org", L("기관·회사명", "Organisation", "机构·公司名称"), req=True), F("name", person, req=True), F("email", email, "email", req=True),
             F("who", L("교육 대상·인원", "Audience / headcount", "培训对象·人数"), opt=True), F("topic", L("희망 주제", "Preferred topic", "希望的主题")),
-            F("when", L("희망 시기", "Preferred timing", "希望的时间")), F("msg", msg, "textarea", req=True, full=True)]),
+            F("when", L("희망 시기", "Preferred timing", "希望的时间")), F("src", HOW, "select", opt=True, options=HOW_OPTS), F("msg", msg, "textarea", req=True, full=True)]),
         "global": (L("국제협력", "Cooperation", "国际合作"), L("CSAI 국제협력 문의", "CSAI cooperation inquiry", "CSAI 国际合作咨询"), [
             F("org", L("기관명", "Institution", "机构名称"), req=True), F("country", L("국가·지역", "Country / region", "国家·地区")),
             F("name", person, req=True), F("email", email, "email", req=True), F("area", L("협력 희망 분야", "Field of cooperation", "希望合作的领域")),
@@ -606,21 +617,21 @@ def policy():
          "보유 기간: 문의 처리를 마친 뒤 3년 동안 보관하고, 기간이 지나면 지체 없이 삭제합니다.",
          "제3자 제공: 법령이 정한 경우를 빼고는 다른 곳에 제공하지 않습니다.",
          "외부 서비스: 뉴스레터 구독은 스티비(Stibee)에서 신청하고 관리하며, 그 과정의 개인정보는 스티비의 처리방침을 따릅니다. 홈페이지에 넣은 유튜브 영상과 외부 링크에는 해당 서비스의 정책이 적용됩니다.",
-         "쿠키: 연구원이 직접 설치하는 광고·분석용 쿠키는 없습니다.",
+         "쿠키: 연구원이 직접 설치하는 광고·분석용 쿠키는 없습니다." + (" 방문 통계는 쿠키를 쓰지 않는 Cloudflare Web Analytics로 방문 수와 많이 본 페이지만 집계하며, 방문자를 식별하지 않습니다." if ANALYTICS_TOKEN else ""),
          "이용자의 권리: 본인 정보의 열람, 정정, 삭제, 처리 정지를 언제든 요청하실 수 있습니다. 아래 대표 연락처로 알려 주시면 지체 없이 처리합니다."],
         ["What we collect: the name, organisation, email address and message you choose to send when you contact us. The inquiry form opens your own mail program; nothing is stored on the website's server.",
          "Why: only to answer your inquiry and to send the materials or schedules you asked for.",
          "How long: three years after the inquiry is closed, then deleted without delay.",
          "Sharing: we do not provide your information to others except where the law requires it.",
          "Outside services: newsletter subscriptions are handled by Stibee under its own privacy policy. Embedded YouTube videos and outside links follow those services' policies.",
-         "Cookies: the institute sets no advertising or analytics cookies of its own.",
+         "Cookies: the institute sets no advertising or analytics cookies of its own." + (" Visit statistics are counted with Cloudflare Web Analytics, which uses no cookies and does not identify visitors." if ANALYTICS_TOKEN else ""),
          "Your rights: you may ask at any time to see, correct, delete or stop the use of your information through the contact below."],
         ["收集的信息：您联系我们时自行填写并发送的姓名、单位、电子邮箱和咨询内容。咨询表单会打开您自己的邮件程序，网站服务器不保存任何内容。",
          "使用目的：仅用于回复咨询，以及发送您索取的资料和日程。",
          "保存期限：咨询处理完毕后保存3年，期满后立即删除。",
          "向第三方提供：除法律规定的情形外，不向他人提供。",
          "外部服务：通讯订阅由Stibee办理并适用其隐私政策。嵌入的YouTube视频和外部链接适用相应服务的政策。",
-         "Cookie：研究院自身不设置广告或分析类Cookie。",
+         "Cookie：研究院自身不设置广告或分析类Cookie。" + ("访问统计使用不设Cookie的Cloudflare Web Analytics，仅统计访问量与热门页面，不识别访客。" if ANALYTICS_TOKEN else ""),
          "您的权利：您可随时通过下方联系方式要求查阅、更正、删除或停止处理本人信息。"])) + eff
     terms_full = ticks(L(
         ["이 약관은 중국증권행정연구원이 운영하는 홈페이지(csai.re.kr)의 이용 조건을 정합니다.",
