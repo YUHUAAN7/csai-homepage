@@ -532,7 +532,9 @@ def global_():
               + L("분기 노트와 판단 기록은 무료로 공개합니다. 월간 업데이트와 지표 자료, 기관 브리핑은 2027년 하반기에 유료로 시작합니다.",
                   "The quarterly note and our judgment record are free. Monthly updates, indicator data and institutional briefings will start as paid services in the second half of 2027.",
                   "季度简报与判断记录免费公开。月度更新、指标数据和机构简报将于2027年下半年作为付费服务推出。") + "</p>"
-              + '<p style="margin-top:14px">' + btn(L("Substack에서 무료 구독", "Subscribe free on Substack", "在 Substack 免费订阅"), SUBSTACK, "navy", ext=True) + "</p>")
+              + '<p style="margin-top:14px">' + btn(L("Substack에서 무료 구독 (영어 발행)", "Subscribe free on Substack", "在 Substack 免费订阅（英文发行）"), SUBSTACK, "navy", ext=True) + "</p>"
+              + '<p style="font-size:13.500px;color:var(--muted);margin-top:8px">' + L("기관 구독·브리핑 문의는 메일로 연락 주세요: ", "For institutional subscriptions and briefings, email us: ", "机构订阅与简报咨询，请发邮件至：")
+              + '<a href="mailto:' + MAIL + '?subject=Korea%20Sensor%20institutional%20inquiry">' + MAIL + "</a></p>")
     b += sec("partners", "PARTNERS", L("협력기관", "Partners", "合作机构"), "",
              coop_types
              + f'<h3 style="font-size:20px;margin:36px 0 16px">{L("협력 유형", "Ways to cooperate", "合作形式")}</h3><div class="g3">{kc}</div>'
