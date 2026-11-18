@@ -513,7 +513,7 @@ def news():
     b = page_hero("news", "NEWS & INSIGHTS", title, lede)
     b += sec("news", "NEWS", L("기관 소식", "News", "机构动态"), "", notices())
     b += sec("media", "MEDIA", L("언론·미디어", "Media", "媒体"), L("방송과 영상, 팟캐스트로 중국과 세계 경제를 설명합니다.", "Explaining China and the world economy on air, on video and in podcast.", "通过电视节目、视频与播客解读中国与世界经济。"), media_cards() + channels()
-             + f'<p class="note" style="margin-top:18px">{L("칼럼은 내일신문 「금요진단」에 연재하고 있습니다.", "Her current newspaper column runs in Naeil Shinmun on Fridays.", "目前在《明日新闻》周五专栏连载。")} <a href="{NAEIL_SEARCH}" target="_blank" rel="noopener">{L("최근 글 보기", "Latest pieces", "查看最新文章")}</a> · <a href="{P("research", "reports")}">{L("연구·칼럼 목록", "Research & commentary", "研究与评论")}</a></p>', "alt")
+             + f'<p class="note" style="margin-top:18px">{L("칼럼은 내일신문 「금요논단」에 연재하고 있습니다.", "Her current newspaper column runs in Naeil Shinmun on Fridays.", "目前在《明日新闻》周五专栏连载。")} <a href="{NAEIL_SEARCH}" target="_blank" rel="noopener">{L("최근 글 보기", "Latest pieces", "查看最新文章")}</a> · <a href="{P("research", "reports")}">{L("연구·칼럼 목록", "Research & commentary", "研究与评论")}</a></p>', "alt")
     reg(L("연구소장's Insight", "Director's Insight", "所长观点"), L("중국을 읽는 원칙과 판단 기록", "Principles for reading China and the judgment record", "解读中国的原则与判断记录"), P("insight"), "Insight")
     b += f'''<section class="sec dark" id="insight"><div class="wrap"><div class="sec-head"><div class="eyebrow">{L("연구소장's Insight", "Director's Insight", "所长观点")}</div>
 <h2>{L("판단의 기준과 기록", "Standards and record of judgment", "判断的标准与记录")}</h2><p>{L("중국을 읽는 원칙, 판단 기록, 대표저서를 모았습니다.", "Principles for reading China, the judgment record, and selected books.", "汇集解读中国的原则、判断记录与代表著作。")}</p></div>

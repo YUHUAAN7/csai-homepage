@@ -178,7 +178,7 @@ def home():
 </div>'''
     academy = sec("academy-global", "ACADEMY & GLOBAL", L("교육과 국제협력", "Education and international cooperation", "教育与国际合作"), "", duo, "alt")
 
-    media = [(L("내일신문 「금요진단」", "Naeil Shinmun — Friday column", "《明日新闻》周五专栏"), L("칼럼 연재 중", "Ongoing column", "专栏连载中"), NAEIL_SEARCH),
+    media = [(L("내일신문 「금요논단」", "Naeil Shinmun — Friday column", "《明日新闻》周五专栏"), L("칼럼 연재 중", "Ongoing column", "专栏连载中"), NAEIL_SEARCH),
              (L("유튜브 「안유화의 경제투자론」", "YouTube — An Yuhua's Economy & Investment", "YouTube《安玉花的经济投资论》"), L("매주 화요일 새 영상", "New video every Tuesday", "每周二更新"), YOUTUBE),
              (L("연합인포맥스 「안유화 쇼」", "Yonhap Infomax — The An Yuhua Show", "韩联社 Infomax《安玉花秀》"), L("경제 방송 진행", "Broadcast host", "财经节目主持"), "https://www.youtube.com/watch?v=rvKXDS1vyRA"),
              (L("팟캐스트 「안경투」", "Podcast — An Yuhua's Economy & Investment", "播客《安玉花的经济投资论》"), L("팟빵", "Podbbang", "Podbbang"), PODCAST)]

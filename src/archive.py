@@ -64,10 +64,10 @@ REPORTS = [
 # ── 칼럼·기고·외부 보고서 (연구·분석 > 연구보고서·기고) ───────────────
 # kind: "col"(칼럼) · "rep"(연구보고서) · "pub"(정기간행물). title 은 원문(한국어) 그대로.
 WRITINGS_ONGOING = {  # 맨 위에 고정되는 '연재 중' 줄
-    "kind": "col", "link": "NAEIL_SEARCH", "title": "내일신문 「금요진단」",
+    "kind": "col", "link": "NAEIL_SEARCH", "title": "내일신문 「금요논단」",
     "source": {"ko": "현재 연재하고 있는 칼럼입니다. 제목을 누르면 최근 글을 모아 볼 수 있습니다.", "en": "The column currently running. The title opens a search of the latest pieces.", "zh": "目前正在连载的专栏，点击标题可查看最新文章。"},
 }
-_NAEIL = {"ko": "내일신문 「금요진단」", "en": "Naeil Shinmun, Friday column", "zh": "《明日新闻》周五专栏"}
+_NAEIL = {"ko": "내일신문 「금요논단」", "en": "Naeil Shinmun, Friday column", "zh": "《明日新闻》周五专栏"}
 _AJU = {"ko": "아주경제 「안유화 칼럼」", "en": "Aju Business Daily", "zh": "亚洲经济"}
 WRITINGS = [
     {"kind": "col", "date": "2024-09", "link": "https://m.naeil.com/news/read/522358", "title": "중국이 대만문제에 그토록 민감해하는 이유", "source": _NAEIL},
