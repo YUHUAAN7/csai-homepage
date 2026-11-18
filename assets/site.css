@@ -299,6 +299,14 @@ a.type:hover{border-color:var(--gold-500)}
 .flow-step.end{background:var(--navy-800);border-color:var(--navy-800)}
 .flow-step.end b{color:var(--gold-300)}.flow-step.end span{color:#DCE6F7}
 .flow-arrow{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font-size:13px;font-weight:700;color:var(--gold-600);text-align:center;line-height:1.4}
+.sp{display:grid;gap:10px;margin-top:10px}
+.sp-row{display:grid;grid-template-columns:150px 1fr;gap:12px;align-items:start;padding-top:10px;border-top:1px solid var(--line)}
+.sp-row b{font-size:14px;color:var(--navy-800);padding-top:6px}
+.sp-row .chips{margin-top:0}
+.sp-more{margin-top:16px}
+.sp-more summary{cursor:pointer;font-weight:700;color:var(--gold-600);font-size:14.500px}
+.sp-more .hist{margin-top:12px}
+@media (max-width:620px){.sp-row{grid-template-columns:1fr;gap:6px}.sp-row b{padding-top:0}}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
 .chips span{font-size:13.500px;padding:5px 13px;border-radius:999px;background:var(--sky-100);color:var(--navy-700);font-weight:500}
 .alt .chips span{background:#fff;border:1px solid var(--line)}

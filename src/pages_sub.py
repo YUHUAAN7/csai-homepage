@@ -20,6 +20,47 @@ from archive import DEEPDIVE_NEXT
 
 
 
+def speaking_record():
+    """강연·자문 이력: 분야별 대표 기관 + 연도별 목록. 원장이 2026-11-18 전부 '맞음'으로 확인한 것만."""
+    groups = [
+        (L("언론 기고", "Newspaper columns", "媒体专栏"),
+         [L("조선일보", "Chosun Ilbo", "朝鲜日报"), L("매일경제", "Maeil Business Newspaper", "每日经济新闻"), L("한국경제", "Korea Economic Daily", "韩国经济新闻"),
+          L("서울신문 「열린세상」", "Seoul Shinmun", "首尔新闻"), L("아주경제 「안유화 칼럼」", "Aju Business Daily", "亚洲经济"), L("내일신문 「금요논단」", "Naeil Shinmun", "明日新闻")]),
+        (L("기업 초청 강연", "Corporate talks", "企业邀请演讲"), ["삼성전자" if C.lang == "ko" else "Samsung Electronics", "POSCO" if C.lang != "ko" else "포스코", "LG", "SK"]),
+        (L("금융·국책·공공기관", "Financial and public institutions", "金融与公共机构"),
+         [L("신한은행", "Shinhan Bank", "新韩银行"), L("한국금융연구원", "Korea Institute of Finance", "韩国金融研究院"), L("국회 의원 경제세미나", "National Assembly economic seminar", "国会议员经济研讨会")]),
+        (L("지방정부·경제단체", "Local governments and business associations", "地方政府与经济团体"),
+         [L("장성군 장성아카데미", "Jangseong County", "长城郡"), L("의정부시", "Uijeongbu City", "议政府市"), L("양산상공회의소", "Yangsan Chamber of Commerce", "梁山商工会议所"), L("각 지역 상공회의소", "Regional chambers of commerce", "各地商工会议所")]),
+        (L("포럼·교육기관", "Forums and schools", "论坛与教育机构"),
+         [L("조선비즈 글로벌경제·투자포럼", "ChosunBiz Global Economy & Investment Forum", "朝鲜Biz全球经济投资论坛"), L("뉴스핌·인민망 한중 공동포럼", "Newspim–People's Daily Korea–China Forum", "Newspim·人民网韩中论坛"),
+          L("동북아 CEO 경제협력 포럼", "Northeast Asia CEO Economic Cooperation Forum", "东北亚CEO经济合作论坛"), L("한국일보 한국아카데미", "Hankook Ilbo Korea Academy", "韩国日报韩国学院"), L("서울과학종합대학원(aSSIST)", "aSSIST", "aSSIST")]),
+        (L("방송", "Broadcast", "广播电视"), [L("tvN 「미래수업」", "tvN Future Class", "tvN《未来课堂》"), L("KBS 「홍사훈의 경제쇼」", "KBS radio economy show", "KBS广播经济节目"), L("연합인포맥스 「안유화 쇼」", "Yonhap Infomax An Yuhua Show", "联合Infomax《安玉花秀》")]),
+        (L("자문·위원", "Advisory roles", "顾问与委员"),
+         [L("현대자동차연구소 중국경제포럼", "Hyundai Motor Research Institute China forum", "现代汽车研究所中国经济论坛"), L("현대제철 스틸포럼", "Hyundai Steel forum", "现代制铁钢铁论坛"),
+          L("청도시·부산시 금융자문관", "Financial adviser to Qingdao and Busan", "青岛市·釜山市金融顾问"), L("법무법인 율촌 중국팀 고문", "Adviser, Yulchon LLC China team", "律村律师事务所中国团队顾问"), L("한국예탁결제원 객원연구위원", "Visiting fellow, Korea Securities Depository", "韩国预托结算院客座研究员")]),
+    ]
+    rows = "".join(f'<div class="sp-row"><b>{g}</b><div class="chips">{"".join(f"<span>{x}</span>" for x in xs)}</div></div>' for g, xs in groups)
+    dated = [
+        ("2013.10", L("뉴스핌·인민망 한중 공동포럼 주제발표 ‘중국 금융시장 개방, 어떻게 잡을 것인가’", "Newspim–People's Daily Korea–China Forum: opening of China's financial markets", "Newspim·人民网韩中论坛主题发言"), "https://newspim.com/news/view/20131029000886"),
+        ("2016.04", L("서울신문 「열린세상」 ‘중국 부채위기를 어떻게 봐야 하나’", "Seoul Shinmun column on China's debt", "首尔新闻专栏：如何看待中国债务危机"), "https://m.seoul.co.kr/news/2016/04/28/20160428030007"),
+        ("2017", L("서울과학종합대학원(aSSIST) ‘일대일로 전략’ 강연", "aSSIST lecture on the Belt and Road", "aSSIST“一带一路战略”演讲"), "https://m.sedaily.com/NewsVIew/1OJRFLFA7F"),
+        ("2019–2021", L("아주경제 「안유화 칼럼」 연재", "Aju Business Daily column series", "亚洲经济专栏连载"), "https://www.ajunews.com/view/20210426141616737"),
+        ("2020", L("조선비즈 「2020 글로벌경제·투자포럼」 연사", "Speaker, ChosunBiz Global Economy & Investment Forum 2020", "朝鲜Biz 2020全球经济投资论坛演讲嘉宾"), "https://sites.google.com/chosunbiz.com/weekly/%EC%97%B0%EC%82%AC%EC%86%8C%EA%B0%9C/%EC%95%88%EC%9C%A0%ED%99%94"),
+        ("2021.01", L("tvN 「미래수업」 ‘Made in China의 반격’", "tvN Future Class: Made in China strikes back", "tvN《未来课堂》"), "https://www.youtube.com/watch?v=dyoY26jaFZA"),
+        ("2023.09", L("국회 제10차 국회의원 경제세미나 ‘중국 경제의 흐름과 한국의 미래’", "National Assembly economic seminar: China's economy and Korea's future", "国会第10次议员经济研讨会演讲"), "https://news.nate.com/view/20230907n04642"),
+        ("2023.11", L("재일조선족경영자협회 초청 도쿄 특강", "Invited lecture in Tokyo", "东京邀请讲座"), "https://www.dbanews.com/news/articleView.html?idxno=46123"),
+        ("2024.03", L("양산상공회의소 CEO세미나 ‘글로벌 공급망 변화와 한국기업의 대응’", "Yangsan Chamber of Commerce CEO seminar on global supply chains", "梁山商工会议所CEO研讨会：全球供应链变化"), "http://www.gndomin.com/news/articleView.html?idxno=387783"),
+        ("2025.06", L("제10회 동북아 CEO 경제협력 포럼 기조연설", "Keynote, 10th Northeast Asia CEO Economic Cooperation Forum", "第十届东北亚CEO经济合作论坛主旨演讲"), "https://www.tokenpost.kr/news/insights/267484"),
+        ("2026.06", L("장성군 제1234회 장성아카데미 ‘AI 시대 부자되는 법’", "Jangseong Academy lecture on wealth in the AI era", "长城学院讲座：AI时代如何致富"), "https://www.newsis.com/view/NISX20260619_0003676467"),
+    ]
+    lst = "".join(f'<li><span>{y}</span><a href="{u}" target="_blank" rel="noopener">{t}</a></li>' for y, t, u in dated)
+    return (f'<h3 style="font-size:20px;margin:36px 0 6px">{L("강연·자문 이력", "Talks and advisory record", "演讲与顾问经历")}</h3>'
+            f'<p style="font-size:14.500px;color:var(--ink-2);margin:0 0 6px">{L("2008년부터 언론 기고와 기업·금융기관·국책기관·지방정부 초청 강연을 이어 왔습니다.", "Since 2008 she has written for newspapers and spoken at the invitation of companies, financial institutions, public bodies and local governments.", "自2008年起，持续为媒体撰稿，并应企业、金融机构、公共机构与地方政府之邀演讲。")}</p>'
+            f'<div class="sp">{rows}</div>'
+            f'<details class="sp-more"><summary>{L("연도별 주요 기록 보기", "Selected record by year", "按年份查看主要记录")}</summary><ul class="hist wide">{lst}</ul></details>'
+            f'<p class="note" style="margin-top:10px">{L("기관 이름은 강연·기고·초청 이력이며, 해당 기관이 연구원을 보증한다는 뜻이 아닙니다.", "Names show where she has spoken or written; they do not imply endorsement.", "机构名称仅表示演讲、撰稿或受邀经历，并不代表该机构为本院背书。")}</p>')
+
+
 def org_chart(names=False):
     """조직도. names=False(홈페이지): 본부와 하는 일만. names=True(사내 교육용): 구성원 이름까지."""
     HEAD = ("본부장", "Head", "本部长")
@@ -130,7 +171,7 @@ def about():
       <p class="g-sign">{L("중국증권행정연구원 원장 <strong>안유화</strong>", "<strong>An Yuhua</strong>, President, China Securities Administration Institute", "中国证券行政研究院 院长 <strong>安玉花</strong>")}</p>
     </div>
     {bio}{channels()}
-    <h3 style="font-size:20px;margin:36px 0 14px">{L("약력", "Career", "履历")}</h3>{timeline()}</div>
+    <h3 style="font-size:20px;margin:36px 0 14px">{L("약력", "Career", "履历")}</h3>{timeline()}{speaking_record()}</div>
 </div>''')
 
     fn = [("chart", L("연구·분석", "Research", "研究分析"), P("research")), ("news", L("거시경제연구소", "China Economy Focus", "宏观经济研究所"), P("focus")),
