@@ -139,7 +139,7 @@ def about():
     fcards = "".join(f'<a class="type" href="{h}"><h3>{icon(ic, 20)}{t}</h3></a>' for ic, t, h in fn)
     orgchart = org_chart(names=False)
     b += sec("organization", "ORGANIZATION", L("조직", "Organization", "组织架构"), "",
-             orgchart + '<div style="margin-top:22px">' + soon(L("전문가 프로필은 확정되는 대로 올립니다.", "Expert profiles will be posted once confirmed.", "专家简介将在确认后发布。")) + "</div>"
+             orgchart
              + f'<h3 style="font-size:20px;margin:36px 0 16px">{L("주요 기능", "Main functions", "主要职能")}</h3><div class="g3">{fcards}</div>', "alt")
 
     b += sec("contact", "CONTACT", L("연락처", "Contact", "联系方式"), "", kv([
