@@ -49,7 +49,7 @@ def org_chart(names=False):
                   ["审议研究方向与自有指标的方法", "核验判断记录的评分", "对接国内外研究机构与学界合作"])
     adv_box = ('<div class="org-adv"><h3>' + L("외부 전문가 자문위원회", "External Advisory Board", "外部专家咨询委员会") + '</h3><div class="org-in">'
                + '<div class="org-k">' + L("하는 일", "Role", "职责") + '</div>' + "".join('<div class="org-w">· ' + r + '</div>' for r in adv_roles)
-               + '<div class="org-k">' + L("위원", "Members", "委员") + '</div><div class="org-w">' + L("위촉 중 · 확정되는 대로 공개합니다", "Being appointed · names will be posted once confirmed", "正在聘任 · 确定后公布") + '</div></div></div>')
+               + '</div></div>')
     return (f'<div class="org"><div class="org-head"><div></div><div class="org-top"><small>{L("원장", "President", "院长")}</small><b>{L("안유화", "An Yuhua", "安玉花")}</b></div><div class="org-advw">{adv_box}</div></div>'
                 f'<div class="org-stem"></div><div class="org-cols org5">{ocols}</div></div>')
 
