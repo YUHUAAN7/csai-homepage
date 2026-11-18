@@ -92,7 +92,12 @@ def monthly_list(limit=6):
     for m in newest(A_.MONTHLY):
         no = L(f"제{m['no']}호", f"No. {m['no']}", f"第{m['no']}期") if m.get("no") else ""
         note = T(m.get("label_note"))
-        sub = " · ".join(x for x in [no, e(note)] if x)
+        d = m.get("date", "")
+        pub = ""
+        if len(d) == 10:
+            pub = (L(f"{d.replace('-', '.')} 발행 예정", f"Out {d}", f"{d.replace('-', '.')} 即将发行") if d > today()
+                   else L(f"{d.replace('-', '.')} 발행", f"Published {d}", f"{d.replace('-', '.')} 发行"))
+        sub = " · ".join(x for x in [no, e(note), pub] if x)
         pts = ""
         if m.get("points"):
             pts = "<p>" + " / ".join(e(x) for x in T(m["points"])) + "</p>"
@@ -101,7 +106,7 @@ def monthly_list(limit=6):
             links += " · " + a(m["web"], L("웹으로 읽기", "Read online", "在线阅读"))
         aid = "monthly-" + m["id"]
         reg(L("월간 「중국경제포커스」 ", "China Economy Focus ", "月刊《中国经济聚焦》") + monthly_title(m), sub, P("focus", aid), L("월간", "Monthly", "月刊"))
-        rows.append(f'<li id="{aid}"><time>{fdate(m)}</time><div><h3>{a(monthly_pdf(m), monthly_title(m))}</h3><p>{sub}{" · " if sub else ""}{links}</p>{pts}</div>'
+        rows.append(f'<li id="{aid}"><time>{e(m["id"].replace("-", "."))}</time><div><h3>{a(monthly_pdf(m), monthly_title(m))}</h3><p>{sub}{" · " if sub else ""}{links}</p>{pts}</div>'
                     f'<span class="kind">{L("월간", "Monthly", "月刊")}</span></li>')
     return fold(rows[:limit], rows[limit:], '<ul class="articles">', "</ul>",
                 L("지난 호 더 보기", "More past issues", "查看更多往期"))
