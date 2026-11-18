@@ -444,18 +444,25 @@ def boundary_title():
 
 
 def boundary_block(full=True):
+    lead = L("중국이 정책을 바꾸면, 중국 통계보다 <em>1~2분기 먼저</em> 한국의 수출 숫자가 움직입니다.<br>CSAI는 그 숫자를 읽어 한국 기업의 결정으로 옮깁니다.",
+             "When China changes policy, Korea's export numbers move <em>one to two quarters before</em> China's own statistics do.<br>CSAI reads those numbers and turns them into decisions for Korean companies.",
+             "中国调整政策时，韩国的出口数字会比中国统计<em>提前一到两个季度</em>出现变化。<br>CSAI解读这些数字，并将其转化为韩国企业的决策。")
     steps = [
-        ("", L("중국의 정책", "China's policy", "中国的政策"), L("15차 5개년 계획 · 수출통제 · 보조금 · 규제 · 통화·재정", "15th Five-Year Plan · export controls · subsidies · regulation · monetary and fiscal policy", "“十五五”规划 · 出口管制 · 补贴 · 监管 · 货币与财政")),
-        ("", L("한국 기업의 숫자", "Korean companies' numbers", "韩国企业的数字"), L("수출 · 조달 · 가격 · 투자 — 열흘마다, 가장 빠른 통계", "Exports · sourcing · prices · investment — the earliest statistics, every ten days", "出口 · 采购 · 价格 · 投资——每十天一次，最快的统计")),
-        (" end", L("한국의 결정", "Korean decisions", "韩国的决策"), L("조달 · 투자 · 가격 · 인력 — 경영진의 중국 판단", "Sourcing · investment · pricing · people — management's China call", "采购 · 投资 · 定价 · 人力——管理层的对华判断")),
+        ("", L("중국이 정한다", "China decides", "中国决定"), L("중국의 정책", "China's policy", "中国的政策"),
+         L("5개년 계획 · 수출통제 · 보조금 · 규제 · 통화·재정", "Five-year plans · export controls · subsidies · regulation · monetary and fiscal policy", "五年规划 · 出口管制 · 补贴 · 监管 · 货币与财政"), ""),
+        (" key", L("한국 숫자가 먼저 움직인다", "Korea's numbers move first", "韩国数字先动"), L("한국 기업의 숫자", "Korean companies' numbers", "韩国企业的数字"),
+         L("수출 · 조달 · 가격 · 투자 — 열흘마다 나오는 가장 빠른 통계", "Exports · sourcing · prices · investment — the fastest data, every ten days", "出口 · 采购 · 价格 · 投资——每十天发布的最快统计"),
+         L("1~2분기 먼저", "1–2 quarters ahead", "提前1–2个季度")),
+        (" end", L("한국이 결정한다", "Korea decides", "韩国决策"), L("한국 기업의 결정", "Korean companies' decisions", "韩国企业的决策"),
+         L("조달 · 투자 · 가격 · 인력", "Sourcing · investment · pricing · people", "采购 · 投资 · 定价 · 人力"), ""),
     ]
-    arrows = [L("경계선<br>1~2분기 먼저", "The boundary<br>1–2 quarters earlier", "边界线<br>提前1–2个季度"), L("번역", "Translation", "翻译")]
-    parts = []
-    for i, (cls, t, d) in enumerate(steps):
-        parts.append(f'<div class="flow-step{cls}"><b>{t}</b><span>{d}</span></div>')
-        if i < 2:
-            parts.append(f'<div class="flow-arrow"><span>{arrows[i]}</span>{icon("arrow", 22)}</div>')
-    ex = [L("수출통제 → 반도체", "Export controls → semiconductors", "出口管制 → 半导体"), L("배터리 보조금 → 배터리", "Battery subsidies → batteries", "电池补贴 → 电池"), L("해운 규제 → 해운", "Shipping regulation → shipping", "航运监管 → 航运")]
+    lis = "".join(f'<li class="bd-step{c}"><span class="bd-n">{i}</span><small>{k}</small><b>{t}</b><p>{d}</p>' + (f'<em class="bd-tag">{tag}</em>' if tag else "") + "</li>"
+                  for i, (c, k, t, d, tag) in enumerate(steps, 1))
+    ex = (f'<div class="bd-ex"><div class="bd-ex-h">{L("이렇게 읽습니다", "How we read it", "我们这样解读")} · {L("2026년 11월 1~10일 통계", "1–10 November 2026", "2026年11月1至10日")}</div>'
+          f'<div class="bd-ex-row"><span><b>+148%</b>{L("대중 수출 증가", "exports to China", "对华出口增长")}</span><i>{icon("arrow", 18)}</i>'
+          f'<span><b>49.7%</b>{L("전체 수출 중 반도체 비중", "chips' share of all exports", "半导体占出口比重")}</span><i>{icon("arrow", 18)}</i>'
+          f'<span class="bd-ex-c"><b>{L("판단", "Judgment", "判断")}</b>{L("중국 수요 회복이 아니라 반도체 가격 효과", "chip prices, not a recovery in Chinese demand", "是半导体价格效应，而非中国需求回暖")}</span></div>'
+          f'<a class="bd-ex-a" href="{P("focus", "flash-2026-11")}">{L("열흘 노트에서 자세히 보기 →", "Read the Ten-Day Note →", "在旬报中查看详情 →")}</a></div>')
     hypo = L("<b>검증할 가설</b> — 중국 정책은 중국 통계보다 1~2분기 먼저 한국 숫자에 나타난다. 이 가설을 매호 검증합니다.",
              "<b>The hypothesis we test</b> — China's policy shows up in Korean numbers one to two quarters before it shows up in Chinese statistics. We test it in every issue.",
              "<b>待检验的假设</b>——中国的政策会比中国的统计数据提前一到两个季度体现在韩国的数字上。我们每期都对此进行检验。")
@@ -466,7 +473,7 @@ def boundary_block(full=True):
             "CSAI stands on the boundary where China's policy turns into Korean companies' profit and loss: a neutral platform, in Korean, built for corporate decisions, that grades its own judgments in public and carries contributions from Chinese scholars.",
             "CSAI站在中国政策转化为韩国企业损益的边界线上：以韩语、为企业决策服务、公开为自己的判断评分，并刊载中国学者文章的中立平台。") + "</p>"
     reg(boundary_title(), hypo, P("about", "position"), "About CSAI")
-    return (f'<div class="flow">{"".join(parts)}</div><div class="chips">{"".join(f"<span>{x}</span>" for x in ex)}</div>'
+    return (f'<div class="bd"><p class="bd-lead">{lead}</p><ol class="bd-steps">{lis}</ol>{ex}</div>'
             f'<p class="hypo">{hypo}</p>{pos}')
 
 
