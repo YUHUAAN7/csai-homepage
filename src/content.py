@@ -474,8 +474,8 @@ def boundary_block(full=True):
         (" key", L("한국 숫자가 먼저 움직인다", "Korea's numbers move first", "韩国数字先动"), L("한국 기업의 숫자", "Korean companies' numbers", "韩国企业的数字"),
          L("수출 · 조달 · 가격 · 투자 — 열흘마다 나오는 가장 빠른 통계", "Exports · sourcing · prices · investment — the fastest data, every ten days", "出口 · 采购 · 价格 · 投资——每十天发布的最快统计"),
          L("1~2분기 먼저", "1–2 quarters ahead", "提前1–2个季度")),
-        (" end", L("한국이 결정한다", "Korea decides", "韩国决策"), L("한국 기업의 결정", "Korean companies' decisions", "韩国企业的决策"),
-         L("조달 · 투자 · 가격 · 인력", "Sourcing · investment · pricing · people", "采购 · 投资 · 定价 · 人力"), ""),
+        (" end", L("CSAI가 읽고 옮긴다", "CSAI reads and translates", "CSAI解读并转化"), L("한국 기업의 결정", "Korean companies' decisions", "韩国企业的决策"),
+         L("숫자를 해석해 조달 · 투자 · 가격 · 인력 판단으로", "From the numbers to decisions on sourcing, investment, pricing and people", "把数字转化为采购 · 投资 · 定价 · 人力的判断"), ""),
     ]
     lis = "".join(f'<li class="bd-step{c}"><span class="bd-n">{i}</span><small>{k}</small><b>{t}</b><p>{d}</p>' + (f'<em class="bd-tag">{tag}</em>' if tag else "") + "</li>"
                   for i, (c, k, t, d, tag) in enumerate(steps, 1))
