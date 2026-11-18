@@ -7,7 +7,7 @@
 """
 import datetime
 
-from core import C, L, P, e, reg, icon, btn, SUBSCRIBE, ARCHIVE
+from core import C, L, P, e, reg, icon, btn, sub_url, ARCHIVE
 import archive as A_
 
 MONTHLY_PDF = "https://chinamacro.kr/issues/{id}.pdf"

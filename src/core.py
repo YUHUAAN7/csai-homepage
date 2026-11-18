@@ -9,7 +9,13 @@ HTML_LANG = {"ko": "ko", "en": "en", "zh": "zh-Hans"}
 MAIL = "contact@chinamacro.kr"
 # 방문 통계(Cloudflare Web Analytics, 쿠키 없음). 원장이 가입해 받은 토큰을 넣으면 모든 페이지에 켜진다. 비어 있으면 꺼짐.
 ANALYTICS_TOKEN = "e774c0e87a9d471b81018d67e21732a6"
-SUBSCRIBE = "https://page.stibee.com/subscriptions/522211"
+SUBSCRIBE = "https://page.stibee.com/subscriptions/522211"   # 한국어 메일(Stibee): 월간 중국경제포커스 등
+SUBSTACK = "https://csai2026.substack.com"   # 영어 메일(Substack): 열흘 노트 영어판, Korea Sensor
+
+
+def sub_url():
+    """메일 구독 주소: 영어 화면은 Substack, 한국어·중국어 화면은 Stibee (2026-11-19 원장 결정)."""
+    return SUBSTACK if C.lang == "en" else SUBSCRIBE
 ARCHIVE = "https://chinamacro.kr"
 YOUTUBE = "https://www.youtube.com/@anyuhuatv"
 BLOG = "https://blog.naver.com/anyuhuatv"
@@ -225,7 +231,8 @@ def footer():
       <nav class="ftr-map" aria-label="{L("사이트맵", "Sitemap", "网站地图")}">{"".join(cols)}</nav>
     </div>
     <div class="ftr-chan">
-      <a href="{SUBSCRIBE}" target="_blank" rel="noopener">{L("뉴스레터 구독", "Newsletter", "订阅通讯")}</a>
+      <a href="{SUBSCRIBE}" target="_blank" rel="noopener">{L("뉴스레터 구독", "Newsletter (Korean)", "订阅通讯（韩文）")}</a>
+      <a href="{SUBSTACK}" target="_blank" rel="noopener">{L("Substack (영어)", "Substack (English)", "Substack（英文）")}</a>
       <a href="{YOUTUBE}" target="_blank" rel="noopener">YouTube</a>
       <a href="{BLOG}" target="_blank" rel="noopener">{L("네이버 블로그", "Naver Blog", "Naver 博客")}</a>
       <a href="{PODCAST}" target="_blank" rel="noopener">{L("팟캐스트", "Podcast", "播客")}</a>

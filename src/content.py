@@ -186,7 +186,7 @@ def issue_card():
     return f'''<div class="issue">
   <div class="issue-top"><b>{L("월간 「중국경제포커스」 최신호", "China Economy Focus — latest issue", "月刊《中国经济聚焦》最新一期")}</b><span>{latest_id}</span></div>
   <ol class="toc">{rows}</ol>
-  <div class="row-btns">{btn(L("무료 구독하기", "Subscribe free", "免费订阅"), SUBSCRIBE, "navy", ext=True)}{btn(L("최신호 PDF", "Latest issue (PDF)", "最新一期 PDF"), archive_view.monthly_pdf(m), "ghost", ext=True) if m else ""}{btn(L("지난 호 목록", "All issues", "往期目录"), P("focus", "monthly-archive"), "ghost")}</div>
+  <div class="row-btns">{btn(L("무료 구독하기", "Subscribe free", "免费订阅"), sub_url(), "navy", ext=True)}{btn(L("최신호 PDF", "Latest issue (PDF)", "最新一期 PDF"), archive_view.monthly_pdf(m), "ghost", ext=True) if m else ""}{btn(L("지난 호 목록", "All issues", "往期目录"), P("focus", "monthly-archive"), "ghost")}</div>
   <p class="note">{L("발행: 거시경제연구소 · 본 자료는 정보 제공 목적이며 특정 종목·상품의 매수·매도 권유가 아닙니다.",
                     "Published by the Macroeconomic Institute (거시경제연구소). For information only; not a recommendation to buy or sell any security or product.",
                     "发行：宏观经济研究所。本资料仅供参考，不构成任何证券或产品的买卖建议。")}</p>

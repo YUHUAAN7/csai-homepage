@@ -64,7 +64,7 @@ def home():
          L("매월 둘째 주 화요일 아침, 중국 거시·산업·공급망의 한 달을 한 권으로 정리해 보내드립니다. 기사마다 한국 시사점을 붙입니다.",
            "Every second Tuesday: China's macro, industry and supply chains in one issue, each article ending with what it means for Korea.",
            "每月第二个星期二，汇总中国宏观、产业与供应链动态，每篇附韩国启示。"),
-         btn(L("무료 구독하기", "Subscribe free", "免费订阅"), SUBSCRIBE, ext=True) + btn(L("거시경제연구소 보기", "Explore China Economy Focus", "进入宏观经济研究所"), P("focus"), "line")),
+         btn(L("무료 구독하기", "Subscribe free", "免费订阅"), sub_url(), ext=True) + btn(L("거시경제연구소 보기", "Explore China Economy Focus", "进入宏观经济研究所"), P("focus"), "line")),
     ]
     s_html = "".join(
         f'<div class="slide{" on" if i == 0 else ""}"><div class="eyebrow">{eb}</div><{"h1" if i == 0 else "h2"} class="hero-h">{h}</{"h1" if i == 0 else "h2"}>'
@@ -94,7 +94,7 @@ def home():
     <div class="qcard has-mag"><div class="ql">{L("거시경제연구소", "CHINA ECONOMY FOCUS", "宏观经济研究所")}</div>
       <h3>{L("월간 「중국경제포커스」<br>2026년 11월호", "Monthly China Economy Focus<br>November 2026", "月刊《中国经济聚焦》<br>2026年11月号")}</h3>
       <p>{L("중국 경제의 핵심 이슈와 한국 시사점을 담았습니다.", "Key issues in China's economy and what they mean for Korea.", "聚焦中国经济核心议题及其对韩国的启示。")}</p>
-      {more(L("구독 신청", "Subscribe", "订阅"), SUBSCRIBE, ext=True)}
+      {more(L("구독 신청", "Subscribe", "订阅"), sub_url(), ext=True)}
       <div class="mag" aria-hidden="true"><small>CSAI</small><b>{L("중국경제<br>포커스", "China<br>Economy<br>Focus", "中国经济<br>聚焦")}</b><span>2026. 11</span></div></div>
     <div class="qcard"><div class="ql">OUR SERVICES</div>
       <div class="svc-mini">{"".join(f'<a href="{h}">{icon(ic, 26)}<span>{t}</span>{icon("arrow", 15)}</a>' for ic, t, h in svc)}</div></div>
@@ -193,8 +193,8 @@ def home():
 
     band = f'''<section class="band" id="subscribe"><div class="wrap">
   <div class="col"><h2>{L("뉴스레터 구독", "Subscribe to the newsletter", "订阅通讯")}</h2>
-    <p>{L("월간 「중국경제포커스」를 이메일로 받아 보세요. 무료입니다.", "Get the monthly China Economy Focus by email. It is free.", "通过邮件接收月刊《中国经济聚焦》，免费订阅。")}</p>
-    {btn(L("무료 구독하기", "Subscribe", "免费订阅"), SUBSCRIBE, ext=True)}</div>
+    <p>{L("월간 「중국경제포커스」를 이메일로 받아 보세요. 무료입니다.", "Get our English notes — the Ten-Day Note and Korea Sensor — free by email on Substack.", "通过邮件接收月刊《中国经济聚焦》，免费订阅。")}</p>
+    {btn(L("무료 구독하기", "Subscribe", "免费订阅"), sub_url(), ext=True)}</div>
   <div class="col"><h2>{L("문의·협력 제안", "Inquiries & partnership", "咨询与合作")}</h2>
     <p>{L("기업 자문, 교육, 국제협력, 강연·인터뷰 요청을 목적별로 접수합니다.", "Business advisory, training, international cooperation, and speaking or interview requests — each has its own form.", "企业咨询、培训、国际合作及演讲采访邀请，按类别受理。")}</p>
     {btn("Contact CSAI", P("contact"), "line")}</div>

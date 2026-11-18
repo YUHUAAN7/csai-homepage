@@ -292,6 +292,9 @@ def tenday_notes():
         if n.get("exec_q"):
             body += (fh(L("경영진 점검 질문", "Questions for your leadership team", "管理层自查问题")) + ticks([e(x) for x in _lt(n["exec_q"])])
                      + '<p style="font-size:14px;margin-top:6px"><a href="' + P("contact", "advisory") + '" style="font-weight:700">' + L("우리 회사에 맞춰 함께 점검하기 →", "Review this with us for your company →", "结合贵公司情况一起检查 →") + "</a></p>")
+        if n.get("substack"):
+            body += ('<p style="font-size:14px;margin-top:10px"><a href="' + e(n["substack"]) + '" target="_blank" rel="noopener" style="font-weight:700">'
+                     + L("영어판 읽기 (Substack) →", "Read this note in English on Substack →", "阅读英文版（Substack）→") + "</a></p>")
         if n.get("next"):
             body += fh(L("다음에 확인할 것", "What we will check next", "接下来要验证的")) + ticks([e(x) for x in _lt(n["next"])])
         links = ", ".join('<a href="' + e(u) + '" target="_blank" rel="noopener">' + e(t) + "</a>" for t, u in n.get("sources", []))
@@ -342,10 +345,10 @@ def focus():
              f'<div class="g3">{pc}</div><div class="split" style="margin-top:28px"><div>' + kv([
                  (L("발행", "Schedule", "发行"), L("매월 둘째 주 화요일 아침", "Second Tuesday of each month, morning", "每月第二个星期二早晨")),
                  (L("구성", "Sections", "栏目"), "OPINION · HOT ISSUE · MACRO · INDUSTRY · SUPPLY · Q&amp;A"),
-                 (L("받아 보기", "How to get it", "获取方式"), f'<a href="{SUBSCRIBE}" target="_blank" rel="noopener">{L("이메일 무료 구독", "Free email subscription", "邮件免费订阅")}</a>'),
+                 (L("받아 보기", "How to get it", "获取方式"), f'<a href="{sub_url()}" target="_blank" rel="noopener">{L("이메일 무료 구독", "English notes on Substack", "邮件免费订阅（韩文）")}</a>'),
                  (L("지난 호", "Past issues", "往期"), f'<a href="#monthly-archive">{L("아래 발행 목록", "Issue list below", "见下方目录")}</a> · <a href="{ARCHIVE}" target="_blank" rel="noopener">chinamacro.kr</a>'),
                  (L("발행 주체", "Publisher", "发行方"), L("거시경제연구소", "Macroeconomic Institute (거시경제연구소), CSAI", "宏观经济研究所")),
-             ]) + f'</div><div>{signal_box()}</div></div><div class="sec-foot">{btn(L("무료 구독하기", "Subscribe free", "免费订阅"), SUBSCRIBE, "navy", ext=True)}{btn(L("chinamacro.kr에서 보기", "View on chinamacro.kr", "在 chinamacro.kr 查看"), ARCHIVE, "ghost", ext=True)}</div>'
+             ]) + f'</div><div>{signal_box()}</div></div><div class="sec-foot">{btn(L("무료 구독하기", "Subscribe free", "免费订阅"), sub_url(), "navy", ext=True)}{btn(L("chinamacro.kr에서 보기", "View on chinamacro.kr", "在 chinamacro.kr 查看"), ARCHIVE, "ghost", ext=True)}</div>'
              + f'<h3 id="monthly-archive" style="font-size:20px;margin:40px 0 16px;scroll-margin-top:140px">{L("발행 목록", "All issues", "往期目录")}</h3>' + archive_view.monthly_list())
     b += sec("deepdive", "DEEP DIVE", L("심층보고", "Deep Dive", "深度报告"), L("특정 산업·정책·공급망을 깊이 다루는 보고서입니다. 분기마다 냅니다.", "In-depth reports on a single industry, policy or supply chain, published quarterly.", "针对单一产业、政策或供应链的深度报告，每季度发布。"),
              archive_view.deepdive_list() + (f'<div style="margin-top:20px">{soon(e(archive_view.T(DEEPDIVE_NEXT)))}</div>' if DEEPDIVE_NEXT else ""), "alt")
@@ -354,7 +357,7 @@ def focus():
              f'''<div class="player"><a href="{YOUTUBE}/videos" target="_blank" rel="noopener">{L("안유화의 경제투자론 최신 영상", "Latest videos on YouTube", "YouTube 最新视频")}<span>YOUTUBE</span></a>
 <iframe src="https://www.youtube-nocookie.com/embed/videoseries?list=UUThwDMeuhkjOONCAIUiu4xg" title="{L("안유화의 경제투자론 최신 영상", "Latest videos", "最新视频")}" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>{media_cards()}'''
              + f'<div class="sec-foot">{btn(L("영상 해설 읽기", "Read the video notes", "阅读视频解读"), P("videos"), "navy")}</div>'
-             + cta_band(L("뉴스레터로 받아 보기", "Get it by email", "通过邮件接收"), L("월간 「중국경제포커스」를 이메일로 보내드립니다. 무료입니다.", "The monthly China Economy Focus, delivered free by email.", "月刊《中国经济聚焦》通过邮件免费发送。"), L("무료 구독하기", "Subscribe free", "免费订阅"), SUBSCRIBE, ext=True))
+             + cta_band(L("뉴스레터로 받아 보기", "Get it by email", "通过邮件接收"), L("월간 「중국경제포커스」를 이메일로 보내드립니다. 무료입니다.", "Our English notes — the Ten-Day Note and Korea Sensor — free by email on Substack.", "月刊《中国经济聚焦》通过邮件免费发送。"), L("무료 구독하기", "Subscribe free", "免费订阅"), sub_url(), ext=True))
     b += f'<section class="sec tight"><div class="wrap"><p class="note">{L("본 채널의 자료는 정보 제공을 위한 것이며, 특정 종목·상품의 매수·매도 권유가 아닙니다.", "Material on this channel is for information only and is not a recommendation to buy or sell any security or product.", "本频道资料仅供参考，不构成任何证券或产品的买卖建议。")}</p></div></section>'
     return page("focus", title, lede, b, "focus")
 
@@ -529,12 +532,7 @@ def global_():
               + L("분기 노트와 판단 기록은 무료로 공개합니다. 월간 업데이트와 지표 자료, 기관 브리핑은 2027년 하반기에 유료로 시작합니다.",
                   "The quarterly note and our judgment record are free. Monthly updates, indicator data and institutional briefings will start as paid services in the second half of 2027.",
                   "季度简报与判断记录免费公开。月度更新、指标数据和机构简报将于2027年下半年作为付费服务推出。") + "</p>"
-              + '<details class="sub-box"><summary>' + L("무료 구독 신청", "Subscribe free", "免费订阅") + '</summary><div class="sub-in"><p>'
-              + L("편한 방법으로 신청 메일을 보내 주세요. 발행할 때마다 보내 드립니다.", "Send us a subscription email in whichever way suits you. We will send each issue when it is published.", "请用方便的方式发送订阅邮件，每期发布时我们会寄送给您。")
-              + '</p><p><a class="sub-a" href="https://mail.google.com/mail/?view=cm&fs=1&to=' + MAIL + '&su=Subscribe%20to%20Korea%20Sensor" target="_blank" rel="noopener">'
-              + L("Gmail에서 쓰기", "Write in Gmail", "用Gmail发送") + '</a><a class="sub-a" href="mailto:' + ks_to + '">' + L("메일 프로그램으로 쓰기", "Use my mail app", "用邮件程序发送") + "</a></p><p>"
-              + L("또는 아래 주소로 제목에 “Subscribe to Korea Sensor”라고 적어 보내 주세요.", "Or email the address below with the subject “Subscribe to Korea Sensor”.", "或向以下地址发送邮件，主题请写“Subscribe to Korea Sensor”。")
-              + '</p><p><b id="ks-mail">' + MAIL + '</b> <button type="button" class="sub-copy" data-copy="#ks-mail">' + L("주소 복사", "Copy address", "复制地址") + "</button></p></div></details>")
+              + '<p style="margin-top:14px">' + btn(L("Substack에서 무료 구독", "Subscribe free on Substack", "在 Substack 免费订阅"), SUBSTACK, "navy", ext=True) + "</p>")
     b += sec("partners", "PARTNERS", L("협력기관", "Partners", "合作机构"), "",
              coop_types
              + f'<h3 style="font-size:20px;margin:36px 0 16px">{L("협력 유형", "Ways to cooperate", "合作形式")}</h3><div class="g3">{kc}</div>'
@@ -609,7 +607,7 @@ def insight():
     lede = L("안유화 원장이 중국을 읽는 기준과 판단을 기록하는 공간입니다.", "Where Professor An Yuhua records the standards and judgments she uses to read China.", "安玉花院长记录其解读中国的标准与判断的栏目。")
     subs = [("insight", L("메시지", "Message", "寄语")), ("principles", L("중국을 읽는 원칙", "Principles", "解读中国的原则")), ("record", L("판단 기록", "Judgment record", "判断记录")), ("books", L("대표저서", "Selected books", "代表著作"))]
     b = page_hero("insight", "DIRECTOR'S INSIGHT", title, lede, subs)
-    b += message_section("#principles", SUBSCRIBE, focus_ext=True)
+    b += message_section("#principles", sub_url(), focus_ext=True)
     b += sec("principles", "PRINCIPLES", L("중국을 읽는 원칙", "Principles for reading China", "解读中国的原则"), principles_lede(),
              principles_grid() + f'<div class="sec-foot">{more(L("분석 프레임: 중국 경제는 어떻게 작동하는가", "Framework: how China\'s economy works", "分析框架：中国经济如何运行"), P("research", "framework"))}</div>', "alt")
     b += sec("record", "JUDGMENT", L("판단·한마디", "Judgments", "判断与短评"),

@@ -22,6 +22,7 @@
         "reading": {…},            # 읽는 법 (2~3개)
         "korea": {…},              # 한국 시사점 (2개 안팎)
         "judgment": {"text": {…}, "invalid": {…}},   # 판단 한 문장과 무효화 조건. 원장이 확인한 것만. 없으면 생략
+        "substack": "https://…",  # 영어판을 Substack에 올렸으면 그 글 주소 (없으면 넣지 않음)
         "example": {               # 연구원 소개·첫 화면 「우리가 서는 자리」 사례 상자. 최신 호의 것이 자동으로 쓰인다.
             "stats": [["+148%", {…}], ["49.7%", {…}]],   # 핵심 숫자 2개와 짧은 설명
             "verdict": {…},        # 판단을 한 구절로 (judgment 와 같은 뜻)
@@ -143,6 +144,7 @@ TENDAY = [
                 "zh": "若12月1日的月度统计显示剔除半导体的对华出口增速快于剔除半导体的整体出口，则撤回这一判断。"
             }
         },
+        "substack": "https://csai2026.substack.com/p/chips-lifted-exports-to-china-why",
         "example": {
             "stats": [
                 ["+148%", {"ko": "대중 수출 증가", "en": "exports to China", "zh": "对华出口增长"}],
