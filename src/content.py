@@ -289,26 +289,39 @@ def channels():
 
 
 def machine_svg():
+    """중국 경제 작동 구조 (2026-11-19 원장 승인): 정책·외부 제약 → 부채 삼각형 → 산업 과잉·소비 부족 → 무역흑자 → 한국 수출 숫자."""
     t = lambda *a: L(*a)
-    return f'''<svg viewBox="0 0 560 360" role="img" aria-label="{t("중국 경제의 흐름: 정책, 금융, 지방재정, 산업·공급망, 가계·소비, 대외부문", "Flow of China's economy: policy, finance, local budgets, industry and supply chains, households, external sector", "中国经济的传导：政策、金融、地方财政、产业与供应链、居民与消费、对外部门")}">
+
+    def box(x, y, w, title, sub, fill="#fff", stroke="#0B2452", tc="#0E1E3C", sc="#394966"):
+        return (f'<rect x="{x}" y="{y}" width="{w}" height="56" rx="4" fill="{fill}" stroke="{stroke}"/>'
+                f'<text x="{x + w / 2:g}" y="{y + 24}" text-anchor="middle" font-size="15" font-weight="700" fill="{tc}">{title}</text>'
+                f'<text x="{x + w / 2:g}" y="{y + 43}" text-anchor="middle" font-size="10.500" fill="{sc}">{sub}</text>')
+    return f'''<svg viewBox="0 0 560 530" role="img" aria-label="{t("중국 경제의 작동 구조: 정책과 외부 제약이 금융·지방재정·부동산의 부채 삼각형에 작용하고, 산업 과잉과 가계 소비 부족이 무역흑자를 만들어 한국 수출 숫자에 먼저 나타난다", "How China's economy works: policy and external pressure act on the debt triangle of finance, local budgets and property; industrial overcapacity and weak household consumption produce a trade surplus that shows up first in Korea's export figures", "中国经济的运行结构：政策与外部约束作用于金融、地方财政与房地产构成的债务三角；产业过剩与居民消费不足形成贸易顺差，并率先体现在韩国出口数据上")}">
   <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#A9781F"/></marker></defs>
-  <g fill="none" stroke="#A9781F" stroke-width="1.600" marker-end="url(#ar)"><path d="M200 62 L330 62"/><path d="M420 92 L420 150"/><path d="M380 196 L250 196"/><path d="M150 226 L150 272"/><path d="M240 302 L330 302"/></g>
-  <path d="M100 272 C 40 220, 40 110, 92 90" fill="none" stroke="#63738E" stroke-width="1.200" stroke-dasharray="4 4" marker-end="url(#ar)"/>
+  <g fill="none" stroke="#A9781F" stroke-width="1.600" marker-end="url(#ar)">
+    <path d="M388 48 L354 48"/><path d="M260 76 L260 102"/>
+    <path d="M150 212 L150 244"/><path d="M410 212 L410 244"/>
+    <path d="M150 304 L150 322 L230 322 L230 340"/><path d="M410 304 L410 322 L330 322 L330 340"/>
+    <path d="M260 400 L260 426"/></g>
+  <rect x="20" y="106" width="520" height="104" rx="8" fill="#F6F1E4" stroke="#A9781F" stroke-dasharray="4 4"/>
+  <text x="34" y="124" font-size="11" font-weight="700" fill="#8A6118">{t("부채 삼각형 · 서로 물고 돈다", "The debt triangle: each feeds the others", "债务三角：相互牵连")}</text>
   <g font-size="11" fill="#63738E">
-    <text x="265" y="52" text-anchor="middle">{t("정책금리·대출 지도", "Rates · lending", "利率·信贷指导")}</text>
-    <text x="430" y="126">{t("신용·채권", "Credit · bonds", "信用·债券")}</text>
-    <text x="290" y="186" text-anchor="middle">{t("토지재정·LGFV", "Land finance", "土地财政")}</text>
-    <text x="160" y="254">{t("투자·보조금", "Investment · subsidies", "投资·补贴")}</text>
-    <text x="285" y="292" text-anchor="middle">{t("수출·위안화", "Exports · RMB", "出口·人民币")}</text>
-    <text x="12" y="186" transform="rotate(-90 22 186)">{t("피드백", "Feedback", "反馈")}</text></g>
+    <text x="158" y="232">{t("투자", "Investment", "投资")}</text>
+    <text x="418" y="232">{t("자산·소득", "Wealth · income", "资产·收入")}</text>
+    <text x="268" y="418">{t("먼저 나타난다", "Shows up first", "率先体现")}</text></g>
   <g>
-    <rect x="60" y="32" width="140" height="60" rx="4" fill="#fff" stroke="#0B2452"/><text x="130" y="58" text-anchor="middle" font-size="15" font-weight="700" fill="#0E1E3C">{t("정책", "Policy", "政策")}</text><text x="130" y="78" text-anchor="middle" font-size="10.500" fill="#394966">{t("당중앙·국무원·발개위", "CPC · State Council · NDRC", "党中央·国务院·发改委")}</text>
-    <rect x="340" y="32" width="170" height="60" rx="4" fill="#fff" stroke="#0B2452"/><text x="425" y="58" text-anchor="middle" font-size="15" font-weight="700" fill="#0E1E3C">{t("금융", "Finance", "金融")}</text><text x="425" y="78" text-anchor="middle" font-size="10.500" fill="#394966">{t("인민은행·국유은행·증권시장", "PBoC · state banks · securities", "人民银行·国有银行·证券市场")}</text>
-    <rect x="340" y="160" width="170" height="60" rx="4" fill="#fff" stroke="#0B2452"/><text x="425" y="186" text-anchor="middle" font-size="15" font-weight="700" fill="#0E1E3C">{t("지방재정", "Local budgets", "地方财政")}</text><text x="425" y="206" text-anchor="middle" font-size="10.500" fill="#394966">{t("성·시 정부, 융자플랫폼", "Provinces, cities, LGFVs", "省市政府·融资平台")}</text>
-    <rect x="60" y="166" width="180" height="60" rx="4" fill="#fff" stroke="#0B2452"/><text x="150" y="192" text-anchor="middle" font-size="15" font-weight="700" fill="#0E1E3C">{t("산업·공급망", "Industry", "产业·供应链")}</text><text x="150" y="212" text-anchor="middle" font-size="10.500" fill="#394966">{t("제조·신에너지·반도체", "Supply chains · new energy · chips", "制造·新能源·半导体")}</text>
-    <rect x="60" y="276" width="180" height="56" rx="4" fill="#fff" stroke="#0B2452"/><text x="150" y="300" text-anchor="middle" font-size="15" font-weight="700" fill="#0E1E3C">{t("가계·소비", "Households", "居民·消费")}</text><text x="150" y="319" text-anchor="middle" font-size="10.500" fill="#394966">{t("고용·소득·부동산", "Jobs · income · property", "就业·收入·房地产")}</text>
-    <rect x="340" y="276" width="170" height="56" rx="4" fill="#0B2452" stroke="#0B2452"/><text x="425" y="300" text-anchor="middle" font-size="15" font-weight="700" fill="#F6D896">{t("대외부문", "External sector", "对外部门")}</text><text x="425" y="319" text-anchor="middle" font-size="10.500" fill="#fff">{t("무역·자본흐름·위안화", "Trade · capital flows · RMB", "贸易·资本流动·人民币")}</text>
-  </g></svg>'''
+    {box(170, 20, 180, t("정책", "Policy", "政策"), t("당중앙·국무원·인민은행", "CPC · State Council · PBoC", "党中央·国务院·人民银行"))}
+    {box(390, 20, 150, t("외부 제약", "External pressure", "外部约束"), t("미국 관세·수출통제", "US tariffs · export controls", "美国关税·出口管制"))}
+    {box(36, 136, 156, t("금융", "Finance", "金融"), t("은행 신용·채권", "Bank credit · bonds", "银行信贷·债券"))}
+    {box(202, 136, 156, t("지방재정", "Local budgets", "地方财政"), t("토지 수입·융자플랫폼", "Land sales · LGFVs", "土地收入·融资平台"))}
+    {box(368, 136, 156, t("부동산", "Property", "房地产"), t("가계 자산·은행 담보", "Household wealth · collateral", "居民资产·银行抵押"))}
+    {box(60, 248, 180, t("산업 · 공급 과잉", "Industry: overcapacity", "产业：产能过剩"), t("신용·보조금이 몰린다", "Credit and subsidies pile in", "信贷与补贴集中"))}
+    {box(320, 248, 180, t("가계 · 소비 부족", "Weak households", "居民：消费不足"), t("소득 비중이 낮다", "Low share of income", "收入占比偏低"))}
+    {box(170, 344, 180, t("대외 · 무역흑자", "External: trade surplus", "对外：贸易顺差"), t("남는 생산이 수출로", "Surplus output goes abroad", "过剩产能转向出口"), "#0B2452", "#0B2452", "#F6D896", "#fff")}
+    {box(170, 430, 180, t("한국의 수출 숫자", "Korea's export figures", "韩国出口数据"), t("CSAI가 읽는 지점", "Where CSAI reads China", "CSAI的观察点"), "#F6D896", "#A9781F", "#0E1E3C", "#394966")}
+  </g>
+  <text x="280" y="514" text-anchor="middle" font-size="11.500" fill="#63738E">{t("↻ 무역 마찰과 부채 위험이 다시 정책을 바꾼다", "↻ Trade friction and debt risk feed back into policy", "↻ 贸易摩擦与债务风险反过来改变政策")}</text>
+</svg>'''
 
 
 def articles(limit=None):
@@ -366,16 +379,16 @@ def message_section(principles_href, focus_href, focus_ext=False, extra=""):
 
 
 def machine_lede():
-    return L("정책 신호가 금융을 거쳐 지방정부와 산업으로 내려가고, 그 결과가 무역과 위안화를 통해 세계로 퍼집니다. 다섯 개의 톱니를 함께 봐야 중국이 보입니다.",
-             "Policy signals travel through finance into local governments and industry, then out to the world through trade and the renminbi. Watch all five gears together.",
-             "政策信号经由金融体系传导至地方政府与产业，再通过贸易和人民币影响世界。五个齿轮必须一起看。")
+    return L("정책과 외부 압력이 금융·지방재정·부동산의 ‘부채 삼각형’을 움직이고, 투자는 많고 소비는 적은 불균형이 무역흑자로 나타납니다. 그 흔적은 중국 통계보다 한국의 수출 숫자에 먼저 찍힙니다.",
+             "Policy and outside pressure move the debt triangle of finance, local budgets and property. An economy that invests a lot and consumes little turns the gap into a trade surplus, and the trace shows up in Korea's export figures before China's own statistics.",
+             "政策与外部压力推动由金融、地方财政与房地产构成的“债务三角”；投资多、消费少的失衡最终表现为贸易顺差，其痕迹先于中国统计出现在韩国的出口数据上。")
 
 
 def machine_block():
     notes = [
-        (L("정책이 먼저 움직입니다", "Policy moves first", "政策先行"), L("중국에서는 가격보다 정책 신호가 먼저 나옵니다. 중앙경제공작회의와 양회의 문장 하나가 1년의 신용 방향을 정합니다.", "In China the policy signal comes before the price. A single sentence from the Central Economic Work Conference or the Two Sessions sets the direction of credit for a year.", "在中国，政策信号先于价格出现。中央经济工作会议和两会的一句话，决定一年的信用方向。")),
-        (L("돈은 은행과 지방정부를 거쳐 흐릅니다", "Money flows through banks and local governments", "资金经由银行与地方政府流动"), L("국유은행의 대출과 지방정부의 토지재정이 투자의 대부분을 만듭니다. 부채의 위치를 알면 위험의 위치가 보입니다.", "State-bank lending and local governments' land finance create most investment. Know where the debt sits and you see where the risk sits.", "国有银行贷款与地方政府的土地财政构成了大部分投资。知道债务在哪里，就能看到风险在哪里。")),
-        (L("한국은 공급망으로 연결됩니다", "Korea is connected through supply chains", "韩国通过供应链相连"), L("중국의 산업정책 변화는 한국 수출 품목과 공급망에 곧바로 전달됩니다. 모든 분석은 '한국 시사점'으로 끝맺습니다.", "Shifts in China's industrial policy pass straight through to Korean export items and supply chains. Every analysis ends with “implications for Korea”.", "中国产业政策的变化会直接传导至韩国的出口品类与供应链。所有分析都以“对韩国的启示”收尾。")),
+        (L("정책이 먼저 움직입니다", "Policy moves first", "政策先行"), L("중국에서는 가격보다 정책 신호가 먼저 나옵니다. 중앙경제공작회의와 양회의 문장이 신용 방향을 정하고, 미국의 관세·수출통제가 그 정책을 다시 압박합니다.", "In China the policy signal comes before the price. The Central Economic Work Conference and the Two Sessions set the direction of credit, and US tariffs and export controls push back on that policy.", "在中国，政策信号先于价格出现。中央经济工作会议和两会的措辞决定信用方向，而美国的关税与出口管制又反过来施压于政策。")),
+        (L("부채 삼각형이 서로 물고 돕니다", "The debt triangle feeds on itself", "债务三角相互牵连"), L("부동산 값이 떨어지면 지방정부의 토지 수입이 줄고, 융자플랫폼 부채가 은행으로 번집니다. 부채가 어디에 있는지 알면 위험이 어디서 터질지 보입니다.", "When property prices fall, local governments lose land revenue and LGFV debt spills into the banks. Know where the debt sits and you see where risk will break.", "房价下跌，地方政府土地收入减少，融资平台债务蔓延至银行。知道债务在哪里，就能看到风险会在哪里爆发。")),
+        (L("불균형은 수출로, 그리고 한국 숫자로", "The imbalance goes abroad, and into Korea's numbers", "失衡走向出口，并体现在韩国数据上"), L("신용과 보조금은 산업에 몰리고 가계 소비는 약합니다. 남는 생산은 수출로 나가고, 그 변화는 한국의 대중 수출 품목과 가격에 먼저 나타납니다. 모든 분석은 '한국 시사점'으로 끝맺습니다.", "Credit and subsidies pile into industry while household consumption stays weak. Surplus output is exported, and the shift shows up first in Korea's export items and prices to China. Every analysis ends with “implications for Korea”.", "信贷与补贴向产业集中，而居民消费疲弱。过剩产能转向出口，这一变化率先体现在韩国对华出口的品类与价格上。所有分析都以“对韩国的启示”收尾。")),
     ]
     strip = (f'<a class="video-strip" href="{YOUTUBE}" target="_blank" rel="noopener"><span class="play">{icon("play", 26)}</span>'
              f'<span><b>{L("30분 영상 강의: 중국 경제는 어떻게 작동하는가", "30-minute lecture: How China\'s economy works", "30分钟讲座：中国经济如何运行")}</b>'
