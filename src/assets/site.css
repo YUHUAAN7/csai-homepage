@@ -638,3 +638,6 @@ a.type:hover{border-color:var(--gold-500)}
 .rec-old{border-top:1px solid rgba(128,140,160,.4);padding:10px 0}
 .rec-old summary{cursor:pointer;font-size:14.500px;line-height:1.6}
 .rec-score{margin-top:14px;font-size:13px;opacity:.8}
+
+.articles li.feat h3{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.feat-b{font-style:normal;font-size:12px;font-weight:800;color:var(--navy-900);background:var(--gold-500);padding:3px 9px;border-radius:999px;letter-spacing:0}

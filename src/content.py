@@ -368,7 +368,7 @@ def books_lede():
 
 
 def columns_lede():
-    return L("자본시장연구원 시절의 보고서부터 언론 기고까지, 중국 금융을 기록해 온 글을 모읍니다.", "From reports written at the Korea Capital Market Institute to newspaper columns: a record of writing on Chinese finance.", "从在韩国资本市场研究院时期的报告到媒体专栏，汇集记录中国金融的文字。")
+    return L("2008년 자본시장연구원에서 「중국금융시장포커스」를 창간해 책임편집한 때부터 지금의 언론 칼럼까지, 중국 금융을 기록해 온 글을 대표 업적부터 보여 드립니다.", "From founding and editing China Financial Market Focus at the Korea Capital Market Institute in 2008 to today's newspaper columns: a record of writing on Chinese finance, key works first.", "从2008年在韩国资本市场研究院创办并主编《中国金融市场聚焦》到如今的媒体专栏，记录中国金融的文字，代表作优先呈现。")
 
 
 def columns_note():

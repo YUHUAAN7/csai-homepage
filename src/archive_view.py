@@ -161,13 +161,17 @@ def writing_li(w, kinds, ko):
         more = " · " + a(w["more"][0], e(T(w["more"][1])))
     reg(w["title"], T(w.get("source")), P("research", "reports"), kinds[w["kind"]])
     when = fdate(w) if w.get("date") else L("연재 중", "Ongoing", "连载中")
-    return f'<li data-t="{w["kind"]}"><time>{when}</time><div><h3>{title}</h3><p>{e(T(w.get("source")))}{ko}{more}</p></div><span class="kind">{kinds[w["kind"]]}</span></li>'
+    badge = f'<em class="feat-b">{L("대표", "Key work", "代表作")}</em>' if w.get("featured") else ""
+    return f'<li data-t="{w["kind"]}"{' class="feat"' if w.get("featured") else ""}><time>{when}</time><div><h3>{badge}{title}</h3><p>{e(T(w.get("source")))}{ko}{more}</p></div><span class="kind">{kinds[w["kind"]]}</span></li>'
 
 
 def writings(limit=None):
     kinds = _kinds()
     ko = "" if C.lang == "ko" else L("", " · in Korean", " · 韩文")
-    rows = [writing_li(A_.WRITINGS_ONGOING, kinds, ko)] + [writing_li(w, kinds, ko) for w in newest(A_.WRITINGS)]
+    feat = sorted((w for w in A_.WRITINGS if w.get("featured")), key=lambda w: w["featured"])
+    rest = [w for w in newest(A_.WRITINGS) if not w.get("featured")]
+    rows = ([writing_li(w, kinds, ko) for w in feat] + [writing_li(A_.WRITINGS_ONGOING, kinds, ko)]
+            + [writing_li(w, kinds, ko) for w in rest])
     if limit:
         rows = rows[:limit]
     filt = (f'<div class="filters" role="group" data-for="articles" aria-label="{L("유형", "Type", "类型")}">'
