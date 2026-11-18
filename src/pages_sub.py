@@ -20,6 +20,40 @@ from archive import DEEPDIVE_NEXT
 
 
 
+def org_chart(names=False):
+    """조직도. names=False(홈페이지): 본부와 하는 일만. names=True(사내 교육용): 구성원 이름까지."""
+    HEAD = ("본부장", "Head", "本部长")
+    org = [
+        (L("교육본부", "Education Division", "教育本部"), L("본부장", "Heads", "本部长"), [("김장호",) + HEAD, ("문정진",) + HEAD], [("문지은", "과장", "Manager", "科长"), ("홍명기", "PD", "PD", "PD"), ("이영현", "PD", "PD", "PD")],
+         [L("최고위과정", "Executive programme", "高层课程"), L("강좌·독서모임", "Courses and reading group", "讲座·读书会"), L("중국 탐방", "China study tours", "中国考察")]),
+        (L("산업전략본부", "Industry Strategy Division", "产业战略本部"), L("본부장", "Head", "本部长"), [("김장호",) + HEAD], [("이영현", "PD", "PD", "PD")],
+         [L("한·중 기업 투자, 상장·M&amp;A", "Korea–China corporate investment, listings and M&amp;A", "韩中企业投资、上市与并购"), L("유튜브 영상 제작", "YouTube video production", "YouTube视频制作"), L("방송·인터뷰", "Broadcast and interviews", "广播与采访")]),
+        (L("리서치&amp;컨설팅본부", "Research &amp; Consulting Division", "研究与咨询本部"), L("본부장", "Head", "本部长"), [("문정진",) + HEAD], [("홍명기", "PD", "PD", "PD")],
+         [L("뉴스레터 구독 상품", "Newsletter subscriptions", "订阅通讯产品"), L("기업 회원·컨설팅", "Corporate membership and consulting", "企业会员·咨询"), L("국제협력, 외부 강연", "International cooperation and outside lectures", "国际合作、对外演讲"),
+          L("기획·운영관리", "Planning and operations", "企划·运营管理"), L("홈페이지·홍보", "Website and communications", "网站·宣传")]),
+        (L("세무&amp;재무본부", "Tax &amp; Finance Division", "税务与财务本部"), L("담당", "Lead", "负责人"), [("문지은", "과장", "Manager", "科长")], [("김광용", "대표", "CEO", "代表")],
+         [L("세금계산서 발행·수취", "Tax invoices issued and received", "税务发票开具与收取"), L("비용 처리와 증빙", "Expenses and supporting records", "费用处理与凭证"), L("투자 집행 예산", "Investment execution budget", "投资执行预算")]),
+        (L("거시경제연구소", "Macroeconomic Institute", "宏观经济研究所"), L("연구소장", "Director", "所长"), [("안유화", "원장 겸임", "also President", "院长兼任")], [],
+         [L("월간 「중국경제포커스」 발행", "Monthly China Economy Focus", "出版月刊《中国经济聚焦》"), L("열흘 노트·심층보고", "Ten-Day Note and deep dives", "旬报·深度报告"),
+          L("영상 해설·뉴스레터", "Video notes and newsletter", "视频解读·通讯"), L("판단 기록 관리", "Judgment record", "判断记录管理")]),
+    ]
+    ppl = lambda ps, tag: "<br>".join(f"<{tag}>{n}</{tag}> {L(ko, en, zh)}" for n, ko, en, zh in ps)
+    ocols = "".join(
+        f'<div class="org-col"><div class="org-card"><h3>{t}</h3><div class="org-in">'
+        + ((f'<div class="org-k">{hl}</div><div class="org-v">{ppl(hs, "b")}</div>'
+            + (f'<div class="org-k">{L("구성원", "Members", "成员")}</div><div class="org-v">{ppl(ms, "span")}</div>' if ms else "")) if names else "")
+        + f'<div class="org-k">{L("수행 업무", "Work", "职能")}</div><div class="org-w">{"<br>".join(ws)}</div></div></div></div>'
+        for t, hl, hs, ms, ws in org)
+    adv_roles = L(["연구 방향과 고유 지표의 방법론 검토", "판단 기록의 채점 검증", "국내외 연구기관·학계 협력 연결"],
+                  ["Reviews research direction and the methods behind our indicators", "Checks the scoring of our judgment record", "Connects us with research institutes and scholars at home and abroad"],
+                  ["审议研究方向与自有指标的方法", "核验判断记录的评分", "对接国内外研究机构与学界合作"])
+    adv_box = ('<div class="org-adv"><h3>' + L("외부 전문가 자문위원회", "External Advisory Board", "外部专家咨询委员会") + '</h3><div class="org-in">'
+               + '<div class="org-k">' + L("하는 일", "Role", "职责") + '</div>' + "".join('<div class="org-w">· ' + r + '</div>' for r in adv_roles)
+               + '<div class="org-k">' + L("위원", "Members", "委员") + '</div><div class="org-w">' + L("위촉 중 · 확정되는 대로 공개합니다", "Being appointed · names will be posted once confirmed", "正在聘任 · 确定后公布") + '</div></div></div>')
+    return (f'<div class="org"><div class="org-head"><div></div><div class="org-top"><small>{L("원장", "President", "院长")}</small><b>{L("안유화", "An Yuhua", "安玉花")}</b></div><div class="org-advw">{adv_box}</div></div>'
+                f'<div class="org-stem"></div><div class="org-cols org5">{ocols}</div></div>')
+
+
 def about():
     C.slug = "about"
     lede = L("CSAI는 중국의 거시경제와 정책을 분석해 한국 기업·기관의 의사결정으로 연결하는 연구기관입니다.",
@@ -41,7 +75,7 @@ def about():
     ]
     hist = ('<h3 style="font-size:20px;margin:30px 0 4px">' + L("연혁", "History", "沿革") + '</h3><ul class="hist">'
             + "".join("<li><b>" + d + "</b><span>" + (('<a href="' + u + '" target="_blank" rel="noopener">' + t + "</a>") if u else t) + "</span></li>" for d, t, u in H) + "</ul>")
-    b += sec("overview", "OVERVIEW", L("기관 개요", "Overview", "机构概况"), "", f'''<div class="split">
+    b += sec("overview", "OVERVIEW", L("연구원 개요", "Overview", "研究院概况"), "", f'''<div class="split">
   <div class="bio"><p>{L("중국증권행정연구원(CSAI)은 중국의 정책과 시장을 원문과 데이터로 읽어, 한국의 기업과 기관이 더 나은 결정을 내리도록 돕는 독립 거시경제 싱크탱크입니다. 연구·분석, 월간 「중국경제포커스」, 기업 자문, 교육, 국제협력을 한 흐름으로 운영합니다.",
         "The China Securities Administration Institute (CSAI) is an independent macroeconomic think tank that reads China's policies and markets through original documents and data, helping companies and institutions in Korea make better decisions. Research and analysis, the monthly China Economy Focus, business advisory, education and international cooperation run as one flow.",
         "中国证券行政研究院（CSAI）是一家独立的宏观经济智库，以原始文件和数据解读中国的政策与市场，帮助韩国的企业和机构做出更好的决策。研究分析、月刊《中国经济聚焦》、企业咨询、教育与国际合作作为一个整体运行。")}</p>
@@ -103,32 +137,7 @@ def about():
           ("users", L("기업 자문", "Business Advisory", "企业咨询"), P("advisory")), ("cap", L("교육·아카데미", "Academy", "教育学院"), P("academy")),
           ("globe", L("글로벌 협력", "Global Network", "全球合作"), P("global"))]
     fcards = "".join(f'<a class="type" href="{h}"><h3>{icon(ic, 20)}{t}</h3></a>' for ic, t, h in fn)
-    HEAD = ("본부장", "Head", "本部长")
-    org = [
-        (L("교육본부", "Education Division", "教育本部"), L("본부장", "Heads", "本部长"), [("김장호",) + HEAD, ("문정진",) + HEAD], [("문지은", "과장", "Manager", "科长"), ("홍명기", "PD", "PD", "PD"), ("이영현", "PD", "PD", "PD")],
-         [L("최고위과정", "Executive programme", "高层课程"), L("강좌·독서모임", "Courses and reading group", "讲座·读书会"), L("중국 탐방", "China study tours", "中国考察")]),
-        (L("산업전략본부", "Industry Strategy Division", "产业战略本部"), L("본부장", "Head", "本部长"), [("김장호",) + HEAD], [("이영현", "PD", "PD", "PD")],
-         [L("한·중 기업 투자, 상장·M&amp;A", "Korea–China corporate investment, listings and M&amp;A", "韩中企业投资、上市与并购"), L("유튜브 영상 제작", "YouTube video production", "YouTube视频制作"), L("방송·인터뷰", "Broadcast and interviews", "广播与采访")]),
-        (L("리서치&amp;컨설팅본부", "Research &amp; Consulting Division", "研究与咨询本部"), L("본부장", "Head", "本部长"), [("문정진",) + HEAD], [("홍명기", "PD", "PD", "PD")],
-         [L("뉴스레터 구독 상품", "Newsletter subscriptions", "订阅通讯产品"), L("기업 회원·컨설팅", "Corporate membership and consulting", "企业会员·咨询"), L("국제협력, 외부 강연", "International cooperation and outside lectures", "国际合作、对外演讲"),
-          L("기획·운영관리", "Planning and operations", "企划·运营管理"), L("홈페이지·홍보", "Website and communications", "网站·宣传")]),
-        (L("세무&amp;재무본부", "Tax &amp; Finance Division", "税务与财务本部"), L("담당", "Lead", "负责人"), [("문지은", "과장", "Manager", "科长")], [("김광용", "대표", "CEO", "代表")],
-         [L("세금계산서 발행·수취", "Tax invoices issued and received", "税务发票开具与收取"), L("비용 처리와 증빙", "Expenses and supporting records", "费用处理与凭证"), L("투자 집행 예산", "Investment execution budget", "投资执行预算")]),
-    ]
-    ppl = lambda ps, tag: "<br>".join(f"<{tag}>{n}</{tag}> {L(ko, en, zh)}" for n, ko, en, zh in ps)
-    ocols = "".join(
-        f'<div class="org-col"><div class="org-card"><h3>{t}</h3><div class="org-in"><div class="org-k">{hl}</div><div class="org-v">{ppl(hs, "b")}</div>'
-        + (f'<div class="org-k">{L("구성원", "Members", "成员")}</div><div class="org-v">{ppl(ms, "span")}</div>' if ms else "")
-        + f'<div class="org-k">{L("하는 일", "Work", "职能")}</div><div class="org-w">{"<br>".join(ws)}</div></div></div></div>'
-        for t, hl, hs, ms, ws in org)
-    adv_roles = L(["연구 방향과 고유 지표의 방법론 검토", "판단 기록의 채점 검증", "국내외 연구기관·학계 협력 연결"],
-                  ["Reviews research direction and the methods behind our indicators", "Checks the scoring of our judgment record", "Connects us with research institutes and scholars at home and abroad"],
-                  ["审议研究方向与自有指标的方法", "核验判断记录的评分", "对接国内外研究机构与学界合作"])
-    adv_box = ('<div class="org-adv"><h3>' + L("외부 전문가 자문위원회", "External Advisory Board", "外部专家咨询委员会") + '</h3><div class="org-in">'
-               + '<div class="org-k">' + L("하는 일", "Role", "职责") + '</div>' + "".join('<div class="org-w">· ' + r + '</div>' for r in adv_roles)
-               + '<div class="org-k">' + L("위원", "Members", "委员") + '</div><div class="org-w">' + L("위촉 중 · 확정되는 대로 공개합니다", "Being appointed · names will be posted once confirmed", "正在聘任 · 确定后公布") + '</div></div></div>')
-    orgchart = (f'<div class="org"><div class="org-head"><div></div><div class="org-top"><small>{L("원장", "President", "院长")}</small><b>{L("안유화", "An Yuhua", "安玉花")}</b></div><div class="org-advw">{adv_box}</div></div>'
-                f'<div class="org-stem"></div><div class="org-cols">{ocols}</div></div>')
+    orgchart = org_chart(names=False)
     b += sec("organization", "ORGANIZATION", L("조직", "Organization", "组织架构"), "",
              orgchart + '<div style="margin-top:22px">' + soon(L("전문가 프로필은 확정되는 대로 올립니다.", "Expert profiles will be posted once confirmed.", "专家简介将在确认后发布。")) + "</div>"
              + f'<h3 style="font-size:20px;margin:36px 0 16px">{L("주요 기능", "Main functions", "主要职能")}</h3><div class="g3">{fcards}</div>', "alt")

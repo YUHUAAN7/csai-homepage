@@ -125,7 +125,7 @@ def issue_card():
     m = archive_view.monthly_latest()
     latest_id = m["id"] if m else ""
     toc = [
-        ("OPINION", L("편집장 칼럼", "Editor's column", "主编专栏")),
+        ("OPINION", L("거시경제연구소장 칼럼", "Director's column", "所长专栏")),
         ("HOT ISSUE", L("이달의 핵심 이슈", "Issue of the month", "本月焦点")),
         ("MACRO", L("성장·물가·신용·정책", "Growth, prices, credit, policy", "增长·物价·信用·政策")),
         ("INDUSTRY", L("산업분석", "Industry analysis", "产业分析")),
