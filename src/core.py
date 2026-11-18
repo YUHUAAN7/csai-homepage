@@ -140,6 +140,7 @@ def nav():
         ("about", L("연구원 소개", "About", "关于CSAI"), L("연구원 소개", "About CSAI", "关于CSAI"), [
             ("overview", L("개요", "Overview", "概况")), ("vision", L("비전·미션", "Vision & Mission", "愿景与使命")),
             ("leadership", L("리더십", "Leadership", "领导层")), ("organization", L("조직", "Organization", "组织架构")),
+            ("standards", L("연구 원칙·독립성", "Standards & Independence", "研究准则与独立性")),
             ("contact", L("연락처", "Contact", "联系方式"))]),
         ("research", L("연구·분석", "Research", "研究分析"), L("연구·분석", "Research", "研究分析"), [
             ("framework", L("분석 프레임", "Framework", "分析框架")), ("macro", L("거시경제", "Macroeconomics", "宏观经济")),
@@ -233,7 +234,7 @@ def footer():
     </div>
     <div class="ftr-legal">
       <span>© 2026 CSAI · {L("주식회사 중국증권행정연구원 (사업자 425-81-00149)", "China Securities Administration Institute Co., Ltd. (Business reg. no. 425-81-00149)", "株式会社中国证券行政研究院（营业执照号 425-81-00149）")} · www.csai.re.kr</span>
-      <span class="ftr-pol"><a href="{P("policy", "privacy")}">{L("개인정보 처리방침", "Privacy", "隐私政策")}</a><a href="{P("policy", "terms")}">{L("이용약관", "Terms", "使用条款")}</a><a href="{P("policy", "disclaimer")}">{L("면책·저작권", "Disclaimer", "免责与版权")}</a></span>
+      <span class="ftr-pol"><a href="{P("about", "standards")}">{L("연구 원칙·독립성", "Standards & Independence", "研究准则与独立性")}</a><a href="{P("policy", "privacy")}">{L("개인정보 처리방침", "Privacy", "隐私政策")}</a><a href="{P("policy", "terms")}">{L("이용약관", "Terms", "使用条款")}</a><a href="{P("policy", "disclaimer")}">{L("면책·저작권", "Disclaimer", "免责与版权")}</a></span>
     </div>
     <p class="ftr-disc">{L("본 사이트의 내용은 정보 제공을 위한 것이며, 특정 종목·상품의 매수·매도 권유나 투자 자문이 아닙니다.", "Content on this site is for information only. It is not investment advice or a recommendation to buy or sell any security or product.", "本网站内容仅供参考，不构成任何证券或产品的买卖建议或投资咨询。")}</p>
   </div>

@@ -183,6 +183,9 @@ def about():
              orgchart
              + f'<h3 style="font-size:20px;margin:36px 0 16px">{L("주요 기능", "Main functions", "主要职能")}</h3><div class="g3">{fcards}</div>', "alt")
 
+    b += sec("standards", "STANDARDS & INDEPENDENCE", L("연구 원칙과 독립성", "Research standards and independence", "研究准则与独立性"),
+             L("CSAI의 판단을 믿을 수 있는 이유를 밝힙니다.", "Why CSAI's judgments can be trusted.", "说明CSAI的判断为何值得信赖。"),
+             standards_grid())
     b += sec("contact", "CONTACT", L("연락처", "Contact", "联系方式"), "", kv([
         (L("이메일", "Email", "邮箱"), f'<a class="mailto" href="mailto:{MAIL}">{MAIL}</a>'),
         (L("문의 접수", "Inquiries", "咨询受理"), L("기업 자문 · 교육 · 국제협력 · 일반 문의를 목적별로 받습니다.", "Business advisory, education, international cooperation and general inquiries, each with its own form.", "企业咨询、教育、国际合作与一般咨询，按类别受理。")),

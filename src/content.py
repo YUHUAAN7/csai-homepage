@@ -45,6 +45,56 @@ def principles():
     ]
 
 
+
+def standards():
+    """연구 원칙과 독립성 (원장 확인 2026-11-18: 연구비 받은 적 없음, 분석 공개 자산 거래 안 함, AI 활용 공개)."""
+    return [
+        (L("독립성", "Independence", "独立性"),
+         L("연구 결론은 고객·후원자·광고주의 요청으로 바뀌지 않습니다. 자문 고객이라도 공개 보고서를 미리 보거나 고칠 수 없습니다.",
+           "Our conclusions do not change at the request of clients, sponsors or advertisers. No advisory client may preview or edit a public report.",
+           "研究结论不因客户、赞助方或广告主的要求而改变。即便是咨询客户，也不能预先审阅或修改公开报告。")),
+        (L("운영 재원", "Funding", "运营资金"),
+         L("구독, 기업 자문, 교육, 강연 수입으로 운영합니다. 정부·정당과 외국 정부(중국 포함) 기관의 연구비는 받지 않습니다.",
+           "We are funded by subscriptions, business advisory, education and speaking fees. We take no research funding from governments, political parties or foreign government bodies, including China's.",
+           "以订阅、企业咨询、教育与演讲收入运营。不接受政府、政党及外国政府（包括中国）机构的研究经费。")),
+        (L("이해충돌", "Conflicts of interest", "利益冲突"),
+         L("자문 고객과 관련된 주제를 공개 글에서 다룰 때는 그 사실을 밝힙니다(고객 이름은 밝히지 않습니다). 특정 종목·코인의 매수·매도 권유나 목표가는 내지 않으며, 연구진은 분석해 공개하는 자산을 거래하지 않습니다.",
+           "When a public piece touches on a topic related to an advisory client, we say so, without naming the client. We make no buy or sell recommendations or price targets for any stock or coin, and our researchers do not trade the assets they analyse and publish on.",
+           "公开文章涉及与咨询客户相关的主题时，我们会予以说明（不披露客户名称）。不提供任何股票或加密货币的买卖建议或目标价；研究人员不交易其分析并公开的资产。")),
+        (L("데이터와 방법", "Data and method", "数据与方法"),
+         L("숫자마다 원자료 출처와 기준일을 적습니다. CSAI가 직접 계산한 값과 추정치는 따로 표시합니다.",
+           "Every figure carries its primary source and reference date. Values calculated by CSAI and estimates are marked as such.",
+           "每个数字都注明原始出处与基准日。CSAI自行计算的数值与估算值另行标注。")),
+        (L("판단 공개와 채점", "Public judgments, graded", "公开判断并评分"),
+         L("판단마다 무효화 조건과 점검일을 적습니다. 틀린 판단도 지우거나 고치지 않고 ‘빗나감’으로 남깁니다.",
+           "Each judgment states what would invalidate it and when it will be reviewed. Wrong calls are not deleted or rewritten; they stay on the record as missed.",
+           "每项判断都写明失效条件与检验日期。错误的判断也不删除、不修改，而以“未应验”保留。")),
+        (L("정정", "Corrections", "更正"),
+         L("오류가 확인되면 바로 고치고, 고친 날짜와 내용을 글 아래에 남깁니다. 오류 제보는 문의 창구로 받습니다.",
+           "When an error is confirmed we fix it promptly and note the date and nature of the correction below the piece. Errors can be reported through our contact page.",
+           "一经确认错误即予更正，并在文末注明更正日期与内容。欢迎通过咨询渠道报告错误。")),
+        (L("외부 기고", "Outside contributions", "外部来稿"),
+         L("중국 학자 등 외부 필자의 글에는 소속을 밝힙니다. 그 글은 CSAI의 견해와 다를 수 있습니다.",
+           "Pieces by outside authors, including Chinese scholars, state the author's affiliation and may differ from CSAI's views.",
+           "中国学者等外部作者的文章注明其所属机构，其观点可能与CSAI不同。")),
+        (L("이력 표기", "Listed engagements", "履历标注"),
+         L("강연·자문 이력에 기관 이름이 있다고 그 기관이 CSAI를 보증한다는 뜻은 아닙니다.",
+           "An organisation's name in our speaking or advisory record does not mean it endorses CSAI.",
+           "演讲与咨询履历中出现的机构名称，并不代表该机构为CSAI背书。")),
+        (L("AI 활용", "Use of AI", "AI的使用"),
+         L("자료 정리, 번역, 초안 작성에 AI 도구를 씁니다. 판단과 최종 문장은 연구진이 확인하고 책임집니다.",
+           "We use AI tools to organise material, translate and draft. Judgments and final wording are checked by our researchers, who take responsibility for them.",
+           "我们在整理资料、翻译与起草中使用AI工具。判断与最终文字由研究人员核实并负责。")),
+    ]
+
+
+def standards_grid():
+    items = standards()
+    out = "".join(f'<article class="pr"><span class="no">{i:02d}</span><h3>{t}</h3><p>{d}</p></article>' for i, (t, d) in enumerate(items, 1))
+    for t, d in items:
+        reg(t, d, P("about", "standards"), L("연구 원칙·독립성", "Standards", "研究准则"))
+    return f'<div class="principles">{out}</div>'
+
 def values():
     return [
         ("target", L("판단", "Judgment", "判断"), "Judgment",
