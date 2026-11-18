@@ -22,6 +22,10 @@
         "reading": {…},            # 읽는 법 (2~3개)
         "korea": {…},              # 한국 시사점 (2개 안팎)
         "judgment": {"text": {…}, "invalid": {…}},   # 판단 한 문장과 무효화 조건. 원장이 확인한 것만. 없으면 생략
+        "example": {               # 연구원 소개·첫 화면 「우리가 서는 자리」 사례 상자. 최신 호의 것이 자동으로 쓰인다.
+            "stats": [["+148%", {…}], ["49.7%", {…}]],   # 핵심 숫자 2개와 짧은 설명
+            "verdict": {…},        # 판단을 한 구절로 (judgment 와 같은 뜻)
+        },
         "exec_q": {…},             # 경영진 점검 질문 (2개 안팎). 한국 기업 경영진이 자기 회사에 던져 볼 질문. 아래에 '함께 점검하기' 문의 링크가 붙는다
         "next": {…},               # 다음에 확인할 것 (2~3개)
         "sources": [["출처 이름", "https://…"], …],
@@ -138,6 +142,13 @@ TENDAY = [
                 "en": "We withdraw this judgment if the monthly data on 1 December show exports to China excluding chips growing faster than total exports excluding chips.",
                 "zh": "若12月1日的月度统计显示剔除半导体的对华出口增速快于剔除半导体的整体出口，则撤回这一判断。"
             }
+        },
+        "example": {
+            "stats": [
+                ["+148%", {"ko": "대중 수출 증가", "en": "exports to China", "zh": "对华出口增长"}],
+                ["49.7%", {"ko": "전체 수출 중 반도체 비중", "en": "chips' share of all exports", "zh": "半导体占出口比重"}]
+            ],
+            "verdict": {"ko": "중국 수요 회복이 아니라 반도체 가격 효과", "en": "chip prices, not a recovery in Chinese demand", "zh": "是半导体价格效应，而非中国需求回暖"}
         },
         "exec_q": {
             "ko": [

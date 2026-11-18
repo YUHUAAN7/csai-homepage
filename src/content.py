@@ -443,6 +443,27 @@ def boundary_title():
     return L("우리가 서는 자리: 중국과 한국 사이의 경계선", "Where we stand: the boundary between China and Korea", "我们的位置：中国与韩国之间的边界线")
 
 
+
+def _bd_example():
+    """「우리가 서는 자리」 사례 상자. 가장 최근 열흘 노트 중 "example" 칸이 있는 호에서 자동으로 가져온다."""
+    from tenday import TENDAY
+
+    def t(d):
+        if isinstance(d, dict):
+            return L(e(d.get("ko", "")), e(d.get("en") or d.get("ko", "")), e(d.get("zh") or d.get("ko", "")))
+        return e(d)
+    n = next((x for x in TENDAY if x.get("example")), None)
+    if not n:
+        return ""
+    ex = n["example"]
+    arrow = f'<i>{icon("arrow", 18)}</i>'
+    cells = [f'<span><b>{e(v)}</b>{t(lab)}</span>' for v, lab in ex["stats"]]
+    cells.append(f'<span class="bd-ex-c"><b>{L("판단", "Judgment", "判断")}</b>{t(ex["verdict"])}</span>')
+    aid = n.get("anchor") or "note-" + n["id"]
+    return (f'<div class="bd-ex"><div class="bd-ex-h">{L("이렇게 읽습니다", "How we read it", "我们这样解读")} · {t(n["period"])}</div>'
+            f'<div class="bd-ex-row">{arrow.join(cells)}</div>'
+            f'<a class="bd-ex-a" href="{P("focus", aid)}">{L("열흘 노트에서 자세히 보기 →", "Read the Ten-Day Note →", "在旬报中查看详情 →")}</a></div>')
+
 def boundary_block(full=True):
     lead = L("중국이 정책을 바꾸면, 중국 통계보다 <em>1~2분기 먼저</em> 한국의 수출 숫자가 움직입니다.<br>CSAI는 그 숫자를 읽어 한국 기업의 결정으로 옮깁니다.",
              "When China changes policy, Korea's export numbers move <em>one to two quarters before</em> China's own statistics do.<br>CSAI reads those numbers and turns them into decisions for Korean companies.",
@@ -458,11 +479,7 @@ def boundary_block(full=True):
     ]
     lis = "".join(f'<li class="bd-step{c}"><span class="bd-n">{i}</span><small>{k}</small><b>{t}</b><p>{d}</p>' + (f'<em class="bd-tag">{tag}</em>' if tag else "") + "</li>"
                   for i, (c, k, t, d, tag) in enumerate(steps, 1))
-    ex = (f'<div class="bd-ex"><div class="bd-ex-h">{L("이렇게 읽습니다", "How we read it", "我们这样解读")} · {L("2026년 11월 1~10일 통계", "1–10 November 2026", "2026年11月1至10日")}</div>'
-          f'<div class="bd-ex-row"><span><b>+148%</b>{L("대중 수출 증가", "exports to China", "对华出口增长")}</span><i>{icon("arrow", 18)}</i>'
-          f'<span><b>49.7%</b>{L("전체 수출 중 반도체 비중", "chips' share of all exports", "半导体占出口比重")}</span><i>{icon("arrow", 18)}</i>'
-          f'<span class="bd-ex-c"><b>{L("판단", "Judgment", "判断")}</b>{L("중국 수요 회복이 아니라 반도체 가격 효과", "chip prices, not a recovery in Chinese demand", "是半导体价格效应，而非中国需求回暖")}</span></div>'
-          f'<a class="bd-ex-a" href="{P("focus", "flash-2026-11")}">{L("열흘 노트에서 자세히 보기 →", "Read the Ten-Day Note →", "在旬报中查看详情 →")}</a></div>')
+    ex = _bd_example()
     hypo = L("<b>검증할 가설</b> — 중국 정책은 중국 통계보다 1~2분기 먼저 한국 숫자에 나타난다. 이 가설을 매호 검증합니다.",
              "<b>The hypothesis we test</b> — China's policy shows up in Korean numbers one to two quarters before it shows up in Chinese statistics. We test it in every issue.",
              "<b>待检验的假设</b>——中国的政策会比中国的统计数据提前一到两个季度体现在韩国的数字上。我们每期都对此进行检验。")
