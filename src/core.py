@@ -166,7 +166,7 @@ def nav():
             ("events", L("포럼·행사", "Events & Forums", "论坛与活动")),
             ("inquiry", L("협력 문의", "Cooperation Inquiry", "合作咨询"))]),
         ("news", L("뉴스·자료", "News & Insights", "新闻与资料"), L("뉴스·자료", "News & Insights", "新闻与资料"), [
-            ("news", L("기관 소식", "News", "机构动态")), ("media", L("언론·미디어", "Media", "媒体")),
+            ("news", L("연구원 소식", "News", "研究院动态")), ("media", L("언론·미디어", "Media", "媒体")),
             ("insight", L("연구소장's Insight", "Director's Insight", "所长观点")),
             ("publications", L("자료실", "Publications", "资料室")),
             ("archive", L("전체 아카이브", "Archive", "全部档案"))]),

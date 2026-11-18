@@ -51,7 +51,7 @@ https://www.csai.re.kr 의 소스입니다. GitHub Pages로 배포됩니다.
 | 영상 해설 | `src/episodes.py`의 `EPISODES` |
 | 연구·분석 > 연구보고서 | `src/archive.py`의 `REPORTS`(CSAI 보고서), `WRITINGS`(칼럼·기고·외부 보고서) |
 | 연구소장's Insight > 판단 기록 | `src/archive.py`의 `JUDGMENTS` (점검 뒤에는 `status`·`result`만 채움) |
-| 뉴스·자료 > 기관 소식 | `src/archive.py`의 `NOTICES` |
+| 뉴스·자료 > 연구원 소식 | `src/archive.py`의 `NOTICES` |
 | 글로벌 협력 > 포럼·행사 | `src/archive.py`의 `EVENTS` (지난 행사는 빌드할 때 자동으로 「지난 행사」로 이동) |
 
 항목 형식은 각 파일 머리말에 있습니다. 목록 안 순서는 상관없고, 빌드할 때 날짜순으로 정렬됩니다.
@@ -78,7 +78,7 @@ https://www.csai.re.kr 의 소스입니다. GitHub Pages로 배포됩니다.
 - 연구·분석: CSAI 신규 보고서, 지표별 데이터 페이지
 - 거시경제연구소: 심층보고 (Flash는 「열흘 노트」로 발행 중 — 매월 1일·11일·21일, 통계 발표일에 맞춤)
 - 기업 자문: 주제별 사례 / 교육: 과정·일정·강사진 / 글로벌 협력: 협력기관·전문가·행사 일정, 영문 「Korea Sensor」
-- 뉴스·자료: 기관 소식, 판단 기록(공개 성적표)
+- 뉴스·자료: 연구원 소식, 판단 기록(공개 성적표)
 - 개인정보 처리방침·이용약관 정식 문안
 
 ## 현재 방식의 한계

@@ -380,7 +380,7 @@ def advisory():
                   + kv([(L("주기", "Frequency", "频率"), L("월 2회", "Twice a month", "每月两次")),
                         (L("대상", "For", "对象"), L("CEO·임원 (초청형)", "CEOs and senior executives (by invitation)", "CEO及高管（邀请制）")),
                         (L("진행", "Led by", "主讲"), L("안유화 원장", "Professor An Yuhua, President", "安玉花院长")),
-                        (L("일정", "Schedule", "日程"), L("첫 회 일정은 확정되는 대로 기관 소식에 알립니다.", "The first session will be announced in our news once confirmed.", "首期日程确定后将在机构动态中公布。"))])
+                        (L("일정", "Schedule", "日程"), L("첫 회 일정은 확정되는 대로 연구원 소식에 알립니다.", "The first session will be announced in our news once confirmed.", "首期日程确定后将在机构动态中公布。"))])
                   + "</div></div>"
                   + '<h3 style="font-size:20px;margin:36px 0 16px">' + L("회차 구성", "How each session runs", "每期流程") + "</h3>"
                   + '<ol class="steps">' + "".join(f"<li><b>{t}</b><span>{d}</span></li>" for t, d in brief_steps) + "</ol>"
@@ -550,9 +550,28 @@ def global_():
 def news():
     C.slug = "news"
     title = L("뉴스·자료", "News & Insights", "新闻与资料")
-    lede = L("기관 소식, 언론·영상, 연구소장의 판단과 자료를 한곳에 모읍니다.", "Institute news, media, the Director's judgments and publications in one place.", "机构动态、媒体与视频、所长观点及资料汇集于此。")
+    lede = L("연구원 소식, 언론·영상, 연구소장의 판단과 자료를 한곳에 모읍니다.", "Institute news, media, the Director's judgments and publications in one place.", "研究院动态、媒体与视频、所长观点及资料汇集于此。")
     b = page_hero("news", "NEWS & INSIGHTS", title, lede)
-    b += sec("news", "NEWS", L("기관 소식", "News", "机构动态"), "", notices())
+    ev_q = L(["AI가 바꾸는 세상에서, 부는 어디로 이동할까요?", "비트코인과 스테이블코인, 무엇을 알고 접근해야 할까요? (해킹·피싱 예방 수칙 포함)", "미국 AI 기업과 빅테크는 왜 크게 오르고 내릴까요?",
+              "월급이 멈춘 뒤에도 생활을 이어갈 현금흐름은 어떻게 준비할까요?", "나의 ‘부의 곡선’은 지금 어디쯤 와 있을까요?"],
+             ["In a world reshaped by AI, where is wealth moving?", "Bitcoin and stablecoins: what to know first (including protection against hacking and phishing)", "Why do US AI companies and big tech swing so sharply?",
+              "How to prepare cash flow that lasts after the salary stops", "Where are you now on your own curve of wealth?"],
+             ["在AI改变的世界里，财富流向何处？", "比特币与稳定币：入门须知（含防黑客与防钓鱼要点）", "美国AI企业与科技巨头为何大起大落？",
+              "工资停止之后，如何准备维持生活的现金流？", "你的“财富曲线”现在走到了哪里？"])
+    ev_card = ('<article class="card" id="event-2026-11-22" style="margin-top:28px"><div class="num">' + L("공지 · 2026년 11월 22일(일)", "NOTICE · Sunday 22 November 2026", "公告 · 2026年11月22日（周日）") + "</div>"
+               + "<h3>" + L("「부의 곡선」 출간 기념 무료 강연 & 저자 사인회", "The Curve of Wealth: free talk and book signing", "《财富曲线》出版纪念免费讲座与签售会") + "</h3>"
+               + "<p>" + L("“나는 언제까지 돈을 벌기 위해 일해야 할까요?” 『더 플로』 이후 3년 만에 펴낸 『부의 곡선』의 핵심, ‘인생의 손익분기점(L-BEP)’을 저자가 직접 강의합니다. 앞으로 필요한 돈과 가진 자산, 들어올 현금흐름을 함께 놓고, 일해야만 하는 삶에서 언제, 얼마나 벗어날 수 있을지 계산해 보는 기준입니다.",
+                           "“How long must I keep working for money?” The author presents the core idea of The Curve of Wealth, her first book in three years after The Flow: a personal break-even point for life (L-BEP), which sets the money you will need against your assets and future cash flow.",
+                           "“我要为钱工作到什么时候？”作者亲自讲解继《The Flow》三年后的新书《财富曲线》的核心——“人生盈亏平衡点（L-BEP）”：把未来所需资金、现有资产与未来现金流放在一起，计算何时、在多大程度上可以摆脱必须工作的生活。") + "</p>"
+               + kv([(L("일시", "Date", "日期"), L("2026년 11월 22일(일) · 1부 오전 9:00~오후 1:00 / 2부 오후 2:00~6:00 (같은 내용, 택1)", "Sunday 22 November 2026 · Session 1: 9:00–13:00 / Session 2: 14:00–18:00 (same content; choose one)", "2026年11月22日（周日）· 第一场 9:00–13:00 / 第二场 14:00–18:00（内容相同，任选其一）")),
+                     (L("장소", "Venue", "地点"), L("서울 건국대학교 (2호선·7호선 건대입구역 인근)", "Konkuk University, Seoul (near Konkuk Univ. station, lines 2 and 7)", "首尔建国大学（地铁2号线、7号线建大入口站附近）")),
+                     (L("참가비", "Fee", "费用"), L("무료 · 사전 신청 필수 (선착순 마감)", "Free · registration required (first come, first served)", "免费 · 须提前报名（先到先得）")),
+                     (L("사인회", "Signing", "签售"), L("각 부 강연 뒤 진행 · 갖고 계신 책 지참 가능, 현장 구매 가능", "After each session · bring your copy or buy one on site", "每场讲座后进行 · 可携带已购图书，也可现场购买"))])
+               + '<h4 style="font-size:15px;margin:16px 0 2px;color:var(--gold-600)">' + L("함께 풀어볼 5가지 질문", "Five questions we will work through", "将共同探讨的5个问题") + "</h4>" + ticks(ev_q)
+               + '<p style="margin-top:16px">' + btn(L("강연·사인회 신청하기", "Register", "立即报名"), "https://sidaeinvest.com/go/2EWABtq9Jm4", ext=True) + "</p>"
+               + '<p class="note">' + L("신청은 주최 측 신청 페이지에서 받습니다. 강연은 교육을 위한 것이며 투자 권유가 아닙니다.", "Registration is handled on the organiser's page. The talk is educational and is not investment advice.", "报名通过主办方页面进行。讲座仅用于教育，不构成投资建议。") + "</p></article>")
+    reg(L("「부의 곡선」 무료 강연 & 저자 사인회", "The Curve of Wealth: free talk", "《财富曲线》免费讲座"), L("2026년 11월 22일(일), 서울 건국대", "22 November 2026, Konkuk University", "2026年11月22日，建国大学"), P("news", "event-2026-11-22"), "News")
+    b += sec("news", "NEWS", L("연구원 소식", "News", "研究院动态"), "", notices() + ev_card)
     b += sec("media", "MEDIA", L("언론·미디어", "Media", "媒体"), L("방송과 영상, 팟캐스트로 중국과 세계 경제를 설명합니다.", "Explaining China and the world economy on air, on video and in podcast.", "通过电视节目、视频与播客解读中国与世界经济。"), media_cards() + channels()
              + f'<p class="note" style="margin-top:18px">{L("칼럼은 내일신문 「금요논단」에 연재하고 있습니다.", "Her current newspaper column runs in Naeil Shinmun on Fridays.", "目前在《明日新闻》周五专栏连载。")} <a href="{NAEIL_SEARCH}" target="_blank" rel="noopener">{L("최근 글 보기", "Latest pieces", "查看最新文章")}</a> · <a href="{P("research", "reports")}">{L("연구·칼럼 목록", "Research & commentary", "研究与评论")}</a></p>', "alt")
     reg(L("연구소장's Insight", "Director's Insight", "所长观点"), L("중국을 읽는 원칙과 판단 기록", "Principles for reading China and the judgment record", "解读中国的原则与判断记录"), P("insight"), "Insight")

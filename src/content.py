@@ -546,6 +546,6 @@ def tag_date(ko, en, zh):
 
 
 def notices(limit=None):
-    """기관 소식: 날짜가 늦은 것부터. 자료는 src/archive.py 의 NOTICES."""
+    """연구원 소식: 날짜가 늦은 것부터. 자료는 src/archive.py 의 NOTICES."""
     import archive_view
     return archive_view.notices_html(limit)

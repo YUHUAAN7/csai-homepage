@@ -213,7 +213,7 @@ def judgments_html(chips, show_all=True):
     return out
 
 
-# ── 기관 소식 ───────────────────────────────────────────────────
+# ── 연구원 소식 ───────────────────────────────────────────────────
 def notices_html(limit=None):
     rows = [f'<li><b>{fdate(n)}</b><span>{a(n["link"], e(T(n["title"])))}</span></li>' if n.get("link") else f'<li><b>{fdate(n)}</b><span>{e(T(n["title"]))}</span></li>'
             for n in newest(A_.NOTICES)]
@@ -244,7 +244,7 @@ def archive_kinds():
     return [("monthly", L("월간 포커스", "Monthly", "月刊")), ("flash", L("열흘 노트", "Ten-Day Note", "旬报")),
             ("deepdive", L("심층보고", "Deep Dive", "深度报告")), ("report", L("연구보고서", "Reports", "研究报告")),
             ("judgment", L("판단 기록", "Judgments", "判断记录")), ("video", L("영상 해설", "Video notes", "视频解读")),
-            ("writing", L("칼럼·기고", "Columns", "专栏与评论")), ("news", L("기관 소식", "News", "机构动态")),
+            ("writing", L("칼럼·기고", "Columns", "专栏与评论")), ("news", L("연구원 소식", "News", "研究院动态")),
             ("event", L("행사", "Events", "活动"))]
 
 

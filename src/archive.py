@@ -104,8 +104,9 @@ JUDGMENTS = [
     },
 ]
 
-# ── 기관 소식 (뉴스·자료) ───────────────────────────────────────────
+# ── 연구원 소식 (뉴스·자료) ───────────────────────────────────────────
 NOTICES = [
+    {"date": "2026-11-18", "title": {"ko": "「부의 곡선」 출간 기념 무료 강연 & 저자 사인회 (11월 22일, 건국대)", "en": "Free talk and book signing for The Curve of Wealth (22 Nov, Konkuk University)", "zh": "《财富曲线》出版纪念免费讲座与签售会（11月22日，建国大学）"}, "link": ["news", "event-2026-11-22"]},
     {"date": "2026-12-24", "title": {"ko": "연례 중국 전망 포럼 개최 예정", "en": "Annual China outlook forum to be held", "zh": "年度中国展望论坛即将举行"}, "link": ["global", "events"]},
     {"date": "2026-11-15", "title": {"ko": "홈페이지 개편, 원장 인사말과 조직도 공개", "en": "Website relaunched; President's greeting and organisation chart published", "zh": "网站改版，发布院长致辞与组织架构图"}, "link": ["about", "greeting"]},
     {"date": "2026-11-15", "title": {"ko": "「열흘 노트」 첫 호 발행 (한국 수출로 읽는 중국)", "en": "First Ten-Day Note published: China through Korean Exports", "zh": "《旬报》首期发布（从韩国出口看中国）"}, "link": ["focus", "flash-2026-11"]},
@@ -116,6 +117,7 @@ NOTICES = [
 # 날짜가 지난 행사는 지우지 않아도 빌드할 때 자동으로 '지난 행사'로 옮겨진다.
 # 끝난 뒤 후기·자료가 있으면 "result": {…}, "link": … 를 채운다. home=True 는 첫 화면에도 보일 행사.
 EVENTS = [
+    {"date": "2026-11-22", "home": True, "title": {"ko": "「부의 곡선」 출간 기념 무료 강연 & 저자 사인회 (서울 건국대)", "en": "Free talk and book signing: The Curve of Wealth (Konkuk University, Seoul)", "zh": "《财富曲线》出版纪念免费讲座与签售会（首尔建国大学）"}, "link": ["news", "event-2026-11-22"]},
     {"date": "2026-12-15", "title": {"ko": "영문 분기 노트 「Korea Sensor」 첫 호", "en": "First issue of the English quarterly note Korea Sensor", "zh": "英文季度简报 Korea Sensor 首期"}},
     {"date": "2026-12-24", "home": True, "title": {"ko": "연례 중국 전망 포럼: 2027년 중국 경제 전망, 정책 문장으로 읽는 방향", "en": "Annual China outlook forum: the 2027 outlook for China's economy, read through policy language", "zh": "年度中国展望论坛：2027年中国经济展望——从政策措辞读方向"}},
     {"date": "2027-01-15", "home": True, "title": {"ko": "CEO China Roundtable 첫 회 (분기 1회, 초청형)", "en": "CEO China Roundtable: first session (quarterly, by invitation)", "zh": "CEO China Roundtable 首期（每季度一次，邀请制）"}},
