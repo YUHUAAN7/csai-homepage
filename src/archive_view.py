@@ -154,12 +154,13 @@ def _kinds():
 
 
 def writing_li(w, kinds, ko):
-    title = a(w["link"], e(w["title"]))
-    title = title.replace("<a ", '<a lang="ko" ', 1)
+    title = a(w["link"], e(T(w["title"])))
+    if C.lang == "ko":
+        title = title.replace("<a ", '<a lang="ko" ', 1)
     more = ""
     if w.get("more"):
         more = " · " + a(w["more"][0], e(T(w["more"][1])))
-    reg(w["title"], T(w.get("source")), P("research", "reports"), kinds[w["kind"]])
+    reg(T(w["title"]), T(w.get("source")), P("research", "reports"), kinds[w["kind"]])
     when = fdate(w) if w.get("date") else L("연재 중", "Ongoing", "连载中")
     badge = f'<em class="feat-b">{L("대표", "Key work", "代表作")}</em>' if w.get("featured") else ""
     return f'<li data-t="{w["kind"]}"{' class="feat"' if w.get("featured") else ""}><time>{when}</time><div><h3>{badge}{title}</h3><p>{e(T(w.get("source")))}{ko}{more}</p></div><span class="kind">{kinds[w["kind"]]}</span></li>'
@@ -276,7 +277,7 @@ def archive_items():
     for ep in EPISODES:
         out.append((ep["date"], "video", a(ep.get("youtube") or ["videos"], e(ep["title"])), ""))
     for w in A_.WRITINGS:
-        out.append((w["date"], "writing", a(w["link"], e(w["title"])), e(T(w.get("source")))))
+        out.append((w["date"], "writing", a(w["link"], e(T(w["title"]))), e(T(w.get("source")))))
     for n in A_.NOTICES:
         out.append((n["date"], "news", a(n["link"], e(T(n["title"]))) if n.get("link") else e(T(n["title"])), ""))
     t = today()

@@ -62,27 +62,27 @@ REPORTS = [
 ]
 
 # ── 칼럼·기고·외부 보고서 (연구·분석 > 연구보고서·기고) ───────────────
-# kind: "col"(칼럼) · "rep"(연구보고서) · "pub"(정기간행물). title 은 원문(한국어) 그대로.
+# kind: "col"(칼럼) · "rep"(연구보고서) · "pub"(정기간행물). title 은 {"ko": 원문, "en": 번역, "zh": 번역}. 한국어 원문 글이므로 en·zh 화면에는 '· 韩文/in Korean'이 붙는다.
 # featured: 1, 2, 3 … 을 붙인 글은 신뢰를 가장 잘 보여 주는 대표 업적으로 맨 위에 그 순서대로 놓이고 「대표」 표시가 붙는다.
 # 그다음 '연재 중' 줄, 나머지는 최신순.
 WRITINGS_ONGOING = {  # 맨 위에 고정되는 '연재 중' 줄
-    "kind": "col", "link": "NAEIL_SEARCH", "title": "내일신문 「금요논단」",
+    "kind": "col", "link": "NAEIL_SEARCH", "title": {"ko": "내일신문 「금요논단」", "en": "Naeil Shinmun, Friday column", "zh": "《明日新闻》周五专栏"},
     "source": {"ko": "현재 연재하고 있는 칼럼입니다. 제목을 누르면 최근 글을 모아 볼 수 있습니다.", "en": "The column currently running. The title opens a search of the latest pieces.", "zh": "目前正在连载的专栏，点击标题可查看最新文章。"},
 }
 _NAEIL = {"ko": "내일신문 「금요논단」", "en": "Naeil Shinmun, Friday column", "zh": "《明日新闻》周五专栏"}
 _AJU = {"ko": "아주경제 「안유화 칼럼」", "en": "Aju Business Daily", "zh": "亚洲经济"}
 WRITINGS = [
-    {"kind": "col", "date": "2024-09", "link": "https://m.naeil.com/news/read/522358", "title": "중국이 대만문제에 그토록 민감해하는 이유", "source": _NAEIL},
-    {"kind": "col", "date": "2024-05", "link": "https://m.naeil.com/news/read/511341", "title": "미국이 금리를 내리지 않는 진짜 이유", "source": _NAEIL},
-    {"kind": "col", "date": "2020-09", "link": "https://www.ajunews.com/view/20200923095335019", "title": "미·중 충돌 격화 속에 속도 내는 위안화 국제화", "source": _AJU},
-    {"kind": "col", "date": "2020-02", "link": "https://www.ajunews.com/view/20200213143112344", "title": "코로나19 확산 사태가 세계경제에 미치는 영향", "source": _AJU},
-    {"kind": "col", "date": "2019-12", "link": "https://www.ajunews.com/view/20191210100650279", "title": "中 인민은행이 금융안정보고서를 통해 시장에 경보를 울린 이유", "source": _AJU},
-    {"kind": "col", "date": "2016-04", "link": "https://m.seoul.co.kr/news/2016/04/28/20160428030007", "title": "중국 부채위기를 어떻게 봐야 하나", "source": {"ko": "서울신문 「열린세상」", "en": "Seoul Shinmun", "zh": "首尔新闻"}},
-    {"kind": "rep", "date": "2012-11", "featured": 2, "link": "https://www.kcmi.re.kr/report/report_view?report_no=259", "title": "위안화의 역외 사용 확대와 한국의 대응",
+    {"kind": "col", "date": "2024-09", "link": "https://m.naeil.com/news/read/522358", "title": {"ko": "중국이 대만문제에 그토록 민감해하는 이유", "en": "Why China is so sensitive about Taiwan", "zh": "中国为何对台湾问题如此敏感"}, "source": _NAEIL},
+    {"kind": "col", "date": "2024-05", "link": "https://m.naeil.com/news/read/511341", "title": {"ko": "미국이 금리를 내리지 않는 진짜 이유", "en": "The real reason the US is not cutting rates", "zh": "美国不降息的真正原因"}, "source": _NAEIL},
+    {"kind": "col", "date": "2020-09", "link": "https://www.ajunews.com/view/20200923095335019", "title": {"ko": "미·중 충돌 격화 속에 속도 내는 위안화 국제화", "en": "RMB internationalisation speeds up as US–China conflict intensifies", "zh": "美中冲突加剧之下加速推进的人民币国际化"}, "source": _AJU},
+    {"kind": "col", "date": "2020-02", "link": "https://www.ajunews.com/view/20200213143112344", "title": {"ko": "코로나19 확산 사태가 세계경제에 미치는 영향", "en": "How the spread of COVID-19 affects the world economy", "zh": "新冠疫情扩散对世界经济的影响"}, "source": _AJU},
+    {"kind": "col", "date": "2019-12", "link": "https://www.ajunews.com/view/20191210100650279", "title": {"ko": "中 인민은행이 금융안정보고서를 통해 시장에 경보를 울린 이유", "en": "Why the PBoC sounded an alarm in its Financial Stability Report", "zh": "中国人民银行为何通过《金融稳定报告》向市场发出警报"}, "source": _AJU},
+    {"kind": "col", "date": "2016-04", "link": "https://m.seoul.co.kr/news/2016/04/28/20160428030007", "title": {"ko": "중국 부채위기를 어떻게 봐야 하나", "en": "How to read China's debt crisis", "zh": "如何看待中国债务危机"}, "source": {"ko": "서울신문 「열린세상」", "en": "Seoul Shinmun", "zh": "首尔新闻"}},
+    {"kind": "rep", "date": "2012-11", "featured": 2, "link": "https://www.kcmi.re.kr/report/report_view?report_no=259", "title": {"ko": "위안화의 역외 사용 확대와 한국의 대응", "en": "The growing offshore use of the RMB and how Korea should respond", "zh": "人民币境外使用的扩大与韩国的应对"},
      "source": {"ko": "자본시장연구원 이슈&정책 12-05", "en": "Korea Capital Market Institute, Issue & Policy 12-05", "zh": "韩国资本市场研究院 Issue & Policy 12-05"}},
-    {"kind": "rep", "date": "2011-12", "featured": 3, "link": "https://www.kcmi.re.kr/report/report_view?report_no=248", "title": "중국 주식시장 특성과 외국기업의 활용방안",
+    {"kind": "rep", "date": "2011-12", "featured": 3, "link": "https://www.kcmi.re.kr/report/report_view?report_no=248", "title": {"ko": "중국 주식시장 특성과 외국기업의 활용방안", "en": "Features of China's stock market and how foreign firms can use it", "zh": "中国股票市场的特点与外国企业的利用方案"},
      "source": {"ko": "자본시장연구원 연구보고서", "en": "Korea Capital Market Institute research report", "zh": "韩国资本市场研究院研究报告"}},
-    {"kind": "pub", "date": "2015-12", "featured": 1, "label": "2008–2015", "link": "https://www.kcmi.re.kr/publications/pub_end2_view?syear=2013&zcd=002001006&zno=860&cno=2845", "title": "중국금융시장포커스",
+    {"kind": "pub", "date": "2015-12", "featured": 1, "label": "2008–2015", "link": "https://www.kcmi.re.kr/publications/pub_end2_view?syear=2013&zcd=002001006&zno=860&cno=2845", "title": {"ko": "중국금융시장포커스", "en": "China Financial Market Focus", "zh": "《中国金融市场聚焦》"},
      "source": {"ko": "자본시장연구원 정기간행물 · 창간 및 책임편집 · 예: 2013 여름호 「중국의 그림자금융에 따른 위기와 기회」",
                 "en": "Korea Capital Market Institute periodical · founder and editor · e.g. Summer 2013, on the risks and opportunities of China's shadow banking",
                 "zh": "韩国资本市场研究院期刊 · 创办并任责任编辑 · 例：2013年夏季号《中国影子银行带来的危机与机遇》"},
