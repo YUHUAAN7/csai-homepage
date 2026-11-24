@@ -322,6 +322,10 @@ def focus():
                (L("산업분석", "Industry", "产业分析"), L("신에너지, 반도체, 플랫폼, 부동산", "New energy, semiconductors, platforms, property", "新能源、半导体、平台经济、房地产")),
                (L("공급망", "Supply chains", "供应链"), L("한중 교역, 핵심 소재, 수출통제", "Korea–China trade, critical materials, export controls", "韩中贸易、关键材料、出口管制"))]
     pc = "".join(f'<div class="card"><h3>{t}</h3><p>{d}</p></div>' for t, d in pillars)
+    b += sec("intro-video", "IN 60 SECONDS", L("60초로 보는 거시경제연구소", "China Macro Research in 60 seconds", "60秒了解宏观经济研究所"), "",
+             f'<div class="intro-vid"><video controls playsinline preload="none" poster="{A("assets/cmr-intro.jpg")}" '
+             f'aria-label="{L("거시경제연구소 소개 영상 (60초)", "China Macro Research introduction video (60 seconds)", "宏观经济研究所介绍视频（60秒）")}">'
+             f'<source src="{A("assets/cmr-intro.mp4")}" type="video/mp4"></video></div>')
     b += sec("latest", "LATEST", L("최신", "Latest", "最新"), "",
              f'<div class="split"><div>{issue_card()}</div><div>{content_types()}<p class="note" style="margin-top:16px">{L("모든 콘텐츠는 ‘한국 시사점’으로 끝맺습니다. 중국의 변화가 한국 기업·기관의 가격·조달·투자·고용 결정에 주는 영향을 정리합니다.", "Every piece closes with “implications for Korea”: what the change in China means for pricing, sourcing, investment and hiring decisions.", "所有内容都以“对韩国的启示”收尾：中国的变化对韩国企业和机构在定价、采购、投资与用工决策上的影响。")}</p></div></div>')
     from tenday import NEXT_ISSUE
