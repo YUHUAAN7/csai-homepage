@@ -36,12 +36,172 @@
 """
 
 NEXT_ISSUE = {
-    "ko": "2026년 11월 1~20일 통계가 발표되는 날",
-    "en": "The day the figures for 1–20 November 2026 are released",
-    "zh": "2026年11月1至20日统计发布之日"
+    "ko": "2026년 11월 월간 통계가 발표되는 날(12월 1일)",
+    "en": "The day the figures for November 2026 are released (1 December)",
+    "zh": "2026年11月月度统计发布之日（12月1日）"
 }
 
 TENDAY = [
+    {
+        "id": "2026-11-20",
+        "asof": "2026-11-23",
+        "period": {
+            "ko": "2026년 11월 1~20일 통계",
+            "en": "1–20 November 2026",
+            "zh": "2026年11月1至20日"
+        },
+        "title": {
+            "ko": "대중 수출 급증은 20일까지 이어졌다. 늘어난 수출의 약 4분의 3은 반도체다",
+            "en": "The surge in exports to China held through day 20. About three-quarters of the export gain is chips",
+            "zh": "对华出口激增延续至20日，出口增量约四分之三来自半导体"
+        },
+        "basis": {
+            "ko": "기준일 2026년 11월 23일 · 관세청 11월 1~20일 수출입 현황(11월 23일 발표)",
+            "en": "As of 23 November 2026 · Korea Customs Service release for 1–20 November (published 23 November)",
+            "zh": "基准日：2026年11月23日 · 韩国关税厅11月1至20日进出口现况（11月23日发布）"
+        },
+        "points": {
+            "ko": [
+                "11월 1~20일 대중 수출은 200억 달러로 1년 전보다 145.6% 늘었습니다. 1~10일의 증가율(148%)이 거의 그대로 이어졌습니다.",
+                "같은 기간 전체 수출은 약 390억 달러 늘었고, 그 가운데 약 287억 달러(약 74%)가 반도체입니다(CSAI 계산). 반도체 비중은 49.7%로 1~10일과 같습니다.",
+                "반도체를 뺀 수출도 약 36% 늘었지만(CSAI 계산), 그중 얼마가 중국으로 갔는지는 20일 통계로 알 수 없습니다. 대중 수출 급증을 중국 내수 회복으로 읽을 근거는 이번에도 없습니다."
+            ],
+            "en": [
+                "Korea's exports to China in 1–20 November were $20.0bn, up 145.6% from a year earlier. Growth was almost the same as in 1–10 November (148%).",
+                "Total exports rose by about $39.0bn in the period, and about $28.7bn of that (about 74%) was chips (CSAI arithmetic). Chips made up 49.7% of exports, the same share as in 1–10 November.",
+                "Exports excluding chips also rose about 36% (CSAI arithmetic), but the 20-day release does not show how much of that went to China. It again gives no evidence that the jump in exports to China is a recovery in Chinese domestic demand."
+            ],
+            "zh": [
+                "11月1日至20日，韩国对华出口为200亿美元，同比增长145.6%，与1日至10日的增速（148%）几乎持平。",
+                "同期出口总额增加约390亿美元，其中约287亿美元（约74%）来自半导体（CSAI测算）。半导体占比为49.7%，与1日至10日相同。",
+                "剔除半导体的出口也增长约36%（CSAI测算）。但其中有多少流向中国，二十日统计无从得知。这一次同样没有出现可以把对华出口激增解读为中国内需回暖的依据。"
+            ]
+        },
+        "numbers": {
+            "ko": [
+                "전체 수출 774억 달러(+101.5%). 1~20일 기준 역대 최대. 일평균 48.4억 달러(+95.2%)",
+                "반도체 385억 달러(+294.4%). 비중 49.7%, 1년 전보다 24.3%포인트 상승",
+                "대중 수출 200억 달러(+145.6%), 대미 수출 164억 달러(+142.7%). 대만 +149.7%, 베트남 +85.8%, 유럽연합 +25.7%",
+                "수입 503억 달러(+39.4%), 무역수지 271억 달러 흑자. 올해 누계 수출 1조 76억 달러(+63.2%). 11월 19일 처음 1조 달러를 넘음",
+                "CSAI 계산: 반도체를 뺀 수출 약 389억 달러, 약 36% 증가(일평균 약 32%). 대중 비중 약 26%, 대미 약 21%(반올림된 공표치로 계산한 어림값)"
+            ],
+            "en": [
+                "Total exports $77.4bn (+101.5%), a record for the first 20 days of a month. Daily average $4.84bn (+95.2%)",
+                "Chips $38.5bn (+294.4%), 49.7% of exports, up 24.3 points from a year earlier",
+                "To China $20.0bn (+145.6%); to the US $16.4bn (+142.7%). Taiwan +149.7%, Vietnam +85.8%, the EU +25.7%",
+                "Imports $50.3bn (+39.4%), trade surplus $27.1bn. Exports for the year to date $1,007.6bn (+63.2%); they passed $1 trillion for the first time on 19 November",
+                "CSAI arithmetic: exports excluding chips about $38.9bn, up about 36% (about 32% on a daily-average basis). China about 26% of exports, the US about 21% (approximations from rounded published figures)"
+            ],
+            "zh": [
+                "出口总额774亿美元（+101.5%），创月度前20日历史新高；日均48.4亿美元（+95.2%）",
+                "半导体385亿美元（+294.4%），占比49.7%，同比上升24.3个百分点",
+                "对华出口200亿美元（+145.6%），对美出口164亿美元（+142.7%）；对台湾地区+149.7%，对越南+85.8%，对欧盟+25.7%",
+                "进口503亿美元（+39.4%），贸易顺差271亿美元；今年累计出口10,076亿美元（+63.2%），于11月19日首次突破1万亿美元",
+                "CSAI测算：剔除半导体的出口约389亿美元，同比增长约36%（按日均计算约32%）；对华占比约26%，对美约21%（依据四舍五入后的公布数据估算）"
+            ]
+        },
+        "reading": {
+            "ko": [
+                "관세청 통계는 금액입니다. 한국은행 10월 수출물가지수에서 D램은 1년 전보다 199.4% 올랐습니다. 같은 물량을 팔아도 금액이 약 세 배가 됩니다. 다만 10월 수출물량지수도 43.9% 올라 역대 가장 큰 폭이었습니다. 금액 증가가 모두 가격은 아닙니다.",
+                "증가율이 높은 곳은 대만, 중국, 미국, 베트남이고 유럽연합은 25.7%에 그쳤습니다. 반도체가 많이 가는 시장과 그렇지 않은 시장의 차이로 보입니다. 다만 20일 통계에는 나라별 품목 내역이 없어 ‘반도체를 뺀 대중 수출’과 ‘반도체를 뺀 전체 수출’을 견주지 못했습니다. 12월 1일 월간 통계에서 합니다.",
+                "조업일수가 작년보다 0.5일 많았지만 일평균으로도 95.2% 늘었습니다. 작년 같은 기간 수출도 8.2% 늘었으니 기저효과도 아닙니다. 반도체에 더해 컴퓨터 주변기기(+330.6%)와 석유제품(+91.9%)까지 빼면 증가율은 약 21%입니다(CSAI 계산). 컴퓨터 주변기기에는 SSD처럼 메모리가 들어간 제품이 많고, 석유제품은 유가를 따라 움직입니다."
+            ],
+            "en": [
+                "Customs figures are values. In the Bank of Korea's export price index for October, DRAM prices were up 199.4% from a year earlier. The same volume now brings in about three times the value. But the export volume index also rose 43.9% in October, its largest rise on record. Not all of the gain in value is price.",
+                "Growth was highest to Taiwan, China, the US and Vietnam. To the EU it was only 25.7%. This looks like the gap between markets that take many chips and markets that do not. But the 20-day release has no product breakdown by country, so we could not compare exports to China excluding chips with total exports excluding chips. We will do so with the monthly data on 1 December.",
+                "There was half a working day more than last year, but the daily average still rose 95.2%. Exports in the same period last year rose 8.2%, so this is not a low base either. Take out computer peripherals (+330.6%) and petroleum products (+91.9%) as well as chips, and growth is about 21% (CSAI arithmetic). Many computer peripherals, such as SSDs, contain memory, and petroleum products follow oil prices."
+            ],
+            "zh": [
+                "关税厅的统计是金额。韩国银行10月出口物价指数显示，DRAM价格同比上涨199.4%，也就是说，即使出口数量不变，金额也会变成约三倍。不过，10月出口数量指数也上升43.9%，升幅为历史最高。金额的增加不能全部归因于价格。",
+                "增速高的是台湾地区、中国、美国和越南，对欧盟只增长25.7%。这看起来是半导体流向多的市场与流向少的市场之间的差别。不过，二十日统计没有分国别的品类明细，因此这次无法比较“剔除半导体的对华出口”与“剔除半导体的整体出口”，将在12月1日的月度统计中进行。",
+                "工作日比去年多0.5天，但日均出口仍增长95.2%。去年同期出口也增长8.2%，因此也不是低基数效应。除半导体外，再剔除计算机周边设备（+330.6%）和石油制品（+91.9%），增速约为21%（CSAI测算）。计算机周边设备中有不少像固态硬盘（SSD）这样含有存储芯片的产品，石油制品则随油价波动。"
+            ]
+        },
+        "korea": {
+            "ko": [
+                "수출 1조 달러, 일평균 48억 달러 같은 기록을 끌어올린 것은 반도체입니다. 반도체 밖 기업이 수출 총액이나 대중 수출 총액을 근거로 투자와 채용을 늘리면 실제 주문보다 앞서 갈 수 있습니다. 자기 품목의 주문 물량과 단가를 따로 봐야 합니다.",
+                "수입도 39.4% 늘었고, 원유(+83.4%)와 가스(+93.9%)의 증가가 큽니다. 수출 호황과 원가 부담이 함께 커지고 있습니다. 에너지와 원재료 비중이 큰 기업은 원가 상승분을 판매가에 얼마나 옮길 수 있는지, 조달 계약의 가격 조건은 어떤지 점검할 때입니다."
+            ],
+            "en": [
+                "Chips are what lifted records such as $1 trillion in exports and a $4.8bn daily average. A company outside chips that expands investment and hiring on the strength of total exports, or of total exports to China, may run ahead of its real orders. It should look at order volumes and prices for its own products.",
+                "Imports also rose 39.4%, with large increases in crude oil (+83.4%) and gas (+93.9%). The export boom and cost pressure are growing together. Companies with large energy and raw-material costs should check how much of the cost increase they can pass on to selling prices, and what the price terms in their supply contracts are."
+            ],
+            "zh": [
+                "把出口推上1万亿美元、日均48亿美元这些纪录的是半导体。半导体以外的企业如果以出口总额或对华出口总额为依据扩大投资和招聘，可能会走在实际订单前面，应当单独看本企业产品的订单数量和单价。",
+                "进口也增长39.4%，其中原油（+83.4%）和天然气（+93.9%）增幅较大。出口繁荣与成本压力同时加大。能源和原材料占比高的企业，现在应当检查成本上涨能在多大程度上转嫁到售价，以及采购合同的价格条款。"
+            ]
+        },
+        # 이번 호에는 새 판단이 없어 "judgment" 를 넣지 않았다.
+        # "example" 도 넣지 않았다: 첫 화면 사례 상자의 마지막 칸에는 '판단' 표지가 자동으로 붙는데,
+        # 판단이 없는 호를 어떻게 보일지 원장 확인 전이라 첫 화면은 지난 호(11월 1~10일) 상자를 그대로 쓴다.
+        "exec_q": {
+            "ko": [
+                "중국 거래처로 가는 우리 제품은 중국 안에서 쓰이는가, 조립돼 다른 나라로 다시 나가는가?",
+                "오른 에너지·원재료 값을 판매가에 얼마나 옮기고 있는가? 옮기지 못한 몫은 누가 지고 있는가?"
+            ],
+            "en": [
+                "Are your products shipped to Chinese customers used inside China, or assembled and exported again to other countries?",
+                "How much of the higher energy and raw-material cost are you passing on to selling prices? Who is bearing the part you cannot pass on?"
+            ],
+            "zh": [
+                "发往中国客户的本公司产品，是在中国境内使用，还是经组装后再出口到其他国家？",
+                "上涨的能源和原材料成本，有多少转嫁到了售价？无法转嫁的部分由谁承担？"
+            ]
+        },
+        "next": {
+            "ko": [
+                "12월 1일 산업통상부 11월 수출입 동향에서 반도체를 뺀 대중 수출이 반도체를 뺀 전체 수출보다 빠르게 늘었는지. 지난 호 판단의 무효화 조건입니다.",
+                "12월 중순 무렵 한국은행 11월 수출물가·무역지수에서 D램 가격과 수출물량이 함께 오르는지",
+                "11월 월간 반도체 비중이 50%를 넘는지. 1조 달러를 넘은 시점의 누계 반도체 비중은 보도마다 달라 관세청 자료로 확인하겠습니다."
+            ],
+            "en": [
+                "Whether exports to China excluding chips grew faster than total exports excluding chips in the trade ministry's November figures on 1 December. This is the invalidation condition of our previous judgment.",
+                "Whether DRAM prices and export volumes rise together again in the Bank of Korea's November export price and trade indexes, due around mid-December",
+                "Whether chips pass 50% of exports for November as a whole. Reports differ on the chip share of year-to-date exports when the $1 trillion mark was passed; we will confirm it from customs data."
+            ],
+            "zh": [
+                "12月1日产业通商部11月进出口动向中，剔除半导体的对华出口增速是否快于剔除半导体的整体出口。这是上一期判断的失效条件。",
+                "12月中旬前后韩国银行11月出口物价与贸易指数中，DRAM价格与出口数量是否继续同步上升",
+                "11月全月半导体占比是否超过50%。突破1万亿美元时的累计半导体占比，各家报道不一，将以关税厅资料核实。"
+            ]
+        },
+        "sources": [
+            [
+                "아주경제",
+                "https://www.ajunews.com/view/20261123092143955"
+            ],
+            [
+                "포인트경제",
+                "https://www.pointe.co.kr/news/articleView.html?idxno=88212"
+            ],
+            [
+                "The Korea Times",
+                "https://www.koreatimes.co.kr/economy/others/20261123/exports-more-than-double-in-1st-20-days-of-november-with-chip-shipments-surging-to-new-high"
+            ],
+            [
+                "메트로신문",
+                "https://www.metroseoul.co.kr/article/20261112500417"
+            ],
+            [
+                "EBN",
+                "https://www.ebn.co.kr/news/articleView.html?idxno=1731501"
+            ],
+            [
+                "KDI 경제교육·정보센터",
+                "https://eiec.kdi.re.kr/policy/materialView.do?num=273703"
+            ]
+        ],
+        "source_pre": {
+            "ko": "관세청 발표(2026.11.23)와 한국은행 10월 수출물가·무역지수(2026.11.13)를 전한 보도, 그리고 지난해 같은 기간 통계: ",
+            "en": "Reports of the Korea Customs Service release (23 Nov 2026) and the Bank of Korea's October price and trade indexes (13 Nov 2026), and last year's release for the same period: ",
+            "zh": "转引韩国关税厅数据（2026.11.23）与韩国银行10月出口物价、贸易指数（2026.11.13）的报道及去年同期统计："
+        },
+        "source_post": {
+            "ko": ". 비중, 반도체 제외 수치, 증가분에서 반도체가 차지하는 몫은 CSAI 계산입니다.",
+            "en": ". Shares, ex-chip figures and the chip share of the gain are CSAI arithmetic.",
+            "zh": "。占比、剔除半导体的数值及半导体在增量中的比重为CSAI测算。"
+        }
+    },
     {
         "id": "2026-11-10",
         "anchor": "flash-2026-11",
