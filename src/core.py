@@ -343,3 +343,11 @@ def analytics_tag():
 def cta_band(title, text, label, href, flush=False, ext=False):
     st = ' style="margin-top:0"' if flush else ""
     return f'<div class="cta-box"{st}><div><h3>{title}</h3><p>{text}</p></div>{btn(label, href, "gold", ext=ext)}</div>'
+
+
+def vtrack(v):
+    """번역 자막 (영어판·중국어판만). assets/{v}-intro.{lang}.vtt"""
+    if C.lang == "ko":
+        return ""
+    lab = "English" if C.lang == "en" else "中文"
+    return f'<track kind="subtitles" srclang="{C.lang}" label="{lab}" src="{A(f"assets/{v}-intro.{C.lang}.vtt")}" default>'

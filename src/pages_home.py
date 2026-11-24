@@ -117,7 +117,7 @@ def home():
     intro = sec("intro-video", "CSAI IN 60 SECONDS", L("60초로 보는 CSAI", "CSAI in 60 seconds", "60秒了解CSAI"), "",
                 f'<div class="intro-vid"><video controls playsinline preload="none" poster="{A("assets/csai-intro.jpg")}" '
                 f'aria-label="{L("CSAI 소개 영상 (60초)", "CSAI introduction video (60 seconds)", "CSAI介绍视频（60秒）")}">'
-                f'<source src="{A("assets/csai-intro.mp4")}" type="video/mp4"></video></div>', "alt")
+                f'<source src="{A("assets/csai-intro.mp4")}" type="video/mp4">{vtrack("csai")}</video></div>', "alt")
 
     about = sec("values", "ABOUT CSAI",
                 L("판단·데이터·접근을 쌓아 가는 연구기관", "A research institute built on judgment, data and access", "积累判断、数据与渠道的研究机构"),
