@@ -114,6 +114,11 @@ def home():
 </section>'''
     reg(L("CSAI의 미션", "Our mission", "CSAI的使命"), L("중국을 가장 깊이 읽는 거시경제 통찰로, 한국과 세계의 기업·기관이 더 나은 결정을 내리도록 돕는다.", "We help companies and institutions make better decisions.", "帮助企业和机构做出更好的决策。"), P("about", "vision"), "About CSAI")
 
+    intro = sec("intro-video", "CSAI IN 60 SECONDS", L("60초로 보는 CSAI", "CSAI in 60 seconds", "60秒了解CSAI"), "",
+                f'<div class="intro-vid"><video controls playsinline preload="none" poster="{A("assets/csai-intro.jpg")}" '
+                f'aria-label="{L("CSAI 소개 영상 (60초)", "CSAI introduction video (60 seconds)", "CSAI介绍视频（60秒）")}">'
+                f'<source src="{A("assets/csai-intro.mp4")}" type="video/mp4"></video></div>', "alt")
+
     about = sec("values", "ABOUT CSAI",
                 L("판단·데이터·접근을 쌓아 가는 연구기관", "A research institute built on judgment, data and access", "积累判断、数据与渠道的研究机构"),
                 L("CSAI는 중국의 거시경제와 정책을 분석해 한국 기업·기관의 의사결정으로 연결합니다. 정책을 지켜보는 데서 그치지 않고, 판단의 기록과 데이터, 현지 맥락에 대한 이해를 쌓아 갑니다.",
@@ -202,7 +207,7 @@ def home():
     <p>{L("휴대폰 카메라로 찍으면<br>홈페이지가 열립니다.", "Scan with your phone<br>to open this site.", "用手机扫码<br>即可打开本网站。")}<br><b>www.csai.re.kr</b></p></div>
 </div></section>'''
 
-    body = hero + quick + mission + about + research + machine + columns + focus + insight + princ + books + director + advisory + academy + news + band
+    body = hero + quick + mission + intro + about + research + machine + columns + focus + insight + princ + books + director + advisory + academy + news + band
     desc = L("CSAI는 중국의 경제·정책을 깊이 분석하고, 한국 기업과 기관의 전략적 의사결정을 지원합니다. 연구·분석, 거시경제연구소, 기업 자문, 교육, 글로벌 협력.",
              "CSAI analyses China's economy and policy in depth and supports the strategic decisions of Korean companies and institutions.",
              "CSAI深入分析中国经济与政策，为韩国企业和机构的战略决策提供支持。")
